@@ -1,4 +1,10 @@
 import type { Metadata } from "next";
+import {Lato} from 'next/font/google';
+
+const lato = Lato({
+  subsets: ['latin'],
+  weight: "100"
+});
 
 export const metadata: Metadata = {
   title: "Shine&Polish",
@@ -12,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body >{children}</body>
+      <body className={lato.className}>{children}</body>
     </html>
   );
 }
