@@ -2,3 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* :root {
+    --error-border-gradient: linear-gradient(to right, #DE005D , #780032);
+    --main-border-gradient: linear-gradient(90deg, #00BFDE , #006778 )
+  } */
