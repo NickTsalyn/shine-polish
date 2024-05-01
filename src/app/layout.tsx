@@ -4,7 +4,7 @@ import '../styles/globals.css';
 
 const lato = Lato({
   subsets: ['latin'],
-  weight: "300" || "400" || "500" || "700" || "800" || "900"
+  weight: ["300", "400", "700", "900"],
 });
 
 export const metadata: Metadata = {
