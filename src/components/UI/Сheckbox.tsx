@@ -17,14 +17,14 @@ const CheckBox = (props: CheckBoxProps) => {
       checked={props.checked}
       onChange={props.onChange}
       icon={
-        <div className="flex w-[176px] h-[120px] border border-teal-700 items-center justify-center rounded-xl">
+        <div className="flex w-[176px] h-[120px] border border-main items-center justify-center rounded-xl">
           <button className=" flex flex-col items-center  flex-shrink-0 text-teal-700 text-center font-intro_book text-base font-normal leading-6">
             {props.value}
           </button>
         </div>
       }
       checkedIcon={
-        <div className="flex w-[176px] h-[120px] border border-red-800 items-center justify-center rounded-xl">
+        <div className="flex w-[176px] h-[120px] border border-accent items-center justify-center rounded-xl">
           <button className=" flex flex-col items-center  flex-shrink-0 text-teal-700 text-center font-intro_book text-base font-normal leading-6">
             {props.value}
           </button>
