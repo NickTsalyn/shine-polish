@@ -29,27 +29,27 @@
   }
 
 /* header last section */
-  .h2 {
+  .heading-2 {
     @apply text-[24px];
     @apply font-medium;
     @apply leading-[1.2];
   }
   @screen md {
-    .h2 {
+    .heading-2 {
       @apply text-[48px];
       @apply font-medium;
       @apply leading-[1.2];
     }
   }
   @screen lg {
-    .h2 {
+    .heading-2 {
       @apply text-[64px];
       @apply font-medium;
       @apply leading-[1.2];
     }
   }
   @screen xl {
-    .h2 {
+    .heading-2 {
       @apply text-[92px];
       @apply font-medium;
       @apply leading-[1.2];
