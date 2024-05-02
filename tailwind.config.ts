@@ -31,10 +31,12 @@ const config: Config = {
         text: "#262D33",
         white: "#fff",
         subtext: "#737373",
+        blue: "#5FE4F9E5",
         "secondary-placeholder": "#522600",
         "error-input-bgn": "#FFF2F2",
         light: "rgba(255, 247, 239, 0.68)",
         sand: "rgba(230, 186, 149, 0.68)",
+        
       },
 
       boxShadow: {
