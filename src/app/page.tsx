@@ -1,3 +1,7 @@
+// import Footer  from "../components/footer"
+
 export default function Home() {
-  return <main></main>;
+  return <main>
+    {/* <Footer/> */}
+  </main>;
 }
