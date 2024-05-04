@@ -1,33 +1,32 @@
 import React from "react";
 import Checkbox from "@mui/material/Checkbox";
+import { RadioCheckProps } from "@/types/types";
 
-type CheckBoxProps = {
-  value?: string;
-  checked?: boolean;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  disabled?: boolean;
-};
-
-const CheckBox = (props: CheckBoxProps) => {
+const CheckBox = (props: RadioCheckProps) => {
   return (
     <Checkbox
       sx={{
         padding: "0",
-        
       }}
       checked={props.checked}
       onChange={props.onChange}
       icon={
-        <div className="flex w-[176px] h-[120px] border border-main items-center justify-center rounded-xl shadow-button-shadow ">
+        <div
+          className={`${props.style} h-[120px] border border-main items-center justify-center rounded-xl shadow-button-shadow`}
+        >
           <button className=" flex flex-col items-center  flex-shrink-0 text-main text-center font-intro_book text-base font-normal leading-6">
-            {props.value}
+            {props.children}
+            {props.text}
           </button>
         </div>
       }
       checkedIcon={
-        <div className="flex w-[176px] h-[120px] border border-main/35 items-center justify-center rounded-xl bg-tertial shadow-hover-shadow ">
+        <div
+          className={`${props.style} flex h-[120px] border border-main/35 items-center justify-center rounded-xl bg-tertial shadow-hover-shadow`}
+        >
           <button className=" flex flex-col items-center  flex-shrink-0 text-white text-center font-intro_book text-base font-normal leading-6 ">
-            {props.value}
+            {props.children}
+            {props.text}
           </button>
         </div>
       }
