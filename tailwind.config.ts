@@ -31,6 +31,7 @@ const config: Config = {
         text: "#262D33",
         white: "#fff",
         subtext: "#737373",
+        blue: "#5FE4F9E5",
         "secondary-placeholder": "#522600",
         "error-input-bgn": "#FFF2F2",
         light: "rgba(255, 247, 239, 0.68)",
@@ -39,6 +40,14 @@ const config: Config = {
 
       boxShadow: {
         "main-shadow": "0px 5px 15px 0px rgba(0, 0, 0, 0.35)",
+        "button-shadow": "0px 0px 2px 0px rgba(0, 103, 120, 0.50);",
+        "button-hover-shadow":
+          "-5px 57px 16px 0px rgba(15, 191, 215, 0.00), -3px 37px 15px 0px rgba(15, 191, 215, 0.01), -2px 21px 12px 0px rgba(15, 191, 215, 0.05), -1px 9px 9px 0px rgba(15, 191, 215, 0.09), 0px 2px 5px 0px rgba(15, 191, 215, 0.10);",
+        "apply-blue-button-shadow":
+          "0px 19px 38px rgba(8, 201, 226, 0.50), 0px 15px 12px rgba(0, 0, 0, 0.22);",
+        "apply-send-button-shadow":
+          "0px 19px 38px rgba(120, 0, 50, 0.50), 0px 15px 12px rgba(0, 0, 0, 0.22);",
+
         "text-shadow":
           "108px 75px 37px rgba(0, 0, 0, 0.00), 69px 48px 34px rgba(0, 0, 0, 0.01), 39px 27px 28px rgba(0, 0, 0, 0.05), 17px 12px 21px rgba(0, 0, 0, 0.09), 4px 3px 12px rgba(0, 0, 0, 0.10)",
         "review-shadow":
@@ -65,11 +74,8 @@ const config: Config = {
 
         "plus-minus-gradient":
           "linear-gradient(180deg, #006778 50%, #00BFDE 50%)",
-        // "error-border-gradient":
-        //   " linear-gradient(to right, #DE005D, #780032)",
-
-        // "main-border-gradient":
-        //   "linear-gradient(90deg, #00BFDE 100%, #006778 100%)",
+        "disabled-button-border":
+          "linear-gradient(90deg, #006778 30%, #00BFDE 30%)",
       },
     },
   },
@@ -87,9 +93,21 @@ const config: Config = {
           "border-image-slice": "1",
           "border-radius": "12px",
         },
+        ".disabled-button::after": {
+          content: "''",
+          position: "absolute",
+          top: "-2px",
+          left: "-2px",
+          right: "-2px",
+          bottom: "-2px",
+          backgroundColor: "#ccc",
+          zIndex: "-1",
+          borderRadius: "12px",
+          pointerEvents: "none",
+        },
         ".input-border-gradient": {
           background:
-          "linear-gradient(white, white) padding-box, linear-gradient(to right, #00BFDE , #006778 ) border-box",
+            "linear-gradient(white, white) padding-box, linear-gradient(to right, #00BFDE , #006778 ) border-box",
           "border-image": "linear-gradient(to right, #00BFDE , #006778 )",
         },
       };
