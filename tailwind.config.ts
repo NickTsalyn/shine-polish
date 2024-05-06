@@ -43,6 +43,8 @@ const config: Config = {
           "108px 75px 37px rgba(0, 0, 0, 0.00), 69px 48px 34px rgba(0, 0, 0, 0.01), 39px 27px 28px rgba(0, 0, 0, 0.05), 17px 12px 21px rgba(0, 0, 0, 0.09), 4px 3px 12px rgba(0, 0, 0, 0.10)",
         "review-shadow":
           "42px 122px 36px 0px rgba(182, 169, 124, 0.00), 27px 78px 33px 0px rgba(182, 169, 124, 0.01), 15px 44px 28px 0px rgba(182, 169, 124, 0.05), 7px 19px 21px 0px rgba(182, 169, 124, 0.09), 2px 5px 11px 0px rgba(182, 169, 124, 0.10)",
+        "input-shadow":
+          "0px 30px 60px -12px rgba(50, 50, 93, 0.25), 0px 18px 36px -18px rgba(0, 0, 0, 0.30)",
       },
       backgroundImage: {
         "main-gradient": "linear-gradient(180deg, #006778 0%, #00BFDE 100%)",
@@ -84,6 +86,11 @@ const config: Config = {
           "border-image": "linear-gradient(to right, #DE005D , #780032)",
           "border-image-slice": "1",
           "border-radius": "12px",
+        },
+        ".input-border-gradient": {
+          background:
+          "linear-gradient(white, white) padding-box, linear-gradient(to right, #00BFDE , #006778 ) border-box",
+          "border-image": "linear-gradient(to right, #00BFDE , #006778 )",
         },
       };
 
