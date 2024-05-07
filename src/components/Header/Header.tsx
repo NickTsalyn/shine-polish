@@ -24,24 +24,26 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-white">
-      <div className=" px-6 py-3 flex direction-row justify-between">
-        <Link href={"/"}>
-          <Image
-            width={78}
-            height={66}
-            src="/icons/logo_shine.svg"
-            alt="Logo"
-          />
-        </Link>
+    <header className="bg-white lg:bg-transparent">
+      <div className=" px-[20px] md:px-[28px] lg:px-[42px] xl:px-20 py-3 md:py-[18px] lg:py-5 flex direction-row justify-between lg:justify-end">
+        <div className="block lg:hidden">
+          <Link href={"/"}>
+            <Image
+              width={78}
+              height={66}
+              src="/icons/logo_shine.svg"
+              alt="Logo"
+            />
+          </Link>
+        </div>
 
-        <div className=" flex direction-row gap-6 items-center justify-center">
+        <div className=" flex direction-row gap-6 items-center justify-center ">
           <div className=" w-[38px] h-7 border rounded-[6px] border-light-main text-center">
             Uk
           </div>
 
           <ThemeSwitch checked={lightMode} onChange={handleChange} />
-          <IconButton>
+          <IconButton className="flex lg:hidden">
             <StyledMenuIcon />
           </IconButton>
         </div>

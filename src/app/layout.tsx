@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import {Lato} from 'next/font/google';
-import '../styles/globals.css';
+import { Lato } from "next/font/google";
+import "../styles/globals.css";
 import Header from "@/components/Header/Header";
+import { blueGrey } from "@mui/material/colors";
 
 const lato = Lato({
-  subsets: ['latin'],
+  subsets: ["latin"],
   weight: ["300", "400", "700", "900"],
 });
 
@@ -20,9 +21,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={lato.className}>
-        <Header/>
-         {children}</body>
+      {/* <body className={lato.className}> */}
+      <body className={`${lato.className} bg-slate-200`}>
+        <Header />
+        {children}
+      </body>
     </html>
   );
 }

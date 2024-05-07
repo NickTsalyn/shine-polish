@@ -2,32 +2,52 @@ import Switch from "@mui/material/Switch";
 import { styled } from "@mui/material/styles";
 
 const ThemeSwitch = styled(Switch)(() => ({
-  width: 44,
-  height: 22,
+  width: 38,
+  height: 18,
   padding: 0,
   margin: 0,
   "& .MuiSwitch-switchBase": {
-    padding: 2,
+    padding: 1,
     "&.Mui-checked": {
-      transform: "translateX(22px)",
-      color: "#fff", 
+      transform: "translateX(20px)",
+      color: "#fff",
       "& + .MuiSwitch-track": {
-        backgroundColor: "#006778", 
+        backgroundColor: "#006778",
         opacity: 1,
         border: "none",
       },
     },
   },
   "& .MuiSwitch-thumb": {
-    width: 18,
-    height: 18,
+    width: 16,
+    height: 16,
   },
   "& .MuiSwitch-track": {
+    width: 38,
+    height: 18,
+    borderRadius: 20,
+    backgroundColor: "rgba(0, 0, 0, 0.25)",
+    opacity: 1,
+  },
+  "@media (min-width: 768px)": {
     width: 44,
     height: 22,
-    borderRadius: 20,
-    backgroundColor: "rgba(0, 0, 0, 0.25)", 
-    opacity: 1,
+    "& .MuiSwitch-switchBase": {
+      padding: 2,
+
+      "&.Mui-checked": {
+        transform: "translateX(22px)",
+      },
+    },
+    "& .MuiSwitch-thumb": {
+      width: 18,
+      height: 18,
+    },
+    "& .MuiSwitch-track": {
+      width: 44,
+      height: 22,
+      backgroundColor: "rgba(255, 255, 255, 0.25)",
+    },
   },
 }));
 
