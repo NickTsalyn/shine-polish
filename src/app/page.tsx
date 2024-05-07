@@ -1,6 +1,6 @@
 // import Footer  from "../components/footer"
 
-import Input from "@/components/UI/Input";
+// import Input from "@/components/UI/Input";
 
 export default function Home() {
   return (
