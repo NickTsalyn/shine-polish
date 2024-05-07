@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <main>
       {/* <Footer/> */}
-      <Input type="email" style="sign-in-input" placeholder="Sign In" />
+      {/* <Input type="email" style="sign-in-input" placeholder="Sign In" />
       <Input
         type="email"
         style="sign-up-input"
@@ -19,7 +19,7 @@ export default function Home() {
         style="modal-input"
         placeholder="Modal Input"
         border="input-border-gradient"
-      />
+      /> */}
     </main>
   );
 }
