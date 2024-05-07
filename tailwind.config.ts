@@ -15,6 +15,7 @@ const config: Config = {
         xl: "1920px",
       },
       container: {
+        center: true,
         screens: {
           sm: "335px",
           md: "712px",
@@ -36,7 +37,7 @@ const config: Config = {
         "error-input-bgn": "#FFF2F2",
         light: "rgba(255, 247, 239, 0.68)",
         sand: "rgba(230, 186, 149, 0.68)",
-        
+        'light-main': '#00677852'
       },
 
       boxShadow: {
