@@ -1,5 +1,5 @@
 "use client";
-// import Image from "next/image";
+
 import Link from "next/link";
 import ThemeSwitch from "./Switcher";
 import { useState } from "react";
@@ -31,16 +31,20 @@ export default function Header() {
           <Link href={"/"}>
             <Image
               width={68}
-              height={60}              
+              height={60}
               src="/icons/logo_shine.svg"
               alt="Logo"
-              layout="responsive"             
+              layout="responsive"
             />
           </Link>
         </div>
 
         <div className=" flex direction-row gap-4 md:gap-[22px] lg:gap-10 items-center justify-center ">
-         {auth && <div className="text-accent lg:text-white subtext">Hello, Fiona</div>}
+          {auth && (
+            <div className=" block lg:hidden text-accent lg:text-white subtext">
+              Hello, Fiona
+            </div>
+          )}
           <div className=" w-[38px] h-7 border rounded-[6px] border-light-main text-center">
             Uk
           </div>

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Lato } from "next/font/google";
 import "../styles/globals.css";
 import Header from "@/components/Header/Header";
-import { blueGrey } from "@mui/material/colors";
+import Sidebar from "@/components/Sidebar";
 
 const lato = Lato({
   subsets: ["latin"],
@@ -24,6 +24,7 @@ export default function RootLayout({
       {/* <body className={lato.className}> */}
       <body className={`${lato.className} bg-slate-200`}>
         <Header />
+        <Sidebar />
         {children}
       </body>
     </html>
