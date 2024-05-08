@@ -110,6 +110,16 @@ const config: Config = {
             "linear-gradient(white, white) padding-box, linear-gradient(to right, #00BFDE , #006778 ) border-box",
           "border-image": "linear-gradient(to right, #00BFDE , #006778 )",
         },
+        ".input-border-gradient-modal": {
+          background:
+            "linear-gradient(white, white) padding-box, linear-gradient(to left, #00BFDE , #006778 ) border-box",
+          "border-image": "linear-gradient(to right, #00BFDE , #006778 )",
+        },
+        ".input-border-gradient-error": {
+          background:
+            "linear-gradient(#FFF2F2, #FFF2F2) padding-box, linear-gradient(to right, #DE005D , #780032 ) border-box",
+          "border-image": "linear-gradient(to right, #DE005D , #780032)",
+        },
       };
 
       addUtilities(newUtilities);
