@@ -70,8 +70,12 @@ const config: Config = {
 
         "plus-minus-gradient":
           "linear-gradient(180deg, #006778 50%, #00BFDE 50%)",
+
         "disabled-button-border":
-          "linear-gradient(90deg, #006778 30%, #00BFDE 30%)"
+          "linear-gradient(90deg, #006778 30%, #00BFDE 30%)",
+
+          "background-img-grad":
+          "linear-gradient(185deg, rgba(10, 10, 10, 0.49) 2.66%, rgba(120, 120, 120, 0.00) 81.3%);"
       },
     },
   },

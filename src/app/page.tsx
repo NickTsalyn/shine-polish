@@ -1,7 +1,9 @@
-// import Footer  from "../components/footer"
+import LastSectionHome from "@/components/LastSectionHome";
+import Footer  from "../components/Footer"
 
 export default function Home() {
   return <main>
-    {/* <Footer/> */}
+    <LastSectionHome />
+    <Footer />
   </main>;
 }
