@@ -1,13 +1,18 @@
-"use client";
+import mobileImage from "../images/mobile1.webp";
 
 import Button from "./UI/Button";
 
 export default function Hero() {
+  const backgroundImageUrl = `url(${mobileImage.src})`;
+
   return (
     <>
-      <section className=" py-5 bg-cover bg-no-repeat bg-center bg-[url('/images/mobile1.webp')] ">
+      <section
+        className="p-5 relative bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: backgroundImageUrl }}
+      >
         <div>
-          <h1>Spend time on your loved ones, not on cleaning</h1>
+          <h1 className="h1">Spend time on your loved ones, not on cleaning</h1>
 
           <div>
             <Button type="button" style="home-book-now">
