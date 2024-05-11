@@ -35,7 +35,7 @@ export default function Button(props: PropsButtton) {
       break;
     case "home-book-now":
       styles =
-        "flex justify-center items-center w-[120px] h-8 md:w-[280px] md:h-15 lg:w-[400px] lg:h-[80px] xl:w-[440px] xl:h-[100px]  border border-solid border-secondary rounded-[12px] bg-black bg-opacity-35 backdrop-blur-[10px]   ";
+        "flex justify-center items-center w-[120px] h-8 md:w-[280px] md:h-[60px] lg:w-[400px] lg:h-[80px] xl:w-[440px] xl:h-[100px]  border border-solid border-secondary rounded-[12px] bg-black bg-opacity-35 backdrop-blur-[10px]   ";
       break;
     case "home-contact-us":
       styles =
