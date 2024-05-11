@@ -35,11 +35,11 @@ export default function Button(props: PropsButtton) {
       break;
     case "home-book-now":
       styles =
-        "py-1 md:py-2 xl:py-3  px-3 md:px-16 lg:px-12 xl:px-17  border border-solid border-secondary rounded-[10px] bg-black bg-opacity-35 backdrop-blur-[10px]   ";
+        "py-1 md:py-2 lg:py-2 xl:py-4  px-4 md:px-[54px] lg:px-12 xl:px-[70px]  border border-solid border-secondary rounded-[10px] backdrop-blur-[10px]   ";
       break;
     case "home-contact-us":
       styles =
-        "py-1 md:py-2 xl:py-3  px-3 md:px-16 lg:px-12 xl:px-17  border border-solid border-secondary rounded-[10px] bg-black bg-opacity-35 backdrop-blur-[10px]   ";
+        "py-1 md:py-2 lg:py-2 xl:py-4  px-3 md:px-12 lg:px-10 xl:px-[60px]  border border-solid border-secondary rounded-[10px] backdrop-blur-[10px]   ";
       break;
     case "sidebar-book-now":
       styles =
