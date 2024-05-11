@@ -4,7 +4,7 @@ import Link from "next/link";
 import ThemeSwitch from "./Switcher";
 import { useState } from "react";
 import { IconButton } from "@mui/material";
-import MenuIcon from "@mui/icons-material/menu";
+import MenuIcon from '@mui/icons-material/Menu';
 import { styled } from "@mui/material/styles";
 import Image from "next/legacy/image";
 
