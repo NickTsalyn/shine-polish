@@ -54,7 +54,8 @@ const reviews = [
 
 export const Reviews: React.FC = () => {
   return (
-    <div className="container mx-auto sm:mb-[60px] md:mb-[80px] lg:mb-[120px] xl:mb-[160px]">
+    <section className=" mx-auto sm:mb-[60px] md:mb-[80px] lg:mb-[120px] xl:mb-[160px]">
+    <div className="container">
       <h2
         className={` h2  text-center mb-[23px] text-main sm:text-[28px] md:text-[48px] lg:text-[64px] xl:text-[64px] sm:leading-34 md:leading-58 lg:leading-76 xl:leading-76 `}
       >
@@ -91,5 +92,6 @@ export const Reviews: React.FC = () => {
         </Swiper>
       </div>
     </div>
+    </section>
   );
 };
