@@ -23,7 +23,7 @@ const config: Config = {
           sm: "335px",
           md: "712px",
           lg: "1156px",
-          xl: "1516",
+          xl: "1516px",
         },
       },
       colors: {
