@@ -98,17 +98,3 @@ export default function Footer() {
     </footer>
   );
 }
-
-// / import Image from "next/legacy/image";
-//   <div className="block lg:hidden w-[68px] h-[60px] md:w-[80px] md:h-[70px]">
-// w-auto h-[250px], md:h-[592px] lg:h-[738px] xl:h-[964px]
-//           <Link href={"/"}>
-//             <Image
-//               width={68}
-//               height={60}
-//               src="/icons/logo_shine.svg"
-//               alt="Logo"
-//               layout="responsive"
-//             />
-//           </Link>
-//         </div>\
