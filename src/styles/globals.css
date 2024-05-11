@@ -1,10 +1,4 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import "./typography.css";
-
-@layer utilities {
-  .text-shadow {
-    text-shadow: 10px 6px 10px rgba(0, 0, 0, 0.5);
-  }
-}
+@import './typography.css';
