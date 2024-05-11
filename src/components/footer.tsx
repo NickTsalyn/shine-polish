@@ -7,7 +7,7 @@ import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 
-import logo from "../../public/images/logo/logo_dark_bg.svg";
+import logo from "../../public/icons/logo/logo_dark_bg.svg";
 
 const links = [
   { href: "/", text: "Cleaning Services" },

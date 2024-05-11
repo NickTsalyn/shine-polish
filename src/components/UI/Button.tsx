@@ -43,15 +43,15 @@ export default function Button(props: PropsButtton) {
       break;
     case "sidebar-book-now":
       styles =
-        " px-8 xl:px-12 py-2 border rounded-[10px] border-secondary bg-main";
+        " px-8 xl:px-12 py-1 xl:py-[6px] w-full border rounded-[10px] border-secondary bg-main ";
       break;
     case "sidebar-auth-in":
       styles =
-        " border border-solid border-sand rounded-[10px] px-[70px] xl:px-[22px] py-1 xl:py-2 bg-main";
+        " border border-solid border-sand rounded-[10px]  py-1 xl:py-[6px] bg-main w-full";
       break;
     case "sidebar-log-out":
       styles =
-        " border  rounded-[10px] border-sand bg-main px-10 xl:px-14 py-2";
+        " px-10 xl:px-14 py-1 xl:py-[6px] w-full border rounded-[10px] border-sand bg-main ";
       break;
     case "auth-sign-up-border":
       styles =

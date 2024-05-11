@@ -18,6 +18,7 @@ const config: Config = {
         xl: "1920px",
       },
       container: {
+        center: true,
         screens: {
           sm: "335px",
           md: "712px",
