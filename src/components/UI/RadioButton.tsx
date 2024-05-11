@@ -19,7 +19,7 @@ const RadioButton: React.FC<RadioCheckProps> = ({
       onChange={onChange}
       icon={
         <div
-          className={`${style} h-[120px] border border-main items-center justify-center rounded-xl shadow-button-shadow`}
+          className={`${style}  border border-main items-center justify-center rounded-xl shadow-button-shadow`}
         >
           <button className=" flex flex-col items-center text-main text-center font-intro_book text-base font-normal leading-6">
             {children}
