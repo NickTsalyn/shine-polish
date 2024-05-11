@@ -32,7 +32,7 @@ const socialIcons = [
 ];
 
 export default function Sidebar() {
-  const [auth] = useState(true);
+  const [auth] = useState(false);
 
   return (
     <aside className="  hidden lg:flex flex-col content-around fixed inset-y-0 left-0 px-5 xl:px-[26px] pt-[46px] pb-6 w-[200px] h-full xl:w-[244px] bg-main">
@@ -41,7 +41,7 @@ export default function Sidebar() {
           <Image
             width={128}
             height={92}
-            src="/icons/logo_dark_bg.svg"
+            src="/icons/logo/logo_dark_bg.svg"
             alt="Logo"
           />
         </Link>

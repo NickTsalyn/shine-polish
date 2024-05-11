@@ -32,7 +32,7 @@ export default function Header() {
             <Image
               width={68}
               height={60}
-              src="/icons/logo_shine.svg"
+              src="/icons/logo/logo_shine.svg"
               alt="Logo"
               layout="responsive"
             />
