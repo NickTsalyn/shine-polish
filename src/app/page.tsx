@@ -1,6 +1,6 @@
 import localFont from 'next/font/local'
 
-const kaufmann = localFont({src: '../../public/fonts/kaufmann-bt.ttf'})
+const kaufmann = localFont({src: '../../public/fonts/kaufmann-bt.ttf'});
 
 
 export default function Home() {
