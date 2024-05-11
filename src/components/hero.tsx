@@ -25,7 +25,7 @@ export default function Hero() {
               </span>
             </Button>
             <Button type="button" style="home-book-now">
-              <span className=" text-secondary text-xl md:text-4xl lg:text-[64px] lg:leading-none font-bold ">
+              <span className=" text-saecondary text-xl md:text-4xl lg:text-[64px] lg:leading-none font-bold ">
                 Book Now
               </span>
             </Button>
