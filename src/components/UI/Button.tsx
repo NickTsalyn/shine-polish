@@ -70,7 +70,7 @@ export default function Button(props: PropsButtton) {
       break;
     case "footer-book-now":
       styles =
-        " px-[14px] md:px-8 xl:px-12 py-1 border rounded-[10px] border-secondary bg-main";
+        " w-[140px] lg:w-[160px] xl:w-[196px] h-9 lg:h-10 border rounded-xl border-secondary bg-main mb-5 flex justify-center items-center";
       break;
     case "send":
       styles =
