@@ -1,17 +1,11 @@
-// import Footer  from "../components/footer"
+import localFont from 'next/font/local'
 
-import Input from "@/components/UI/Input";
+const kaufmann = localFont({src: '../../public/fonts/kaufmann-bt.ttf'})
+
 
 export default function Home() {
-  return (
-    <main>
-      {/* <Footer/> */}
-      <div className="w-[1000px]">
-        <Input type="email" style="sign-in-input" placeholder="Sign In" />
-        <Input type="password" style="sign-up-input" placeholder="Sign Up" />
-        <Input type="text" style="form-input" placeholder="Form Input" />
-        <Input type="text" style="modal-input" placeholder="Modal Input" />
-      </div>
-    </main>
-  );
+  return <main>
+    {/* <Footer/> */}
+    {/* <p className={`${kaufmann.className} text-lg`}>Very pleased with the quality of service provided by the cleaning company. Our home is sparkling clean, and the staff was very professional and attentive to detail.</p> */}      {/* ЦЕ ДЛЯ ЖЕНІ ЗРАЗОК ЯК ПІДКЛЮЧИТИ КАСТОМНИЙ ШРИФТ*/}
+  </main>;
 }

@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        kaufmann: ['Kaufmann BT']
+      },
       screens: {
         sm: "375px",
         md: "768px",
