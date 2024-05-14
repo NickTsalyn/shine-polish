@@ -143,3 +143,33 @@
   }
 }
 
+/* list-text for section areas */
+.list-text {
+  @apply text-[18px];
+  @apply font-normal;
+  @apply leading-normal;
+}
+
+@screen md {
+  .list-text {
+    @apply text-[36px];
+    @apply font-normal;
+    @apply leading-[1.2];
+  }
+}
+
+@screen lg {
+  .list-text {
+    @apply text-[32px];
+    @apply font-normal;
+    @apply leading-[1.2];
+  }
+}
+
+@screen xl {
+  .list-text {
+    @apply text-[36px];
+    @apply font-normal;
+    @apply leading-[1.2];
+  }
+}
