@@ -7,16 +7,16 @@ import TalkImg from "../../public/icons/Friends_sitting_by_the_window_and_talkin
 
 export default function SectionJustAsk() {
   return (
-    <section className="mb-[60px] md:mb-[80px] lg:mb-[100px] xl:mb-[120px] ">
-      <div className="container  flex flex-col lg:flex-row">
+    <section className="pb-5 px-5 pt-5 lg:pr-[40px] xl:pr-[80px] md:pt-8 lg:pt-16 xl:pt-18 md:py-10 lg:pl-[240px] xl:pl-[282px] mb-[60px] md:mb-[80px] lg:mb-[100px] xl:mb-[120px] ">
+      <div className="reletive flex flex-col lg:flex-row">
         <div className="">
-          <h3 className="h3 text-main text-center mb-5 xl:mb-[60px]">
+          <h3 className="h3 text-main text-center lg:text-left mb-10 xl:mb-[60px]">
             Not sure? Just ask!
           </h3>
-          <div className="mb-5 lg:mb-10 w-[335px] h-[36px] md:w-[519px] md:h-14 lg:w-[714px] lg:h-14 xl:w-[890px] xl:h-[72px]">
+          <div className="mb-5 lg:mb-10 w-[335px] h-[36px] md:w-[519px] md:h-14 lg:w-[600px] lg:h-14 xl:w-[890px] xl:h-[72px]">
             <Input style="form-input" type="email" placeholder="Email*" />
           </div>
-          <div className="w-[336px] md:w-[727px] lg:w-[464px] xl:w-[630px] h-[102px] md:h-[180px] lg:h-[207px] xl:h-[310px] mb-5 lg:mb-10">
+          <div className="w-[336px] md:w-[727px] lg:w-[400px] xl:w-[630px] h-[102px] md:h-[180px] lg:h-[240px] xl:h-[310px] mb-5 lg:mb-10">
             <Textarea placeholder="Your question" />
           </div>
           <div className="flex justify-end lg:justify-start">
@@ -27,7 +27,7 @@ export default function SectionJustAsk() {
             </Button>
           </div>
         </div>
-        <div className="flex justify-center items-center ">
+        <div className="flex justify-center items-center lg:absolute top-46 lg:right-7 xl:absolute xl:right-16">
           <div className="w-[335px] h-[268px] md:w-[529px] md:h-[501px] lg:w-[747px] lg:h-[511px] xl:w-[906px] xl:h-[667px]">
             <Image
               src={TalkImg}
