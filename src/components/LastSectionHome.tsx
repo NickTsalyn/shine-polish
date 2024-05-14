@@ -1,6 +1,6 @@
 import Image from "next/legacy/image";
 
-import bgPhoto from '../../public/images/lastSectionPhoto_2x.jpg'
+import bgPhoto from "../../public/images/LastSectionPhoto_2x.jpg";
 import Button from "./UI/Button";
 
 export default function LastSectionHome() {

@@ -35,7 +35,7 @@ export default function Sidebar() {
   const [auth] = useState(false);
 
   return (
-    <aside className="  hidden lg:flex flex-col content-around fixed inset-y-0 left-0 px-5 xl:px-[26px] pt-[46px] pb-6 w-[200px] h-full xl:w-[244px] bg-main z-10">
+    <aside className="  hidden lg:flex flex-col content-around fixed inset-y-0 left-0 px-5 xl:px-[26px] pt-[46px] pb-6 w-[200px] h-screen xl:w-[244px] bg-main z-10">
       <div className="flex items-center justify-center w-[128px] h-[92px] xl:w-[156px] md:h-[106px] mx-auto mb-9 xl:mb-[46px] ">
         <Link href={"/"}>
           <Image

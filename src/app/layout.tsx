@@ -24,7 +24,9 @@ export default function RootLayout({
       <body className={lato.className}>
         <Header />
         <Sidebar />
+        <main className="lg:ml-[200px] xl:ml-[244px]"> 
         {children}
+        </main>
       </body>
     </html>
   );
