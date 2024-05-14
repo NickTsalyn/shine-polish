@@ -94,7 +94,7 @@ export const LIVING_ROOM_SERVICES = {
     ],
   },
   frequencies: {
-    title: "How Often Should You Clean Your Living Room ?",
+    title: "How Often Should You Clean Your Living Room?",
     text: "The frequency of living room cleaning depends on several factors, including the size of your household, daily activities, and personal preferences. Here's a general guide for how often you should perform various cleaning tasks in your living room:",
     items: [
       {
@@ -140,7 +140,7 @@ export const LIVING_ROOM_SERVICES = {
       "Remember, these are general guidelines, and you may need to adjust the frequency based on your lifestyle, the size of your living room, and personal preferences. Regular maintenance prevents the buildup of dirt and ensures a consistently clean and inviting living space.",
   },
   needs: {
-    title: "Why You Need Living Room Cleaning ?",
+    title: "Why You Need Living Room Cleaning?",
     text: "Living room cleaning is essential for various reasons, contributing to the overall well-being of individuals and creating a comfortable and inviting space. Here are some key reasons why regular living room cleaning is necessary:",
     items: [
       {

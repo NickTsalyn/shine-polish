@@ -4,15 +4,20 @@ import Breadcrumbs from "@mui/material/Breadcrumbs";
 import Link from "next/link";
 
 interface RoomNameProps {
+  pageHref?: string;
+  pageName?: string;
   roomName: string;
 }
 
 function handleClick(event: React.MouseEvent<HTMLDivElement, MouseEvent>) {
   event.preventDefault();
-  console.info("You clicked a breadcrumb.");
 }
 
-const BasicBreadcrumbs: React.FC<RoomNameProps> = ({ roomName }) => {
+const BasicBreadcrumbs: React.FC<RoomNameProps> = ({
+  pageHref,
+  pageName,
+  roomName,
+}) => {
   return (
     <div role="presentation" onClick={handleClick}>
       <Breadcrumbs
@@ -22,13 +27,15 @@ const BasicBreadcrumbs: React.FC<RoomNameProps> = ({ roomName }) => {
         <Link className="body text-text" color="inherit" href="/">
           Home
         </Link>
-        <Link
-          className="body text-text"
-          color="inherit"
-          href="/cleaning-services"
-        >
-          Cleaning Services
-        </Link>
+        {pageHref && (
+          <Link
+            className="body text-text"
+            color="inherit"
+            href={`/${pageHref}`}
+          >
+            {pageName}
+          </Link>
+        ) }
         <Typography className="body text-main">{roomName}</Typography>
       </Breadcrumbs>
     </div>

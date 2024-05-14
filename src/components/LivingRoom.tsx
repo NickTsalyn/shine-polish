@@ -9,7 +9,11 @@ export default function LivingRoomServices() {
   return (
     <>
       <h1 className=" h3 text-main mb-3 md:mb-[18px] lg:mb-7">{title}</h1>
-      <BasicBreadcrumbs roomName="Living Room" />
+      <BasicBreadcrumbs  
+      pageHref="cleaning-services" 
+      pageName="Cleaning Services" 
+      roomName="Living Room" 
+      />
       <div className="mb-5 md:mb-10 lg:mb-[60px]">
         <Image
           src={RoomIMG}
