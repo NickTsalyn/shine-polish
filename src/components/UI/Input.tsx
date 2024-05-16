@@ -26,7 +26,7 @@ export default function Input({
       break;
     case "form-input":
       styles =
-        "block mx-full mb-[10px] w-full   py-[8px] lg:py-[12px] px-[9px] lg:px-[16px] bg-transparent text-secondary border-solid border-2 focus:border-[3px] border-secondary rounded-[12px] focus:shadow-input-shadow outline-none placeholder:text-secondary-placeholder placeholder:opacity-50";
+        "block mx-full mb-[10px] w-full  hx-full h-full py-[8px] lg:py-[12px] px-[8px] lg:px-[16px] bg-transparent text-text border-solid border-2 focus:border-[3px] border-secondary rounded-[12px] focus:shadow-input-shadow outline-none xl:placeholder:text-[16px] placeholder:text-secondary-placeholder placeholder:opacity-50";
       break;
     case "modal-input":
       styles =
