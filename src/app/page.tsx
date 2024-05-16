@@ -8,10 +8,10 @@ import ServiceAreas from "@/components/ServiceAreas";
 
 export default function Home() {
   return (
-    <main>
+    <>
       <Reviews />
       <ServiceAreas />
       <LastSectionHome/>
-    </main>
+    </>
   );
 }

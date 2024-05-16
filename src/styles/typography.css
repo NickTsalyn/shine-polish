@@ -145,7 +145,7 @@
 
 /* list-text for section areas */
 .list-text {
-  @apply text-[18px];
+  @apply text-[16px];
   @apply font-normal;
   @apply leading-normal;
 }
