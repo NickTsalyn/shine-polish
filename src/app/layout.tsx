@@ -6,13 +6,13 @@ import Sidebar from "@/components/Sidebar";
 import Footer from "@/components/footer";
 
 const lato = Lato({
-  subsets: ["latin"],
-  weight: ["300", "400", "700", "900"],
+  subsets: ['latin'],
+  weight: ['300', '400', '700', '900'],
 });
 
 export const metadata: Metadata = {
-  title: "Shine&Polish",
-  description: "Cleaning service Atlanta",
+  title: 'Shine&Polish',
+  description: 'Cleaning service Atlanta',
 };
 
 export default function RootLayout({
