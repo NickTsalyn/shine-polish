@@ -1,8 +1,16 @@
-// import SectionEstimate from "@/components/SectionEstimate";
+import localFont from "next/font/local";
+
+const kaufmann = localFont({ src: "../../public/fonts/kaufmann-bt.ttf" });
+
+import { Reviews } from "@/components/Reviews";
+import LastSectionHome from "@/components/LastSectionHome";
 
 export default function Home() {
-  return <main>
-    {/* <SectionEstimate/> */}
-  </main>;
+  return (
+    <main>
+      <Reviews />
+      <LastSectionHome/>
+    </main>
+  );
 }
 

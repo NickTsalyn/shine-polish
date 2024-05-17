@@ -131,7 +131,7 @@
 }
 
 .subtext {
-  @apply text-[16px];
+  @apply text-base;
   @apply font-normal;
   @apply leading-normal;
 }
@@ -143,20 +143,3 @@
   }
 }
 
-.button-typography {
-  @apply text-base;
-  @apply font-semibold;
-  @apply leading-normal;
-}
-
-.tab-typography {
-  @apply text-xs;
-  @apply font-light;
-  @apply leading-normal;
-}
-
-.link-typography,
-.caption-typography {
-  @apply text-base;
-  @apply font-normal;
-}
