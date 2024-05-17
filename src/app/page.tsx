@@ -4,12 +4,14 @@ const kaufmann = localFont({ src: "../../public/fonts/kaufmann-bt.ttf" });
 
 import { Reviews } from "@/components/Reviews";
 import LastSectionHome from "@/components/LastSectionHome";
+import SectionJustAsk from "@/components/JustAskSection";
 
 export default function Home() {
   return (
-    <main>
+    <>
       <Reviews />
-      <LastSectionHome/>
-    </main>
+      <SectionJustAsk />
+      <LastSectionHome />
+    </>
   );
 }
