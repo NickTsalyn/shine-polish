@@ -1,17 +1,46 @@
+"use client";
+
 import Image from "next/image";
-import React from "react";
-import AddCircleOutlineOutlinedIcon from "@mui/icons-material/AddCircleOutlineOutlined";
-import RemoveCircleOutlineOutlinedIcon from "@mui/icons-material/RemoveCircleOutlineOutlined";
+import React, { useState } from "react";
 import minus from "../../public/icons/logo/minus.svg";
 import plus from "../../public/icons/logo/plus.svg";
 
 import img from "../images/estimate/estimate-mobile.png";
 
-const rooms = ["bedrooms", "bathrooms"];
+const rooms = [
+	{ id: 1, name: "bedrooms" },
+	{ id: 2, name: "bathrooms" },
+];
 
 type Props = {};
 
+type RoomCount = {
+	[key: number]: number;
+}
+
 const SectionEstimate = (props: Props) => {
+	const [roomType, setRoomType] = useState<RoomCount>({
+		1: 1,
+		2: 1,
+	  });
+
+	  const handleIncrement = (id: number) => {
+		if(roomType[id] < 9)
+		setRoomType({
+		  ...roomType,
+		  [id]: roomType[id] + 1,
+		});
+	  };
+	
+	  const handleDecrement = (id: number) => {
+		if (roomType[id] > 1) {
+			setRoomType({
+			...roomType,
+			[id]: roomType[id] - 1,
+		  });
+		}
+	  };
+
 	return (
 		<section className=" mb-[60px] md:mb-20 lg:mb-[120px] xl:mb-40">
 			<div className=" container mx-auto my-0">
@@ -21,17 +50,17 @@ const SectionEstimate = (props: Props) => {
 				<div className="flex flex-col gap-6 justify-evenly items-center md:flex-row">
 					<div className=" flex flex-col gap-6 md:gap-10 lg:gap-12">
 						<ul className="flex flex-col gap-6 md:gap-12">
-							{rooms.map((room, index) => (
-								<li key={index} className="flex flex-row justify-around">
+							{rooms.map((room) => (
+								<li key={room.id} className="flex flex-row justify-around">
 									<p className=" font-normal text-base text-main flex justify-center items-center md:text-4xl md:leading-normal md:font-light">
-										{room}:
+										{room.name}:
 									</p>
 									<div className="flex gap-7 items-center justify-center leading-normal">
-										<button>
+										<button onClick={() => handleDecrement(room.id)}>
 											<Image src={minus} alt="minus icon" className=" w-7 h-6 md:w-[42px] md:h-[42px]" />
 										</button>
-										<span className=" font-medium text-base text-main md:text-4xl">1</span>
-										<button>
+										<span className=" font-medium text-base text-main md:text-4xl">{roomType[room.id]}</span>
+										<button onClick={() => handleIncrement(room.id)}>
 											<Image src={plus} alt="plus icon" className=" w-7 h-6 md:w-[42px] md:h-[42px]" />
 										</button>
 									</div>
