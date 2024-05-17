@@ -8,10 +8,10 @@ import SectionJustAsk from "@/components/JustAskSection";
 
 export default function Home() {
   return (
-    <main>
+    <>
       <Reviews />
       <SectionJustAsk />
       <LastSectionHome />
-    </main>
+    </>
   );
 }
