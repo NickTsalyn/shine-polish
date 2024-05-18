@@ -35,11 +35,11 @@ export default function Button(props: PropsButtton) {
       break;
     case "home-book-now":
       styles =
-        "py-1 md:py-2 lg:py-2 xl:py-4  px-4 md:px-[54px] lg:px-12 xl:px-[70px]  border border-solid border-secondary rounded-[10px] backdrop-blur-[10px]   ";
+        "flex justify-center items-center w-[120px] h-8 md:w-[280px] md:h-[60px] lg:w-[400px] lg:h-[80px] xl:w-[440px] xl:h-[100px]  border border-solid border-secondary rounded-[12px] bg-black bg-opacity-35 backdrop-blur-[10px]";
       break;
     case "home-contact-us":
       styles =
-        "py-1 md:py-2 lg:py-2 xl:py-4  px-3 md:px-12 lg:px-10 xl:px-[60px]  border border-solid border-secondary rounded-[10px] backdrop-blur-[10px]   ";
+        "py-1 md:py-2 xl:py-3  px-3 md:px-16 lg:px-12 xl:px-17  border border-solid border-secondary rounded-[10px] bg-black bg-opacity-35 backdrop-blur-[10px]   ";
       break;
     case "sidebar-book-now":
       styles =
@@ -70,11 +70,11 @@ export default function Button(props: PropsButtton) {
       break;
     case "footer-book-now":
       styles =
-        " px-[14px] md:px-8 xl:px-12 py-1 border rounded-[10px] border-secondary bg-main";
+        " w-[140px] lg:w-[160px] xl:w-[196px] h-9 lg:h-10 border rounded-xl border-secondary bg-main mb-5 flex justify-center items-center";
       break;
     case "send":
       styles =
-        " px-12 py-1 md:py-2 lg:px-16 lg:py-1 rounded-xl bg-secondary hover:shadow-apply-send-button-shadow  focus:shadow-apply-send-button-shadow ";
+        "w-[148px] h-[36px] md:w-[162px] md:h-[48px] lg:w-[220px] rounded-xl bg-secondary hover:shadow-apply-send-button-shadow  focus:shadow-apply-send-button-shadow";
       break;
     case "deep-cleaning":
       styles =
