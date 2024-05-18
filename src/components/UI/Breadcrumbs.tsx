@@ -1,16 +1,12 @@
 import * as React from "react";
 import Typography from "@mui/material/Typography";
 import Breadcrumbs from "@mui/material/Breadcrumbs";
-import Link from "next/link";
+import Link from "@mui/material/Link";
 
 interface RoomNameProps {
   pageHref?: string;
   pageName?: string;
-  roomName: string;
-}
-
-function handleClick(event: React.MouseEvent<HTMLDivElement, MouseEvent>) {
-  event.preventDefault();
+  roomName?: string;
 }
 
 const BasicBreadcrumbs: React.FC<RoomNameProps> = ({
@@ -19,24 +15,26 @@ const BasicBreadcrumbs: React.FC<RoomNameProps> = ({
   roomName,
 }) => {
   return (
-    <div role="presentation" onClick={handleClick}>
+    <div role="presentation">
       <Breadcrumbs
         aria-label="breadcrumb"
-        className="mb-3 md:mb-[18px] lg:mb-7"
+        className="mb-3 md:mb-[18px] lg:mb-7 "
       >
-        <Link className="body text-text" color="inherit" href="/">
+        <Link className="body text-text" underline="hover" href="/">
           Home
         </Link>
-        {pageHref && (
+        {pageHref && pageName && (
           <Link
             className="body text-text"
-            color="inherit"
+            underline="hover"
             href={`/${pageHref}`}
           >
             {pageName}
           </Link>
-        ) }
-        <Typography className="body text-main">{roomName}</Typography>
+        )}
+        {roomName && (
+          <Typography className="body text-main">{roomName}</Typography>
+        )}
       </Breadcrumbs>
     </div>
   );

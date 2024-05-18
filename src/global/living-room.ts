@@ -146,62 +146,62 @@ export const LIVING_ROOM_SERVICES = {
     text: "Living room cleaning is essential for various reasons, contributing to the overall well-being of individuals and creating a comfortable and inviting space. Here are some key reasons why regular living room cleaning is necessary:",
     items: [
       {
-        title: "Health and Hygiene:",
+        title: "1. Health and Hygiene:",
         description:
           "Regular cleaning helps eliminate dust, allergens, and bacteria, creating a healthier indoor environment. This is particularly crucial for individuals with allergies or respiratory conditions.",
       },
       {
-        title: "Comfort and Relaxation:",
+        title: "2. Comfort and Relaxation:",
         description:
           "A clean living room contributes to a more comfortable and relaxing space. It allows individuals to unwind and enjoy leisure activities without the distraction of clutter or dirt.",
       },
       {
-        title: "Positive Atmosphere:",
+        title: "3. Positive Atmosphere:",
         description:
           "A well-maintained living room fosters a positive atmosphere. A tidy and organized space positively influences mood and mental well-being.",
       },
       {
-        title: "Guest Impressions:",
+        title: "4. Guest Impressions:",
         description:
           "A clean living room makes a positive impression on guests. It reflects a sense of hospitality and creates a welcoming environment for social gatherings.",
       },
       {
-        title: "Longevity of Furniture:",
+        title: "5. Longevity of Furniture:",
         description:
           "Regular cleaning helps preserve the condition of furniture, extending its lifespan and preventing the need for premature replacements.",
       },
       {
-        title: "Efficiency and Productivity:",
+        title: "6. Efficiency and Productivity:",
         description:
           "A clutter-free and organized living room promotes efficiency and productivity. It provides a conducive space for activities such as reading, working, or pursuing hobbies.",
       },
       {
-        title: "Odor Control:",
+        title: "7. Odor Control:",
         description:
           "Regular cleaning helps control odors caused by stale air, spills, or pet-related issues. This contributes to a fresher and more pleasant living space.",
       },
       {
-        title: "Preventing Pest Infestations:",
+        title: "8. Preventing Pest Infestations:",
         description:
           "Regular cleaning and decluttering help prevent pest infestations by eliminating hiding places and food sources that may attract pests.",
       },
       {
-        title: "Safety:",
+        title: "9. Safety:",
         description:
           "Maintaining a clean and organized living room reduces the risk of accidents and injuries. Removing tripping hazards and keeping the space tidy enhances overall safety.",
       },
       {
-        title: "Organization and Functionality:",
+        title: "10. Organization and Functionality:",
         description:
           "Cleaning and organizing the living room ensure that items are easily accessible. It enhances the functionality of the space and contributes to an organized and efficient daily routine.",
       },
       {
-        title: "Preserving Investments:",
+        title: "11. Preserving Investments:",
         description:
           "Investments in furniture, electronics, and decor can be preserved through regular cleaning and maintenance. This helps prevent wear and tear, ensuring the longevity of these items",
       },
       {
-        title: "Routine and Discipline:",
+        title: "12. Routine and Discipline:",
         description:
           "Establishing a routine for living room cleaning instills a sense of discipline and responsibility. It contributes to good habits and a well-maintained living space.",
       },
