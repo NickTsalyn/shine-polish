@@ -25,7 +25,8 @@ export default function Input({
       styles = `block mx-auto w-full md:w-[300px] ${width} py-[8px] lg:py-[12px] px-[9px] lg:px-[16px] bg-transparent text-main border-2 focus:border-[3px] border-solid border-tertial rounded-[12px] focus:shadow-input-shadow outline-none placeholder:text-main placeholder:opacity-50 input-border-gradient focus:invalid:input-border-gradient-error invalid:input-border-gradient-error `;
       break;
     case "form-input":
-      styles = `block mx-auto w-full md:w-[600px] ${width} lg:w-[800px] py-[8px] lg:py-[12px] px-[9px] lg:px-[16px] bg-transparent text-secondary border-solid border-2 focus:border-[3px] border-secondary rounded-[12px] focus:shadow-input-shadow outline-none placeholder:text-secondary-placeholder placeholder:opacity-50 focus:invalid:input-border-gradient-error invalid:input-border-gradient-error`;
+      styles =
+        "block mx-full mb-[10px] w-full  hx-full h-full py-[8px] lg:py-[12px] px-[8px] lg:px-[16px] bg-transparent text-text border-solid border-2 focus:border-[3px] border-secondary rounded-[12px] focus:shadow-input-shadow outline-none xl:placeholder:text-[16px] placeholder:text-secondary-placeholder placeholder:opacity-50";
       break;
     case "modal-input":
       styles = `block mx-auto w-full py-[25px] px-[50px] bg-transparent text-main border-solid border focus:border-[2px] border-main rounded-[12px] focus:shadow-input-shadow outline-none placeholder:text-main placeholder:opacity-35 input-border-gradient-modal focus:invalid:input-border-gradient-error invalid:input-border-gradient-error`;
