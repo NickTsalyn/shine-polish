@@ -1,7 +1,7 @@
 import Image from "next/legacy/image";
 import { Tooltip, TooltipProps } from "@mui/material";
 import { LIVING_ROOM_SERVICES } from "@/global/living-room";
-import IconPlus from "../../public/icons/icon_plus.png";
+import IconPlus from "../../public/icons/Icon_plus-min.png";
 import BasicBreadcrumbs from "./UI/Breadcrumbs";
 
 const icons = [
