@@ -1,17 +1,28 @@
 import Image from "next/legacy/image";
+import { Tooltip, TooltipProps } from "@mui/material";
 import { LIVING_ROOM_SERVICES } from "@/global/living-room";
 import IconPlus from "../../public/icons/icon_plus.png";
 import BasicBreadcrumbs from "./UI/Breadcrumbs";
 
 const icons = [
-  { top: "48%", left: "13%" },
-  { top: "24%", left: "36%" },
-  { top: "56%", left: "38%" },
-  { top: "3%", left: "54%" },
-  { top: "60%", left: "56%" },
-  { top: "50%", left: "68%" },
-  { top: "90%", left: "80%" },
+  { title: "Clean Furniture", top: "48%", left: "13%" },
+  { title: "Dust and wipe down electronics", top: "24%", left: "36%" },
+  { title: "Clean Furniture", top: "56%", left: "38%" },
+  { title: "Clean Light Fixtures", top: "3%", left: "54%" },
+  { title: "Declutter", top: "60%", left: "56%" },
+  { title: "Address Pet Hair", top: "50%", left: "68%" },
+  { title: "Vacuum and Sweep", top: "88%", left: "80%" },
 ];
+
+const CustomTooltip = (props: JSX.IntrinsicAttributes & TooltipProps) => (
+  <Tooltip
+    {...props}
+    classes={{
+      tooltip:
+        " bg-secondary text-white text-center text-xs md:text-sm lg:text-base rounded-xl w-20 md:w-28 lg:w-36",
+    }}
+  />
+);
 
 const RoomImage = () => {
   return (
@@ -54,13 +65,14 @@ export default function LivingRoomServices() {
       <div className="relative mb-5 md:mb-10 lg:mb-[60px]">
         <RoomImage />
         {icons.map((icon, index) => (
-          <div
-            key={index}
-            className="absolute z-20  flex items-center justify-center size-5 md:size-9 lg:size-14"
-            style={{ top: icon.top, left: icon.left }}
-          >
-            <Image src={IconPlus} alt="icon plus" />
-          </div>
+          <CustomTooltip key={index} title={icon.title} placement="right-end">
+            <div
+              className="absolute z-20  flex items-center justify-center size-5 md:size-9 lg:size-14"
+              style={{ top: icon.top, left: icon.left }}
+            >
+              <Image src={IconPlus} alt="icon plus" />
+            </div>
+          </CustomTooltip>
         ))}
       </div>
 
