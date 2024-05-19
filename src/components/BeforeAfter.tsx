@@ -52,20 +52,26 @@ export default function BeforeAfter({ children, data }: BeforeAfterProps) {
                 ({ id, descrBefore, descrAfter, imageBefore, imageAfter }) => (
                   <SwiperSlide key={id}>
                     <div className="h-[155px] md:h-[337px] lg:h-[472px] xl:h-[533px] w-full relative left-0 top-0 flex">
-                      <div className="block w-[187px] md:w-[404px] lg:w-[653px] xl:w-[854px] h-[155px] md:h-[337px] lg:h-[472px] xl:h-[533px] bg-red-400 clip-path-swiper-before absolute">
+                      <div className="block w-[187px] md:w-[404px] lg:w-[653px] xl:w-[854px] h-[155px] md:h-[337px] lg:h-[472px] xl:h-[533px] clip-path-swiper-before absolute">
                         <Image
                           src={imageBefore}
                           alt={descrBefore}
                           fill={true}
                           style={{ objectFit: "cover" }}
+                          sizes="50vw"
+                          placeholder="blur"
+                          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mO88vx5PQAIXAMjsf8RCAAAAABJRU5ErkJggg=="
                         />
                       </div>
-                      <div className="block w-[212px] md:w-[458px] lg:w-[741px] xl:w-[966px] h-[155px] md:h-[337px] lg:h-[472px] xl:h-[533px] bg-blue clip-path-swiper-after absolute left-[123px] md:left-[254px] lg:left-[415px] xl:left-[552px]">
+                      <div className="block w-[212px] md:w-[458px] lg:w-[741px] xl:w-[966px] h-[155px] md:h-[337px] lg:h-[472px] xl:h-[533px] clip-path-swiper-after absolute left-[123px] md:left-[254px] lg:left-[415px] xl:left-[552px]">
                         <Image
                           src={imageAfter}
                           alt={descrAfter}
                           fill={true}
                           style={{ objectFit: "cover" }}
+                          sizes="50vw"
+                          placeholder="blur"
+                          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mO88vx5PQAIXAMjsf8RCAAAAABJRU5ErkJggg=="
                         />
                       </div>
                     </div>
