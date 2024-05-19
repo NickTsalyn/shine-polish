@@ -3,7 +3,7 @@
 import * as React from "react";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import Popper, { PopperPlacementType } from "@mui/material/Popper";
+import Popper from "@mui/material/Popper";
 
 import { styled } from "@mui/material/styles";
 import Link from "next/link";
@@ -39,9 +39,9 @@ const CustomMenu = styled(Menu)(({ theme }) => ({
 const CustomMenuItem = styled(MenuItem)(({ theme }) => ({
   color: "white",
   borderRadius: "12px",
-  borderBottom: "1px solid transparent", // transparent border to reserve space
+  borderBottom: "1px solid transparent",
   backgroundImage: `linear-gradient(90deg, #E6BA95 34.9%, rgba(230, 186, 149, 0.00) 100%);`,
-  backgroundSize: "100% 1px", // height of the gradient border
+  backgroundSize: "100% 1px",
   backgroundPosition: "bottom",
   backgroundRepeat: "no-repeat",
   "&:hover": {
@@ -49,37 +49,19 @@ const CustomMenuItem = styled(MenuItem)(({ theme }) => ({
     backgroundColor: "#006778",
   },
 }));
-// width: 307px;
-// height: 1px;
-// background: linear-gradient(90deg, #E6BA95 34.9%, rgba(230, 186, 149, 0.00) 100%);
 
 export default function CleaningServices() {
-  // const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  // const open = Boolean(anchorEl);
-  // const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-  //   setAnchorEl(event.currentTarget);
-  // };
-  // const handleClose = () => {
-  //   setAnchorEl(null);
-  // };
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  // const open = Boolean(anchorEl);
-  const [open, setOpen] = React.useState(false);
-
-  const [placement, setPlacement] = React.useState<PopperPlacementType>();
-
-  const handleClick =
-    (newPlacement: PopperPlacementType) =>
-    (event: React.MouseEvent<HTMLButtonElement>) => {
-      setAnchorEl(event.currentTarget);
-      setOpen((prev) => placement !== newPlacement || !prev);
-      setPlacement(newPlacement);
-
-      // (event: React.MouseEvent<HTMLButtonElement>) => {
-      //   setAnchorEl(event.currentTarget);
-    };
+  const open = Boolean(anchorEl);
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
   };
 
   return (
@@ -89,17 +71,11 @@ export default function CleaningServices() {
         aria-controls={open ? "services-menu" : undefined}
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
-        onClick={handleClick("right-start")}
+        onClick={handleClick}
       >
         <span className="text-white">Cleaning Services</span>
       </CustomButton>
-      <Popper
-        sx={{ zIndex: 1200 }}
-        open={open}
-        anchorEl={anchorEl}
-        placement={placement}
-        transition
-      >
+      <Popper sx={{ zIndex: 1200 }} open={open} anchorEl={anchorEl} transition>
         <CustomMenu
           id="services-menu"
           anchorEl={anchorEl}

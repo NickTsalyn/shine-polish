@@ -4,7 +4,7 @@ import * as React from "react";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { styled } from "@mui/material/styles";
-import Popper, { PopperPlacementType } from "@mui/material/Popper";
+import Popper from "@mui/material/Popper";
 import Link from "next/link";
 import { CustomButton } from "./CustomButton";
 
@@ -38,9 +38,9 @@ const CustomMenu = styled(Menu)(({ theme }) => ({
 const CustomMenuItem = styled(MenuItem)(({ theme }) => ({
   color: "white",
   borderRadius: "12px",
-  borderBottom: "1px solid transparent", // transparent border to reserve space
+  borderBottom: "1px solid transparent",
   backgroundImage: `linear-gradient(90deg, #E6BA95 34.9%, rgba(230, 186, 149, 0.00) 100%);`,
-  backgroundSize: "100% 1px", // height of the gradient border
+  backgroundSize: "100% 1px",
   backgroundPosition: "bottom",
   backgroundRepeat: "no-repeat",
   "&:hover": {
@@ -49,29 +49,13 @@ const CustomMenuItem = styled(MenuItem)(({ theme }) => ({
   },
 }));
 
-//
-
 export default function CleaningProcesses() {
-  // const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
-  //   null
-  // );
-
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  // const open = Boolean(anchorEl);
-  const [open, setOpen] = React.useState(false);
+  const open = Boolean(anchorEl);
 
-  const [placement, setPlacement] = React.useState<PopperPlacementType>();
-
-  const handleClick =
-    (newPlacement: PopperPlacementType) =>
-    (event: React.MouseEvent<HTMLButtonElement>) => {
-      setAnchorEl(event.currentTarget);
-      setOpen((prev) => placement !== newPlacement || !prev);
-      setPlacement(newPlacement);
-
-      // (event: React.MouseEvent<HTMLButtonElement>) => {
-      //   setAnchorEl(event.currentTarget);
-    };
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -83,17 +67,11 @@ export default function CleaningProcesses() {
         aria-controls={open ? "process-menu" : undefined}
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
-        onClick={handleClick("right-start")}
+        onClick={handleClick}
       >
         <span className="text-white">Cleaning Prosess</span>
       </CustomButton>
-      <Popper
-        sx={{ zIndex: 1200 }}
-        open={open}
-        anchorEl={anchorEl}
-        placement={placement}
-        transition
-      >
+      <Popper sx={{ zIndex: 1200 }} open={open} anchorEl={anchorEl} transition>
         <CustomMenu
           id="process-menu"
           anchorEl={anchorEl}
