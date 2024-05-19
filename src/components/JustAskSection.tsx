@@ -1,10 +1,9 @@
 import Textarea from "./UI/Textarea";
 import Input from "./UI/Input";
 import Button from "./UI/Button";
-
 import Image from "next/image";
 
-const FriendsIcon = () => {
+const FriendsIcon: React.FC = () => {
   return (
     <picture>
       <source
@@ -30,7 +29,7 @@ const FriendsIcon = () => {
   );
 };
 
-export default function SectionJustAsk() {
+const SectionJustAsk: React.FC = () => {
   return (
     <section className="pb-5 px-5 pt-5 lg:pr-[40px] xl:pr-[80px] md:pt-8 lg:pt-16 xl:pt-18 md:py-10 lg:pl-[40px] xl:pl-[60px] mb-[60px] md:mb-[80px] lg:mb-[120px] xl:mb-[160px] ">
       <div className="relative flex flex-col lg:flex-row">
@@ -60,4 +59,6 @@ export default function SectionJustAsk() {
       </div>
     </section>
   );
-}
+};
+
+export default SectionJustAsk;
