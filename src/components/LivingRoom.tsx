@@ -58,8 +58,8 @@ export default function LivingRoomServices() {
     <div className="body text-text">
       <h1 className=" h3 text-main mb-3 md:mb-[18px] lg:mb-7">{title}</h1>
       <BasicBreadcrumbs
-        pageHref="cleaning-services"
-        pageName="Cleaning Services"
+        pageHref="cleaning-process"
+        pageName="Cleaning Process"
         roomName="Living Room"
       />
       <div className="relative mb-5 md:mb-10 lg:mb-[60px]">
@@ -90,7 +90,7 @@ export default function LivingRoomServices() {
         {processes.items.map((item, index) => (
           <li key={index}>
             <h3 className="font-semibold mb-1">{item.title}</h3>
-            <p className="indent-1.5">{item.description}</p>
+            <p>{item.description}</p>
           </li>
         ))}
       </ol>
@@ -124,7 +124,7 @@ export default function LivingRoomServices() {
         {needs.items.map((item, index) => (
           <li key={index}>
             <h3 className="font-semibold mb-1">{item.title}</h3>
-            <p className="indent-1.5">{item.description}</p>
+            <p>{item.description}</p>
           </li>
         ))}
       </ul>

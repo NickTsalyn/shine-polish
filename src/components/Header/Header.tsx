@@ -41,7 +41,7 @@ export default function Header() {
 
         <div className=" flex direction-row gap-4 md:gap-[22px] lg:gap-10 items-center justify-center ">
           {auth && (
-            <div className=" block lg:hidden text-accent lg:text-white subtext">
+            <div className=" block lg:hidden text-accent lg:text-white subtext text-center">
               Hello, Fiona
             </div>
           )}
