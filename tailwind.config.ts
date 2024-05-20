@@ -40,6 +40,7 @@ const config: Config = {
         "error-input-bgn": "#FFF2F2",
         light: "rgba(255, 247, 239, 0.68)",
         sand: "rgba(230, 186, 149, 0.68)",
+        backdrop: 'rgba(51, 77, 81, 0.50)'
       },
 
       boxShadow: {
