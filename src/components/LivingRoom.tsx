@@ -1,7 +1,7 @@
 import Image from "next/legacy/image";
 import { Tooltip, TooltipProps } from "@mui/material";
 import { LIVING_ROOM_SERVICES } from "@/global/living-room";
-import IconPlus from "../../public/icons/Icon_plus-min.png";
+import IconPlus from "../../public/icons/icon_plus-min.png";
 import BasicBreadcrumbs from "./UI/Breadcrumbs";
 
 const icons = [
@@ -19,7 +19,7 @@ const CustomTooltip = (props: JSX.IntrinsicAttributes & TooltipProps) => (
     {...props}
     classes={{
       tooltip:
-        " bg-secondary text-white text-center text-xs md:text-sm lg:text-base rounded-xl w-20 md:w-28 lg:w-36",
+        " bg-[#E6BA95CC] text-white text-center text-xs md:text-sm lg:text-base rounded-xl w-20 md:w-28 lg:w-36",
     }}
   />
 );
