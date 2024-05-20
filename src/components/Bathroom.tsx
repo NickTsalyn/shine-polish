@@ -2,7 +2,7 @@ import Image from "next/legacy/image";
 import {BATHROOM_SERVICES } from "@/global/bathroom";
 import RoomIMG from "../../public/images/bathroom@2x.jpg";
 
-export default function LivingRoomServices() {
+export default function BathroomServices() {
   const { title, paragraph, processes, frequencies, needs } =
   BATHROOM_SERVICES;
   return (
@@ -57,7 +57,7 @@ export default function LivingRoomServices() {
           </li>
         ))}
       </ul>
-      {/* <p className="mb-3 md:mb-[18px] lg:mb-7 indent-1.5">{frequencies.summary}</p> */}
+
 
       <h2 className="text-main h4 mb-1 md:mb-2 lg:mb-4">{needs.title}</h2>
       <p className="mb-1">{needs.text}</p>
