@@ -8,13 +8,13 @@ import ServiceAreas from "@/components/ServiceAreas";
 import SectionJustAsk from "@/components/JustAskSection";
 import React from "react";
 
-
 export default function Home() {
   return (
     <>
       <Reviews />
       <ServiceAreas />
       <SectionJustAsk />
+
       <LastSectionHome />
     </>
   );
