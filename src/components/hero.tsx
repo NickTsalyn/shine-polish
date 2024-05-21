@@ -1,4 +1,4 @@
-import mobileImage from "../images/xl1.webp";
+import mobileImage from "../images/background/bathroom-4130000_1920.webp";
 
 import Button from "./UI/Button";
 
