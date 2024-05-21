@@ -3,16 +3,16 @@ import { Lato } from "next/font/google";
 import "../styles/globals.css";
 import Header from "@/components/Header/Header";
 import Sidebar from "@/components/Sidebar";
-import Footer from "@/components/footer";
+import Footer from "@/components/Footer";
 
 const lato = Lato({
-  subsets: ['latin'],
-  weight: ['300', '400', '700', '900'],
+  subsets: ["latin"],
+  weight: ["300", "400", "700", "900"],
 });
 
 export const metadata: Metadata = {
-  title: 'Shine&Polish',
-  description: 'Cleaning service Atlanta',
+  title: "Shine&Polish",
+  description: "Cleaning service Atlanta",
 };
 
 export default function RootLayout({
@@ -26,7 +26,7 @@ export default function RootLayout({
         <Header />
         <Sidebar />
         <main className="lg:ml-[200px] xl:ml-[244px]">{children}</main>
-        <Footer />
+        <Footer/>
       </body>
     </html>
   );
