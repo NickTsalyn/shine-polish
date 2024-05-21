@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { SetStateAction, useState } from "react";
+import { useState } from "react";
 
 interface NavLink {
   href: string;
