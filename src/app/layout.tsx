@@ -26,7 +26,7 @@ export default function RootLayout({
         <Header />
         <Sidebar />
         <main className="lg:ml-[200px] xl:ml-[244px]">{children}</main>
-        <Footer />
+        <Footer/>
       </body>
     </html>
   );
