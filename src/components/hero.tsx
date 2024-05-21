@@ -3,14 +3,14 @@ import mobileImage from "../images/xl1.webp";
 import Button from "./UI/Button";
 
 export default function Hero() {
-  const backgroundImageUrl = `url(${mobileImage.src})`;
+  const backgroundImageUrl = mobileImage.src;
 
   return (
     <>
       <section
         className="p-5 lg:p-10 xl:p-16 relative bg-cover bg-center bg-no-repeat mb-[60px] md:mb-[80px] lg:mb-[120px] xl:mb-[120px]"
         style={{
-          backgroundImage: `linear-gradient(185deg, rgba(10, 10, 10, 0.39) 2.66%, rgba(120, 120, 120, 0.00) 81.3%), url(${mobileImage.src})`,
+          backgroundImage: `linear-gradient(185deg, rgba(10, 10, 10, 0.39) 2.66%, rgba(120, 120, 120, 0.00) 81.3%), url(${backgroundImageUrl})`,
         }}
       >
         <div>
@@ -25,7 +25,7 @@ export default function Hero() {
               </span>
             </Button>
             <Button type="button" style="home-book-now">
-              <span className=" text-saecondary text-xl md:text-4xl lg:text-[64px] lg:leading-none font-bold ">
+              <span className=" text-secondary text-xl md:text-4xl lg:text-[64px] lg:leading-none font-bold ">
                 Book Now
               </span>
             </Button>
