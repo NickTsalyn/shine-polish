@@ -1,23 +1,19 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { FC, useState } from "react";
 
 interface NavLink {
   href: string;
   text: string;
 }
 
-const links: NavLink[] = [
-  { href: "/", text: "Home" },
-  { href: "/checklists", text: "Checklists" },
-  { href: "/cleaning-services", text: "Cleaning Services" },
-  { href: "/cleaning-process", text: "Cleaning Process" },
-  { href: "/reviews", text: "Reviews" },
-  { href: "/cleaning-services", text: "Not sure? Just Ask!" },
-];
+interface NavLinksProps {
+  color: string;
+  links: NavLink[];
+}
 
-export default function NavLinks() {
+const NavLinks: FC<NavLinksProps> = ({ color, links }) => {
   const [selectedItem, setSelectedItem] = useState<number | null>(null);
 
   const handleClick = (index: number | null) => {
@@ -25,10 +21,14 @@ export default function NavLinks() {
   };
 
   return (
-    <ul className="flex flex-col gap-5 justify-start text-white body font-light">
+    <ul className="flex flex-col gap-5 justify-start text-[20px] font-normal leading-[1.2]">
       {links.map((link, index) => (
-        <li key={index} className="relative transition-colors duration-300">
-          <Link href={link.href} onClick={() => handleClick(index)}>
+        <li key={index} className="relative">
+          <Link
+            href={link.href}
+            onClick={() => handleClick(index)}
+            style={{ color: color }}
+          >
             {link.text}
           </Link>
           {selectedItem === index && (
@@ -41,4 +41,5 @@ export default function NavLinks() {
       ))}
     </ul>
   );
-}
+};
+export default NavLinks;

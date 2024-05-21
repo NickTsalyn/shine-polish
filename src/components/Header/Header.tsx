@@ -3,25 +3,12 @@
 import Link from "next/link";
 import ThemeSwitch from "./Switcher";
 import { useState } from "react";
-import { IconButton } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
-import { styled } from "@mui/material/styles";
 import Image from "next/legacy/image";
-import BasicModal from "../UI/Modal";
 import MobileMenu from "../MobileMenu";
-
-const StyledMenuIcon = styled(MenuIcon)(() => ({
-  color: "#006778",
-  fontSize: 42,
-  "@media (min-width: 768px)": {
-    fontSize: 52,
-  },
-}));
 
 export default function Header() {
   const [lightMode, setDarkMode] = useState(false);
   const [auth] = useState(true);
-  const [modalOpen, setModalOpen] = useState(false);
 
   const handleChange = () => {
     setDarkMode(!lightMode);
@@ -50,20 +37,10 @@ export default function Header() {
           <div className=" w-[38px] h-7 border rounded-[6px] border-light-main text-center">
             Uk
           </div>
-
           <ThemeSwitch checked={lightMode} onChange={handleChange} />
-          <IconButton
-            className="flex lg:hidden"            
-            onClick={() => setModalOpen(true)}
-          >
-            <MenuIcon/>
-            <StyledMenuIcon />
-          </IconButton>
+          <MobileMenu />
         </div>
       </div>
-      <BasicModal open={modalOpen} onClose={() => setModalOpen(false)}>
-        <MobileMenu onClose={() => setModalOpen(false)} />
-      </BasicModal>
     </header>
   );
 }

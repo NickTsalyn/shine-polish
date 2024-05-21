@@ -10,6 +10,7 @@ import { styled } from "@mui/material/styles";
 
 import NavLinks from "./Navigation/NavLinks";
 import Button from "./UI/Button";
+import { SIDEBAR_LINKS } from "@/global/navigation";
 
 const UserIcon = styled(AccountCircleIcon)(() => ({
   color: "#fff",
@@ -35,7 +36,7 @@ export default function Sidebar() {
   const [auth] = useState(false);
 
   return (
-    <aside className="  hidden lg:flex flex-col content-around fixed inset-y-0 left-0 px-5 xl:px-[26px] pt-[46px] pb-6 w-[200px] h-full xl:w-[244px] bg-main z-10">
+    <aside className="  hidden lg:flex flex-col content-around fixed inset-y-0 left-0 p-5 xl:p-[26px] w-[200px] h-full xl:w-[244px] bg-main z-10">
        <div className="flex w-[128px] h-[115px] xl:w-[156px] xl:h-[140px] mx-auto mb-9 xl:mb-[46px] ">
         <Link href={"/"} className="w-full h-full relative">
           <Image
@@ -56,7 +57,7 @@ export default function Sidebar() {
       )}
 
       <div className="mb-5 ">
-        <NavLinks />
+        <NavLinks color="#fff" links={SIDEBAR_LINKS}/>
       </div>
 
       <div className="mt-auto">
