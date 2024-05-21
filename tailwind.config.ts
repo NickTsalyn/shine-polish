@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        kaufmann: ['Kaufmann BT']
+        kaufmann: ["Kaufmann BT"],
       },
       screens: {
         sm: "375px",
@@ -83,8 +83,8 @@ const config: Config = {
         "disabled-button-border":
           "linear-gradient(90deg, #006778 30%, #00BFDE 30%)",
 
-          "background-img-grad":
-          "linear-gradient(185deg, rgba(10, 10, 10, 0.49) 2.66%, rgba(120, 120, 120, 0.00) 81.3%);"
+        "background-img-grad":
+          "linear-gradient(185deg, rgba(10, 10, 10, 0.49) 2.66%, rgba(120, 120, 120, 0.00) 81.3%);",
       },
     },
   },
