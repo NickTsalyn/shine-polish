@@ -10,7 +10,7 @@ const kaufmann = localFont({ src: "../../public/fonts/kaufmann-bt.ttf" });
 export default function Home() {
   return (
     <>
-      <SectionEstimate/>
+      <SectionEstimate />
       <Reviews />
       <ServiceAreas />
       <SectionJustAsk />
@@ -18,4 +18,3 @@ export default function Home() {
     </>
   );
 }
-
