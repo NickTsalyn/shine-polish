@@ -46,7 +46,6 @@ export default function BeforeAfter({ children, data }: BeforeAfterProps) {
               speed={2000}
               loop={true}
               modules={[Autoplay, EffectFade]}
-              onSlideChange={() => console.log("slide change")}
             >
               {data.map(
                 ({ id, descrBefore, descrAfter, imageBefore, imageAfter }) => (
