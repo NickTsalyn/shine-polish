@@ -3,6 +3,12 @@
 @tailwind utilities;
 @import "./typography.css";
 
+@layer utilities {
+  .text-shadow {
+    text-shadow: 10px 6px 10px rgba(0, 0, 0, 0.5);
+  }
+}
+
 /* Change Autocomplete styles in Chrome*/
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
