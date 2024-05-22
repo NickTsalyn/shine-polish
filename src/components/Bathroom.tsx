@@ -1,5 +1,6 @@
 import Image from "next/legacy/image";
 import { BATHROOM_SERVICES } from "@/global/bathroom";
+import BasicBreadcrumbs from "./UI/Breadcrumbs";
 import { Tooltip, TooltipProps } from "@mui/material";
 import RoomIMG from "../../public/images/bathroom@2x.jpg";
 import IconPlus from "../../public/icons/Icon_plus-min.png";
@@ -32,6 +33,11 @@ export default function BathroomServices() {
 	return (
 		<div className="body text-text">
 			<h1 className=" h3 text-main mb-3 md:mb-[18px] lg:mb-7">{title}</h1>
+      <BasicBreadcrumbs
+        pageHref="cleaning-process"
+        pageName="Cleaning Process"
+        roomName="Bathroom"
+      />
 			<div className="mb-5 md:mb-10 lg:mb-[60px]">
 				<Image
 					src={RoomIMG}
