@@ -29,7 +29,7 @@ const RadioButton: React.FC<RadioCheckProps> = ({
       }
       checkedIcon={
         <div
-          className={`${style} flex h-[120px] border border-main/35 items-center justify-center rounded-xl bg-tertial shadow-hover-shadow`}
+          className={`${style} flex  border border-main/35 items-center justify-center rounded-xl bg-tertial shadow-hover-shadow`}
         >
           <button className=" flex flex-col items-center text-white text-center font-intro_book text-base font-normal leading-6">
             {children}

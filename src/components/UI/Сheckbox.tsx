@@ -22,7 +22,7 @@ const CheckBox = (props: RadioCheckProps) => {
       }
       checkedIcon={
         <div
-          className={`${props.style} flex h-[120px] border border-main/35 items-center justify-center rounded-xl bg-tertial shadow-hover-shadow`}
+          className={`${props.style} flex  border border-main/35 items-center justify-center rounded-xl bg-tertial shadow-hover-shadow`}
         >
           <button className=" flex flex-col items-center  flex-shrink-0 text-white text-center font-intro_book text-base font-normal leading-6 ">
             {props.children}
