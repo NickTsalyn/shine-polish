@@ -6,13 +6,13 @@ import DiningRoomIMG from "../../public/images/diningroom@2x.jpg";
 import IconPlus from "../../public/icons/Icon_plus-min.png";
 
 const icons = [
-  { title: "Icon-1", top: "23%", left: "33%" },
-  { title: "Icon-2", top: "46%", left: "11%" },
-  { title: "Icon-3", top: "57%", left: "35.5%" },
-  { title: "Icon-4", top: "53%", left: "53%" },
-  { title: "Icon-5", top: "25%", left: "66%" },
-  { title: "Icon-6", top: "53%", left: "68%" },
-  { title: "Icon-7", top: "82%", left: "72%" },
+  { title: "Clean Light Fixtures", top: "10%", left: "35%" },
+  { title: "Check and Clean Air Vents", top: "46%", left: "7%" },
+  { title: "Dusting", top: "81%", left: "42%" },
+  { title: "Decorative Elements", top: "37%", left: "82%" },
+  { title: "Clean Furniture", top: "38%", left: "58%" },
+  { title: "Declutter", top: "53%", left: "81%" },
+  { title: "Vacuum and Sweep", top: "87%", left: "90%" },
 ];
 
 const CustomTooltip = (props: JSX.IntrinsicAttributes & TooltipProps) => (
@@ -20,7 +20,7 @@ const CustomTooltip = (props: JSX.IntrinsicAttributes & TooltipProps) => (
     {...props}
     classes={{
       tooltip:
-        " bg-[#E6BA95CC] text-white text-center text-xs md:text-sm lg:text-base rounded-xl w-20 md:w-28 lg:w-36 p-2",
+        " bg-[#E6BA95CC] text-white text-center text-xs md:text-sm lg:text-base rounded-xl w-20 md:w-28 lg:w-36 lg:p-3",
     }}
   />
 );
@@ -35,7 +35,7 @@ export default function DiningRoomServices() {
       <BasicBreadcrumbs
         pageHref="cleaning-process"
         pageName="Cleaning Process"
-        roomName="Living Room"
+        roomName="Dining Room"
       />
 
       <div className="relative mb-5 md:mb-10 lg:mb-[60px]">
