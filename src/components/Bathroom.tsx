@@ -6,16 +6,16 @@ import RoomIMG from "../../public/images/bathroom@2x.jpg";
 import IconPlus from "../../public/icons/Icon_plus-min.png";
 
 const icons = [
-  { title: "Clean Floors", top: "95%", left: "31%" },
-  { title: "Clean Toilet", top: "60%", left: "23%" },
-  { title: "Clean Shower or Tub", top: "68%", left: "45%" },
-  { title: "Empty Trash", top: "80%", left: "50%" },
-  { title: "Clean Countertops and Sinks", top: "64%", left: "56%" },
-  { title: "Declutter", top: "48%", left: "52%" },
-  { title: "Clean Mirrors", top: "62%", left: "71%" },
-  { title: "Clean and Disinfect High-Touch Areas", top: "86%", left: "75%" },
-  { title: "Pre-Treat Surfaces", top: "87%", left: "21%" },
-  { title: "Dust and Sweep", top: "35%", left: "40%" },
+  { title: "Clean Floors", top: "90%", left: "23%" },
+  { title: "Clean Toilet", top: "51%", left: "7%" },
+  { title: "Clean Shower or Tub", top: "63%", left: "37%" },
+  { title: "Empty Trash", top: "77%", left: "44%" },
+  { title: "Clean Countertops and Sinks", top: "57%", left: "50%" },
+  { title: "Declutter", top: "40%", left: "46%" },
+  { title: "Clean Mirrors", top: "50%", left: "70%" },
+  { title: "Clean and Disinfect High-Touch Areas", top: "80%", left: "71%" },
+  { title: "Pre-Treat Surfaces", top: "76%", left: "11%" },
+  { title: "Dust and Sweep", top: "24%", left: "32%" },
 ];
 
 const CustomTooltip = (props: JSX.IntrinsicAttributes & TooltipProps) => (
@@ -38,7 +38,7 @@ export default function BathroomServices() {
         pageName="Cleaning Process"
         roomName="Bathroom"
       />
-			<div className="mb-5 md:mb-10 lg:mb-[60px]">
+			<div className="mb-5 md:mb-10 lg:mb-[60px] relative">
 				<Image
 					src={RoomIMG}
 					alt="photo of living room"
