@@ -3,25 +3,26 @@
 import * as React from "react";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import { styled } from "@mui/material/styles";
 import Popper from "@mui/material/Popper";
+
+import { styled } from "@mui/material/styles";
 import Link from "next/link";
 import { CustomButton } from "./CustomButton";
 
 const links = [
-  { href: "/", text: "House Cleaning" },
-  { href: "/", text: "Apartment Cleaning" },
-  { href: "/", text: "Deep Cleaning" },
-  { href: "/", text: "Move-In/Move-Out Cleaning" },
-  { href: "/", text: "Carpet Cleaning" },
-  { href: "/", text: "Airbnb Cleaning" },
+  { href: "/kitchen-process", text: "Kitchen Cleaning Services" },
+  { href: "/", text: "Bedroom Cleaning Services" },
+  { href: "/", text: "Bathroom Cleaning Services" },
+  { href: "/living-room-processes", text: "Living room Cleaning Services" },
+  { href: "/", text: "Dining Room Cleaning Services" },
 ];
 
-const CustomMenu = styled(Menu)(({ theme }) => ({
+const CustomMenu = styled(Menu)(() => ({
   "& .MuiPaper-root": {
     backgroundColor: "#006778CC",
-    width: "336px",
-
+    width: "300px",
+    padding: "12px",
+    borderRadius: "12px",
     transformOrigin: "left center",
     animation: "slide-in 0.3s ease-out forwards",
   },
@@ -35,8 +36,11 @@ const CustomMenu = styled(Menu)(({ theme }) => ({
   },
 }));
 
-const CustomMenuItem = styled(MenuItem)(({ theme }) => ({
+const CustomMenuItem = styled(MenuItem)(() => ({
+  fontFamily: "Lato",
   color: "white",
+  fontSize: "16px",
+  paddingLeft: "4px",
   borderRadius: "12px",
   borderBottom: "1px solid transparent",
   backgroundImage: `linear-gradient(90deg, #E6BA95 34.9%, rgba(230, 186, 149, 0.00) 100%);`,
@@ -49,10 +53,9 @@ const CustomMenuItem = styled(MenuItem)(({ theme }) => ({
   },
 }));
 
-export default function CleaningProcesses() {
+export default function CleaningServices() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
-
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
@@ -60,25 +63,29 @@ export default function CleaningProcesses() {
     setAnchorEl(null);
   };
 
+  (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
   return (
     <div className="h-10 w-[200px] bg-main">
       <CustomButton
-        id="process-btn"
-        aria-controls={open ? "process-menu" : undefined}
+        id="processes-btn"
+        aria-controls={open ? "processes-menu" : undefined}
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
       >
-        <span className="text-white">Cleaning Prosess</span>
+        <span className="text-white">Cleaning Process</span>
       </CustomButton>
       <Popper sx={{ zIndex: 1200 }} open={open} anchorEl={anchorEl} transition>
         <CustomMenu
-          id="process-menu"
+          id="processes-menu"
           anchorEl={anchorEl}
           open={open}
           onClose={handleClose}
           MenuListProps={{
-            "aria-labelledby": "process-btn",
+            "aria-labelledby": "processes-btn",
           }}
           anchorOrigin={{
             vertical: "top",

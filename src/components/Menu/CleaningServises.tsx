@@ -3,26 +3,29 @@
 import * as React from "react";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import Popper from "@mui/material/Popper";
-
 import { styled } from "@mui/material/styles";
+import Popper from "@mui/material/Popper";
 import Link from "next/link";
 import { CustomButton } from "./CustomButton";
 
 const links = [
-  { href: "/", text: "Kitchen Cleaning Services" },
-  { href: "/", text: "Bedroom Cleaning Services" },
-  { href: "/", text: "Bathroom Cleaning Services" },
-  { href: "/", text: "Living room Cleaning Services" },
-  { href: "/", text: "Dining Room Cleaning Services" },
+  { href: "/", text: "House Cleaning" },
+  { href: "/", text: "Apartment Cleaning" },
+  { href: "/", text: "Deep Cleaning" },
+  { href: "/", text: "Move-In/Move-Out Cleaning" },
+  { href: "/", text: "Carpet Cleaning" },
+  { href: "/", text: "Airbnb Cleaning" },
 ];
 
-const CustomMenu = styled(Menu)(({ theme }) => ({
+const CustomMenu = styled(Menu)(() => ({
   "& .MuiPaper-root": {
     backgroundColor: "#006778CC",
-    width: "336px",
-    padding: "12px",
-    borderRadius: "12px",
+    width: "300px",
+    paddingLeft: "12px",
+    paddingRight: "12px",
+    paddingTop: "4px",
+    paddingBottom: "4px",
+
     transformOrigin: "left center",
     animation: "slide-in 0.3s ease-out forwards",
   },
@@ -36,9 +39,11 @@ const CustomMenu = styled(Menu)(({ theme }) => ({
   },
 }));
 
-const CustomMenuItem = styled(MenuItem)(({ theme }) => ({
+const CustomMenuItem = styled(MenuItem)(() => ({
   color: "white",
   borderRadius: "12px",
+  fontSize: "16px",
+  paddingLeft: "4px",
   borderBottom: "1px solid transparent",
   backgroundImage: `linear-gradient(90deg, #E6BA95 34.9%, rgba(230, 186, 149, 0.00) 100%);`,
   backgroundSize: "100% 1px",
@@ -50,9 +55,10 @@ const CustomMenuItem = styled(MenuItem)(({ theme }) => ({
   },
 }));
 
-export default function CleaningServices() {
+export default function CleaningProcesses() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
@@ -60,14 +66,10 @@ export default function CleaningServices() {
     setAnchorEl(null);
   };
 
-  (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-
   return (
     <div className="h-10 w-[200px] bg-main">
       <CustomButton
-        id="service-btn"
+        id="services-btn"
         aria-controls={open ? "services-menu" : undefined}
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
@@ -82,7 +84,7 @@ export default function CleaningServices() {
           open={open}
           onClose={handleClose}
           MenuListProps={{
-            "aria-labelledby": "service-btn",
+            "aria-labelledby": "services-btn",
           }}
           anchorOrigin={{
             vertical: "top",

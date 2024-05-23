@@ -11,62 +11,62 @@ export const KITCHEN_SERVICES = {
       text: "Cleaning the kitchen is essential for maintaining a healthy and hygienic living environment. Here are some kitchen cleaning techniques to help you keep this high-traffic area clean and organized:",
       items: [
         {
-          title: "1. Clear Clutter:",
+          title: "Clear Clutter:",
           description:
             "Begin by removing any unnecessary items from countertops, tables, and the sink area. Clearing clutter makes it easier to access surfaces for cleaning.",
         },
         {
-          title: "2. Wash Dishes and Utensils:",
+          title: "Wash Dishes and Utensils:",
           description:
             "Start by washing, drying, and putting away dishes. This helps prevent the accumulation of dirty dishes and keeps the sink area tidy.",
         },
         {
-          title: "3. Wipe Down Surfaces:",
+          title: "Wipe Down Surfaces:",
           description:
             "Use an all-purpose cleaner to wipe down countertops, tables, and other surfaces. Pay attention to spills, crumbs, and sticky spots.",
         },
         {
-          title: "4. Clean Appliances:",
+          title: "Clean Appliances:",
           description:
             "Wipe down the exterior of appliances such as the microwave, oven, refrigerator, and dishwasher. Clean the inside of the microwave and oven regularly.",
         },
         {
-          title: "5. Sanitize the Sink:",
+          title: "Sanitize the Sink:",
           description:
             "Clean and sanitize the sink using a mixture of dish soap and warm water. Consider using a disinfectant cleaner on the sink faucet and handles.",
         },
         {
-          title: "6. Clean and Degrease Stovetop:",
+          title: "Clean and Degrease Stovetop:",
           description:
             "Remove grates and burner covers if applicable. Wipe down the stovetop with a degreaser or a mixture of vinegar and baking soda. Clean the drip pans and burner grates.",
         },
         {
-          title: "7. Empty and Clean the Trash Can:",
+          title: "Empty and Clean the Trash Can:",
           description:
             "Empty the trash can and clean it regularly to prevent odors and the growth of bacteria.",
         },
         {
-          title: "8. Wipe Down Cabinet Exteriors:",
+          title: "Wipe Down Cabinet Exteriors:",
           description:
             "Clean the exterior of cabinets using an appropriate cleaner. Pay attention to handles and knobs.",
         },
         {
-          title: "9. Clean and Disinfect High-Touch Areas:",
+          title: "Clean and Disinfect High-Touch Areas:",
           description:
             "Disinfect frequently-touched areas such as light switches, door handles, and appliance handles.",
         },
         {
-          title: "10. Sweep and Mop Floors:",
+          title: "Sweep and Mop Floors:",
           description:
             "Sweep or vacuum the kitchen floor to remove crumbs and debris. Mop the floor using a suitable floor cleaner.",
         },
         {
-          title: "11. Check and Clean Refrigerator:",
+          title: "Check and Clean Refrigerator:",
           description:
             "Regularly check and clean the refrigerator. Remove expired food, wipe down shelves, and clean the interior.",
         },
         {
-          title: "12. Regular Maintenance:",
+          title: "Regular Maintenance:",
           description:
             "Establish a routine cleaning schedule to prevent the buildup of dirt and grime. Small, frequent cleanings are often more manageable than tackling a heavily soiled kitchen.",
         },
@@ -121,52 +121,52 @@ export const KITCHEN_SERVICES = {
       text: "Kitchen cleaning is essential for several reasons, contributing to both the health and overall well-being of individuals and the maintenance of a functional and inviting living space. Here are key reasons why kitchen cleaning is necessary:",
       items: [
         {
-          title: "1. Food Safety:",
+          title: "Food Safety:",
           description:
             "Regular cleaning helps prevent the growth and spread of bacteria, pathogens, and foodborne illnesses. A clean kitchen reduces the risk of contamination and ensures the safety of the food prepared and consumed in the space.",
         },
         {
-          title: "2. Health and Hygiene:",
+          title: "Health and Hygiene:",
           description:
             "The kitchen is a high-traffic area where food is stored, prepared, and cooked. Regular cleaning helps maintain a hygienic environment, preventing the spread of germs and reducing the risk of infections and illnesses.",
         },
         {
-          title: "3. Pest Prevention:",
+          title: "Pest Prevention:",
           description:
             "Food crumbs, spills, and dirty dishes can attract pests such as insects and rodents. Keeping the kitchen clean helps prevent infestations, maintaining a pest-free and sanitary environment.",
         },
         {
-          title: "4. Appliance Efficiency:",
+          title: "Appliance Efficiency:",
           description:
             "Regular cleaning of kitchen appliances, such as ovens, microwaves, and refrigerators, ensures their optimal performance. Dirty appliances can be less efficient and may lead to increased energy consumption.",
         },
         {
-          title: "5. Odor Control:",
+          title: "Odor Control:",
           description:
             "A clean kitchen contributes to a fresh and pleasant-smelling home. Regular cleaning helps control odors caused by food waste, spills, and other sources.",
         },
         {
-          title: "6. Fire Safety:",
+          title: "Fire Safety:",
           description:
             "Grease and food residues can pose fire hazards, especially in the kitchen. Regular cleaning of stovetops, ovens, and exhaust hoods reduces the risk of kitchen fires.",
         },
         {
-          title: "7. Longevity of Surfaces and Appliances:",
+          title: "Longevity of Surfaces and Appliances:",
           description:
             "Regular cleaning and maintenance help extend the life of kitchen surfaces, cabinets, and appliances. Proper care prevents the buildup of stains, grease, and other substances that can damage these components over time.",
         },
         {
-          title: "8. Organization and Efficiency:",
+          title: "Organization and Efficiency:",
           description:
             "A clean and organized kitchen enhances efficiency and productivity. It makes it easier to find utensils, ingredients, and cookware, facilitating a more enjoyable cooking and dining experience.",
         },
         {
-          title: "9. Aesthetics and Comfort:",
+          title: "Aesthetics and Comfort:",
           description:
             "A clean kitchen contributes to the overall aesthetics of your home. It creates a welcoming and comfortable space for cooking, dining, and socializing.",
         },
         {
-          title: "10. Preventative Maintenance:",
+          title: "Preventative Maintenance:",
           description:
             "Regular cleaning allows for the early identification of maintenance issues. Addressing minor problems promptly can prevent more significant and costly repairs in the future.",
         },
