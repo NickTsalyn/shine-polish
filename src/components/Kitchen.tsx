@@ -59,7 +59,7 @@ const KitchenServices: React.FC = () => {
   const { title, paragraph, processes, frequencies, needs } = KITCHEN_SERVICES;
   return (
     <div>
-      <h1 className="h3 text-main mb-14">{title}</h1>
+      <h1 className="h3 text-main mb-3 md:mb-[18px] lg:mb-7">{title}</h1>
       <BasicBreadcrumbs
         pageHref="cleaning-processes"
         pageName="Cleaning Process"
