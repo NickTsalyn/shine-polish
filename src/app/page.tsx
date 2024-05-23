@@ -7,9 +7,10 @@ import dataSlider from "@/data/slider-data.json";
 import { Reviews } from "@/components/Reviews";
 import ServiceAreas from "@/components/ServiceAreas";
 import SectionJustAsk from "@/components/JustAskSection";
+import React from "react";
+import WorkWithUs from "@/components/WorkWithUs";
 import LastSectionHome from "@/components/LastSectionHome";
 
-const kaufmann = localFont({ src: "../../public/fonts/kaufmann-bt.ttf" });
 
 export default function Home() {
   return (
@@ -20,7 +21,9 @@ export default function Home() {
       <Reviews />
       <ServiceAreas />
       <SectionJustAsk />
+      <WorkWithUs/>
       <LastSectionHome />
+
     </>
   );
 }
