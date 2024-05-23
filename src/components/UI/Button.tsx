@@ -27,11 +27,11 @@ export default function Button(props: PropsButtton) {
   switch (props.style) {
     case "burger-book-now":
       styles =
-        " py-1 px-16 md:px-24 bg-white border border-solid border-accent  rounded-[10px]";
+        "py-1.5 md:py-1 bg-white border border-solid border-accent rounded-xl w-full";
       break;
     case "burger-contact-us":
       styles =
-        "py-1 px-[63px] md:px-[95px] border border-solid border-secondary rounded-[10px]";
+        "py-1 border border-solid border-secondary rounded-xl w-full";
       break;
     case "home-book-now":
       styles =

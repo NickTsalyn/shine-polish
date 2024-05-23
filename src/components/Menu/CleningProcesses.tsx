@@ -17,7 +17,7 @@ const links = [
   { href: "/", text: "Airbnb Cleaning" },
 ];
 
-const CustomMenu = styled(Menu)(({ theme }) => ({
+const CustomMenu = styled(Menu)(() => ({
   "& .MuiPaper-root": {
     backgroundColor: "#006778CC",
     width: "336px",
@@ -27,15 +27,25 @@ const CustomMenu = styled(Menu)(({ theme }) => ({
   },
   "@keyframes slide-in": {
     "0%": {
-      transform: "translateX(-100%)",
+      transform: "translateX(-100%) translateY(130%)",
     },
     "100%": {
-      transform: "translateX(0)",
+      transform: "translateX(60%) translateY(130%)",
+    },
+  },
+  "@media (min-width: 1920px)": {
+    "@keyframes slide-in": {
+      "0%": {
+        transform: "translateX(-100%) translateY(150%)",
+      },
+      "100%": {
+        transform: "translateX(75%) translateY(150%)",
+      },
     },
   },
 }));
 
-const CustomMenuItem = styled(MenuItem)(({ theme }) => ({
+const CustomMenuItem = styled(MenuItem)(() => ({
   color: "white",
   borderRadius: "12px",
   borderBottom: "1px solid transparent",
@@ -49,34 +59,57 @@ const CustomMenuItem = styled(MenuItem)(({ theme }) => ({
   },
 }));
 
-export default function CleaningProcesses() {
+interface Props {
+  color: string;
+  handleClose?: () => void;
+}
+
+export default function CleaningProcesses({ color, handleClose }: Props) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
-  const handleClose = () => {
+
+  const onClose = () => {
     setAnchorEl(null);
   };
 
+  const handleMenuItemClick = () => {
+    onClose();
+    if (handleClose) {
+      handleClose();
+    }
+  };
+
+  const ServButton = styled(CustomButton)`
+    color: ${color};
+  `;
+
   return (
-    <div className="h-10 w-[200px] bg-main">
-      <CustomButton
+    <>
+      <ServButton
         id="process-btn"
         aria-controls={open ? "process-menu" : undefined}
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
       >
-        <span className="text-white">Cleaning Prosess</span>
-      </CustomButton>
-      <Popper sx={{ zIndex: 1200 }} open={open} anchorEl={anchorEl} transition>
+        <span className="capitalize">Cleaning Prosess</span>
+      </ServButton>
+      <Popper
+        sx={{ zIndex: 1200 }}
+        open={open}
+        anchorEl={anchorEl}
+        transition
+        placement="right-start"
+      >
         <CustomMenu
           id="process-menu"
           anchorEl={anchorEl}
           open={open}
-          onClose={handleClose}
+          onClose={onClose}
           MenuListProps={{
             "aria-labelledby": "process-btn",
           }}
@@ -86,20 +119,18 @@ export default function CleaningProcesses() {
           }}
           transformOrigin={{
             vertical: "top",
-            horizontal: "left",
+            horizontal: "right",
           }}
         >
-          <ul>
-            {links.map((link, index) => (
-              <li key={index}>
-                <CustomMenuItem onClick={handleClose}>
-                  <Link href={link.href}>{link.text}</Link>
-                </CustomMenuItem>
-              </li>
-            ))}
-          </ul>
+          {links.map((link, index) => (
+            <CustomMenuItem key={index} onClick={handleMenuItemClick}>
+              <Link href={link.href} >
+                {link.text}
+              </Link>
+            </CustomMenuItem>
+          ))}
         </CustomMenu>
       </Popper>
-    </div>
+    </>
   );
 }

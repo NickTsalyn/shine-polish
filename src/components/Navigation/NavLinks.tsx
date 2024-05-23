@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { FC, useState } from "react";
+import CleaningServices from "../Menu/CleaningServises";
+import CleaningProcesses from "../Menu/CleningProcesses";
 
 interface NavLink {
   href: string;
@@ -9,11 +11,11 @@ interface NavLink {
 }
 
 interface NavLinksProps {
-  color: string;
   links: NavLink[];
+  handleClose?: () => void;
 }
 
-const NavLinks: FC<NavLinksProps> = ({ color, links }) => {
+const NavLinks: FC<NavLinksProps> = ({ links, handleClose }) => {
   const [selectedItem, setSelectedItem] = useState<number | null>(null);
 
   const handleClick = (index: number | null) => {
@@ -21,14 +23,10 @@ const NavLinks: FC<NavLinksProps> = ({ color, links }) => {
   };
 
   return (
-    <ul className="flex flex-col gap-5 justify-start text-[20px] font-normal leading-[1.2]">
+    <ul className="flex flex-col gap-5 justify-start text-[18px] xl:text-[20px] font-normal leading-[1.2] text-white">
       {links.map((link, index) => (
-        <li key={index} className="relative">
-          <Link
-            href={link.href}
-            onClick={() => handleClick(index)}
-            style={{ color: color }}
-          >
+        <li key={index} className="relative" onClick={handleClose}>
+          <Link href={link.href} onClick={() => handleClick(index)}>
             {link.text}
           </Link>
           {selectedItem === index && (
@@ -39,6 +37,12 @@ const NavLinks: FC<NavLinksProps> = ({ color, links }) => {
           )}
         </li>
       ))}
+      <li>
+        <CleaningServices color="#fff" />
+      </li>
+      <li>
+        <CleaningProcesses color="#fff" />
+      </li>
     </ul>
   );
 };

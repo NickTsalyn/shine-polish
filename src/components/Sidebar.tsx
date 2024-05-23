@@ -37,7 +37,7 @@ export default function Sidebar() {
 
   return (
     <aside className="  hidden lg:flex flex-col content-around fixed inset-y-0 left-0 p-5 xl:p-[26px] w-[200px] h-full xl:w-[244px] bg-main z-10">
-       <div className="flex w-[128px] h-[115px] xl:w-[156px] xl:h-[140px] mx-auto mb-9 xl:mb-[46px] ">
+      <div className="flex w-[128px] h-[115px] xl:w-[156px] xl:h-[140px] mx-auto mb-6 xl:mb-9 ">
         <Link href={"/"} className="w-full h-full relative">
           <Image
             src="/icons/logo/logo_dark_bg.svg"
@@ -55,9 +55,9 @@ export default function Sidebar() {
           <p className=" body font-light text-white">Hello, Fiona</p>
         </div>
       )}
-
+     
       <div className="mb-5 ">
-        <NavLinks color="#fff" links={SIDEBAR_LINKS}/>
+        <NavLinks links={SIDEBAR_LINKS} />
       </div>
 
       <div className="mt-auto">
@@ -98,7 +98,7 @@ export default function Sidebar() {
             </div>
           </li>
         </ul>
-        <p className="mb-2 xl:mb-4 text-[28px] xl:text-[36px] font-light text-white">
+        <p className="mb-2 xl:mb-3 text-[28px] xl:text-[36px] font-light text-white">
           Follow us
         </p>
         <ul className="flex  gap-5 ">
