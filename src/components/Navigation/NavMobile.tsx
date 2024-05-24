@@ -24,16 +24,14 @@ const NavMobile: FC<NavLinksProps> = ({ links, handleClose }) => {
           className="text-[20px] font-normal leading-[1.2]"
           onClick={handleClose}
         >
-          <Link href={link.href} >
-            {link.text}
-          </Link>
+          <Link href={link.href}>{link.text}</Link>
         </li>
       ))}
-      <li onClick={handleClose}>
-        <CleaningServices color="#006778" />
+      <li>
+        <CleaningServices color="#006778" handleClose={handleClose}/>
       </li>
-      <li onClick={handleClose}>
-        <CleaningProcesses color="#006778" />
+      <li>
+        <CleaningProcesses color="#006778" handleClose={handleClose}/>
       </li>
     </ul>
   );

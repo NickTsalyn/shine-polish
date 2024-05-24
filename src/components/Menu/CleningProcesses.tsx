@@ -21,25 +21,43 @@ const CustomMenu = styled(Menu)(() => ({
   "& .MuiPaper-root": {
     backgroundColor: "#006778CC",
     width: "336px",
-
+    padding: "12px",
+    borderRadius: "12px",
     transformOrigin: "left center",
     animation: "slide-in 0.3s ease-out forwards",
   },
-  "@keyframes slide-in": {
-    "0%": {
-      transform: "translateX(-100%) translateY(130%)",
+  // Додаємо зміни для мобільних і планшетних версій
+  "@media (max-width: 1439px)": {
+    "& .MuiPaper-root": {
+      transformOrigin: "right center",
+      animation: "slide-in-mobile 0.3s ease-out forwards",
     },
-    "100%": {
-      transform: "translateX(60%) translateY(130%)",
+    "@keyframes slide-in-mobile": {
+      "0%": {
+        transform: "translateX(200%) translateY(100%)",
+      },
+      "100%": {
+        transform: "translateX(100%) translateY(100%)",
+      },
+    },
+  },
+  "@media (min-width: 1440px)": {
+    "@keyframes slide-in": {
+      "0%": {
+        transform: "translateX(-100%) translateY(110%)",
+      },
+      "100%": {
+        transform: "translateX(60%) translateY(110%)",
+      },
     },
   },
   "@media (min-width: 1920px)": {
     "@keyframes slide-in": {
       "0%": {
-        transform: "translateX(-100%) translateY(150%)",
+        transform: "translateX(-100%) translateY(130%)",
       },
       "100%": {
-        transform: "translateX(75%) translateY(150%)",
+        transform: "translateX(75%) translateY(130%)",
       },
     },
   },
@@ -61,7 +79,13 @@ const CustomMenuItem = styled(MenuItem)(() => ({
 
 interface Props {
   color: string;
-  handleClose?: () => void;
+  handleClose?: (
+    event:
+      | React.MouseEvent<HTMLElement>
+      | React.KeyboardEvent<HTMLElement>
+      | {},
+    reason: "backdropClick" | "escapeKeyDown"
+  ) => void;
 }
 
 export default function CleaningProcesses({ color, handleClose }: Props) {
@@ -72,14 +96,27 @@ export default function CleaningProcesses({ color, handleClose }: Props) {
     setAnchorEl(event.currentTarget);
   };
 
-  const onClose = () => {
+  const onClose = (
+    event:
+      | React.MouseEvent<HTMLElement>
+      | React.KeyboardEvent<HTMLElement>
+      | {},
+    reason: "backdropClick" | "escapeKeyDown"
+  ) => {
     setAnchorEl(null);
+    if (handleClose) {
+      handleClose(event, reason);
+    }
   };
 
-  const handleMenuItemClick = () => {
-    onClose();
+  const handleMenuItemClick = (
+    event:
+      | React.MouseEvent<HTMLAnchorElement>
+      | React.KeyboardEvent<HTMLAnchorElement>
+  ) => {
+    setAnchorEl(null);
     if (handleClose) {
-      handleClose();
+      handleClose(event, "backdropClick");
     }
   };
 
@@ -96,7 +133,7 @@ export default function CleaningProcesses({ color, handleClose }: Props) {
         aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
       >
-        <span className="capitalize">Cleaning Prosess</span>
+        <span className="capitalize">Cleaning Process</span>
       </ServButton>
       <Popper
         sx={{ zIndex: 1200 }}
@@ -123,8 +160,8 @@ export default function CleaningProcesses({ color, handleClose }: Props) {
           }}
         >
           {links.map((link, index) => (
-            <CustomMenuItem key={index} onClick={handleMenuItemClick}>
-              <Link href={link.href} >
+            <CustomMenuItem key={index}>
+              <Link href={link.href} onClick={handleMenuItemClick}>
                 {link.text}
               </Link>
             </CustomMenuItem>

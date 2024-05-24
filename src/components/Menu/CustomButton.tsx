@@ -7,10 +7,11 @@ export const CustomButton = styled(Button)(() => ({
   fontFamily: "Lato",
   fontSize: "20px",
   fontWeight: "400",
-  lineHeight: "21.6px",
+  lineHeight: "24px",
   textAlign: "start",
   "@media (min-width: 1439px) and (max-width: 1919px)": {
     fontSize: "18px",
+    lineHeight: "21.6px",
   },
 }));
 

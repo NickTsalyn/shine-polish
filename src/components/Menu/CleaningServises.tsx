@@ -25,12 +25,29 @@ const CustomMenu = styled(Menu)(() => ({
     transformOrigin: "left center",
     animation: "slide-in 0.3s ease-out forwards",
   },
-  "@keyframes slide-in": {
-    "0%": {
-      transform: "translateX(-100%) translateY(110%)",
+  // Додаємо зміни для мобільних і планшетних версій
+  "@media (max-width: 1439px)": {
+    "& .MuiPaper-root": {
+      transformOrigin: "right center",
+      animation: "slide-in-mobile 0.3s ease-out forwards",
     },
-    "100%": {
-      transform: "translateX(60%) translateY(110%)",
+    "@keyframes slide-in-mobile": {
+      "0%": {
+        transform: "translateX(200%) translateY(100%)",
+      },
+      "100%": {
+        transform: "translateX(100%) translateY(100%)",
+      },
+    },
+  },
+  "@media (min-width: 1440px)": {
+    "@keyframes slide-in": {
+      "0%": {
+        transform: "translateX(-100%) translateY(110%)",
+      },
+      "100%": {
+        transform: "translateX(60%) translateY(110%)",
+      },
     },
   },
   "@media (min-width: 1920px)": {
@@ -61,7 +78,13 @@ const CustomMenuItem = styled(MenuItem)(() => ({
 
 interface Props {
   color: string;
-  handleClose?: () => void;
+  handleClose?: (
+    event:
+      | React.MouseEvent<HTMLElement>
+      | React.KeyboardEvent<HTMLElement>
+      | {},
+    reason: "backdropClick" | "escapeKeyDown"
+  ) => void;
 }
 
 export default function CleaningServices({ color, handleClose }: Props) {
@@ -72,14 +95,27 @@ export default function CleaningServices({ color, handleClose }: Props) {
     setAnchorEl(event.currentTarget);
   };
 
-  const onClose = () => {
+  const onClose = (
+    event:
+      | React.MouseEvent<HTMLElement>
+      | React.KeyboardEvent<HTMLElement>
+      | {},
+    reason: "backdropClick" | "escapeKeyDown"
+  ) => {
     setAnchorEl(null);
+    if (handleClose) {
+      handleClose(event, reason);
+    }
   };
 
-  const handleMenuItemClick = () => {
-    onClose();
+  const handleMenuItemClick = (
+    event:
+      | React.MouseEvent<HTMLAnchorElement>
+      | React.KeyboardEvent<HTMLAnchorElement>
+  ) => {
+    setAnchorEl(null);
     if (handleClose) {
-      handleClose();
+      handleClose(event, "backdropClick");
     }
   };
 
@@ -104,7 +140,6 @@ export default function CleaningServices({ color, handleClose }: Props) {
         anchorEl={anchorEl}
         transition
         placement="right-start"
-        // placement="bottom-start"
       >
         <CustomMenu
           id="services-menu"
@@ -124,8 +159,10 @@ export default function CleaningServices({ color, handleClose }: Props) {
           }}
         >
           {links.map((link, index) => (
-            <CustomMenuItem key={index} onClick={handleMenuItemClick}>
-              <Link href={link.href} >{link.text}</Link>
+            <CustomMenuItem key={index}>
+              <Link href={link.href} onClick={handleMenuItemClick}>
+                {link.text}
+              </Link>
             </CustomMenuItem>
           ))}
         </CustomMenu>
