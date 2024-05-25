@@ -2,10 +2,7 @@
 
 import Link from "next/link";
 import { FC } from "react";
-
 import CleaningOptions from "../Menu/CleaningOptions";
-import CleaningServices from "../Menu/CleaningServises";
-import CleaningProcesses from "../Menu/CleningProcesses";
 import { PROCESSES_LINKS, SERVICES_LINKS } from "@/global/navigation";
 
 interface NavLink {
@@ -33,20 +30,18 @@ const NavMobile: FC<NavLinksProps> = ({ links, toggleDrawer }) => {
       <li>
         <CleaningOptions
           color="#006778"
-          buttonText="Cleaning Services"
-          links={SERVICES_LINKS}
-          toggleDrawer={toggleDrawer}
-        />
-        {/* <CleaningServices color="#006778" toggleDrawer={toggleDrawer} /> */}
-      </li>
-      <li>
-        <CleaningOptions
-          color="#006778"
           buttonText="Cleaning Process"
           links={PROCESSES_LINKS}
           toggleDrawer={toggleDrawer}
         />
-        {/* <CleaningProcesses color="#006778" toggleDrawer={toggleDrawer} /> */}
+      </li>
+      <li>
+        <CleaningOptions
+          color="#006778"
+          buttonText="Cleaning Services"
+          links={SERVICES_LINKS}
+          toggleDrawer={toggleDrawer}
+        />
       </li>
     </ul>
   );

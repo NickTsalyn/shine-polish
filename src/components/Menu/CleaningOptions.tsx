@@ -137,7 +137,7 @@ export default function CustomDropdownMenu({ color, buttonText, links, toggleDra
           }}
         >
           {links.map((link, index) => (
-            <CustomMenuItem key={index} onClick={handleItemClick}>
+            <CustomMenuItem key={index} onClick={handleItemClick} >
               <Link href={link.href}>{link.text}</Link>
             </CustomMenuItem>
           ))}

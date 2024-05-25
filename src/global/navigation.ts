@@ -13,7 +13,7 @@ export const MOBILE_LINKS = [
   { href: "#sign", text: "Sign Up / Sign In" },
 ];
 
-export const SERVICES_LINKS = [
+export const PROCESSES_LINKS = [
   { href: "/", text: "Kitchen Cleaning Services" },
   { href: "/", text: "Bedroom Cleaning Services" },
   { href: "/bathroom-services", text: "Bathroom Cleaning Services" },
@@ -21,11 +21,10 @@ export const SERVICES_LINKS = [
   { href: "/dining-room-process", text: "Dining Room Cleaning Services" },
 ];
 
-export const PROCESSES_LINKS = [
+export const SERVICES_LINKS = [
   { href: "/", text: "House Cleaning" },
   { href: "/", text: "Apartment Cleaning" },
   { href: "/", text: "Deep Cleaning" },
   { href: "/", text: "Move-In/Move-Out Cleaning" },
-  { href: "/", text: "Carpet Cleaning" },
   { href: "/", text: "Airbnb Cleaning" },
 ];
