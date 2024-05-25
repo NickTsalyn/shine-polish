@@ -19,15 +19,15 @@ const UserIcon = styled(AccountCircleIcon)(() => ({
 
 const socialIcons = [
   {
-    icon: <FacebookRoundedIcon style={{ color: "white", fontSize: 36 }} />,
+    icon: <FacebookRoundedIcon className="text-white size-9" />,
     href: "https://facebook.com",
   },
   {
-    icon: <InstagramIcon style={{ color: "white", fontSize: 36 }} />,
+    icon: <InstagramIcon className="text-white size-9" />,
     href: "https://instagram.com",
   },
   {
-    icon: <WhatsAppIcon style={{ color: "white", fontSize: 36 }} />,
+    icon: <WhatsAppIcon className="text-white size-9" />,
     href: "https://whatsapp.com",
   },
 ];
@@ -55,7 +55,7 @@ export default function Sidebar() {
           <p className=" body font-light text-white">Hello, Fiona</p>
         </div>
       )}
-     
+
       <div className="mb-5 ">
         <NavLinks links={SIDEBAR_LINKS} />
       </div>

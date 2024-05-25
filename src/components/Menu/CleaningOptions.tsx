@@ -3,19 +3,10 @@
 import * as React from "react";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import { styled } from "@mui/material/styles";
 import Popper from "@mui/material/Popper";
+import { styled } from "@mui/material/styles";
 import Link from "next/link";
 import { CustomButton } from "./CustomButton";
-
-const links = [
-  { href: "/", text: "House Cleaning" },
-  { href: "/", text: "Apartment Cleaning" },
-  { href: "/", text: "Deep Cleaning" },
-  { href: "/", text: "Move-In/Move-Out Cleaning" },
-  { href: "/", text: "Carpet Cleaning" },
-  { href: "/", text: "Airbnb Cleaning" },
-];
 
 const CustomMenu = styled(Menu)(() => ({
   "& .MuiPaper-root": {
@@ -82,10 +73,12 @@ const CustomMenuItem = styled(MenuItem)(() => ({
 
 interface Props {
   color: string;
+  buttonText: string;
+  links: { href: string; text: string }[];
   toggleDrawer?: () => void;
 }
 
-export default function CleaningProcesses({ color, toggleDrawer }: Props) {
+export default function CustomDropdownMenu({ color, buttonText, links, toggleDrawer }: Props) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
@@ -111,13 +104,13 @@ export default function CleaningProcesses({ color, toggleDrawer }: Props) {
   return (
     <>
       <ServButton
-        id="process-btn"
-        aria-controls={open ? "process-menu" : undefined}
+        id="custom-btn"
+        aria-controls={open ? "custom-menu" : undefined}
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
       >
-        <span className="capitalize">Cleaning Process</span>
+        <span className="capitalize">{buttonText}</span>
       </ServButton>
       <Popper
         sx={{ zIndex: 1200 }}
@@ -127,12 +120,12 @@ export default function CleaningProcesses({ color, toggleDrawer }: Props) {
         placement="right-start"
       >
         <CustomMenu
-          id="process-menu"
+          id="custom-menu"
           anchorEl={anchorEl}
           open={open}
           onClose={onClose}
           MenuListProps={{
-            "aria-labelledby": "process-btn",
+            "aria-labelledby": "custom-btn",
           }}
           anchorOrigin={{
             vertical: "top",

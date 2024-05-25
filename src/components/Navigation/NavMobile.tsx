@@ -2,8 +2,11 @@
 
 import Link from "next/link";
 import { FC } from "react";
+
+import CleaningOptions from "../Menu/CleaningOptions";
 import CleaningServices from "../Menu/CleaningServises";
 import CleaningProcesses from "../Menu/CleningProcesses";
+import { PROCESSES_LINKS, SERVICES_LINKS } from "@/global/navigation";
 
 interface NavLink {
   href: string;
@@ -12,26 +15,38 @@ interface NavLink {
 
 interface NavLinksProps {
   links: NavLink[];
-  handleClose?: () => void;
+  toggleDrawer?: () => void;
 }
 
-const NavMobile: FC<NavLinksProps> = ({ links, handleClose }) => {
+const NavMobile: FC<NavLinksProps> = ({ links, toggleDrawer }) => {
   return (
     <ul className="flex flex-col gap-3 md:gap-[18px] justify-start ">
       {links.map((link, index) => (
         <li
           key={index}
           className="text-[20px] font-normal leading-[1.2]"
-          onClick={handleClose}
+          onClick={toggleDrawer}
         >
           <Link href={link.href}>{link.text}</Link>
         </li>
       ))}
       <li>
-        <CleaningServices color="#006778" handleClose={handleClose}/>
+        <CleaningOptions
+          color="#006778"
+          buttonText="Cleaning Services"
+          links={SERVICES_LINKS}
+          toggleDrawer={toggleDrawer}
+        />
+        {/* <CleaningServices color="#006778" toggleDrawer={toggleDrawer} /> */}
       </li>
       <li>
-        <CleaningProcesses color="#006778" handleClose={handleClose}/>
+        <CleaningOptions
+          color="#006778"
+          buttonText="Cleaning Process"
+          links={PROCESSES_LINKS}
+          toggleDrawer={toggleDrawer}
+        />
+        {/* <CleaningProcesses color="#006778" toggleDrawer={toggleDrawer} /> */}
       </li>
     </ul>
   );

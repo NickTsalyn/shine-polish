@@ -2,8 +2,10 @@
 
 import Link from "next/link";
 import { FC, useState } from "react";
+import CleaningOptions from "../Menu/CleaningOptions";
 import CleaningServices from "../Menu/CleaningServises";
 import CleaningProcesses from "../Menu/CleningProcesses";
+import { PROCESSES_LINKS, SERVICES_LINKS } from "@/global/navigation";
 
 interface NavLink {
   href: string;
@@ -38,11 +40,20 @@ const NavLinks: FC<NavLinksProps> = ({ links, handleClose }) => {
         </li>
       ))}
       <li>
-        <CleaningServices color="#fff" />
+        {/* <CleaningServices color="#fff" /> */}
+        <CleaningOptions
+          color="#fff"
+          buttonText="Cleaning Services"
+          links={SERVICES_LINKS}
+        />
       </li>
       <li>
-        <CleaningProcesses color="#fff" />
-      </li>
+      <CleaningOptions
+          color="#fff"
+          buttonText="Cleaning Process"
+          links={PROCESSES_LINKS}
+        />
+        {/* <CleaningProcesses color="#fff" /> */}</li>
     </ul>
   );
 };

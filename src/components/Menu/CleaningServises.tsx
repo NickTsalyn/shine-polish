@@ -13,7 +13,7 @@ const links = [
   { href: "/", text: "Bedroom Cleaning Services" },
   { href: "/bathroom-services", text: "Bathroom Cleaning Services" },
   { href: "/living-room-process", text: "Living room Cleaning Services" },
-  { href: "/", text: "Dining Room Cleaning Services" },
+  { href: "/dining-room-process", text: "Dining Room Cleaning Services" },
 ];
 
 const CustomMenu = styled(Menu)(() => ({
@@ -25,18 +25,21 @@ const CustomMenu = styled(Menu)(() => ({
     transformOrigin: "left center",
     animation: "slide-in 0.3s ease-out forwards",
   },
-  // Додаємо зміни для мобільних і планшетних версій
-  "@media (max-width: 1439px)": {
-    "& .MuiPaper-root": {
-      transformOrigin: "right center",
-      animation: "slide-in-mobile 0.3s ease-out forwards",
+  "@keyframes slide-in": {
+    "0%": {
+      transform: "translateX(100%) translateY(100%)",
     },
-    "@keyframes slide-in-mobile": {
+    "100%": {
+      transform: "translateX(0) translateY(100%)",
+    },
+  },
+  "@media (min-width: 768px)": {
+    "@keyframes slide-in": {
       "0%": {
-        transform: "translateX(200%) translateY(100%)",
+        transform: "translateX(200%) translateY(145%)",
       },
       "100%": {
-        transform: "translateX(100%) translateY(100%)",
+        transform: "translateX(0) translateY(145%)",
       },
     },
   },
@@ -78,16 +81,10 @@ const CustomMenuItem = styled(MenuItem)(() => ({
 
 interface Props {
   color: string;
-  handleClose?: (
-    event:
-      | React.MouseEvent<HTMLElement>
-      | React.KeyboardEvent<HTMLElement>
-      | {},
-    reason: "backdropClick" | "escapeKeyDown"
-  ) => void;
+  toggleDrawer?: () => void;
 }
 
-export default function CleaningServices({ color, handleClose }: Props) {
+export default function CleaningServices({ color, toggleDrawer }: Props) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
@@ -95,27 +92,14 @@ export default function CleaningServices({ color, handleClose }: Props) {
     setAnchorEl(event.currentTarget);
   };
 
-  const onClose = (
-    event:
-      | React.MouseEvent<HTMLElement>
-      | React.KeyboardEvent<HTMLElement>
-      | {},
-    reason: "backdropClick" | "escapeKeyDown"
-  ) => {
+  const onClose = () => {
     setAnchorEl(null);
-    if (handleClose) {
-      handleClose(event, reason);
-    }
   };
 
-  const handleMenuItemClick = (
-    event:
-      | React.MouseEvent<HTMLAnchorElement>
-      | React.KeyboardEvent<HTMLAnchorElement>
-  ) => {
+  const handleItemClick = () => {
     setAnchorEl(null);
-    if (handleClose) {
-      handleClose(event, "backdropClick");
+    if (toggleDrawer) {
+      toggleDrawer();
     }
   };
 
@@ -159,10 +143,8 @@ export default function CleaningServices({ color, handleClose }: Props) {
           }}
         >
           {links.map((link, index) => (
-            <CustomMenuItem key={index}>
-              <Link href={link.href} onClick={handleMenuItemClick}>
-                {link.text}
-              </Link>
+            <CustomMenuItem key={index} onClick={handleItemClick}>
+              <Link href={link.href}>{link.text}</Link>
             </CustomMenuItem>
           ))}
         </CustomMenu>
