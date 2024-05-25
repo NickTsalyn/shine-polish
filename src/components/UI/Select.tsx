@@ -18,58 +18,63 @@ export default function BasicSelect(props: BasicSelectProps) {
   };
 
   return (
-      <Box sx={{ minWidth: 280 }}>
-        <label className=" body flex">{props.label}</label>
+    <Box className="min-w-[280px] lg:text-[24px]">
+      <label className="body lg:text-[24px]">{props.label}</label>
 
-        <FormControl
-          fullWidth
-          sx={{
-            padding: "12",
-            border: "2px solid #E6BA95",
-            borderRadius: "12px",
-            transition: "all 0.3s ease",
-            "&:hover": {
-              border: "3px solid #E6BA95",
-              background: "var(--Color, #FFF)",
-              boxShadow:
-                "0px 30px 60px -12px rgba(50, 50, 93, 0.25), 0px 18px 36px -18px rgba(0, 0, 0, 0.30)",
-            },
-            "& .MuiOutlinedInput-notchedOutline": {
-              border: "none",
-            },
-            "&:hover .MuiOutlinedInput-notchedOutline": {
-              border: "none",
+      <FormControl
+        fullWidth
+        sx={{
+          padding: "12",
+          border: "2px solid #E6BA95",
+          borderRadius: "12px",
+          transition: "all 0.3s ease",
+          "&:hover": {
+            border: "3px solid #E6BA95",
+            background: "var(--Color, #FFF)",
+            boxShadow:
+              "0px 30px 60px -12px rgba(50, 50, 93, 0.25), 0px 18px 36px -18px rgba(0, 0, 0, 0.30)",
+          },
+          "& .MuiOutlinedInput-notchedOutline": {
+            border: "none",
+          },
+          "&:hover .MuiOutlinedInput-notchedOutline": {
+            border: "none",
+          },
+        }}
+      >
+        <Select
+          id="demo-simple-select"
+          value={props.value}
+          displayEmpty
+          onChange={props.onChange}
+          open={open}
+          onOpen={handleOpen}
+          onClose={handleOpen}
+          className=" body focus:outline-none"
+          MenuProps={{
+            PaperProps: {
+              style: {
+                borderRadius: "20px",
+              },
             },
           }}
         >
-          <Select
-            id="demo-simple-select"
-            value={props.value}
-            displayEmpty
-            inputProps={{ "aria-label": "Without label" }}
-            onChange={props.onChange}
-            open={open}
-            onOpen={handleOpen}
-            onClose={handleOpen}
-            className=" body focus:outline-none"
-            // IconComponent={open ? KeyboardArrowUpIcon : KeyboardArrowDownIcon}
-          >
-            <MenuItem value="" disabled>
-              <em className=" body text-secondary-placeholder not-italic">
-                {props.placeholder}
-              </em>
+          <MenuItem value="" disabled>
+            <em className="lg:text-[24px] text-secondary-placeholder/50 not-italic body opacity-50">
+              {props.placeholder}
+            </em>
+          </MenuItem>
+          {props.items.map((item) => (
+            <MenuItem
+              key={item.value}
+              value={item.value}
+              className="body lg:text-[24px] w-[86%] bg-white text-secondary border-b border-solid border-secondary mx-auto"
+            >
+              {item.label}
             </MenuItem>
-            {props.items.map((item) => (
-              <MenuItem
-                key={item.value}
-                value={item.value}
-                className="body bg-white text-secondary-placeholder"
-              >
-                {item.label}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-      </Box>
+          ))}
+        </Select>
+      </FormControl>
+    </Box>
   );
 }
