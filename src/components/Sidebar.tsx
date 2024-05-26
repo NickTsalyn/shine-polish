@@ -10,6 +10,8 @@ import { styled } from "@mui/material/styles";
 
 import NavLinks from "./Navigation/NavLinks";
 import Button from "./UI/Button";
+import SignInModal from "./SignInModal";
+import BasicModal from "./UI/Modal";
 
 const UserIcon = styled(AccountCircleIcon)(() => ({
   color: "#fff",
@@ -33,6 +35,15 @@ const socialIcons = [
 
 export default function Sidebar() {
   const [auth] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   return (
     <aside className="  hidden lg:flex flex-col content-around fixed inset-y-0 left-0 px-5 xl:px-[26px] pt-[46px] pb-6 w-[200px] h-screen xl:w-[244px] bg-main z-10">
@@ -70,11 +81,18 @@ export default function Sidebar() {
           )}
           {!auth && (
             <li>
-              <Button style="sidebar-auth-in" type="button">
+              <Button
+                style="sidebar-auth-in"
+                type="button"
+                onClick={handleOpen}
+              >
                 <span className="body text-secondary">
                   Sign In <span className="text-white">or </span>Sign Up
                 </span>
               </Button>
+              <BasicModal open={open} onClose={handleClose}>
+                <SignInModal />
+              </BasicModal>
             </li>
           )}
           <li>

@@ -19,7 +19,7 @@ export default function Input({
 
   switch (style) {
     case "sign-in-input":
-      styles = `block mx-auto w-full md:w-[320px] ${width} py-[8px] lg:py-[12px] px-[9px] lg:px-[16px] bg-transparent text-main border-2 focus:border-[3px] border-solid border-tertial rounded-[12px] focus:shadow-input-shadow outline-none placeholder:text-main placeholder:opacity-50 focus:invalid:input-border-gradient-error invalid:input-border-gradient-error`;
+      styles = `block mx-auto w-full md:w-[320px] py-[8px] lg:py-[12px] px-[9px] lg:px-[16px] mb-[12px] bg-transparent text-main border-2 focus:border-[3px] border-solid border-tertial rounded-[12px] focus:shadow-input-shadow outline-none placeholder:text-main placeholder:opacity-50 focus:invalid:input-border-gradient-error invalid:input-border-gradient-error`;
       break;
     case "sign-up-input":
       styles = `block mx-auto w-full md:w-[300px] ${width} py-[8px] lg:py-[12px] px-[9px] lg:px-[16px] bg-transparent text-main border-2 focus:border-[3px] border-solid border-tertial rounded-[12px] focus:shadow-input-shadow outline-none placeholder:text-main placeholder:opacity-50 input-border-gradient focus:invalid:input-border-gradient-error invalid:input-border-gradient-error `;
