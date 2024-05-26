@@ -5,6 +5,7 @@ interface InputProps {
   type: "email" | "password" | "text" | "tel";
   placeholder?: string;
   style: "sign-in-input" | "sign-up-input" | "form-input" | "modal-input";
+  width?: string;
 }
 
 export default function Input({
@@ -12,25 +13,22 @@ export default function Input({
   type,
   placeholder,
   style,
+  width,
 }: InputProps) {
   let styles = "";
 
   switch (style) {
     case "sign-in-input":
-      styles =
-        "block mx-auto mb-[10px] w-full md:w-[320px] py-[8px] lg:py-[12px] px-[9px] lg:px-[16px] bg-transparent text-main border-2 focus:border-[3px] border-solid border-tertial rounded-[12px] focus:shadow-input-shadow outline-none placeholder:text-main placeholder:opacity-50";
+      styles = `block mx-auto w-full md:w-[320px] ${width} py-[8px] lg:py-[12px] px-[9px] lg:px-[16px] bg-transparent text-main border-2 focus:border-[3px] border-solid border-tertial rounded-[12px] focus:shadow-input-shadow outline-none placeholder:text-main placeholder:opacity-50 focus:invalid:input-border-gradient-error invalid:input-border-gradient-error`;
       break;
     case "sign-up-input":
-      styles =
-        "block mx-auto mb-[10px] w-full md:w-[300px] py-[8px] lg:py-[12px] px-[9px] lg:px-[16px] bg-transparent text-main border-2 focus:border-[3px] border-solid border-tertial rounded-[12px] focus:shadow-input-shadow outline-none placeholder:text-main placeholder:opacity-50 input-border-gradient-error";
+      styles = `block mx-auto w-full md:w-[300px] ${width} py-[8px] lg:py-[12px] px-[9px] lg:px-[16px] bg-transparent text-main border-2 focus:border-[3px] border-solid border-tertial rounded-[12px] focus:shadow-input-shadow outline-none placeholder:text-main placeholder:opacity-50 input-border-gradient focus:invalid:input-border-gradient-error invalid:input-border-gradient-error `;
       break;
     case "form-input":
-      styles =
-        "block mx-full mb-[10px] w-full  hx-full h-full py-[8px] lg:py-[12px] px-[8px] lg:px-[16px] bg-transparent text-text border-solid border-2 focus:border-[3px] border-secondary rounded-[12px] focus:shadow-input-shadow outline-none xl:placeholder:text-[16px] placeholder:text-secondary-placeholder placeholder:opacity-50";
+      styles = `block mx-full mb-[10px] w-full hx-full h-full ${width} py-[8px] lg:py-[12px] px-[8px] lg:px-[16px] bg-transparent text-text border-solid border-2 focus:border-[3px] border-secondary rounded-[12px] focus:shadow-input-shadow outline-none xl:placeholder:text-[16px] placeholder:text-secondary-placeholder placeholder:opacity-50`;
       break;
     case "modal-input":
-      styles =
-        "block mx-auto mb-[10px] w-full py-[25px] px-[50px] bg-transparent text-main border-solid border focus:border-[2px] border-main rounded-[12px] focus:shadow-input-shadow outline-none placeholder:text-main placeholder:opacity-35 input-border-gradient-modal";
+      styles = `block mx-auto w-full py-[12px] md:py-[20px] lg:py-[24px] px-[16px] bg-transparent text-main border-solid border focus:border-[2px] border-main rounded-[12px] focus:shadow-input-shadow outline-none placeholder:text-main placeholder:opacity-35 input-border-gradient-modal focus:invalid:input-border-gradient-error invalid:input-border-gradient-error`;
       break;
 
     default:
