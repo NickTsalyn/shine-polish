@@ -96,7 +96,7 @@ export const BEDROOM_SERVICES = {
     items: [
       {
         title: "Daily:",
-        subtitle: "Make the Bed:",
+        subtitle: ["Make the Bed:"],
         description: [
           "Making the bed daily helps maintain a neat and organized appearance in the bedroom.",
         ],
