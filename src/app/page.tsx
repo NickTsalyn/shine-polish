@@ -10,19 +10,21 @@ import SectionJustAsk from "@/components/JustAskSection";
 import React from "react";
 import WorkWithUs from "@/components/WorkWithUs";
 import LastSectionHome from "@/components/LastSectionHome";
+import { Checklist } from "@/components/Сhecklist/Checklist";
 
 
 export default function Home() {
   return (
     <>
-      <Hero/>
+      {/* <Hero/>
       <SectionEstimate />
       <BeforeAfter data={dataSlider} />
       <Reviews />
       <ServiceAreas />
       <SectionJustAsk />
       <WorkWithUs/>
-      <LastSectionHome />
+      <LastSectionHome /> */}
+      <Checklist/>
 
     </>
   );
