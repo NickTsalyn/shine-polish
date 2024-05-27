@@ -10,8 +10,6 @@ import { styled } from "@mui/material/styles";
 
 import NavLinks from "./Navigation/NavLinks";
 import Button from "./UI/Button";
-import SignInModal from "./SignInModal";
-import BasicModal from "./UI/Modal";
 
 const UserIcon = styled(AccountCircleIcon)(() => ({
   color: "#fff",
@@ -86,13 +84,11 @@ export default function Sidebar() {
                 type="button"
                 onClick={handleOpen}
               >
+                <Link href="/sing-in-form"></Link>
                 <span className="body text-secondary">
                   Sign In <span className="text-white">or </span>Sign Up
                 </span>
               </Button>
-              <BasicModal open={open} onClose={handleClose}>
-                <SignInModal />
-              </BasicModal>
             </li>
           )}
           <li>
