@@ -67,7 +67,8 @@ export const APPARTMENT_SERVICES = {
         title:"TRADITIONAL VS. DEEP CLEANING APARTMENT SERVICES",
         paragraps: [
             "For many customers, traditional home cleaning services are enough to keep an apartment free of the dirt, dust and grime of everyday life. For others, they need a deep cleaning service to get their bedrooms and bathrooms up to their standards. That’s when it’s time to clean the home in a more thorough way with deep cleaning. During a deep clean, we can spend extra hours to clean your apartment from top to bottom.",
-            "When To Choose Deep Cleaning Request a deep cleaning for your apartment if:"
+            "When To Choose Deep Cleaning ",
+            "Request a deep cleaning for your apartment if:"
         ],
         resons: [
             "It hasn’t been cleaned for at least 45 days",
