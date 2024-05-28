@@ -61,11 +61,11 @@ export default function Button(props: PropsButtton) {
       break;
     case "auth-sign-up-border":
       styles =
-        " w-[128px] h-[40px] flex justify-center items-center py-2 lg:py-4 px-6 lg:px-14 border border-blue rounded-xl bg-main ";
+        " w-[128px] h-[40px] lg:w-[200px] lg:h-[60px] flex justify-center items-center py-2 lg:py-4 px-6 lg:px-14 border border-blue rounded-xl bg-main ";
       break;
     case "auth-sign":
       styles =
-        "w-[128px] h-[36px]  bg-auth-button-bgn rounded-xl flex justify-center items-center";
+        "w-[128px] h-[36px] lg:w-[164px] lg:h-[40px] bg-auth-button-bgn rounded-xl flex justify-center items-center";
       break;
     case "apply-btn-light":
       styles =
