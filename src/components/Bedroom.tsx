@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { BEDROOM_SERVICES } from "@/global/bedroom";
-import RoomIMG from "../../public/images/cleaning-services/cs-bedroom.png";
+import RoomIMG from "../../public/images/bedroom/bedroom@2x.webp";
 import BasicBreadcrumbs from "./UI/Breadcrumbs";
 import IconPlus from "../../public/icons/Icon_plus-min.png";
 import { Tooltip, TooltipProps } from "@mui/material";
@@ -20,7 +20,7 @@ const CustomTooltip = (props: JSX.IntrinsicAttributes & TooltipProps) => (
     {...props}
     classes={{
       tooltip:
-        "bg-[#E6BA95CC] text-white text-center text-xs md:text-sm lg:text-base rounded-xl w-20 md:w-28 lg:w-36 p-2",
+        "bg-[#E6BA95CC] text-white text-center text-xs md:text-sm lg:text-base rounded-xl w-20 md:w-28 lg:w-36 p-2 lg:p-3",
     }}
   />
 );
@@ -29,10 +29,10 @@ export default function Bedroom() {
   const { title, paragraph, processes, frequencies, needs } = BEDROOM_SERVICES;
   return (
     <div className="body text-text">
-      <h1 className=" h3 text-main mb-3 md:mb-[18px] lg:mb-7">{title}</h1>
+      <h1 className="h3 text-main mb-3 md:mb-[18px] lg:mb-7">{title}</h1>
       <BasicBreadcrumbs
-        pageHref="cleaning-services"
-        pageName="Cleaning Services"
+        pageHref="cleaning-process"
+        pageName="Cleaning Process"
         roomName="Bedroom"
       />
       <div className="mb-5 md:mb-10 lg:mb-[60px] relative">
