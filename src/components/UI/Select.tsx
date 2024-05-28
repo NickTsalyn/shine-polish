@@ -1,14 +1,25 @@
 "use client";
 
-import { Box, FormControl, MenuItem, Select, SelectChangeEvent } from "@mui/material";
+import {
+  Box,
+  FormControl,
+  MenuItem,
+  Select,
+  SelectChangeEvent,
+  styled,
+} from "@mui/material";
 import { useState } from "react";
 
+const StyledMenuItem = styled(MenuItem)(() => ({
+  fontFamily: "Lato",
+}));
+
 type BasicSelectProps = {
-  value: string | number;
-  label: string;
-  onChange: (event: SelectChangeEvent<string | number>) => void;
+  value: string;
   items: { value: string | number; label: string; color?: string }[];
-  placeholder: string;
+  onChange: (event: SelectChangeEvent<string | number>) => void;
+  label?: string;
+  placeholder?: string;
 };
 
 export default function BasicSelect(props: BasicSelectProps) {
@@ -18,8 +29,12 @@ export default function BasicSelect(props: BasicSelectProps) {
   };
 
   return (
-    <Box className="min-w-[280px] lg:text-[24px]">
-      <label className="body lg:text-[24px]">{props.label}</label>
+    <Box className="min-w-[280px] lg:text-[24px] xl:text-[32px]">
+      {props.label && (
+        <label className="body lg:text-[24px] xl:text-[32px]">
+          {props.label}
+        </label>
+      )}
 
       <FormControl
         fullWidth
@@ -46,6 +61,36 @@ export default function BasicSelect(props: BasicSelectProps) {
           id="demo-simple-select"
           value={props.value}
           displayEmpty
+          renderValue={(selected) => {
+            if (selected === "") {
+              return props.placeholder ? (
+                <p
+                  className="lg:text-[24px] xl:text-[32px] text-secondary-placeholder/50 body"
+                  style={{ fontFamily: "Lato" }}
+                >
+                  {props.placeholder}
+                </p>
+              ) : (
+                <p
+                  className="lg:text-[24px] xl:text-[32px] text-secondary-placeholder/50 body"
+                  style={{ fontFamily: "Lato" }}
+                >
+                  {props.items.length > 0 && props.items[0].label}
+                </p>
+              );
+            }
+            const selectedItem = props.items.find(
+              (item) => item.value === selected
+            );
+            return (
+              <p
+                className="lg:text-[24px] xl:text-[32px] text-secondary-placeholder/50 body"
+                style={{ fontFamily: "Lato" }}
+              >
+                {selectedItem ? selectedItem.label : selected}
+              </p>
+            );
+          }}
           onChange={props.onChange}
           open={open}
           onOpen={handleOpen}
@@ -59,19 +104,14 @@ export default function BasicSelect(props: BasicSelectProps) {
             },
           }}
         >
-          <MenuItem value="" disabled>
-            <em className="lg:text-[24px] text-secondary-placeholder/50 not-italic body opacity-50">
-              {props.placeholder}
-            </em>
-          </MenuItem>
           {props.items.map((item) => (
-            <MenuItem
+            <StyledMenuItem
               key={item.value}
               value={item.value}
               className="body lg:text-[24px] w-[86%] bg-white text-secondary border-b border-solid border-secondary mx-auto"
             >
               {item.label}
-            </MenuItem>
+            </StyledMenuItem>
           ))}
         </Select>
       </FormControl>
