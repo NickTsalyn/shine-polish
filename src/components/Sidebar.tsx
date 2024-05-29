@@ -80,7 +80,7 @@ export default function Sidebar() {
           )}
           <li>
             <Button style="sidebar-book-now" type="button">
-              <span className="body font-bold text-secondary">Book Now</span>
+              <Link href="/booking-form" className="body font-bold text-secondary">Book Now</Link>
             </Button>
           </li>
           <li>

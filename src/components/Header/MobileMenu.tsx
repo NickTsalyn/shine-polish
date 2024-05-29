@@ -1,6 +1,8 @@
 "use client";
 
-import React, { useState, MouseEvent } from "react";
+import { useState } from "react";
+import Link from "next/link";
+import Image from "next/legacy/image";
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
@@ -8,13 +10,11 @@ import MenuIcon from "@mui/icons-material/Menu";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import { styled } from "@mui/system";
-import Link from "next/link";
-import Image from "next/legacy/image";
 import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
-import CustomButton from "./UI/Button";
-import NavMobile from "./Navigation/NavMobile";
+import CustomButton from "../UI/Button";
+import NavMobile from "../Navigation/NavMobile";
 import { MOBILE_LINKS } from "@/global/navigation";
 
 const StyledMenuIcon = styled(MenuIcon)(() => ({
@@ -118,9 +118,12 @@ export default function MobileMenu() {
             </StyledItem>
             <StyledItem onClick={toggleDrawer}>
               <CustomButton style="burger-book-now" type="button">
-                <span className=" text-[20px] md:text-[24px] font-bold text-accent text-center">
+                <Link
+                  href="/booking-form"
+                  className=" text-[20px] md:text-[24px] font-bold text-accent text-center"
+                >
                   Book Now
-                </span>
+                </Link>
               </CustomButton>
             </StyledItem>
             <StyledItem onClick={toggleDrawer}>

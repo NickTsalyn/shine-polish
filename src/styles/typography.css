@@ -96,12 +96,19 @@
 /* subtitle booking form */
 
 .subtitle-booking {
-  @apply text-[24px];
+  @apply text-[18px];
   @apply font-normal;
   @apply leading-normal;
 }
-
 @screen md {
+  .subtitle-booking {
+    @apply text-[24px];
+    @apply font-normal;
+    @apply leading-[1.2];
+  }
+}
+
+@screen lg {
   .subtitle-booking {
     @apply text-[36px];
     @apply font-normal;
