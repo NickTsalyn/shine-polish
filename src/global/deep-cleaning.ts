@@ -64,8 +64,8 @@ export const DEEP_CLEANING = {
     },
     yourArea: {
         title: "Get World-Class Deep Cleaning in Your Area",
-        paragraphs: [
+        paragraphs: 
             "Modern Maids cares about your safety and well-being. We’re a reputable provider of deep, standard, as well as move-in/move-out cleaning and apartment cleaning. Our experienced team of cleaning experts will leave your house clean and refreshing for healthy living conditions."
-        ]
+        
 }
 }
