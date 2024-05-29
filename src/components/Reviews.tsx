@@ -54,7 +54,7 @@ const reviews = [
 
 export const Reviews: React.FC = () => {
   return (
-    <section className="mx-auto md:mb-[20px] lg:mb-[60px] xl:mb-[100px]">
+    <section id="reviews" className="mx-auto md:mb-[20px] lg:mb-[60px] xl:mb-[100px]">
       <div className="container mx-auto">
         <h2
           className={`h2 text-center mb-[23px] text-main sm:text-[28px] md:text-[48px] lg:text-[64px] xl:text-[64px] sm:leading-34 md:leading-58 lg:leading-76 xl:leading-76 `}
