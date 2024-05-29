@@ -4,7 +4,6 @@ import Link from "next/link";
 import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import GoogleIcon from "@mui/icons-material/Google";
-import Image from "next/image";
 
 export const SocialMediaSignIn = () => {
   return (
@@ -59,26 +58,49 @@ export const SocialMediaSignIn = () => {
 export const MobileScrinWaves = () => {
   return (
     <>
-      <Image
-        src="/icons/bgSignInForm/bgShine.png"
-        alt="just color"
-        width={324}
-        height={251}
-        className="z-0 rounded-b-[12px] md:hidden"
-        layout="responsive"
-        objectFit="cover"
-        objectPosition="center"
-      ></Image>
-      <Image
-        src="/icons/bgSignInForm/bgDark.png"
-        alt="just color"
-        width={326}
-        height={275}
-        className="absolute z-1 bottom-0 left-0 rounded-b-[12px] md:hidden"
-        layout="responsive"
-        objectFit="cover"
-        objectPosition="center"
-      ></Image>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="320"
+        height="244"
+        viewBox="0 0 320 244"
+        fill="none"
+      >
+        <path
+          d="M0 7.69432C111.577 60.1107 311.714 -25.5459 320.22 8.07003C328.725 41.686 320.22 251 320.22 251H0V7.69432Z"
+          fill="url(#paint0_linear_219_2646)"
+          fill-opacity="0.13"
+        />
+        <defs>
+          <linearGradient
+            id="paint0_linear_219_2646"
+            x1="38.5"
+            y1="31"
+            x2="295.5"
+            y2="125"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop stop-color="#00BFDE" />
+            <stop offset="0.144454" stop-color="#00B5D3" stop-opacity="0.945" />
+            <stop offset="0.505529" stop-color="#0092AA" stop-opacity="0.37" />
+            <stop offset="1" stop-color="#006778" stop-opacity="0.5" />
+          </linearGradient>
+        </defs>
+      </svg>
+
+      <div className="absolute z-1 bottom-0 left-0 rounded-b-[12px] md:hidden">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="320"
+          height="240"
+          viewBox="0 0 320 240"
+          fill="none"
+        >
+          <path
+            d="M0 30.869C111.348 83.4632 305.084 -59.8287 319.564 30.869C334.045 121.567 319.564 275 319.564 275H0V30.869Z"
+            fill="#006778"
+          />
+        </svg>
+      </div>
     </>
   );
 };
@@ -88,8 +110,8 @@ export const TabletScreenFirstWave = () => {
     <>
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="auto"
-        height="auto"
+        width="380"
+        height="178"
         viewBox="0 0 380 178"
         fill="none"
         className="rounded-br-[50px]"
@@ -109,8 +131,8 @@ export const TabletScreenSecondWave = () => {
     <>
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="auto"
-        height="auto"
+        width="380"
+        height="181"
         viewBox="0 0 380 181"
         fill="none"
         className="rounded-br-[50px] lg:hidden"
