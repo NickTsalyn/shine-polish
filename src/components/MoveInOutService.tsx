@@ -12,8 +12,8 @@ export default function MoveServices() {
     aboutUs,
   } = MOVE_INOUT_SERVICES;
   return (
-    <div className=" body text-text  flex flex-col justify-center md:justify-start items-center md:items-start ">
-      <h1 className=" subtitle-booking md:text-5xl lg:text-6xl md:leading-6 text-main max-w-64 md:max-w-[682px] lg:max-w-[920px] text-center md:text-start mb-5 md:mb-10 lg:mb-7 ">
+    <div className=" body text-text  flex flex-col justify-start items-start ">
+      <h1 className=" subtitle-booking md:text-5xl lg:text-6xl md:leading-6 text-main max-w-64 md:max-w-[682px] lg:max-w-[920px] text-start mb-5 md:mb-10 lg:mb-7 ">
         {title}
       </h1>
       <div className=" mb-2 md:mb-5 lg:mb-0">
@@ -68,11 +68,10 @@ export default function MoveServices() {
         </ul>
 
         <p className=" mb-5 lg:mb-8">
-          {involves.generalDustingParagraphSecond}{" "}
+          {involves.generalDustingParagraphSecond}
+
           <span className=" font-bold">
-            Ensuring these rooms are cleaned will allow you to relax and enjoy
-            your recreational activities best. We can help you with the
-            following:
+            {involves.generalDustingParagraphThird}
           </span>
         </p>
         <ul className="flex flex-col gap-1 mb-5 ">
@@ -84,7 +83,6 @@ export default function MoveServices() {
         </ul>
         <h2 className=" text-3xl text-main ">{benefits.titel}</h2>
         <p className="mb-5">{benefits.paragraph}</p>
-        <h3 className="mb-5 font-bold">{benefits.subTitle}</h3>
         <h3 className="mb-1 font-bold">{benefits.subTitleFirst}</h3>
         <p className="mb-5">{benefits.paragraphFirst}</p>
         <h3 className="mb-1 font-bold">{benefits.subTitleSecond}</h3>

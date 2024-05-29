@@ -43,7 +43,7 @@ export const MOVE_INOUT_SERVICES = {
         "Bedrooms and Living Areas",
          ],
     generalDustingParagraphSecond:"To make your home liveable, your bedrooms and common areas should be absolutely clean and comfortable.",
-    generalDustingParagraphThird:"Ensuring these rooms are cleaned will allow you to relax and enjoy your recreational activities best. We can help you with the following:",
+    generalDustingParagraphThird:" Ensuring these rooms are cleaned will allow you to relax and enjoy your recreational activities best. We can help you with the following:",
      generalDustingThird: [
          "Cleaning all types of doors",
          "Dusting window sills and blinds",
@@ -59,7 +59,6 @@ export const MOVE_INOUT_SERVICES = {
     benefits: {
         titel: "Why  Choose Us  for Your Move-out/Move-in Cleaning",
         paragraph:"Moving into a new house can be a daunting task especially with all the packing, unpacking, and cleaning. DIY cleaning may not be a good idea as it can be overwhelming and you may miss some important spots. To remain productive throughout the move-in and move-out process, contact Modern Maids of Dallas, Austin, Houston or San Antonio for professional cleaning.",
-        subTitle: "We’re the go-to cleaning service in Dallas, Austin, San Antonio and Houston areas because:",
         subTitleFirst: "We’re Experienced and Professional",
         paragraphFirst: "At Modern Maids, we have years of experience offering professional standard and deep cleaning services. Our maid service for moving-in and moving-out customers in the Dallas area is a sure way to get a good job done. This is because our maids are trained to offer the highest level of service and professionalism. Besides our expertise, we only use highly efficient and environmentally friendly cleaning products to leave you with a clean and healthy living space.",
         subTitleSecond: "We Have Online Booking",
