@@ -19,7 +19,7 @@ const ServiceAreas = (props: Props) => {
   ];
 
   return (
-    <section className="mb-[60px] md:mb-20 lg:mb-[120px] xl:mb-40">
+    <section id="service-areas" className="mb-[60px] md:mb-20 lg:mb-[120px] xl:mb-40">
       <div className="container mx-auto my-0 flex flex-col lg:flex-row lg:gap-12 xl:gap-10 items-center justify-center">
         <div className=" mb-10 md:mb-14 lg:mb-0">
           <h2 className="h3 text-main text-center mb-8 md:mb-12 lg:mb-8">
