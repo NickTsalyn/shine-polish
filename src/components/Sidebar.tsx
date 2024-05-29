@@ -84,10 +84,11 @@ export default function Sidebar() {
                 type="button"
                 onClick={handleOpen}
               >
-                <Link href={"/sing-in-form"}></Link>
-                <span className="body text-secondary">
-                  Sign In <span className="text-white">or </span>Sign Up
-                </span>
+                <Link href={"/sign-in-form"}>
+                  <span className="body text-secondary">
+                    Sign In <span className="text-white">or </span>Sign Up
+                  </span>
+                </Link>
               </Button>
             </li>
           )}

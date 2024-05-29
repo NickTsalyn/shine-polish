@@ -1,9 +1,9 @@
 "use client";
 
+import { useForm, SubmitHandler } from "react-hook-form";
+// import { useRouter } from "next/router";
+
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
-
-import React, { useState } from "react";
-
 import Button from "./UI/Button";
 import Input from "./UI/Input";
 import {
@@ -14,52 +14,98 @@ import {
   TabletScreenFirstWave,
   TabletScreenSecondWave,
 } from "./UI/SignInDesing";
+import Link from "next/link";
 
-type Props = {
-  open: boolean;
-  onClose?: () => void;
-};
+interface SignInInput {
+  email: string;
+  password: string;
+}
 
-const SignInForm = (props: Props) => {
-  const [open, setOpen] = useState(false);
+export default function SignInForm() {
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm<SignInInput>();
 
-  function handleClose() {
-    setOpen(false);
+  // const router = useRouter();
 
-    // const handleClose = () => {
-    //   onClose();
-    // };
-  }
+  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setValue("email", event.target.value, { shouldValidate: true });
+  };
+
+  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setValue("password", event.target.value, { shouldValidate: true });
+  };
 
   return (
-    <div className="flex flex-col ">
-      <div className="mx-auto my-0 relative w-[320px] md:w-[760px] lg:w-[960px] h-auto md:h-[516px] lg:h-[575px] rounded-[12px] md:rounded-[50px] md:flex shadow-main-shadow">
+    <div className="flex flex-col h-screen">
+      <div className="mx-auto my-auto relative w-[320px] md:w-[760px] lg:w-[960px] h-auto md:h-[516px] lg:h-[575px] rounded-[12px] md:rounded-[50px] md:flex shadow-main-shadow">
         <div className="absolute top-0 right-0 z-10 md:top-4 md:right-4">
-          <Button style="close-button" type="button" onClick={handleClose}>
-            <span className="text-main md:text-white ">
-              <CloseRoundedIcon />
-            </span>
+          <Button
+            style="close-button"
+            type="button"
+            // onClick={() => router.push("/")}
+          >
+            <Link href={"/"}>
+              <span className="text-main md:text-white hover:text-accent">
+                <CloseRoundedIcon className="" />
+              </span>
+            </Link>
           </Button>
         </div>
         <div className="pt-4 md:pt-[76px] lg:pt-[80px] pl-8 pr-8 flex flex-col md:items-center lg:w-[480px]">
-          <h2 className="text-main text-[40px] lg:text-[48] text-center mb-4 md:mb-5 lg:mb-6">
+          <h2 className="text-main text-[40px] lg:text-[48] text-center mb-4 md:mb-5 lg:mb-6 lg:font-normal">
             Sign in
           </h2>
 
           <div className="flex gap-[24px] lg:gap-[48px] mb-5 md:mb-7 lg:mb-9 justify-center">
             <SocialMediaSignIn />
           </div>
-          <p className="text-text text-[14px] lg:text-[20px] mb-[10px]">
-            Or sing using E-Mail Address
-          </p>
-          <Input style="sign-in-input" type="email" placeholder="Email*" />
-          <Input style="sign-in-input" type="password" placeholder="Password" />
-          <p className="text-accent text-[14px] lg:text-[20px] mb-[18px] md:mb-[30px]">
-            Forgot your password?
-          </p>
-          <Button style="auth-sign" type="button">
-            <span className="text-white text-[20px] uppercase">Sing In</span>
-          </Button>
+
+          <form
+            onSubmit={handleSubmit((data) => {
+              console.log(data);
+            })}
+          >
+            <div className="flex flex-col justify-center items-center">
+              <label className="mb-[10px]">
+                <span className="text-text text-[14px] lg:text-[20px]  lg:font-thin">
+                  Or sing using E-Mail Address
+                </span>
+              </label>
+              <Input
+                {...register("email", { required: "It's Ok" })}
+                style="sign-in-input"
+                type="email"
+                placeholder="Email*"
+                onChange={handleEmailChange}
+              />
+              <Input
+                {...register("password", {
+                  required: "You're the best",
+                  minLength: {
+                    value: 6,
+                    message: "Min lenght is 6",
+                  },
+                })}
+                style="sign-in-input"
+                type="password"
+                placeholder="Password"
+                onChange={handlePasswordChange}
+              />
+              <p className="text-accent text-[14px] lg:text-[20px] mb-[18px] md:mb-[30px] lg:font-light">
+                Forgot your password?
+              </p>
+
+              <Button style="auth-sign" type="submit">
+                <span className="text-white text-[20px] uppercase">
+                  Sing In
+                </span>
+              </Button>
+            </div>
+          </form>
         </div>
 
         <div className="md:bg-main md:w-[380px] lg:w-[480px] md:h-[516px] lg:h-[576px] relative z-[-1] bottom-0 left-0 md:rounded-br-[50px] md:rounded-tr-[50px]">
@@ -82,14 +128,16 @@ const SignInForm = (props: Props) => {
             <h3 className="text-white text-[32px] font-bold mb-2 lg:mb-[42px] lg:font-light lg:text-[48px]">
               Create Account!
             </h3>
-            <p className="text-white text-[16px] mb-3 md:mb-[42px] md:w-[207px] md:text-center lg:text-[24px] lg:w-[323px]">
+            <p className="text-white text-[16px] mb-3 md:mb-[42px] md:w-[207px] md:text-center lg:text-[24px] lg:w-[323px] lg:font-thin">
               Sing Up if you still don’t have an account...{" "}
             </p>
             <div className="flex justify-end items-end md:justify-center md:items-center">
               <Button style="auth-sign-up-border" type="button">
-                <span className="text-white uppercase text-[20px]">
-                  SING UP
-                </span>
+                <Link href={"/"}>
+                  <span className="text-white uppercase text-[20px]">
+                    SING UP
+                  </span>
+                </Link>
               </Button>
             </div>
           </div>
@@ -97,6 +145,4 @@ const SignInForm = (props: Props) => {
       </div>
     </div>
   );
-};
-
-export default SignInForm;
+}
