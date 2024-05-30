@@ -30,8 +30,7 @@ export default function Button(props: PropsButtton) {
         "py-1.5 md:py-1 bg-white border border-solid border-accent rounded-xl w-full";
       break;
     case "burger-contact-us":
-      styles =
-        "py-1 border border-solid border-secondary rounded-xl w-full";
+      styles = "py-1 border border-solid border-secondary rounded-xl w-full";
       break;
     case "home-book-now":
       styles =
@@ -78,7 +77,7 @@ export default function Button(props: PropsButtton) {
       break;
     case "send":
       styles =
-        "w-[148px] h-[36px] md:w-[162px] md:h-[48px] lg:w-[220px] rounded-xl bg-secondary hover:shadow-apply-send-button-shadow  focus:shadow-apply-send-button-shadow";
+        "w-[148px] h-[36px] md:w-[162px] md:h-[48px] lg:w-[220px] rounded-xl bg-secondary hover:bg-[#F6AD70]";
       break;
     case "deep-cleaning":
       styles =
