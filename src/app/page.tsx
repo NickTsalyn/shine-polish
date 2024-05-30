@@ -10,6 +10,7 @@ import SectionJustAsk from "@/components/JustAskSection";
 import React from "react";
 import WorkWithUs from "@/components/WorkWithUs";
 import LastSectionHome from "@/components/LastSectionHome";
+import dataBackground from "@/data/background-data.json";
 
 export default function Home() {
   return (
@@ -23,7 +24,7 @@ export default function Home() {
       <CleaningProcesses /> */}
       <SectionJustAsk />
       <WorkWithUs />
-      <LastSectionHome />
+      <LastSectionHome data={dataBackground} />
     </>
   );
 }

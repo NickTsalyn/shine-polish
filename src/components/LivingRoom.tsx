@@ -1,55 +1,9 @@
 import Image from "next/legacy/image";
-import { Tooltip, TooltipProps } from "@mui/material";
 import { LIVING_ROOM_SERVICES } from "@/global/living-room";
 import IconPlus from "../../public/icons/Icon_plus-min.png";
 import BasicBreadcrumbs from "./UI/Breadcrumbs";
-
-const icons = [
-  { title: "Clean Furniture", top: "48%", left: "13%" },
-  { title: "Dust and wipe down electronics", top: "24%", left: "36%" },
-  { title: "Clean Furniture", top: "56%", left: "38%" },
-  { title: "Clean Light Fixtures", top: "3%", left: "54%" },
-  { title: "Declutter", top: "60%", left: "56%" },
-  { title: "Address Pet Hair", top: "50%", left: "68%" },
-  { title: "Vacuum and Sweep", top: "88%", left: "80%" },
-];
-
-const CustomTooltip = (props: JSX.IntrinsicAttributes & TooltipProps) => (
-  <Tooltip
-    {...props}
-    classes={{
-      tooltip:
-        " bg-[#E6BA95CC] text-white text-center text-xs md:text-sm lg:text-base rounded-xl w-20 md:w-28 lg:w-36",
-    }}
-  />
-);
-
-const RoomImage = () => {
-  return (
-    <picture>
-      <source
-        srcSet="/images/living-room/living-room.webp 1x, /images/living-room/living-room@2x.webp 2x"
-        type="image/webp"
-        sizes="(max-width: 375px) 278px, (max-width: 768px) 716px, (max-width: 1440px) 1076px"
-      />
-      <source
-        srcSet="/images/living-room/living-room1.jpg 1x, /images/living-room/living-room1@2x.jpg 2x"
-        type="image/jpeg"
-        sizes="(max-width: 375px) 278px, (max-width: 768px) 716px, (max-width: 1440px) 1076px"
-      />
-      <img
-        src="/images/living-room/living-room1.jpg"
-        alt="photo of living room"
-        style={{
-          width: "100%",
-          height: "auto",
-          objectFit: "cover",
-          objectPosition: "center",
-        }}
-      />
-    </picture>
-  );
-};
+import { CustomTooltip, livingroomIcons } from "./UI/Tooltip";
+import { RoomImage } from "@/global/images";
 
 export default function LivingRoomServices() {
   const { title, paragraph, processes, frequencies, needs } =
@@ -64,7 +18,7 @@ export default function LivingRoomServices() {
       />
       <div className="relative mb-5 md:mb-10 lg:mb-[60px]">
         <RoomImage />
-        {icons.map((icon, index) => (
+        {livingroomIcons.map((icon, index) => (
           <CustomTooltip key={index} title={icon.title} placement="right-end">
             <div
               className="absolute z-20  flex items-center justify-center size-5 md:size-9 lg:size-14"
@@ -86,7 +40,7 @@ export default function LivingRoomServices() {
 
       <h2 className="text-main h4 mb-1 md:mb-2 lg:mb-4">{processes.title}</h2>
       <p className="mb-1">{processes.text}</p>
-      <ol className="flex flex-col gap-1.5">
+      <ol className="flex flex-col gap-1.5 list-decimal marker:font-semibold">
         {processes.items.map((item, index) => (
           <li key={index}>
             <h3 className="font-semibold mb-1">{item.title}</h3>
@@ -120,14 +74,14 @@ export default function LivingRoomServices() {
 
       <h2 className="text-main h4 mb-1 md:mb-2 lg:mb-4">{needs.title}</h2>
       <p className="mb-1">{needs.text}</p>
-      <ul className="flex flex-col gap-1.5 mb-3 md:mb-[18px] lg:mb-7">
+      <ol className="flex flex-col gap-1.5 mb-3 md:mb-[18px] lg:mb-7 list-decimal marker:font-semibold">
         {needs.items.map((item, index) => (
           <li key={index}>
             <h3 className="font-semibold mb-1">{item.title}</h3>
             <p>{item.description}</p>
           </li>
         ))}
-      </ul>
+      </ol>
       <p className="mb-3 md:mb-[18px] lg:mb-7 indent-1.5 font-semibold">
         {needs.summary}
       </p>

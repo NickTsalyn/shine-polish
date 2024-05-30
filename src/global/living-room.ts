@@ -12,82 +12,82 @@ export const LIVING_ROOM_SERVICES = {
     text: "Maintaining a clean and inviting living room is essential for creating a comfortable and enjoyable space. Here's a step-by-step guide to a thorough living room cleaning process:",
     items: [
       {
-        title: "1. Declutter:",
+        title: "Declutter:",
         description:
           "Start by removing any unnecessary items, such as magazines, newspapers, or items that don't belong in the living room. Clearing clutter makes it easier to clean surfaces.",
       },
       {
-        title: "2. Dusting:",
+        title: "Dusting:",
         description:
           "Dust all surfaces, including furniture, shelves, and decorative items. Pay attention to baseboards, window sills, and other often overlooked areas.",
       },
       {
-        title: "3. Clean Furniture:",
+        title: "Clean Furniture:",
         description:
           "Wipe down furniture surfaces, including tables, entertainment centers, and bookshelves. Use an appropriate cleaner for different types of materials.",
       },
       {
-        title: "4. Vacuum and Sweep:",
+        title: "Vacuum and Sweep:",
         description:
           "Vacuum the carpet or sweep the floor to remove crumbs, dirt, and debris. Pay attention to corners and under furniture. If you have hardwood or laminate floors, consider mopping as well.",
       },
       {
-        title: "5. Upholstery Cleaning:",
+        title: "Upholstery Cleaning:",
         description:
           "Vacuum upholstered furniture, such as sofas and chairs, to remove dust and debris. Use a fabric cleaner or upholstery attachment to address any stains or spills.",
       },
       {
-        title: "6. Window Treatments:",
+        title: "Window Treatments:",
         description:
           "Clean curtains or blinds according to the care instructions. Dust or vacuum blinds and wipe down curtain rods or tracks.",
       },
       {
-        title: "7. Electronics:",
+        title: "Electronics:",
         description:
           "Dust and wipe down electronics, such as TV screens, remote controls, and gaming consoles. Organize cords and cables.",
       },
       {
-        title: "8. Clean Light Fixtures:",
+        title: "Clean Light Fixtures:",
         description:
           "Dust and clean light fixtures, including lampshades and bulbs. Replace any burnt-out bulbs.",
       },
       {
-        title: "9. Check and Clean Air Vents:",
+        title: "Check and Clean Air Vents:",
         description:
           "Check and clean air vents or grilles to ensure proper air circulation. Remove dust and cobwebs.",
       },
       {
-        title: "10. Address Pet Hair:",
+        title: "Address Pet Hair:",
         description:
           "If you have pets, use a vacuum with a pet hair attachment or a lint roller to remove pet hair from furniture and surfaces.",
       },
       {
-        title: "11. Spot Clean Carpets and Rugs:",
+        title: "Spot Clean Carpets and Rugs:",
         description:
           "Address any stains or spills on carpets and rugs using a carpet cleaner or spot treatment.",
       },
       {
-        title: "12. Disinfect High-Touch Areas:",
+        title: "Disinfect High-Touch Areas:",
         description:
           "Disinfect frequently-touched areas, such as doorknobs, light switches, and remote controls.",
       },
       {
-        title: "13. Freshen Up:",
+        title: "Freshen Up:",
         description:
           "Consider using a fabric freshener or room spray to add a pleasant scent to the room.",
       },
       {
-        title: "14. Arrange Furniture:",
+        title: "Arrange Furniture:",
         description:
           "Rearrange furniture if desired and ensure items are placed back in an organized and visually pleasing manner.",
       },
       {
-        title: "15. Final Touches:",
+        title: "Final Touches:",
         description:
           "Return decluttered items to their designated places. Fluff pillows and arrange decorative items.",
       },
       {
-        title: "16. Regular Maintenance:",
+        title: "Regular Maintenance:",
         description:
           "Establish a routine cleaning schedule to maintain the cleanliness of your living room. Small, frequent cleanings are often more manageable than tackling a heavily soiled space.",
       },
@@ -146,62 +146,62 @@ export const LIVING_ROOM_SERVICES = {
     text: "Living room cleaning is essential for various reasons, contributing to the overall well-being of individuals and creating a comfortable and inviting space. Here are some key reasons why regular living room cleaning is necessary:",
     items: [
       {
-        title: "1. Health and Hygiene:",
+        title: "Health and Hygiene:",
         description:
           "Regular cleaning helps eliminate dust, allergens, and bacteria, creating a healthier indoor environment. This is particularly crucial for individuals with allergies or respiratory conditions.",
       },
       {
-        title: "2. Comfort and Relaxation:",
+        title: "Comfort and Relaxation:",
         description:
           "A clean living room contributes to a more comfortable and relaxing space. It allows individuals to unwind and enjoy leisure activities without the distraction of clutter or dirt.",
       },
       {
-        title: "3. Positive Atmosphere:",
+        title: "Positive Atmosphere:",
         description:
           "A well-maintained living room fosters a positive atmosphere. A tidy and organized space positively influences mood and mental well-being.",
       },
       {
-        title: "4. Guest Impressions:",
+        title: "Guest Impressions:",
         description:
           "A clean living room makes a positive impression on guests. It reflects a sense of hospitality and creates a welcoming environment for social gatherings.",
       },
       {
-        title: "5. Longevity of Furniture:",
+        title: "Longevity of Furniture:",
         description:
           "Regular cleaning helps preserve the condition of furniture, extending its lifespan and preventing the need for premature replacements.",
       },
       {
-        title: "6. Efficiency and Productivity:",
+        title: "Efficiency and Productivity:",
         description:
           "A clutter-free and organized living room promotes efficiency and productivity. It provides a conducive space for activities such as reading, working, or pursuing hobbies.",
       },
       {
-        title: "7. Odor Control:",
+        title: "Odor Control:",
         description:
           "Regular cleaning helps control odors caused by stale air, spills, or pet-related issues. This contributes to a fresher and more pleasant living space.",
       },
       {
-        title: "8. Preventing Pest Infestations:",
+        title: "Preventing Pest Infestations:",
         description:
           "Regular cleaning and decluttering help prevent pest infestations by eliminating hiding places and food sources that may attract pests.",
       },
       {
-        title: "9. Safety:",
+        title: "Safety:",
         description:
           "Maintaining a clean and organized living room reduces the risk of accidents and injuries. Removing tripping hazards and keeping the space tidy enhances overall safety.",
       },
       {
-        title: "10. Organization and Functionality:",
+        title: "Organization and Functionality:",
         description:
           "Cleaning and organizing the living room ensure that items are easily accessible. It enhances the functionality of the space and contributes to an organized and efficient daily routine.",
       },
       {
-        title: "11. Preserving Investments:",
+        title: "Preserving Investments:",
         description:
           "Investments in furniture, electronics, and decor can be preserved through regular cleaning and maintenance. This helps prevent wear and tear, ensuring the longevity of these items",
       },
       {
-        title: "12. Routine and Discipline:",
+        title: "Routine and Discipline:",
         description:
           "Establishing a routine for living room cleaning instills a sense of discipline and responsibility. It contributes to good habits and a well-maintained living space.",
       },

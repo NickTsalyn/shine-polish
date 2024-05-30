@@ -32,8 +32,8 @@ const socialIcons = [
 
 export default function Footer() {
   return (
-    <footer>
-      <div className="grid  grid-cols-2 md:grid-cols-4 gap-5 w-auto h-auto py-5 md:py-7 lg:py-9 px-5 md:px-7 lg:px-7 lg:pl-[240px] xl:pl-[282px] bg-main">
+    <footer className="lg:hidden">
+      <div className="grid  grid-cols-2 md:grid-cols-4 gap-5 w-auto h-auto py-5 md:py-7 lg:py-9 px-5 md:px-7 lg:px-7 lg:pl-[240px] xl:pl-[282px] bg-main ">
         <div className="lg:pr-px-[240px] xl:pr-px-[282px] w-[68px] h-[60px] md:w-[80px] md:h-[70px] lg:w-[120px] lg:h-[90px] xl:w-[150px] xl:h-[130px]">
           <Link href={"/"}>
             <Image
