@@ -1,29 +1,9 @@
 import Image from "next/image";
 import { BEDROOM_SERVICES } from "@/global/bedroom";
-import RoomIMG from "../../public/images/bedroom/bedroom@2x.webp";
 import BasicBreadcrumbs from "./UI/Breadcrumbs";
 import IconPlus from "../../public/icons/Icon_plus-min.png";
-import { Tooltip, TooltipProps } from "@mui/material";
-
-const icons = [
-  { title: "Freshen Up", top: "41%", left: "55%" },
-  { title: "Dusting", top: "25%", left: "34%" },
-  { title: "Bedding", top: "57%", left: "37%" },
-  { title: "Clean Window Treatments", top: "38%", left: "92%" },
-  { title: "Clean Furniture", top: "52%", left: "66%" },
-  { title: "Clean Light Fixtures", top: "5%", left: "53%" },
-  { title: "Vacuum and Clean Floors", top: "82%", left: "10%" },
-];
-
-const CustomTooltip = (props: JSX.IntrinsicAttributes & TooltipProps) => (
-  <Tooltip
-    {...props}
-    classes={{
-      tooltip:
-        "bg-[#E6BA95CC] text-white text-center text-xs md:text-sm lg:text-base rounded-xl w-20 md:w-28 lg:w-36 p-2 lg:p-3",
-    }}
-  />
-);
+import { CustomTooltip, bedroomIcons } from "./UI/Tooltip";
+import { BedroomImage } from "@/global/images";
 
 export default function Bedroom() {
   const { title, paragraph, processes, frequencies, needs } = BEDROOM_SERVICES;
@@ -36,18 +16,8 @@ export default function Bedroom() {
         roomName="Bedroom"
       />
       <div className="mb-5 md:mb-10 lg:mb-[60px] relative">
-        <Image
-          src={RoomIMG}
-          alt="photo of bedroom"
-          width={280}
-          height={160}
-          sizes="100vw"
-          style={{
-            width: "100%",
-            height: "auto",
-          }}
-        />
-        {icons.map((icon, index) => (
+        <BedroomImage />
+        {bedroomIcons.map((icon, index) => (
           <CustomTooltip key={index} title={icon.title} placement="right-end">
             <div
               className="absolute z-20  flex items-center justify-center size-5 md:size-9 lg:size-14"

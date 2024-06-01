@@ -10,20 +10,21 @@ import SectionJustAsk from "@/components/JustAskSection";
 import React from "react";
 import WorkWithUs from "@/components/WorkWithUs";
 import LastSectionHome from "@/components/LastSectionHome";
-
+import dataBackground from "@/data/background-data.json";
 
 export default function Home() {
   return (
     <>
-      <Hero/>
+      <Hero />
       <SectionEstimate />
       <BeforeAfter data={dataSlider} />
       <Reviews />
       <ServiceAreas />
+      {/* <CleaningServices />
+      <CleaningProcesses /> */}
       <SectionJustAsk />
-      <WorkWithUs/>
-      <LastSectionHome />
-
+      <WorkWithUs />
+      <LastSectionHome data={dataBackground} />
     </>
   );
 }
