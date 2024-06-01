@@ -63,6 +63,7 @@ const socialIcons = [
 
 export default function MobileMenu() {
   const [open, setOpen] = useState(false);
+  const [auth] = useState(false);
 
   const toggleDrawer = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -119,7 +120,7 @@ export default function MobileMenu() {
             <StyledItem onClick={toggleDrawer}>
               <CustomButton style="burger-book-now" type="button">
                 <Link
-                  href="/booking-form"
+                  href="/booking"
                   className=" text-[20px] md:text-[24px] font-bold text-accent text-center"
                 >
                   Book Now

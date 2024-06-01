@@ -2,9 +2,6 @@
 import Button from "@/components/UI/Button";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-
-export interface PageProps {}
 
 const BgnImg = () => {
   return (
@@ -33,13 +30,7 @@ const BgnImg = () => {
   );
 };
 
-export default function BookingFormHome({}: PageProps) {
-  const router = useRouter();
-
-  const startBooking = () => {
-    router.push("/booking-form/m-1");
-  };
-
+const BookingFormHome = () => {
   return (
     <div className="relative h-[calc(100vh-84px)] md:h-[calc(100vh-96px)] lg:h-screen w-full ">
       <BgnImg />
@@ -58,7 +49,7 @@ export default function BookingFormHome({}: PageProps) {
           </p>
           <Button type="button" style="complete-booking">
             <Link
-              href={"/m-1"}
+              href={"/booking/step_1"}
               className="text-white subtitle-booking xl:text-[42px] font-bold"
             >
               complete your booking
@@ -68,4 +59,5 @@ export default function BookingFormHome({}: PageProps) {
       </div>
     </div>
   );
-}
+};
+export default BookingFormHome;
