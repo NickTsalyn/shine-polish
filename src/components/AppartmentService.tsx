@@ -23,7 +23,7 @@ export default function AppartmenrServices() {
             </li>
           ))}
         </ul>
-        <h2 className=" text-main">{benefits.title}</h2>
+        <h2 className=" text-xl md:text-3xl text-main ">{benefits.title}</h2>
         <ul className="flex flex-col gap-5 lg:gap-8 mb-5 lg:mb-8">
           {benefits.paragraphs.map((p, index) => (
             <li key={index}>
@@ -31,7 +31,7 @@ export default function AppartmenrServices() {
             </li>
           ))}
         </ul>
-        <h2 className=" text-main">{services.title}</h2>
+        <h2 className=" text-xl md:text-3xl text-main ">{services.title}</h2>
         <ul className="flex flex-col gap-5 lg:gap-8 mb-5 lg:mb-8">
           {services.paragraphs.map((p, index) => (
             <li key={index}>
@@ -63,7 +63,9 @@ export default function AppartmenrServices() {
             </li>
           ))}
         </ul>
-        <h2 className="text-main">{deepCleaning.title}</h2>
+        <h2 className=" text-xl md:text-3xl text-main ">
+          {deepCleaning.title}
+        </h2>
         <ul className="flex flex-col  mb-5 lg:mb-8">
           {deepCleaning.paragraps.map((p, index) => (
             <li key={index} className={index === 0 ? "mb-5" : ""}>
@@ -78,7 +80,7 @@ export default function AppartmenrServices() {
             </li>
           ))}
         </ul>
-        <h2 className="text-main">{aboutUs.title}</h2>
+        <h2 className=" text-xl md:text-3xl text-main ">{aboutUs.title}</h2>
         <ul className="flex flex-col gap-5 lg:gap-8">
           {aboutUs.paragraphs.map((p, index) => (
             <li key={index}>
