@@ -25,6 +25,7 @@ const BookingStep = ({ params }: BookingStepProps) => {
   const step = params.step || "1";
   const stepNumber = parseInt(step.replace("step_", ""), 10) - 1;
   const [activeStep, setActiveStep] = useState(stepNumber);
+  const [completedSteps, setCompletedSteps] = useState<number[]>([]); // Стан для зберігання завершених кроків
 
   useEffect(() => {
     setActiveStep(stepNumber);
@@ -33,12 +34,14 @@ const BookingStep = ({ params }: BookingStepProps) => {
   const handleNext = () => {
     const nextStep = activeStep + 1;
     setActiveStep(nextStep);
+    setCompletedSteps([...completedSteps, activeStep]); // Додаємо поточний крок до списку завершених
     router.push(`/booking/${nextStep + 1}`);
   };
 
   const handlePrevious = () => {
     const prevStep = activeStep - 1;
     setActiveStep(prevStep);
+    setCompletedSteps(completedSteps.filter((step) => step !== activeStep)); // Видаляємо поточний крок зі списку завершених
     router.push(`/booking/${prevStep + 1}`);
   };
 
@@ -49,6 +52,7 @@ const BookingStep = ({ params }: BookingStepProps) => {
         activeStep={activeStep}
         handleNext={handleNext}
         handlePrevious={handlePrevious}
+        completedSteps={completedSteps}
       >
         <StepComponent />
       </FormStepper>
