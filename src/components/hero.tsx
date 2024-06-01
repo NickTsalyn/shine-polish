@@ -21,71 +21,69 @@ import image19 from "../images/background/stocksnap_ilpct4zz9k.webp";
 import { useState, useEffect, useRef } from "react";
 
 import Button from "./UI/Button";
+const images = [
+  image1,
+  image2,
+  image3,
+  image4,
+  image5,
+  image6,
+  image7,
+  image8,
+  image9,
+  image10,
+  image11,
+  image12,
+  image13,
+  image14,
+  image15,
+  image16,
+  image17,
+  image18,
+  image19,
+];
 
 export default function Hero() {
-  const images = useRef([
-    image1,
-    image2,
-    image3,
-    image4,
-    image5,
-    image6,
-    image7,
-    image8,
-    image9,
-    image10,
-    image11,
-    image12,
-    image13,
-    image14,
-    image15,
-    image16,
-    image17,
-    image18,
-    image19,
-  ]);
-
-  const [backgroundImageUrl, setBackgroundImageUrl] = useState(
-    images.current[0].src
-  );
+  const [index, setIndex] = useState(0);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    let currentIndex = 0;
-    const interval = setInterval(() => {
-      currentIndex = (currentIndex + 1) % images.current.length;
-      setBackgroundImageUrl(images.current[currentIndex].src);
+    timeoutRef.current = setInterval(() => {
+      setTimeout(() => {
+        setIndex((prevIndex) => (prevIndex + 1) % images.length);
+      }, 1000);
     }, 5000);
 
-    return () => clearInterval(interval);
+    return () => {
+      if (timeoutRef.current) clearInterval(timeoutRef.current);
+    };
   }, []);
 
   return (
-    <>
-      <section
-        className="p-5 lg:p-10 xl:p-16 relative bg-cover bg-center bg-no-repeat mb-[60px] md:mb-[80px] lg:mb-[120px] xl:mb-[120px]"
+    <section className="p-5 lg:p-10 xl:p-16 relative mb-[60px] md:mb-[80px] lg:mb-[120px] xl:mb-[120px]">
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-100 transition-opacity duration-1000"
         style={{
-          backgroundImage: `linear-gradient(185deg, rgba(10, 10, 10, 0.39) 2.66%, rgba(120, 120, 120, 0.00) 81.3%), url(${backgroundImageUrl})`,
+          backgroundImage: `linear-gradient(185deg, rgba(10, 10, 10, 0.39) 2.66%, rgba(120, 120, 120, 0.00) 81.3%), url(${images[index].src})`,
         }}
-      >
-        <div>
-          <h1 className=" h1 text-white text-shadow max-w-[282px] md:max-w-[730px] lg:max-w-[1124px] xl:max-w-[1348px] text-xl md:text-[52px] lg:text-[80px] xl:text-8xl md:leading-normal text-center font-medium mb-[138px] md:mb-[248px] lg:mb-[390px] xl:mb-[600px] mr-auto ml-auto">
-            Spend time on your loved ones, not on cleaning
-          </h1>
-
-          <div className=" flex justify-between">
-            <Button type="button" style="home-contact-us">
-              <span className=" text-secondary text-xl md:text-4xl lg:text-[64px] lg:leading-none font-bold ">
-                Contact Us
-              </span>
-            </Button>
-            <Button type="button" style="home-book-now">
-              <span className=" text-secondary text-xl md:text-4xl lg:text-[64px] lg:leading-none font-bold ">
-                Book Now
-              </span>
-            </Button>
-          </div>
+      ></div>
+      <div className="relative z-10">
+        <h1 className="h1 text-white text-shadow max-w-[282px] md:max-w-[730px] lg:max-w-[1124px] xl:max-w-[1348px] text-xl md:text-[52px] lg:text-[80px] xl:text-8xl md:leading-normal text-center font-medium mb-[138px] md:mb-[248px] lg:mb-[390px] xl:mb-[600px] mr-auto ml-auto">
+          Spend time on your loved ones, not on cleaning
+        </h1>
+        <div className="flex justify-between">
+          <Button type="button" style="home-contact-us">
+            <span className="text-secondary text-xl md:text-4xl lg:text-[64px] lg:leading-none font-bold">
+              Contact Us
+            </span>
+          </Button>
+          <Button type="button" style="home-book-now">
+            <span className="text-secondary text-xl md:text-4xl lg:text-[64px] lg:leading-none font-bold">
+              Book Now
+            </span>
+          </Button>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }
