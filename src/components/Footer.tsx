@@ -88,10 +88,11 @@ export default function Footer() {
         </div>
         <div className="col-start-1 col-end-3 md:col-end-5 text-center">
           <p className="text-white text-[8px] md:text-[10px] lg:text-[12px] ">
-            All materials on this website are protected by copyright ©2024 Nick
-            Tsalyn. <br />
-            Any use of these materials without prior permission may constitute
-            copyright infringement and may result in legal consequences.
+            All materials on this website are protected by copyright ©2024
+            <span>
+              <Link href="/">Lobsters Co</Link>
+            </span>
+            .
           </p>
         </div>
       </div>
