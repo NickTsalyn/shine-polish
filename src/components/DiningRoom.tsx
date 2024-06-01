@@ -1,33 +1,14 @@
 import Image from "next/legacy/image";
-import { Tooltip, TooltipProps } from "@mui/material";
 import BasicBreadcrumbs from "./UI/Breadcrumbs";
 import { DINING_ROOM_SERVICES } from "@/global/dining-room";
-import DiningRoomIMG from "../../public/images/diningroom@2x.jpg";
 import IconPlus from "../../public/icons/Icon_plus-min.png";
-
-const icons = [
-  { title: "Clean Light Fixtures", top: "10%", left: "35%" },
-  { title: "Check and Clean Air Vents", top: "46%", left: "7%" },
-  { title: "Dusting", top: "81%", left: "42%" },
-  { title: "Decorative Elements", top: "37%", left: "82%" },
-  { title: "Clean Furniture", top: "38%", left: "58%" },
-  { title: "Declutter", top: "53%", left: "81%" },
-  { title: "Vacuum and Sweep", top: "87%", left: "90%" },
-];
-
-const CustomTooltip = (props: JSX.IntrinsicAttributes & TooltipProps) => (
-  <Tooltip
-    {...props}
-    classes={{
-      tooltip:
-        " bg-[#E6BA95CC] text-white text-center text-xs md:text-sm lg:text-base rounded-xl w-20 md:w-28 lg:w-36 p-2 lg:p-3",
-    }}
-  />
-);
+import { DiningroomImage } from "@/global/images";
+import { CustomTooltip, diningroomIcons } from "./UI/Tooltip";
 
 export default function DiningRoomServices() {
-  const { title, paragraph, processes, frequencies, needs } = DINING_ROOM_SERVICES;
-  
+  const { title, paragraph, processes, frequencies, needs } =
+    DINING_ROOM_SERVICES;
+
   return (
     <div className="body text-text">
       <h1 className=" h3 text-main mb-3 md:mb-[18px] lg:mb-7">{title}</h1>
@@ -39,17 +20,9 @@ export default function DiningRoomServices() {
       />
 
       <div className="relative mb-5 md:mb-10 lg:mb-[60px]">
-        <Image
-          src={DiningRoomIMG}
-          alt="photo of dining room"
-          width={278}
-          height={159}
-          layout="responsive"
-          objectFit="cover"
-          objectPosition="center"
-        />
+        <DiningroomImage />
 
-        {icons.map((icon, index) => (
+        {diningroomIcons.map((icon, index) => (
           <CustomTooltip key={index} title={icon.title} placement="right-end">
             <div
               className="absolute z-20  flex items-center justify-center size-5 md:size-9 lg:size-14"
@@ -71,7 +44,7 @@ export default function DiningRoomServices() {
 
       <h2 className="text-main h4 mb-1 md:mb-2 lg:mb-4">{processes.title}</h2>
       <p className="mb-1">{processes.text}</p>
-      <ol className="flex flex-col gap-1.5">
+      <ol className="flex flex-col gap-1.5 list-decimal marker:font-semibold">
         {processes.items.map((item, index) => (
           <li key={index}>
             <h3 className="font-semibold mb-1">{item.title}</h3>
@@ -106,14 +79,14 @@ export default function DiningRoomServices() {
 
       <h2 className="text-main h4 mb-1 md:mb-2 lg:mb-4">{needs.title}</h2>
       <p className="mb-1">{needs.text}</p>
-      <ul className="flex flex-col gap-1.5 mb-3 md:mb-[18px] lg:mb-7">
+      <ol className="flex flex-col gap-1.5 mb-3 md:mb-[18px] lg:mb-7 list-decimal marker:font-semibold">
         {needs.items.map((item, index) => (
           <li key={index}>
             <h3 className="font-semibold mb-1">{item.title}</h3>
             <p>{item.description}</p>
           </li>
         ))}
-      </ul>
+      </ol>
       <p className="mb-3 md:mb-[18px] lg:mb-7 indent-1.5 font-semibold">
         {needs.summary}
       </p>

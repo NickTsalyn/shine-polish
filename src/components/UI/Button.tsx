@@ -78,7 +78,7 @@ export default function Button(props: PropsButtton) {
       break;
     case "send":
       styles =
-        "w-[148px] h-[36px] md:w-[162px] md:h-[48px] lg:w-[220px] rounded-xl bg-secondary hover:shadow-apply-send-button-shadow  focus:shadow-apply-send-button-shadow";
+        "w-[148px] h-[36px] md:w-[162px] md:h-[48px] lg:w-[220px] rounded-xl bg-secondary hover:bg-[#F6AD70]";
       break;
     case "deep-cleaning":
       styles =

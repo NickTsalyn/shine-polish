@@ -13,8 +13,8 @@ export const MOBILE_LINKS = [
 ];
 
 export const PROCESSES_LINKS = [
-  { href: "/", text: "Kitchen Cleaning Services" },
-  { href: "/", text: "Bedroom Cleaning Services" },
+  { href: "/kitchen-process", text: "Kitchen Cleaning Services" },
+  { href: "/bedroom-process", text: "Bedroom Cleaning Services" },
   { href: "/bathroom-services", text: "Bathroom Cleaning Services" },
   { href: "/living-room-process", text: "Living room Cleaning Services" },
   { href: "/dining-room-process", text: "Dining Room Cleaning Services" },
