@@ -155,3 +155,16 @@ export const FriendsIcon: React.FC = () => {
     </picture>
   );
 };
+export const FooterLogo = () => {
+  return (
+    <>
+      <Image
+        src="/icons/logo/logo_dark_bg.svg"
+        height={28}
+        width={30}
+        alt="logo"
+        layout="responsive"
+      ></Image>
+    </>
+  );
+};

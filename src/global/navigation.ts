@@ -28,3 +28,21 @@ export const SERVICES_LINKS = [
   { href: "/", text: "Move-In/Move-Out Cleaning" },
   { href: "/", text: "Airbnb Cleaning" },
 ];
+
+export const FOOTER_MOBILE_LINKS = [
+  { href: "/", text: "Cleaning Services" },
+  { href: "#service-areas", text: "Service Areas" },
+  { href: "/", text: "About us" },
+]
+
+export const SOCIAL_MEDIA_LINKS = [
+    { href: "https://facebook.com" },
+    { href: "https://instagram.com" },
+    { href: "https://whatsapp.com" },
+]
+
+export const FOOTER_NAV = [
+  { href: "https://icons8.com" },
+  { href:"https://pixabay.com" },
+  { href: "/"},
+]

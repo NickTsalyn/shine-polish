@@ -37,7 +37,7 @@ const SectionJustAsk: React.FC = () => {
       id="just-ask"
       className="mb-[60px] md:mb-20 lg:mb-[120px] xl:mb-40"
     >
-      <div className="container relative flex flex-col lg:flex-row mx-auto my-0 lg:gap-12 xl:gap-10 items-center justify-center">
+      <div className="container relative flex flex-col lg:flex-row mx-auto lg:gap-12 xl:gap-10 items-center justify-center lg:items-start lg:justify-normal lg:max-w-[1200px] xl:max-w-[1576px]">
         <div className="mb-3">
           <h3 className="h3 text-main text-center lg:text-left mb-10 xl:mb-[60px]">
             Not sure? Just ask!
@@ -76,7 +76,7 @@ const SectionJustAsk: React.FC = () => {
             </div>
           </form>
         </div>
-        <div className="flex justify-self-center relative lg:absolute top-0 lg:right-7 xl:right-0 w-[335px] h-[268px] md:w-[529px] md:h-[501px] lg:w-[747px] lg:h-[511px] xl:w-[906px] xl:h-[667px]">
+        <div className="flex justify-self-center relative lg:absolute top-0 lg:right-0 w-[335px] h-[268px] md:w-[529px] md:h-[501px] lg:w-[747px] lg:h-[511px] xl:w-[906px] xl:h-[667px]">
           <FriendsIcon />
         </div>
       </div>
