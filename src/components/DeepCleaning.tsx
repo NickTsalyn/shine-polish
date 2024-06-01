@@ -19,7 +19,7 @@ export default function DeepCleaning() {
             </li>
           ))}
         </ul>
-        <h2 className=" text-main lg:text-3xl ">{services.title}</h2>
+        <h2 className=" text-xl md:text-3xl text-main ">{services.title}</h2>
         <p className=" mb-5 md:mb-8">
           {services.paragraphFirst}{" "}
           <span className=" font-bold">{services.paragraphAccent}</span>{" "}
@@ -59,7 +59,7 @@ export default function DeepCleaning() {
           {services.subtitleFifth}
         </h3>
         <p className=" mb-5 md:mb-8">{services.fifthParagraph}</p>
-        <h2 className=" text-main lg:text-3xl  ">{homeNeeds.title}</h2>
+        <h2 className=" text-xl md:text-3xl text-main ">{homeNeeds.title}</h2>
         <p className=" mb-5 md:mb-8">{homeNeeds.paragraph}</p>
         <h3 className="text-main  lg:text-text lg:font-bold">
           {homeNeeds.subtitle}
@@ -93,7 +93,7 @@ export default function DeepCleaning() {
           {homeNeeds.subtitleFifth}
         </h3>
         <p className=" mb-5 md:mb-8">{homeNeeds.fifthParagraph}</p>
-        <h2 className=" text-main lg:text-3xl  ">{yourArea.title}</h2>
+        <h2 className=" text-xl md:text-3xl text-main ">{yourArea.title}</h2>
         <p className=" mb-5 md:mb-8">{yourArea.paragraphs}</p>
       </div>
     </div>

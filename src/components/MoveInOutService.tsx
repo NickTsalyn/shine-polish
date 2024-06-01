@@ -30,7 +30,7 @@ export default function MoveServices() {
             </li>
           ))}
         </ul>
-        <h2 className=" text-3xl text-main mb-5 md:mb-0  ">
+        <h2 className=" text-xl md:text-3xl text-main mb-5 md:mb-0  ">
           {outServices.title}
         </h2>
         <ul className="flex flex-col gap-5 lg:gap-8 mb-5 lg:mb-8">
@@ -40,11 +40,11 @@ export default function MoveServices() {
             </li>
           ))}
         </ul>
-        <h2 className=" text-3xl text-main mb-5 md:mb-0  ">
+        <h2 className=" text-xl md:text-3xl text-main mb-5 md:mb-0  ">
           {inServices.title}
         </h2>
         <p className="mb-5 lg:mb-8">{inServices.paragraphs}</p>
-        <h2 className=" text-3xl text-main ">{involves.title}</h2>
+        <h2 className=" text-xl md:text-3xl text-main ">{involves.title}</h2>
         <p className="mb-5 lg:mb-8"> {involves.paragraph}</p>
         <h3 className=" mb-5 font-bold lg:mb-8">{involves.smallTitle}</h3>
         <h3 className=" font-bold">Kitchen</h3>
@@ -81,7 +81,7 @@ export default function MoveServices() {
             </li>
           ))}
         </ul>
-        <h2 className=" text-3xl text-main ">{benefits.titel}</h2>
+        <h2 className=" text-xl md:text-3xl text-main ">{benefits.titel}</h2>
         <p className="mb-5">{benefits.paragraph}</p>
         <h3 className="mb-1 font-bold">{benefits.subTitleFirst}</h3>
         <p className="mb-5">{benefits.paragraphFirst}</p>
@@ -89,7 +89,7 @@ export default function MoveServices() {
         <p className="mb-5">{benefits.paragraphSecond}</p>
         <h3 className="mb-1 font-bold">{benefits.subTitleThird}</h3>
         <p className="mb-5">{benefits.paragraphThird}</p>
-        <h2 className=" text-3xl text-main ">{aboutUs.title}</h2>
+        <h2 className=" text-xl md:text-3xl text-main ">{aboutUs.title}</h2>
         <ul className="flex flex-col gap-5  ">
           {aboutUs.paragraps.map((p, index) => (
             <li key={index}>
