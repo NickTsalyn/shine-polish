@@ -22,9 +22,9 @@ export const PROCESSES_LINKS = [
 ];
 
 export const SERVICES_LINKS = [
-  { href: "/", text: "House Cleaning" },
-  { href: "/", text: "Apartment Cleaning" },
-  { href: "/", text: "Deep Cleaning" },
-  { href: "/", text: "Move-In/Move-Out Cleaning" },
+  { href: "/house-cleaning-services", text: "House Cleaning" },
+  { href: "/appartment-services", text: "Apartment Cleaning" },
+  { href: "/deep-cleaning", text: "Deep Cleaning" },
+  { href: "/move-in-out-services", text: "Move-In/Move-Out Cleaning" },
   { href: "/", text: "Airbnb Cleaning" },
 ];
