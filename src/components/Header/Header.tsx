@@ -4,7 +4,7 @@ import Link from "next/link";
 import ThemeSwitch from "./Switcher";
 import { useState } from "react";
 import Image from "next/legacy/image";
-import MobileMenu from "../MobileMenu";
+import MobileMenu from "./MobileMenu";
 
 export default function Header() {
   const [lightMode, setDarkMode] = useState(false);

@@ -10,7 +10,6 @@ export const MOBILE_LINKS = [
   { href: "/", text: "Home" },
   { href: "#service-areas", text: "Locations" }, 
   { href: "/checklists", text: "Checklists" },
-  { href: "#sign", text: "Sign Up / Sign In" },
 ];
 
 export const PROCESSES_LINKS = [
