@@ -16,7 +16,7 @@ const FooterNavMobile: FC<FooterLinksProps> = ({ links }) => {
   return (
     <ul className="">
       {links.map((link, index) => (
-        <li key={index} className="mb-2 text-3 md:text-4 text-white">
+        <li key={index} className="mb-2 text-3 md:text-4 text-white font-light">
           <Link href={link.href}>{link.text}</Link>
         </li>
       ))}

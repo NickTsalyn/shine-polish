@@ -168,3 +168,35 @@ export const FooterLogo = () => {
     </>
   );
 };
+
+export const FooterImg = () => {
+  return (
+    <div className="">
+      <Image
+        src="/images/atlantaSkylineSecondary.png"
+        height={100}
+        width={1440}
+        layout="responsive"
+        objectFit="cover"
+        objectPosition="center"
+        alt="Footer Image"
+      ></Image>
+    </div>
+  );
+};
+
+export const FooterImgS = () => {
+  return (
+    <div className="">
+      <Image
+        src="/images/kindpng_7060608.png"
+        height={100}
+        width={1440}
+        layout="responsive"
+        objectFit="cover"
+        objectPosition="center"
+        alt="Footer Image"
+      ></Image>
+    </div>
+  );
+};

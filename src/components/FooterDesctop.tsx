@@ -1,85 +1,31 @@
 "use client";
 
 import Link from "next/link";
-
-import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import WhatsAppIcon from "@mui/icons-material/WhatsApp";
-
-const links = [
-  { href: "/", text: "Cleaning Services" },
-  { href: "/", text: "Service Areas" },
-  { href: "/", text: "About us" },
-];
-
-const socialIcons = [
-  {
-    icon: <FacebookRoundedIcon style={{ color: "white" }} />,
-    href: "https://facebook.com",
-  },
-  {
-    icon: <InstagramIcon style={{ color: "white" }} />,
-    href: "https://instagram.com",
-  },
-  {
-    icon: <WhatsAppIcon style={{ color: "white" }} />,
-    href: "https://whatsapp.com",
-  },
-];
+import FooterMainNav from "./Navigation/FooterNav";
+import { FOOTER_NAV } from "@/global/navigation";
+import { FooterImg } from "@/global/images";
 
 export default function FooterDesctop() {
   return (
-    <footer className="hidden lg:block">
-      <div className="grid  grid-cols-2 md:grid-cols-4 gap-5 w-auto h-auto py-5 md:py-7 lg:py-9 px-5 md:px-7 lg:px-7 lg:pl-[240px] xl:pl-[282px] bg-main ">
-        <div className="lg:pr-px-[240px] xl:pr-px-[282px] w-[68px] h-[60px] md:w-[80px] md:h-[70px] lg:w-[120px] lg:h-[90px] xl:w-[150px] xl:h-[130px]"></div>
-        <div className="sm:col-span-1 ">
-          <ul className="mb-2 text-3 md:text-4 lg:text-[20px] text-white font-[300]">
-            {links.map((link, index) => (
-              <li key={index} className="mb-3">
-                <Link href={link.href}>{link.text}</Link>
-              </li>
-            ))}
-          </ul>
+    <footer className="hidden w-full lg:block bg-opacity-90 backdrop-filter backdrop-blur-lg mx-auto lg:mt-[120px]">
+      <div className="relative flex gap-5 lg:h-[400px] xl:h-[112px]">
+        <div className="z-0 absolute bottom-0 w-full opacity-60">
+          <FooterImg />
         </div>
-        <div className="">
-          <span className="mb-3 md:mb-4 text-3 md:text-4 lg:text-[20px] text-white font-[300]">
-            Follow us
-          </span>
-          <ul className="flex gap-2 mb-3">
-            {socialIcons.map((socialIcon, index) => (
-              <li key={index}>
-                <Link href={socialIcon.href}>{socialIcon.icon}</Link>
-              </li>
-            ))}
-          </ul>
-
-          <Link
-            href="+14708003249"
-            className="text-white text-[14px] lg:text-[20px] font-light"
-          >
-            Tel: 470-800-32-49
-          </Link>
+        <div className="absolute z-30 inset-x-0 container mx-auto lg:max-w-[1056px] xl:max-w-[1560px] lg:bottom-6">
+          <FooterMainNav links={FOOTER_NAV} />
         </div>
-        <div className=" sm:col-span-1">
-          <ul className="mb-2 text-3 md:text-4 lg:text-[20px] text-white font-[300]">
-            <li className=" mb-3">
-              <Link href="https://icons8.com">Icons by icons8.com</Link>
-            </li>
-            <li className="mb-3">
-              <Link href="https://pixabay.com">Images by pixabay.com</Link>
-            </li>
-            <li>
-              <Link href="/">Created by Developers Team</Link>
-            </li>
-          </ul>
-        </div>
-        <div className="col-start-1 col-end-3 md:col-end-5 text-center">
-          <p className="text-white text-[8px] md:text-[10px] lg:text-[12px] ">
-            All materials on this website are protected by copyright ©2024 Nick
-            Tsalyn. <br />
-            Any use of these materials without prior permission may constitute
-            copyright infringement and may result in legal consequences.
-          </p>
+        <div className="text-center relative bottom-1">
+          <div className=" w-[1000px] absolute inset-x-0 left-80 bottom-0 ">
+            {/* Градієнтний бордер */}
+            <div className="relative h-[1px] bg-gradient-to-r from-orange-200 via-cyan-700 to-orange-200 mb-1"></div>
+            <p className="relative text-white lg:text-main text-[8px] md:text-[10px] lg:text-[14px] font-light">
+              All materials on this website are protected by Copyright ©2024
+              <span>
+                <Link href="/">Lobsters Co.</Link>
+              </span>
+            </p>
+          </div>
         </div>
       </div>
     </footer>

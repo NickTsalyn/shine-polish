@@ -42,7 +42,7 @@ export const SOCIAL_MEDIA_LINKS = [
 ]
 
 export const FOOTER_NAV = [
-  { href: "https://icons8.com" },
-  { href:"https://pixabay.com" },
-  { href: "/"},
+  { href: "https://icons8.com", text: "Icons by icons8.com" },
+  { href:"https://pixabay.com", text: "Images by pixabay.com" },
+  { href: "/", text: "About Us"},
 ]
