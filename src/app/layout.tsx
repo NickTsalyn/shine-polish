@@ -4,8 +4,6 @@ import "../styles/globals.css";
 import Header from "@/components/Header/Header";
 import Sidebar from "@/components/Sidebar";
 import Footer from "@/components/Footer";
-import { getServerSession } from "next-auth";
-import AuthProvider from "../../utils/SessionProvider";
 
 const lato = Lato({
   subsets: ["latin"],
@@ -22,16 +20,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const session = getServerSession()
   return (
     <html lang="en">
       <body className={lato.className}>
-        <AuthProvider session={session}>
         <Header />
         <Sidebar />
         <main className="lg:ml-[200px] xl:ml-[244px]">{children}</main>
         {/* <Footer/> */}
-        </AuthProvider>
       </body>
     </html>
   );
