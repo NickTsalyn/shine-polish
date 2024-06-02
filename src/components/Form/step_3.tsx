@@ -12,19 +12,15 @@ const homeAccess = [
 ];
 
 const aboutUs = [
-	{ value: "1", label: "From friends" },
-	{ value: "2", label: "Returning customer" },
-	{ value: "3", label: "Google" },
-	{ value: "4", label: "Instagram" },
-	{ value: "5", label: "Facebook" },
-	{ value: "6", label: "Other" },
+	{ value: "From friends", label: "From friends" },
+	{ value: "Returning customer", label: "Returning customer" },
+	{ value: "Google", label: "Google" },
+	{ value: "Instagram", label: "Instagram" },
+	{ value: "Facebook", label: "Facebook" },
+	{ value: "Other", label: "Other" },
 ];
 
 const Step3 = () => {
-	// const [access, setHomeAccess] = useState<string>("");
-	// const [about, setAbout] = useState<string>("");
-	const [specialInstructions, setSpecialInstructions] = useState<string>("");
-
 	const { form, setForm } = useContext(FormContext);
 
 	const handleChange = (event: SelectChangeEvent<string | number>) => {
@@ -39,12 +35,12 @@ const Step3 = () => {
 		// 	console.log(selectedItem?.label);
 		// }
 		setForm({ ...form, [name]: value });
-		let selectedItem;
-		if (name === "homeAccess") {
-			selectedItem = homeAccess.find((item) => item.value === value);
-		} else if (name === "aboutUs") {
-			selectedItem = aboutUs.find((item) => item.value === value);
-		}
+		// let selectedItem;
+		// if (name === "homeAccess") {
+		// 	selectedItem = homeAccess.find((item) => item.value === value);
+		// } else if (name === "aboutUs") {
+		// 	selectedItem = aboutUs.find((item) => item.value === value);
+		// }
 
 		// if (selectedItem) {
 		//   console.log( selectedItem.label);
@@ -52,7 +48,8 @@ const Step3 = () => {
 	};
 
 	const handleAreaChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-		setSpecialInstructions(event.target.value);
+    const { name, value } = event.target;
+		setForm({...form, [name]: value});
 		// console.log(specialInstructions)
 	};
 
@@ -63,14 +60,14 @@ const Step3 = () => {
 				<BasicSelect
 					name="homeAccess"
 					items={homeAccess}
-					value={form.access}
+					value={form.homeAccess}
 					onChange={handleChange}
 					placeholder="How will access your home?* "
 				/>
 				<BasicSelect
 					name="aboutUs"
 					items={aboutUs}
-					value={form.about}
+					value={form.aboutUs}
 					onChange={handleChange}
 					placeholder="How did you hear about us?* "
 				/>
@@ -83,7 +80,7 @@ const Step3 = () => {
 					{" "}
 					<Textarea
 						placeholder="Special Instructions*"
-						value={specialInstructions}
+						value={form.specialInstructions}
 						name="specialInstructions"
 						onChange={handleAreaChange}
 					/>
