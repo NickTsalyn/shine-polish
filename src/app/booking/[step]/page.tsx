@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 import FormStepper from "@/components/Form/FormStepper";
@@ -11,6 +11,7 @@ import Step7 from "@/components/Form/step_7";
 import Step3 from "@/components/Form/step_3";
 import Step2 from "@/components/Form/step_2";
 import Step1 from "@/components/Form/step_1";
+import { FormContext } from "@/components/FormContext";
 
 const stepsComponents = [Step1, Step2, Step3, Step4, Step5, Step6, Step7];
 
@@ -26,10 +27,12 @@ const BookingStep = ({ params }: BookingStepProps) => {
   const stepNumber = parseInt(step.replace("step_", ""), 10) - 1;
   const [activeStep, setActiveStep] = useState(stepNumber);
   const [completedSteps, setCompletedSteps] = useState<number[]>([]); // Стан для зберігання завершених кроків
+  const { form } = useContext(FormContext);
 
   useEffect(() => {
     setActiveStep(stepNumber);
-  }, [stepNumber]);
+    console.log(form)
+  }, [stepNumber, form]);
 
   const handleNext = () => {
     const nextStep = activeStep + 1;

@@ -4,6 +4,7 @@ import "../styles/globals.css";
 import Header from "@/components/Header/Header";
 import Sidebar from "@/components/Sidebar";
 import Footer from "@/components/Footer";
+import {FormProvider} from '@/components/FormContext'
 
 const lato = Lato({
   subsets: ["latin"],
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
   description: "Cleaning service Atlanta",
 };
 
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -23,10 +25,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={lato.className}>
+        <FormProvider>
         <Header />
         <Sidebar />
         <main className="lg:ml-[200px] xl:ml-[244px]">{children}</main>
         {/* <Footer/> */}
+        </FormProvider>
       </body>
     </html>
   );
