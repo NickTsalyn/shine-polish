@@ -11,7 +11,7 @@ export default function DeepCleaning() {
       <div className=" mb-2 md:mb-5 lg:mb-0">
         <BasicBreadcrumbs roomName="Deep Cleaning" />
       </div>
-      <div className="max-w-72 md:max-w-[693px] lg:max-w-[1080px] xl:max-w-screen-2xl">
+      <div>
         <ul className="flex flex-col gap-5 lg:gap-8 mb-5 lg:mb-8">
           {paragraphs.map((p, index) => (
             <li key={index}>
