@@ -16,10 +16,11 @@ const StyledMenuItem = styled(MenuItem)(() => ({
 
 type BasicSelectProps = {
   value: string;
-  items: { value: string | number; label: string; color?: string }[];
+  items: { value?: string | number; label: string; color?: string }[];
   onChange: (event: SelectChangeEvent<string | number>) => void;
   label?: string;
   placeholder?: string;
+  name?: string;
 };
 
 export default function BasicSelect(props: BasicSelectProps) {
@@ -55,11 +56,15 @@ export default function BasicSelect(props: BasicSelectProps) {
           "&:hover .MuiOutlinedInput-notchedOutline": {
             border: "none",
           },
+          ".MuiSelect-icon": {
+            color: " #E6BA95",
+          },
         }}
       >
         <Select
           id="demo-simple-select"
           value={props.value}
+          name={props.name}
           displayEmpty
           renderValue={(selected) => {
             if (selected === "") {
