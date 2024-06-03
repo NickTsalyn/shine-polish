@@ -18,7 +18,8 @@ type PropsButtton = {
     | "footer-book-now"
     | "send"
     | "deep-cleaning"
-    | "work-with-us";
+    | "work-with-us"
+    | "complete-booking";
 };
 
 export default function Button(props: PropsButtton) {
@@ -88,6 +89,10 @@ export default function Button(props: PropsButtton) {
         " px-8 md:px-12 lg:px-[150px] xl:px-[424px] py-1 md:py-9 xl:py-14 rounded-xl bg-main ";
       break;
     default:
+      break;
+    case "complete-booking":
+      styles =
+        "py-1.5 md:py-3 lg:py-[20px] px-10 bg-transparent border-2 border-solid border-white rounded-xl w-full";
       break;
   }
   return (

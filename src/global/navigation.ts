@@ -10,7 +10,6 @@ export const MOBILE_LINKS = [
   { href: "/", text: "Home" },
   { href: "#service-areas", text: "Locations" }, 
   { href: "/checklists", text: "Checklists" },
-  { href: "#sign", text: "Sign Up / Sign In" },
 ];
 
 export const PROCESSES_LINKS = [
@@ -22,10 +21,10 @@ export const PROCESSES_LINKS = [
 ];
 
 export const SERVICES_LINKS = [
-  { href: "/", text: "House Cleaning" },
-  { href: "/", text: "Apartment Cleaning" },
-  { href: "/", text: "Deep Cleaning" },
-  { href: "/", text: "Move-In/Move-Out Cleaning" },
+  { href: "/house-cleaning-services", text: "House Cleaning" },
+  { href: "/appartment-services", text: "Apartment Cleaning" },
+  { href: "/deep-cleaning", text: "Deep Cleaning" },
+  { href: "/move-in-out-services", text: "Move-In/Move-Out Cleaning" },
   { href: "/", text: "Airbnb Cleaning" },
 ];
 

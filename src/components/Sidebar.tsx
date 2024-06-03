@@ -33,7 +33,7 @@ const socialIcons = [
 ];
 
 export default function Sidebar() {
-  const [auth] = useState(false);
+  const [auth, setAuth] = useState(true);
 
   return (
     <aside className="  hidden lg:flex flex-col content-around fixed inset-y-0 left-0 p-5 xl:p-[26px] w-[200px] h-full xl:w-[244px] bg-main z-30">
@@ -62,25 +62,28 @@ export default function Sidebar() {
 
       <div className="mt-auto">
         <ul className="mb-5 flex flex-col align-center gap-5 xl:gap-6">
-          {auth && (
-            <li>
-              <Button style="sidebar-log-out" type="button">
-                <span className="body text-secondary">Log Out</span>
-              </Button>
-            </li>
-          )}
-          {!auth && (
-            <li>
-              <Button style="sidebar-auth-in" type="button">
-                <span className="body text-secondary">
-                  Sign In <span className="text-white">or </span>Sign Up
+          <li>
+            <Button style="sidebar-auth-in" type="button">
+              {auth ? (
+                <span
+                  onClick={() => setAuth(false)}
+                  className="body text-secondary"
+                >
+                  Sign Out
                 </span>
-              </Button>
-            </li>
-          )}
+              ) : (
+                <Link href="/authorize" className="body text-secondary">
+                  Sign In <span className="text-white">or </span>Sign Up
+                </Link>
+              )}
+            </Button>
+          </li>
+
           <li>
             <Button style="sidebar-book-now" type="button">
-              <span className="body font-bold text-secondary">Book Now</span>
+              <Link href="/booking" className="body font-bold text-secondary">
+                Book Now
+              </Link>
             </Button>
           </li>
           <li>
