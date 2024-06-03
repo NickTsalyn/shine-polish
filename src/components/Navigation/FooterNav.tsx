@@ -14,7 +14,7 @@ interface FooterNavLinkProps {
 
 const FooterMainNav: FC<FooterNavLinkProps> = ({ links }) => {
   return (
-    <ul className="grid lg:grid-cols-3 lg:gap-16 lg:auto-rows-auto ml-[260px]">
+    <ul className="grid lg:flex lg:justify-between lg:auto-rows-auto">
       {links.map((link, index) => (
         <li
           key={index}
