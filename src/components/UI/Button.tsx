@@ -20,7 +20,8 @@ type PropsButtton = {
     | "deep-cleaning"
     | "work-with-us"
     | "close-button"
-    | "transparent-button";
+    | "transparent-button"
+    | "complete-booking";
 };
 
 export default function Button(props: PropsButtton) {
@@ -29,11 +30,10 @@ export default function Button(props: PropsButtton) {
   switch (props.style) {
     case "burger-book-now":
       styles =
-        " py-1 px-16 md:px-24 bg-white border border-solid border-accent  rounded-[10px]";
+        "py-1.5 md:py-1 bg-white border border-solid border-accent rounded-xl w-full";
       break;
     case "burger-contact-us":
-      styles =
-        "py-1 px-[63px] md:px-[95px] border border-solid border-secondary rounded-[10px]";
+      styles = "py-1 border border-solid border-secondary rounded-xl w-full";
       break;
     case "home-book-now":
       styles =
@@ -81,7 +81,7 @@ export default function Button(props: PropsButtton) {
       break;
     case "send":
       styles =
-        "w-[148px] h-[36px] md:w-[162px] md:h-[48px] lg:w-[220px] rounded-xl bg-secondary hover:shadow-apply-send-button-shadow  focus:shadow-apply-send-button-shadow";
+        "w-[148px] h-[36px] md:w-[162px] md:h-[48px] lg:w-[220px] rounded-xl bg-secondary hover:bg-[#F6AD70]";
       break;
     case "deep-cleaning":
       styles =
@@ -98,6 +98,10 @@ export default function Button(props: PropsButtton) {
         " w-[52px] h-[52px] ld:w-[64px] lg:h-[64px] rounded-full bg-transparent border-none ";
 
     default:
+      break;
+    case "complete-booking":
+      styles =
+        "py-1.5 md:py-3 lg:py-[20px] px-10 bg-transparent border-2 border-solid border-white rounded-xl w-full";
       break;
   }
   return (
