@@ -1,6 +1,6 @@
 export type RadioCheckProps = {
-    style: string,
-    text: string,
+    style?: string,
+    text?: string,
     value?: string;
     checked?: boolean;
     children?: React.ReactNode;
