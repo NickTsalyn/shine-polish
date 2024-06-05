@@ -184,3 +184,19 @@ export const FooterImg = () => {
     </div>
   );
 };
+
+// export const FooterImg = () => {
+//   return (
+//     <div className="z-[-1] absolute  bottom-0  opacity-60 w-full h-full ">
+//       <Image
+//         src="/images/atlantaSkylineSecondaryLong.png"
+//         // height={400}
+//         // width={1156}
+//         layout="fill"
+//         objectFit="cover"
+//         objectPosition="center"
+//         alt="Footer Image"
+//       ></Image>
+//     </div>
+//   );
+// };
