@@ -40,8 +40,8 @@ export default function SignInForm() {
   };
 
   return (
-    <div className="flex flex-col h-screen">
-      <div className="mx-auto my-auto relative w-[320px] md:w-[760px] lg:w-[960px] h-auto md:h-[516px] lg:h-[575px] rounded-[12px] md:rounded-[50px] md:flex shadow-main-shadow">
+    <div className="flex flex-col mb-[40px]">
+      <div className="mx-auto my-auto relative w-[320px] md:w-[712px] lg:w-[960px] h-auto md:h-[500px] lg:h-[575px] rounded-xl md:rounded-[50px] md:flex shadow-main-shadow">
         <div className="absolute top-0 right-0 z-10 md:top-4 md:right-4">
           <Button
             style="close-button"
@@ -55,7 +55,7 @@ export default function SignInForm() {
             </Link>
           </Button>
         </div>
-        <div className="pt-4 md:pt-[76px] lg:pt-[80px] pl-8 pr-8 flex flex-col md:items-center lg:w-[480px]">
+        <div className="pt-4 md:pt-[76px] lg:pt-[80px] pl-8 pr-8 flex flex-col md:items-center md:w-[356px] lg:w-[480px] md:h-[500px] rounded-b-xl">
           <h2 className="text-main text-[40px] lg:text-[48] text-center mb-4 md:mb-5 lg:mb-6 lg:font-normal">
             Sign in
           </h2>
@@ -108,14 +108,14 @@ export default function SignInForm() {
           </form>
         </div>
 
-        <div className="md:bg-main md:w-[380px] lg:w-[480px] md:h-[516px] lg:h-[576px] relative z-[-1] bottom-0 left-0 md:rounded-br-[50px] md:rounded-tr-[50px]">
-          <div>
+        <div className="md:bg-main md:w-[356px] lg:w-[480px] md:h-[500px] lg:h-[576px] relative z-[-1] bottom-0 left-0  md:rounded-br-[50px] md:rounded-tr-[50px]">
+          <div className="">
             <MobileScrinWaves />
           </div>
-          <div className="absolute z-11 hidden md:block lg:hidden md:rounded-br-[50px] bottom-0 right-0 md:w-[380px] lg:w-[480px] md:h-[178px] lg:h-[204px] lg:bottom-0">
+          <div className="absolute z-11 hidden md:block lg:hidden  bottom-0 right-0 md:w-[352px] lg:w-[480px] md:h-[172px] lg:h-[204px] lg:bottom-0">
             <TabletScreenFirstWave />
           </div>
-          <div className=" md:w-[380px] lg:w-[480px] md:h-[181px] lg:h-[250px] absolute z-10 hidden md:block md:rounded-br-[50px] bottom-0 right-0">
+          <div className=" md:w-[356px]  md:h-[181px] absolute z-10 hidden md:block  bottom-0 right-0">
             <TabletScreenSecondWave />
           </div>
           <div className="lg:w-[480px]lg:h-[250px] absolute z-10 hidden lg:block lg:rounded-br-[50px] bottom-0 right-0">
