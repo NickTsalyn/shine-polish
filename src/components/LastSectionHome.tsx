@@ -57,7 +57,7 @@ export default function LastSectionHome({
           </ul>
         </div>
         <div className="z-1 absolute top-0 left-0 right-0 h-[258px] md:h-[592px] lg:h-[740px] lg:min-w-[1240px] xl:h-[1040px] xl:min-w-[1680px]  bg-background-img-grad"></div>
-        <div className=" container pb-5 px-5 pt-5 lg:pr-[40px] xl:pr-[80px] md:pt-8 lg:pt-16 xl:pt-18 md:py-10 lg:pl-[40px] xl:pl-[80px] absolute top-1 inset-0 flex flex-col justify-between z-10 lg:h-[740px]">
+        <div className=" container pb-5 px-5 pt-5 lg:pr-[40px] xl:pr-[80px] md:pt-8 lg:pt-16 xl:pt-18 md:py-10 lg:pl-[40px] xl:pl-[80px] absolute top-1 inset-0 flex flex-col justify-between z-10 lg:h-[740px] xl:h-[1040px]">
           <h2 className="text-white h2 text-center drop-shadow-md top-0">
             Enjoy the time spent with your <br />
             loved ones...
@@ -70,7 +70,6 @@ export default function LastSectionHome({
               </span>
             </Button>
             <span className="h2 md:text-[36px] text-white">
-              {" "}
               ...in a clean house
             </span>
           </div>
