@@ -12,7 +12,7 @@ import FooterMainNav from "./Navigation/FooterNav";
 export default function Footer() {
   return (
     <footer className="lg:hidden  bg-main w-auto h-auto ">
-      <div className="container grid  grid-cols-2 py-6 md:py-[48px] md:grid-cols-4 gap-5  ">
+      <div className="container grid  grid-cols-2 py-6 md:grid-cols-4 gap-5  ">
         <div className="lg:pr-px-[240px] xl:pr-px-[282px] w-[68px] h-[60px] md:w-[80px] md:h-[70px] lg:w-[120px] lg:h-[90px] xl:w-[150px] xl:h-[130px]">
           <Link href={"#hero"}>
             <FooterLogo />
@@ -37,16 +37,14 @@ export default function Footer() {
         <div className=" sm:col-span-1 ">
           <FooterMainNav links={FOOTER_NAV} />
         </div>
-        <div className="text-center grid sm:col-span-2 md:col-span-4 justify-center ">
-          <div className="  w-[80%] md:w-[100%]">
-            <div className="h-[1px] bg-gradient-to-r from-main via-secondary to-main mb-1 md:mb-2"></div>
-            <p className="relative text-white lg:text-main text-[8px] md:text-[10px] lg:text-[14px] font-light">
-              All materials on this website are protected by Copyright ©2024
-              <span>
-                <Link href="/"> Lobsters Co.</Link>
-              </span>
-            </p>
-          </div>
+        <div className="text-center grid sm:col-span-2 md:col-span-4 justify-center   items-center w-[80%] md:w-[100%] mx-auto">
+          <div className="h-[1px] bg-gradient-to-r from-main via-secondary to-main mb-1 md:mb-2 w-[280px] md:w-[600px]"></div>
+          <p className="relative text-white lg:text-main text-[8px] md:text-[10px] lg:text-[14px] font-light">
+            All materials on this website are protected by Copyright ©2024
+            <span>
+              <Link href="/"> Lobsters Co.</Link>
+            </span>
+          </p>
         </div>
       </div>
     </footer>
