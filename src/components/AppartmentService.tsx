@@ -15,7 +15,7 @@ export default function AppartmenrServices() {
           roomName="Professional Apartment Cleaning Service"
         />
       </div>
-      <div className="max-w-64 md:max-w-3xl lg:max-w-6xl xl:max-w-screen-2xl">
+      <div>
         <ul className="flex flex-col gap-5 lg:gap-8 mb-5 lg:mb-8">
           {paragraphs.map((p, index) => (
             <li key={index}>

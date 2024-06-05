@@ -11,11 +11,12 @@ import React from "react";
 import WorkWithUs from "@/components/WorkWithUs";
 import LastSectionHome from "@/components/LastSectionHome";
 import dataBackground from "@/data/background-data.json";
+import dataHeroBackground from "@/data/background-hero.json";
 
 export default function Home() {
   return (
     <>
-      <Hero />
+      <Hero data={dataHeroBackground} />
       <SectionEstimate />
       <BeforeAfter data={dataSlider} />
       <Reviews />
