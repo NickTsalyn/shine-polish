@@ -27,12 +27,10 @@ const BookingStep = ({ params }: BookingStepProps) => {
   const stepNumber = parseInt(step.replace("step_", ""), 10) - 1;
   const [activeStep, setActiveStep] = useState(stepNumber);
   const [completedSteps, setCompletedSteps] = useState<number[]>([]); // Стан для зберігання завершених кроків
-  const { form } = useContext(FormContext);
 
   useEffect(() => {
     setActiveStep(stepNumber);
-    console.log(form)
-  }, [stepNumber, form]);
+  }, [stepNumber]);
 
   const handleNext = () => {
     const nextStep = activeStep + 1;
