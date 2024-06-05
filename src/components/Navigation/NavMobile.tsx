@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { FC } from "react";
+import { FC, useState } from "react";
 import CleaningOptions from "../Menu/CleaningOptions";
 import { PROCESSES_LINKS, SERVICES_LINKS } from "@/global/navigation";
 
@@ -16,6 +16,8 @@ interface NavLinksProps {
 }
 
 const NavMobile: FC<NavLinksProps> = ({ links, toggleDrawer }) => {
+  const [auth, setAuth] = useState(true);
+
   return (
     <ul className="flex flex-col gap-3 md:gap-[18px] justify-start ">
       {links.map((link, index) => (
@@ -27,6 +29,16 @@ const NavMobile: FC<NavLinksProps> = ({ links, toggleDrawer }) => {
           <Link href={link.href}>{link.text}</Link>
         </li>
       ))}
+      <li
+        className="text-[20px] font-normal leading-[1.2]"
+        onClick={toggleDrawer}
+      >
+        {auth ? (
+          <p onClick={() => setAuth(false)}>Sign Out</p>
+        ) : (
+          <Link href="/authorize">Sign In / Sign Up</Link>
+        )}
+      </li>
       <li>
         <CleaningOptions
           color="#006778"

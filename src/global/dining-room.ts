@@ -8,72 +8,72 @@ export const DINING_ROOM_SERVICES = {
     text: "Maintaining a clean and welcoming dining room is crucial for creating an enjoyable and comfortable space for meals and gatherings. Here's a step-by-step guide to a comprehensive dining room cleaning process:",
     items: [
       {
-        title: "1. Clear the Table:",
+        title: "Clear the Table:",
         description:
           "Remove any items from the dining table, including dishes, placemats, and decorations. Place them in the kitchen for cleaning or storage.",
       },
       {
-        title: "2. Dusting:",
+        title: "Dusting:",
         description:
           "Dust all surfaces, including the dining table, chairs, buffet, and any other furniture in the room. Pay attention to baseboards, picture frames, and other decorative elements.",
       },
       {
-        title: "3. Clean Furniture:",
+        title: "Clean Furniture:",
         description:
           "Wipe down the dining table and chairs with an appropriate cleaner. For wooden furniture, use a cleaner suitable for the specific finish. Polish if necessary.",
       },
       {
-        title: "4. Vacuum or Sweep Floors:",
+        title: "Vacuum or Sweep Floors:",
         description:
           "Vacuum or sweep the dining room floor to remove crumbs and debris. If the floor surface allows, mop using a suitable floor cleaner.",
       },
       {
-        title: "5. Clean Light Fixtures:",
+        title: "Clean Light Fixtures:",
         description:
           "Dust and clean light fixtures, including chandeliers or pendant lights, to remove dust and cobwebs. Replace any burnt-out bulbs.",
       },
       {
-        title: "6. Clean Windows and Window Treatments:",
+        title: "Clean Windows and Window Treatments:",
         description:
           "Clean windows and window treatments according to the care instructions. Dust or vacuum blinds, and wipe down curtain rods or tracks.",
       },
       {
-        title: "7. Clean and Polish Hardware:",
+        title: "Clean and Polish Hardware:",
         description:
           "Wipe down and polish any hardware, such as door handles, drawer pulls, or cabinet knobs.",
       },
       {
-        title: "8. Check and Clean Air Vents:",
+        title: "Check and Clean Air Vents:",
         description:
           "Check and clean air vents or grilles to ensure proper air circulation. Remove dust and cobwebs.",
       },
       {
-        title: "9. Decorative Elements:",
+        title: "Decorative Elements:",
         description:
           "Clean and dust any decorative elements, such as wall art, mirrors, or centerpieces.",
       },
       {
-        title: "10. Check and Replace Tablecloths or Runners:",
+        title: "Check and Replace Tablecloths or Runners:",
         description:
           "Check tablecloths or runners for stains or spills. Launder or replace them as needed.",
       },
       {
-        title: "11. Upholstery Cleaning:",
+        title: "Upholstery Cleaning:",
         description:
           "If your dining chairs have upholstered seats, vacuum or spot clean them to remove any stains or spills.",
       },
       {
-        title: "12. Final Touches:",
+        title: "Final Touches:",
         description:
           "Return cleaned or laundered items to their designated places. Arrange chairs neatly around the dining table.",
       },
       {
-        title: "13. Set the Table:",
+        title: "Set the Table:",
         description:
           "Set the table with clean placemats, dishes, and utensils to create an inviting atmosphere.",
       },
       {
-        title: "14. Regular Maintenance:",
+        title: "Regular Maintenance:",
         description:
           "Establish a routine cleaning schedule to maintain the cleanliness of your dining room. Small, frequent cleanings are often more manageable than tackling a heavily soiled space.",
       },
@@ -130,62 +130,62 @@ export const DINING_ROOM_SERVICES = {
     text: "Dining room cleaning is essential for several reasons, contributing to both the aesthetics of the space and the well-being of individuals who utilize it. Here are key reasons why dining room cleaning is necessary:",
     items: [
       {
-        title: "1. Food Safety and Hygiene:",
+        title: "Food Safety and Hygiene:",
         description:
           "Regular cleaning helps maintain a hygienic environment in the dining room, preventing the growth of bacteria and ensuring food safety. It is particularly important as meals are prepared, served, and consumed in this space.",
       },
       {
-        title: "2. Aesthetics and Comfort:",
+        title: "Aesthetics and Comfort:",
         description:
           "A clean dining room contributes to the overall aesthetics of your home. It creates a welcoming and comfortable atmosphere for meals and social gatherings.",
       },
       {
-        title: "3. Guest Impressions:",
+        title: "Guest Impressions:",
         description:
           "A well-maintained dining room makes a positive impression on guests. It reflects attention to detail and a commitment to creating a pleasant environment for shared meals.",
       },
       {
-        title: "4. Preventing Stains and Damage:",
+        title: "Preventing Stains and Damage:",
         description:
           "Regular cleaning helps prevent the buildup of stains, spills, and other substances that can lead to damage on furniture, upholstery, and other surfaces in the dining room.",
       },
       {
-        title: "5. Eliminating Allergens:",
+        title: "Eliminating Allergens:",
         description:
           "Dust, pollen, and other allergens can accumulate in the dining room. Regular cleaning helps eliminate these allergens, creating a healthier space for individuals with allergies or respiratory conditions.",
       },
       {
-        title: "6. Pest Prevention:",
+        title: "Pest Prevention:",
         description:
           "Crumbs and food residues can attract pests such as ants or rodents. Keeping the dining room clean helps prevent pest infestations.",
       },
       {
-        title: "7. Extended Longevity of Furniture:",
+        title: "Extended Longevity of Furniture:",
         description:
           "Proper cleaning and maintenance contribute to the longevity of dining room furniture. Regular care helps prevent wear and tear, preserving the appearance and functionality of the furniture.",
       },
       {
-        title: "8. Odor Control:",
+        title: "Odor Control:",
         description:
           "Regular cleaning helps control odors caused by food spills, stagnant air, or other sources. This ensures a pleasant and fresh-smelling dining environment.",
       },
       {
-        title: "9. Promoting Family Bonding:",
+        title: "Promoting Family Bonding:",
         description:
           "A clean and organized dining room provides an inviting space for family meals, fostering a sense of togetherness and promoting positive family interactions.",
       },
       {
-        title: "10. Setting a Positive Tone:",
+        title: "Setting a Positive Tone:",
         description:
           "A clean dining room sets a positive tone for mealtime. It encourages a mindful and enjoyable dining experience, promoting a sense of ritual and routine.",
       },
       {
-        title: "11. Maintaining Organization:",
+        title: "Maintaining Organization:",
         description:
           "Cleaning and organizing the dining room ensure that tableware, utensils, and other items are easily accessible. It contributes to an organized and efficient dining routine.",
       },
       {
-        title: "12. Creating a Relaxing Atmosphere:",
+        title: "Creating a Relaxing Atmosphere:",
         description:
           "A tidy and well-kept dining room contributes to a relaxing atmosphere, making meals a more enjoyable and stress-free experience.",
       },
