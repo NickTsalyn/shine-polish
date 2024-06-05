@@ -62,7 +62,7 @@ export default function Button(props: PropsButtton) {
         " py-2 lg:py-4 px-6 lg:px-14 border border-blue rounded-xl bg-main ";
       break;
     case "auth-sign":
-      styles = " py-2 px-5 lg:px-6 bg-auth-button-bgn rounded-xl ";
+      styles = " py-2 px-6 lg:px-7 bg-auth-button-bgn rounded-xl ";
       break;
     case "apply-btn-light":
       styles =
