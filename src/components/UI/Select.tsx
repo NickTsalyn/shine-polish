@@ -8,6 +8,7 @@ import {
   SelectChangeEvent,
   styled,
 } from "@mui/material";
+import { GlobalStyles } from "@mui/system";
 import { useState } from "react";
 
 const StyledMenuItem = styled(MenuItem)(() => ({
@@ -30,6 +31,24 @@ export default function BasicSelect(props: BasicSelectProps) {
   };
 
   return (
+    <>
+    <GlobalStyles styles={{
+        '.MuiPaper-root': {
+          '&::-webkit-scrollbar': {
+            width: '8px',
+          },
+          '&::-webkit-scrollbar-track': {
+            background: 'transparent',
+          },
+          '&::-webkit-scrollbar-thumb': {
+            background: '#E6BA95',
+            borderRadius: '32px',
+          },
+          '&::-webkit-scrollbar-thumb:hover': {
+            background: '#555',
+          },
+        }
+      }} />
     <Box className="min-w-[280px] lg:text-[24px] xl:text-[32px]">
       {props.label && (
         <label className="body lg:text-[24px] xl:text-[32px]">
@@ -105,6 +124,7 @@ export default function BasicSelect(props: BasicSelectProps) {
             PaperProps: {
               style: {
                 borderRadius: "20px",
+                maxHeight: 140,
               },
             },
           }}
@@ -121,5 +141,6 @@ export default function BasicSelect(props: BasicSelectProps) {
         </Select>
       </FormControl>
     </Box>
+    </>
   );
 }
