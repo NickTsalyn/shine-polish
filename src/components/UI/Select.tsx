@@ -59,7 +59,7 @@ export default function BasicSelect(props: BasicSelectProps) {
       <FormControl
         fullWidth
         sx={{
-          padding: "12",
+          // padding: "12",
           border: "2px solid #E6BA95",
           borderRadius: "12px",
           transition: "all 0.3s ease",
@@ -81,7 +81,6 @@ export default function BasicSelect(props: BasicSelectProps) {
         }}
       >
         <Select
-          id="demo-simple-select"
           value={props.value}
           name={props.name}
           displayEmpty
@@ -119,12 +118,12 @@ export default function BasicSelect(props: BasicSelectProps) {
           open={open}
           onOpen={handleOpen}
           onClose={handleOpen}
-          className=" body focus:outline-none"
+          className="body focus:outline-none h-9 md:h-11 xl:h-12"
           MenuProps={{
             PaperProps: {
               style: {
                 borderRadius: "20px",
-                maxHeight: 140,
+                maxHeight: 146,
               },
             },
           }}
@@ -133,7 +132,7 @@ export default function BasicSelect(props: BasicSelectProps) {
             <StyledMenuItem
               key={item.value}
               value={item.value}
-              className="body lg:text-[24px] w-[86%] bg-white text-secondary border-b border-solid border-secondary mx-auto"
+              className="body lg:text-[24px] w-[88%] md:w-[96%] lg:w-[98%] bg-white text-secondary border-b border-solid border-secondary mx-auto"
             >
               {item.label}
             </StyledMenuItem>
