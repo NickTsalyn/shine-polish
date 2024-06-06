@@ -2,6 +2,9 @@ import { SelectChangeEvent } from "@mui/material";
 import BasicSelect from "../UI/Select";
 import { useState } from "react";
 import RadioButton from "../UI/RadioButton";
+import Image from "next/image";
+
+import img_stub from "../../../public/images/service-area/image-map-stub.png";
 
 const areaOptions = [
 	{ value: "Downtown", label: "Downtown" },
@@ -69,26 +72,41 @@ const Step1 = () => {
 	};
 
 	return (
-		<div className="p-4 md:p-6 lg:p-9 flex flex-col gap-6 md:gap-[26px]">
-			<div className="flex flex-col gap-4">
-				<h2 className=" mb-2 h2 md:mb-0 lg:mb-[14px]">Choose area</h2>
-				<BasicSelect name="areas" value={areas} items={areaOptions} onChange={handleChange} />
+		<div className="p-4 md:p-6 lg:p-9 flex flex-col gap-6 md:gap-[26px] lg:grid lg:grid-flow-col lg:grid-cols-2 lg:gap-[80px]">
+			<div className='md:flex md:flex-row md:justify-between lg:flex-col lg:gap-[33px] xl:gap-[30px] lg:col-span-2 lg:row-span-2'>
+				<div className="flex flex-col gap-4 md:gap-6">
+					<h2 className=" text-2xl md:text-4xl font-medium">Choose area</h2>
+					<BasicSelect name="areas" value={areas} items={areaOptions} onChange={handleChange} />
+				</div>
+				<div className="hidden md:block h-full ">
+					<Image
+						src={img_stub}
+						className="md:w-[338px] md:h-[330px] lg:w-[553px] lg:h-[454px] xl:w-[780px] xl:h-[494px]"
+						alt="map"
+						width={376}
+						layout="responsive"
+					/>
+				</div>
 			</div>
-			<div className="flex flex-col gap-4">
-				<h2 className=" mb-2 h2 md:mb-0 lg:mb-[14px]">How many rooms?</h2>
+			<div className="flex flex-col gap-4 md:gap-6 lg:col-span-1">
+				<h2 className="text-2xl md:text-4xl font-medium">How many rooms?</h2>
 				<div className="flex flex-col gap-3">
 					<BasicSelect name="bedrooms" value={bedrooms} items={bedroomOptions} onChange={handleChange} />
 					<BasicSelect name="bathrooms" value={bathrooms} items={bathroomOptions} onChange={handleChange} />
 				</div>
 			</div>
-			<div className="flex flex-col gap-4">
-				<h2 className=" mb-2 h2 md:mb-0 lg:mb-[14px]">How often?</h2>
-				<ul className="flex flex-wrap gap-5">
+			<div className="flex flex-col gap-4 md:gap-6 lg:col-span-1 mt-auto">
+				<h2 className="text-2xl md:text-4xl font-medium">How often?</h2>
+				<p className="hidden md:block">Scheduling is flexible. Cancel or reschedule anytime.</p>
+				<ul className="flex flex-wrap gap-5 lg:gap-6 lg:w-[562px]">
 					{frequencyOptions.map((option) => {
 						return (
-							<li key={option.value} className="flex justify-center items mb-5" >
-								<RadioButton value={option.value} style="flex justify-center items-center w-[132px] py-[40px]">
-									<span className='inline-block'>{option.label}</span>
+							<li key={option.value} className="flex justify-center items">
+								<RadioButton
+									value={option.value}
+									style="flex justify-center items-center w-[132px] lg:w-[260px] px-[22px] min-h-[48px]"
+								>
+									<span className="inline-block lg:text-2xl">{option.label}</span>
 								</RadioButton>
 							</li>
 						);
