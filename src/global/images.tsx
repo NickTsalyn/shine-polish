@@ -155,3 +155,48 @@ export const FriendsIcon: React.FC = () => {
     </picture>
   );
 };
+export const FooterLogo = () => {
+  return (
+    <>
+      <Image
+        src="/icons/logo/logo_dark_bg.svg"
+        height={28}
+        width={30}
+        alt="logo"
+        layout="responsive"
+      ></Image>
+    </>
+  );
+};
+
+// export const FooterImg = () => {
+//   return (
+//     <div className="">
+//       <Image
+//         src="/images/atlantaSkylineSecondarySmall.png"
+//         height={100}
+//         width={1440}
+//         layout="responsive"
+//         objectFit="cover"
+//         objectPosition="center"
+//         alt="Footer Image"
+//       ></Image>
+//     </div>
+//   );
+// };
+
+export const FooterImg = () => {
+  return (
+    <div className="z-[-1] absolute  bottom-0  opacity-60 w-full h-full ">
+      <Image
+        src="/images/atlantaSkylineSecondarySmall.png"
+        // height={400}
+        // width={1156}
+        layout="fill"
+        objectFit="cover"
+        objectPosition="center"
+        alt="Footer Image"
+      ></Image>
+    </div>
+  );
+};
