@@ -98,13 +98,13 @@ const Step1 = () => {
 			<div className="flex flex-col gap-4 md:gap-6 lg:col-span-1 mt-auto">
 				<h2 className="text-2xl md:text-4xl font-medium">How often?</h2>
 				<p className="hidden md:block">Scheduling is flexible. Cancel or reschedule anytime.</p>
-				<ul className="flex flex-wrap gap-5 lg:gap-6 lg:w-[562px]">
+				<ul className="flex flex-wrap gap-5 lg:gap-6 lg:w-[562px] md:flex-nowrap md:justify-around">
 					{frequencyOptions.map((option) => {
 						return (
-							<li key={option.value} className="flex justify-center items">
+							<li key={option.value} className="flex justify-center items-center min-w-[132px] md:min-w-[160px] lg:min-w-[260px]">
 								<RadioButton
 									value={option.value}
-									style="flex justify-center items-center w-[132px] lg:w-[260px] px-[22px] min-h-[48px]"
+									style=" py-[10px] px-[26px] md:py-[16px] md:px-[20px] h-full w-full"
 								>
 									<span className="inline-block lg:text-2xl">{option.label}</span>
 								</RadioButton>
