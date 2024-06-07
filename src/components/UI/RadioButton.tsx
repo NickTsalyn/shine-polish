@@ -13,14 +13,14 @@ const RadioButton: React.FC<RadioCheckProps> = ({
 }) => {
   return (
    
-        <div
-          className={`${style}  border border-main items-center justify-center rounded-xl shadow-button-shadow ${isActive ? 'bg-tertial border-main/35 shadow-hover-shadow ': 'border-main shadow-hover-shadow' }`} onClick = {onClick}
-        >
-          <button className={` flex flex-col items-center text-main text-center font-intro_book text-base font-normal leading-6 ${isActive ? 'text-white' : 'text-main'}`}>
-            {children}
-            {text}
-          </button>
-        </div>
+    <div
+    className={`${style}  border  items-center justify-center rounded-xl  ${isActive ? 'bg-tertial border-main/35 shadow-hover-shadow ': 'border-main shadow-hover-shadow' }`} 
+  >
+    <button className={` flex flex-col items-center t text-center font-intro_book text-base font-normal leading-6 ${isActive ? 'text-white' : 'text-main'}`} onClick = {onClick}>
+      {children}
+      {text}
+    </button>
+  </div>
   )
       }
     

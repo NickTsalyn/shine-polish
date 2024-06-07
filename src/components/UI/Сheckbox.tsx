@@ -5,9 +5,9 @@ import { RadioCheckProps } from "@/types/types";
 const CheckBox = (props: RadioCheckProps) => {
   return (
     <div
-    className={`${props.style}  border border-main items-center justify-center rounded-xl shadow-button-shadow ${props.isActive ? 'bg-tertial border-main/35 shadow-hover-shadow ': 'border-main shadow-hover-shadow' }`} onClick = {props.onClick}
+    className={`${props.style}  border  items-center justify-center rounded-xl  ${props.isActive ? 'bg-tertial border-main/35 shadow-hover-shadow ': 'border-main shadow-hover-shadow' }`} 
   >
-    <button className={` flex flex-col items-center text-main text-center font-intro_book text-base font-normal leading-6 ${props.isActive ? 'text-white' : 'text-main'}`}>
+    <button className={` flex flex-col items-center t text-center font-intro_book text-base font-normal leading-6 ${props.isActive ? 'text-white' : 'text-main'}`} onClick = {props.onClick}>
       {props.children}
       {props.text}
     </button>
