@@ -50,7 +50,7 @@ export default function SignInForm() {
           >
             <Link href={"/"}>
               <span className="text-main md:text-white hover:text-accent">
-                <CloseRoundedIcon className="" />
+                <CloseRoundedIcon />
               </span>
             </Link>
           </Button>
@@ -124,7 +124,7 @@ export default function SignInForm() {
           <div className="absolute z-11 hidden lg:block lg:rounded-br-[50px] bottom-0 right-0  lg:w-[480px]  lg:h-[204px]">
             <DesctopScreenSecondWave />
           </div>
-          <div className="absolute z-30 bottom-[40px] md:bottom-[183px] left-[20px] flex flex-col md:px-[60px] md:justify-center md:items-center">
+          <div className="absolute z-30 bottom-[40px] md:bottom-[183px] left-[20px] md:left-0 flex flex-col px-[32px] md:px-0 md:w-[356px] md:justify-center md:items-center lg:w-[480px]">
             <h3 className="text-white text-[32px] font-bold mb-2 lg:mb-[42px] lg:font-light lg:text-[48px]">
               Create Account!
             </h3>
