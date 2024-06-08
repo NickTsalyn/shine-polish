@@ -4,6 +4,7 @@ interface TextAreaProps {
   placeholder?: string;
   required?: boolean;
   name?: string;
+  value?: string;
 }
 // type Props = {
 //   onChange?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
@@ -20,6 +21,7 @@ export default function Textarea({
   placeholder,
   required,
   name,
+  value
 }: TextAreaProps) {
   return (
     <textarea
@@ -28,6 +30,7 @@ export default function Textarea({
       placeholder={placeholder}
       required={required}
       onChange={onChange}
+      value={value}
     />
   );
 }

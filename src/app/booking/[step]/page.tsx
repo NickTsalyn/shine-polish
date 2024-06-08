@@ -4,13 +4,13 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 import FormStepper from "@/components/Form/FormStepper";
+import Step1 from "@/components/Form/step_1";
+import Step2 from "@/components/Form/step_2";
+import Step3 from "@/components/Form/step_3";
 import Step4 from "@/components/Form/step_4";
 import Step5 from "@/components/Form/step_5";
 import Step6 from "@/components/Form/step_6";
 import Step7 from "@/components/Form/step_7";
-import Step3 from "@/components/Form/step_3";
-import Step2 from "@/components/Form/step_2";
-import Step1 from "@/components/Form/step_1";
 
 const stepsComponents = [Step1, Step2, Step3, Step4, Step5, Step6, Step7];
 
@@ -25,7 +25,7 @@ const BookingStep = ({ params }: BookingStepProps) => {
   const step = params.step || "1";
   const stepNumber = parseInt(step.replace("step_", ""), 10) - 1;
   const [activeStep, setActiveStep] = useState(stepNumber);
-  const [completedSteps, setCompletedSteps] = useState<number[]>([]); // Стан для зберігання завершених кроків
+  const [completedSteps, setCompletedSteps] = useState<number[]>([]);
 
   useEffect(() => {
     setActiveStep(stepNumber);
@@ -34,24 +34,30 @@ const BookingStep = ({ params }: BookingStepProps) => {
   const handleNext = () => {
     const nextStep = activeStep + 1;
     setActiveStep(nextStep);
-    setCompletedSteps([...completedSteps, activeStep]); // Додаємо поточний крок до списку завершених
+    setCompletedSteps([...completedSteps, activeStep]);
     router.push(`/booking/${nextStep + 1}`);
   };
 
   const handlePrevious = () => {
     const prevStep = activeStep - 1;
     setActiveStep(prevStep);
-    setCompletedSteps(completedSteps.filter((step) => step !== activeStep)); // Видаляємо поточний крок зі списку завершених
+    setCompletedSteps(completedSteps.filter((step) => step !== activeStep));
     router.push(`/booking/${prevStep + 1}`);
+  };
+
+  const handleStep = (step: number) => {
+    setActiveStep(step);
+    router.push(`/booking/${step + 1}`);
   };
 
   const StepComponent = stepsComponents[activeStep] || Step1;
   return (
-    <div className="container py-4 md:py-6 lg:pt-[90px] xl:pt-[102px]">
+    <div className="p-4 md:p-6 xl:p-9 lg:pt-[90px] xl:pt-[102px]">
       <FormStepper
         activeStep={activeStep}
         handleNext={handleNext}
         handlePrevious={handlePrevious}
+        handleStep={handleStep}
         completedSteps={completedSteps}
       >
         <StepComponent />
