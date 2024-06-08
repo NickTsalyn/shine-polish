@@ -1,8 +1,6 @@
-// import { SelectChangeEvent } from "@mui/material";
-import BasicSelect from "../UI/Select";
-// import { useState } from "react";
-import RadioButton from "../UI/RadioButton";
 import Image from "next/image";
+import BasicSelect from "../UI/Select";
+import RadioButton from "../UI/RadioButton";
 
 import img_stub from "../../../public/images/service-area/image-map-stub.png";
 import {
@@ -20,28 +18,6 @@ const Step1 = () => {
     bathrooms: "",
     frequency: "",
   });
-  // 	const [areas, setAreas] = useState<string>("");
-  // 	const [bedrooms, setBedrooms] = useState<string>("");
-  // 	const [bathrooms, setBathrooms] = useState<string>("");
-  // 	const [frequency, setFrequency] = useState<string>("");
-
-  // const handleChange = (event: SelectChangeEvent<string | number>) => {
-  // 	const { name, value } = event.target;
-  // 	if (name === "areas") {
-  // 		setAreas(value as string);
-  // 	} else if (name === "bedrooms") {
-  // 		setBedrooms(value as string);
-  // 	} else if (name === "bathrooms") {
-  // 		setBathrooms(value as string);
-  // 	}
-  // };
-
-  // const handleFrequencyChange = (value: string) => {
-  //       setFrequency(value);
-  //   };
-  //   const handleFrequencyChange = (value: string) => {
-  //     handleInputChange({ target: { name: "frequency", value } } as SelectChangeEvent<string>);
-  //   };
 
   return (
     <div className="py-4 md:py-6 lg:py-9 flex flex-col gap-6 md:gap-[26px] lg:grid lg:grid-flow-col lg:grid-cols-2 lg:gap-[66px] xl:gap-[80px]">
