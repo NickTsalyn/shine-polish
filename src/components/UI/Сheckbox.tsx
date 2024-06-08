@@ -9,7 +9,7 @@ const CheckBox = (props: RadioCheckProps) => {
         padding: "0",
       }}
       checked={props.checked}
-      onChange={props.onChange}
+      // onChange={props.onChange}
       icon={
         <div
           className={`${props.style} border border-main items-center justify-center rounded-xl shadow-button-shadow`}

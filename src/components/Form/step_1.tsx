@@ -50,7 +50,7 @@ const Step1 = () => {
 			</div>
 			<div className="flex flex-col gap-4 md:gap-6 lg:col-span-1">
 				<h2 className="text-2xl md:text-4xl font-medium">How many rooms?</h2>
-				<div className="flex flex-col gap-3">
+				<div className="flex flex-col gap-3 md:gap-6">
 					<BasicSelect name="bedrooms" value={bedrooms} items={bedroomOptions} onChange={handleChange} />
 					<BasicSelect name="bathrooms" value={bathrooms} items={bathroomOptions} onChange={handleChange} />
 				</div>
@@ -60,7 +60,7 @@ const Step1 = () => {
 				<p className="hidden md:block text-base lg:text-[26px] lg:font-medium text-bookingSubText">
 					Scheduling is flexible. Cancel or reschedule anytime.
 				</p>
-				<ul className="flex flex-wrap gap-5 lg:gap-6 lg:w-[562px]  md:justify-around">
+				<ul className="flex flex-wrap gap-5 lg:gap-6 lg:w-[562px]  md:justify-around md:flex-nowrap lg:flex-wrap">
 					{frequencyOptions.map(({value, label}) => {
 						return (
 							<li
@@ -69,7 +69,7 @@ const Step1 = () => {
 							>
 								<RadioButton
 									value={value}
-									style=" py-[10px] px-[20px] md:py-[16px] md:px-[20px] h-full w-full"
+									style=" py-[10px] px-[20px] md:py-[8px] md:px-[10px] lg:py-[20px] h-full w-full"
 									isActive={value === frequency}
                                     onClick={() => handleFrequencyChange(value)}
 								>
