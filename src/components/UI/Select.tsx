@@ -8,6 +8,7 @@ import {
   SelectChangeEvent,
   styled,
 } from "@mui/material";
+import { GlobalStyles } from "@mui/system";
 import { useState } from "react";
 
 const StyledMenuItem = styled(MenuItem)(() => ({
@@ -20,7 +21,7 @@ type BasicSelectProps = {
   onChange: (event: SelectChangeEvent<string | number>) => void;
   label?: string;
   placeholder?: string;
-  name: string;
+  name?: string;
 };
 
 export default function BasicSelect(props: BasicSelectProps) {
@@ -30,6 +31,24 @@ export default function BasicSelect(props: BasicSelectProps) {
   };
 
   return (
+    <>
+    <GlobalStyles styles={{
+        '.MuiPaper-root': {
+          '&::-webkit-scrollbar': {
+            width: '8px',
+          },
+          '&::-webkit-scrollbar-track': {
+            background: 'transparent',
+          },
+          '&::-webkit-scrollbar-thumb': {
+            background: '#E6BA95',
+            borderRadius: '32px',
+          },
+          '&::-webkit-scrollbar-thumb:hover': {
+            background: '#555',
+          },
+        }
+      }} />
     <Box className="min-w-[280px] lg:text-[24px] xl:text-[32px]">
       {props.label && (
         <label className="body lg:text-[24px] xl:text-[32px]">
@@ -40,7 +59,7 @@ export default function BasicSelect(props: BasicSelectProps) {
       <FormControl
         fullWidth
         sx={{
-          padding: "12",
+          // padding: "12",
           border: "2px solid #E6BA95",
           borderRadius: "12px",
           transition: "all 0.3s ease",
@@ -56,10 +75,12 @@ export default function BasicSelect(props: BasicSelectProps) {
           "&:hover .MuiOutlinedInput-notchedOutline": {
             border: "none",
           },
+          ".MuiSelect-icon": {
+            color: " #E6BA95",
+          },
         }}
       >
         <Select
-          id="demo-simple-select"
           value={props.value}
           name={props.name}
           displayEmpty
@@ -97,11 +118,12 @@ export default function BasicSelect(props: BasicSelectProps) {
           open={open}
           onOpen={handleOpen}
           onClose={handleOpen}
-          className=" body focus:outline-none"
+          className="body focus:outline-none h-9 md:h-11 xl:h-12"
           MenuProps={{
             PaperProps: {
               style: {
                 borderRadius: "20px",
+                maxHeight: 146,
               },
             },
           }}
@@ -110,7 +132,7 @@ export default function BasicSelect(props: BasicSelectProps) {
             <StyledMenuItem
               key={item.value}
               value={item.value}
-              className="body lg:text-[24px] w-[86%] bg-white text-secondary border-b border-solid border-secondary mx-auto"
+              className="body lg:text-[24px] w-[88%] md:w-[96%] lg:w-[98%] bg-white text-secondary border-b border-solid border-secondary mx-auto"
             >
               {item.label}
             </StyledMenuItem>
@@ -118,5 +140,6 @@ export default function BasicSelect(props: BasicSelectProps) {
         </Select>
       </FormControl>
     </Box>
+    </>
   );
 }
