@@ -41,7 +41,7 @@ const FormStepper = ({
             <StepLabel
               StepIconComponent={() => (
                 <div
-                  className="flex justify-center items-center size-4 md:size-6 lg:size-9  text-[12px] md:text-[14px] lg:text-[18px] rounded-full"
+                  className="flex justify-center items-center size-[18px] md:size-6 lg:size-9  text-[12px] md:text-[14px] lg:text-[18px] rounded-full"
                   onClick={() => handleStep(index)}
                   style={{
                     background:
@@ -58,18 +58,39 @@ const FormStepper = ({
           </Step>
         ))}
       </Stepper>
-      <Box sx={{ mt: 2 }}>{children}</Box>
-      <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
+      {children}
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "row",
+          pt: 2,
+        }}
+      >
         <Button
-          color="inherit"
-          disabled={activeStep === 0}
           onClick={handlePrevious}
-          sx={{ mr: 1 }}
+          disabled={activeStep === 0}
+          sx={{
+            fontFamily: "Lato",
+            color: "#262D33",
+            "&:hover": {
+              color: "#00BFDE",
+            },
+          }}
         >
           Previous
         </Button>
         <Box sx={{ flex: "1 1 auto" }} />
-        <Button onClick={handleNext} disabled={activeStep === steps.length - 1}>
+        <Button
+          sx={{
+            fontFamily: "Lato",
+            color: "#006778",
+            "&:hover": {
+              color: "#00BFDE",
+            },
+          }}
+          onClick={handleNext}
+          disabled={activeStep === steps.length - 1}
+        >
           {activeStep === steps.length - 1 ? "Finish" : "Next"}
         </Button>
       </Box>
