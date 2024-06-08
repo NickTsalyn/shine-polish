@@ -14,6 +14,8 @@
     value?: string;
     checked?: boolean;
     children?: React.ReactNode;
-    onClick?: () => void;
+    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    onClick: () => void;
     disabled?: boolean;
+    isActive?: boolean;
   };
