@@ -52,7 +52,7 @@ const BookingStep = ({ params }: BookingStepProps) => {
 
   const StepComponent = stepsComponents[activeStep] || Step1;
   return (
-    <div className="container py-4 md:py-6 lg:pt-[90px] xl:pt-[102px]">
+    <div className="p-4 md:p-6 xl:p-9 lg:pt-[90px] xl:pt-[102px]">
       <FormStepper
         activeStep={activeStep}
         handleNext={handleNext}
