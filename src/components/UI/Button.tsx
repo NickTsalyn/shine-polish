@@ -66,7 +66,7 @@ export default function Button(props: PropsButtton) {
       break;
     case "apply-btn-light":
       styles =
-        " rounded-xl border-2 border-secondary   bg-secondary  py-1 px-[74px] hover:shadow-apply-send-button-shadow  focus:shadow-apply-send-button-shadow  ";
+        " rounded-xl border-2 border-secondary   bg-secondary  py-1 px-[54px] hover:shadow-apply-send-button-shadow  focus:shadow-apply-send-button-shadow  ";
       break;
     case "apply-btn-blue":
       styles =
