@@ -8,6 +8,7 @@ import "swiper/css/effect-fade";
 import Image from "next/image";
 
 import Button from "./UI/Button";
+import Link from "next/link";
 
 interface HeroSectionBgProps {
   children?: React.ReactNode;
@@ -65,9 +66,9 @@ export default function Hero({ data }: HeroSectionBgProps) {
             </span>
           </Button>
           <Button type="button" style="home-book-now">
-            <span className="text-secondary text-xl md:text-4xl lg:text-[64px] lg:leading-none font-bold">
+            <Link href="/booking" className="text-secondary text-xl md:text-4xl lg:text-[64px] lg:leading-none font-bold">
               Book Now
-            </span>
+            </Link>
           </Button>
         </div>
       </div>
