@@ -1,4 +1,5 @@
 import React from "react";
+// import { useForm } from "react-hook-form"
 
 interface InputProps {
   onChange?: () => void;
@@ -15,6 +16,7 @@ export default function Input({
   style,
   width,
 }: InputProps) {
+  // const { register, handleSubmit } = useForm<InputProps>()
   let styles = "";
 
   switch (style) {
@@ -40,7 +42,8 @@ export default function Input({
         className={styles}
         type={type}
         placeholder={placeholder}
-        onChange={onChange} /*{...register("text")}*/
+        onChange={onChange} 
+        // {...register("text")}
       />
     </>
   );
