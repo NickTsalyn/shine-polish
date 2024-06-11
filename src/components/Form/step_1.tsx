@@ -14,8 +14,8 @@ import useFormStorage from "@/hooks/formStorage";
 const Step1 = () => {
   const { form, handleInputChange, handleRadioChange } = useFormStorage({
     areas: "",
-    bedrooms: "",
-    bathrooms: "",
+    bedrooms: 0,
+    bathrooms: 0,
     frequency: "",
   });
 
@@ -49,13 +49,13 @@ const Step1 = () => {
         <div className="flex flex-col gap-3 md:gap-6">
           <BasicSelect
             name="bedrooms"
-            value={form.bedrooms as string}
+            value={form.bedrooms as number}
             items={bedroomOptions}
             onChange={handleInputChange}
           />
           <BasicSelect
             name="bathrooms"
-            value={form.bathrooms as string}
+            value={form.bathrooms as number}
             items={bathroomOptions}
             onChange={handleInputChange}
           />
