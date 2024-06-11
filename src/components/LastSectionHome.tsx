@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-fade";
+import Link from "next/link";
 
 interface Background {
   id: number;
@@ -65,9 +66,9 @@ export default function LastSectionHome({
 
           <div className="flex  items-center z-10 justify-between lg:pr-[40px] xl:pr-[80px] lg:pl-[40px] xl:pl-[80px]">
             <Button style="home-book-now" type="button">
-              <span className="text-secondary text-5 font-bold md:text-[36px] lg:text-5xl xl:text-6xl drop-shadow-md">
+              <Link href="/booking" className="text-secondary text-5 font-bold md:text-[36px] lg:text-5xl xl:text-6xl drop-shadow-md">
                 Book Now
-              </span>
+              </Link>
             </Button>
             <span className="h2 md:text-[36px] text-white">
               ...in a clean house
