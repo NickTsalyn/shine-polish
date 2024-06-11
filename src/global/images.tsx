@@ -200,3 +200,19 @@ export const FooterImg = () => {
     </div>
   );
 };
+
+export const FrontDoorForm = () => {
+  return (
+    <>
+      <Image
+        src="/images/front-door.png"
+        alt="picture of front door"
+        width={174}
+        height={307}
+        layout="responsive"
+        objectFit="cover"
+        objectPosition="center"
+      />
+    </>
+  );
+};
