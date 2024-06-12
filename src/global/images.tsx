@@ -200,3 +200,18 @@ export const FooterImg = () => {
     </div>
   );
 };
+
+export const ChecklistImg = () => {
+  return (
+    <div className="z-[-1] absolute  bottom-0   w-full h-full ">
+      <Image
+        src="/images/CheckList-Icon.png"
+        width={450}
+        height={500}
+        alt="Tell About Us"
+        objectFit="cover"
+        layout="responsive"
+      ></Image>
+    </div>
+  );
+};
