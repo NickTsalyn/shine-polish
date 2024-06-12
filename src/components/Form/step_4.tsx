@@ -1,8 +1,22 @@
-// import { Form } from "react-hook-form";
-import { FrontDoorForm } from "@/global/images";
+import React from "react";
+import { DatePikerCustomIcon, FrontDoorForm } from "@/global/images";
 import Input from "../UI/Input";
+import dayjs, { Dayjs } from "dayjs";
+import CustomDesctopDatePicker from "../UI/DateTimePicker";
 
 const Step4 = () => {
+  const [selectedDate, setSelectedDate] = React.useState<Dayjs | null>(dayjs());
+  const [isCalendarOpen, setIsCalendarOpen] = React.useState(false);
+  const handleDateChange = (date: Dayjs | null) => {
+    setSelectedDate(date);
+    console.log("Selected date:", date);
+    setIsCalendarOpen(false); // Закриваємо календар при виборі дати
+  };
+
+  const handleButtonClick = () => {
+    setIsCalendarOpen(!isCalendarOpen);
+  };
+
   return (
     <div className="p-4 md:p-6 lg:p-9">
       <div className="flex mb-[72px] lg:mb-[92px]">
@@ -45,77 +59,37 @@ const Step4 = () => {
         <h2 className="h1 md:text-[36px] mb-[32px]">
           When would you like us to clean?
         </h2>
+
+        <div className="flex gap-3">
+          <div className="w-[200px]">
+            <p className="text-subtext text-4 lg:text-5 mb-5">
+              Choose a date and time you would like to us to come.
+            </p>
+          </div>
+          <div className="w-[100px]">
+            <button
+              type="button"
+              onClick={handleButtonClick}
+              className="btn btn-primary"
+            >
+              <DatePikerCustomIcon />
+              <span>Choose Date</span>
+            </button>
+          </div>
+        </div>
+        <div className={`lg:flex gap-3 ${isCalendarOpen ? "block" : "hidden"}`}>
+          <CustomDesctopDatePicker onChange={handleDateChange} />
+        </div>
+
+        <div className="w-[150px] justify-center">
+          <p className="text-accent text-8 lg:text-10 text-center">
+            {selectedDate
+              ? `Your booking date: ${selectedDate.format("MM-DD-YYYY")}`
+              : "You did not choose a date and time for cleaning."}
+          </p>
+        </div>
       </div>
     </div>
   );
 };
 export default Step4;
-
-// const Step3 = () => {
-// 	const { form, setForm } = useContext(FormContext);
-
-// 	useEffect(() => {
-// 		const savedForm = localStorage.getItem("form");
-// 		if (savedForm) {
-// 			setForm(JSON.parse(savedForm));
-// 	}}
-// 	, [setForm]);
-
-// 	const handleChange = (event: SelectChangeEvent<string | number>) => {
-// 		const { name, value } = event.target;
-// 		const updatedForm = { ...form, [name]: value }
-// 		setForm(updatedForm);
-// 		localStorage.setItem("form", JSON.stringify(updatedForm));
-// 	};
-
-// 	const handleAreaChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-// 		const { name, value } = event.target;
-// 		const updatedForm = {...form, [name]: value}
-// 		setForm(updatedForm);
-// 		localStorage.setItem("form", JSON.stringify(updatedForm));
-// 	};
-
-// 	return (
-// 		<div className="p-4 md:p-6 lg:p-9 flex flex-col gap-6 md:gap-[100px]">
-//       <div className=" flex flex-col gap-4 md:gap-8 lg:gap-10 ">
-//         <h2 className=" mb-2 subtitle-booking md:mb-0 lg:mb-[14px]">
-//           Additional information
-//         </h2>
-//         <div className=" lg:w-[480px] xl:w-[656px] ">
-//           <BasicSelect
-//             name="homeAccess"
-//             items={homeAccess}
-//             value={form.homeAccess}
-//             onChange={handleChange}
-//             placeholder="How will access your home?* "
-//           />
-//         </div>
-//         <div className=" lg:w-[480px] xl:w-[656px]">
-//           <BasicSelect
-//             name="aboutUs"
-//             items={aboutUs}
-//             value={form.aboutUs}
-//             onChange={handleChange}
-//             placeholder="How did you hear about us?* "
-//           />
-//         </div>
-//       </div>
-//       <div>
-//         <h2 className=" mb-6 subtitle-booking md:mb-8 lg:mb-10">
-//           Anything else we should know to provide the best cleaning possible
-//         </h2>
-//         <div className=" h-[124px] md:h-[220px] lg:h-[250px] lg:w-[532px] xl:w-[684px]">
-//           {" "}
-//           <Textarea
-//             placeholder="Special Instructions*"
-//             value={form.specialInstructions}
-//             name="specialInstructions"
-//             onChange={handleAreaChange}
-//           />
-//         </div>
-//       </div>
-//     </div>
-
-// 	);
-// };
-// export default Step3;

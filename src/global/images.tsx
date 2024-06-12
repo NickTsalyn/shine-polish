@@ -216,3 +216,18 @@ export const FrontDoorForm = () => {
     </>
   );
 };
+export const DatePikerCustomIcon = () => {
+  return (
+    <>
+      <Image
+        src="/images/date-picker.svg"
+        alt="date picker icon"
+        width={24}
+        height={24}
+        layout="responsive"
+        objectFit="cover"
+        objectPosition="center"
+      />
+    </>
+  );
+};
