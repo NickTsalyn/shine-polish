@@ -10,6 +10,7 @@ import { styled } from "@mui/material/styles";
 
 import NavLinks from "./Navigation/NavLinks";
 import Button from "./UI/Button";
+import { SIDEBAR_LINKS } from "@/global/navigation";
 
 const UserIcon = styled(AccountCircleIcon)(() => ({
   color: "#fff",
@@ -18,25 +19,25 @@ const UserIcon = styled(AccountCircleIcon)(() => ({
 
 const socialIcons = [
   {
-    icon: <FacebookRoundedIcon style={{ color: "white", fontSize: 36 }} />,
+    icon: <FacebookRoundedIcon className="text-white size-9" />,
     href: "https://facebook.com",
   },
   {
-    icon: <InstagramIcon style={{ color: "white", fontSize: 36 }} />,
+    icon: <InstagramIcon className="text-white size-9" />,
     href: "https://instagram.com",
   },
   {
-    icon: <WhatsAppIcon style={{ color: "white", fontSize: 36 }} />,
+    icon: <WhatsAppIcon className="text-white size-9" />,
     href: "https://whatsapp.com",
   },
 ];
 
 export default function Sidebar() {
-  const [auth] = useState(false);
+  const [auth, setAuth] = useState(true);
 
   return (
-    <aside className="  hidden lg:flex flex-col content-around fixed inset-y-0 left-0 px-5 xl:px-[26px] pt-[46px] pb-6 w-[200px] h-screen xl:w-[244px] bg-main z-10">
-      <div className="flex w-[128px] h-[115px] xl:w-[156px] xl:h-[140px] mx-auto mb-9 xl:mb-[46px] ">
+    <aside className="  hidden lg:flex flex-col content-around fixed inset-y-0 left-0 p-5 xl:p-[26px] w-[200px] h-full xl:w-[244px] bg-main z-30">
+      <div className="flex w-[128px] h-[115px] xl:w-[156px] xl:h-[140px] mx-auto mb-6 xl:mb-9 ">
         <Link href={"/"} className="w-full h-full relative">
           <Image
             src="/icons/logo/logo_dark_bg.svg"
@@ -56,30 +57,33 @@ export default function Sidebar() {
       )}
 
       <div className="mb-5 ">
-        <NavLinks />
+        <NavLinks links={SIDEBAR_LINKS} />
       </div>
 
       <div className="mt-auto">
         <ul className="mb-5 flex flex-col align-center gap-5 xl:gap-6">
-          {auth && (
-            <li>
-              <Button style="sidebar-log-out" type="button">
-                <span className="body text-secondary">Log Out</span>
-              </Button>
-            </li>
-          )}
-          {!auth && (
-            <li>
-              <Button style="sidebar-auth-in" type="button">
-                <span className="body text-secondary">
-                  Sign In <span className="text-white">or </span>Sign Up
+          <li>
+            <Button style="sidebar-auth-in" type="button">
+              {auth ? (
+                <span
+                  onClick={() => setAuth(false)}
+                  className="body text-secondary"
+                >
+                  Sign Out
                 </span>
-              </Button>
-            </li>
-          )}
+              ) : (
+                <Link href="/authorize" className="body text-secondary">
+                  Sign In <span className="text-white">or </span>Sign Up
+                </Link>
+              )}
+            </Button>
+          </li>
+
           <li>
             <Button style="sidebar-book-now" type="button">
-              <span className="body font-bold text-secondary">Book Now</span>
+              <Link href="/booking" className="body font-bold text-secondary">
+                Book Now
+              </Link>
             </Button>
           </li>
           <li>
@@ -97,7 +101,7 @@ export default function Sidebar() {
             </div>
           </li>
         </ul>
-        <p className="mb-2 xl:mb-4 text-[28px] xl:text-[36px] font-light text-white">
+        <p className="mb-2 xl:mb-3 text-[28px] xl:text-[36px] font-light text-white">
           Follow us
         </p>
         <ul className="flex  gap-5 ">

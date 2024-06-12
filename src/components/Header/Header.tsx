@@ -3,18 +3,8 @@
 import Link from "next/link";
 import ThemeSwitch from "./Switcher";
 import { useState } from "react";
-import { IconButton } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
-import { styled } from "@mui/material/styles";
 import Image from "next/legacy/image";
-
-const StyledMenuIcon = styled(MenuIcon)(() => ({
-  color: "#006778",
-  fontSize: 42,
-  "@media (min-width: 768px)": {
-    fontSize: 52,
-  },
-}));
+import MobileMenu from "./MobileMenu";
 
 export default function Header() {
   const [lightMode, setDarkMode] = useState(false);
@@ -38,7 +28,6 @@ export default function Header() {
             />
           </Link>
         </div>
-
         <div className=" flex direction-row gap-4 md:gap-[22px] lg:gap-10 items-center justify-center ">
           {auth && (
             <div className=" block lg:hidden text-accent lg:text-white subtext text-center">
@@ -48,11 +37,8 @@ export default function Header() {
           <div className=" w-[38px] h-7 border rounded-[6px] border-light-main text-center">
             Uk
           </div>
-
           <ThemeSwitch checked={lightMode} onChange={handleChange} />
-          <IconButton className="flex lg:hidden">
-            <StyledMenuIcon />
-          </IconButton>
+          <MobileMenu />
         </div>
       </div>
     </header>

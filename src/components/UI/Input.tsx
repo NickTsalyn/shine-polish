@@ -2,7 +2,7 @@ import React from "react";
 // import { useForm } from "react-hook-form"
 
 interface InputProps {
-  onChange?: () => void;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   type: "email" | "password" | "text" | "tel";
   placeholder?: string;
   style: "sign-in-input" | "sign-up-input" | "form-input" | "modal-input";
