@@ -5,32 +5,18 @@ import RadioButton from "../UI/RadioButton";
 import img_stub from "../../../public/images/service-area/image-map-stub.png";
 import { areaOptions, bathroomOptions, bedroomOptions, frequencyOptions } from "@/data/booking-form/step_1";
 import useFormStorage from "@/hooks/formStorage";
-import { useContext, useEffect } from "react";
-import { FormContext } from "../FormContext";
-import { SelectChangeEvent } from "@mui/material";
+
 
 const Step1 = () => {
 	const { form, handleInputChange, handleRadioChange } = useFormStorage({
-		areas: "",
-		bedrooms: "",
-		bathrooms: "",
+		areas: "" ,
+		bedroom: 1,
+		bathroom: 1,
 		frequency: "",
+		homeAccess: "",
+		aboutUs: "",
+		specialInstructions: "",
 	});
-
-	// const {form, setForm} = useContext(FormContext);
-	// useEffect(() => {
-	//   const savedForm = localStorage.getItem("form");
-	//   if (savedForm) {
-	//     setForm(JSON.parse(savedForm));
-	//   }
-	// }, [setForm]);
-
-	// const handleChange = (event: SelectChangeEvent<string | number>) => {
-	//   const { name, value } = event.target;
-	//   const updatedForm = { ...form, [name]: value };
-	//   setForm(updatedForm);
-	//   localStorage.setItem("form", JSON.stringify(updatedForm)); // Save to localStorage
-	// };
 
 	return (
 		<div className="py-4 md:py-6 lg:py-9 flex flex-col gap-6 md:gap-[26px] lg:grid lg:grid-flow-col lg:grid-cols-2 lg:gap-[66px] xl:gap-[80px]">
@@ -43,7 +29,6 @@ const Step1 = () => {
 						value={form.areas as string}
 						items={areaOptions}
 						onChange={handleInputChange}
-            // onChange={handleChange}
 					/>
 				</div>
 				<div className="hidden md:block md:w-[338px] md:h-[330px] lg:w-[540px] lg:h-[454px] xl:w-[780px] xl:h-[450px] relative">
@@ -63,18 +48,16 @@ const Step1 = () => {
 				<h2 className="text-2xl md:text-4xl font-medium">How many rooms?</h2>
 				<div className="flex flex-col gap-3 md:gap-6">
 					<BasicSelect
-						name="bedrooms"
-						value={form.bedrooms as number}
+						name="bedroom"
+						value={form.bedroom as number}
 						items={bedroomOptions}
 						onChange={handleInputChange}
-            // onChange={handleChange}
 					/>
 					<BasicSelect
-						name="bathrooms"
-						value={form.bathrooms as number}
+						name="bathroom"
+						value={form.bathroom as number}
 						items={bathroomOptions}
 						onChange={handleInputChange}
-            // onChange={handleChange}
 					/>
 				</div>
 			</div>
@@ -83,7 +66,7 @@ const Step1 = () => {
 				<p className="hidden md:block text-base lg:text-[26px] lg:font-medium text-bookingSubText">
 					Scheduling is flexible. Cancel or reschedule anytime.
 				</p>
-				<ul className="flex flex-wrap gap-5 lg:gap-6 lg:w-[562px]  md:justify-around md:flex-nowrap lg:flex-wrap">
+				<ul className="flex flex-wrap justify-center gap-5 lg:gap-6 lg:w-[562px]  md:justify-around md:flex-nowrap lg:flex-wrap">
 					{frequencyOptions.map(({ value, label }) => {
 						return (
 							<li key={value} className="flex justify-center items-center w-[132px] md:min-w-[160px] lg:min-w-[260px]">

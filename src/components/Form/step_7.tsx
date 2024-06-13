@@ -1,69 +1,70 @@
 import useFormStorage from "@/hooks/formStorage";
 import { getPrice } from "../../../formula";
-import { useContext, useEffect, useState } from "react";
-// import { homeAccess } from "@/data/booking-form/step_3";
-// import { aboutUs } from "@/data/booking-form/step_3";
-import { area } from "../../../formula";
-import { FormContext } from "../FormContext";
+import { useEffect, useState } from "react";
 
 const Step7 = () => {
 	const { form } = useFormStorage({});
-	//   const {form, setForm} = useContext(FormContext);
-
 	const [subTotal, setSubTotal] = useState(0);
+	const [total, setTotal] = useState(0);
 
 	useEffect(() => {
-		const { bedrooms, bathrooms, areas } = form;
+		if (Object.keys(form).length === 0) {
+			if (subTotal !== 0 || total !== 0) {
+				setSubTotal(0);
+				setTotal(0);
+			}
+			return;
+		}
 
-		const areaObj = area.find((item) => item.name === areas);
-		// console.log("Found area object:", areaObj?.value);
-		console.log(form);
+		const { bedroom, bathroom, areas, frequency } = form;
 
-		const areaCoff = areaObj ? areaObj.value : 0;
-		// const areaCoff = areaObj?.value
-		console.log(areaCoff);
-
-		const calculatedPrice = getPrice(Number(bedrooms), Number(bathrooms), areaCoff);
+		const calculatedPrice = getPrice(Number(bedroom), Number(bathroom), Number(areas), Number(frequency));
 		setSubTotal(calculatedPrice);
-		// console.log(calculatedPrice)
-	}, [form]);
+		
+		const totalPrice = calculatedPrice * 1.06;
+		setTotal(totalPrice);
 
-	//   useEffect(() => {
-	//     const savedForm = localStorage.getItem("form");
-	// 	  if (savedForm) {
-	// 	    setForm(JSON.parse(savedForm));
-	// 	  }
-	//     console.log(form)
-	//     // const areaObj = area.find((item) => item.name === form.areas);
-	//     // // console.log(areaObj?.value)
-	//     // const areaCoff = areaObj ? areaObj.value : 0;
-	//     // const calculatedPrice = getPrice(Number(form.bedrooms), Number(form.bathrooms), areaCoff);
-	//     // setSubTotal(calculatedPrice);
-	//   }, [setForm]);
+	}, [form, subTotal, total]);
 
 	return (
-		<div className="p-4 md:p-6 lg:p-9">
+		<div className="p-4 md:p-6 lg:p-9 flex flex-col gap-5">
 			<div>
-				<h2>BOOKING SUMMARY</h2>
-				<p>By clicking the Book Now button, you agree to our Terms of Service and Privacy Policy.</p>
+				<h2 className=" text-black text-2xl text-center mb-2">BOOKING SUMMARY</h2>
+				<p className="text-bookingSubText text-base">
+					By clicking the Book Now button, you agree to our Terms of Service and Privacy Policy.
+				</p>
 			</div>
-			<ul className="list-disc ml-6">
-				{Object.entries(form).map(([key, value]) => (
-					<li key={key}>
-						<span>{value}</span>
-					</li>
-				))}
+			<ul className="list-disc ml-6 flex flex-col gap-0.5">
+				{Object.entries(form).map(([key, value]) => {
+					if (value !== "") {
+						return (
+							<li key={key} className="text-base ">
+								<span>{key === "bathroom" || key === "bedroom" ? `${value} ${key}(s)` : value}</span>
+							</li>
+						);
+					}
+				})}
 			</ul>
-			<div>
-				<div>
+			<div className="flex flex-col gap-2 ">
+				<div className=" flex justify-between text-xl">
 					<span>SUB-TOTAL</span>
-					<span>{subTotal}</span>
+					<span className=" ">$ {subTotal.toFixed(2)}</span>
 				</div>
-				<div>
+				<div className=" flex justify-between text-xl">
+					<span>SALES TAX</span>
+					<span className="">$ {(subTotal * 0.06).toFixed(2)}</span>
+				</div>
+				<div className=" flex justify-between text-xl text-main">
 					<span>TOTAL</span>
-					<span></span>
+					<span className="">$ {total.toFixed(2)}</span>
 				</div>
 			</div>
+			<button
+				className=" flex justify-center items-center text-white bg-accent rounded-xl py-1.5 w-3/4 m-auto"
+				type="submit"
+			>
+				<span className="text-white text-2xl">BOOK NOW</span>
+			</button>
 		</div>
 	);
 };

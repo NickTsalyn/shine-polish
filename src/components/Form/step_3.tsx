@@ -9,6 +9,10 @@ const Step3 = () => {
     homeAccess: "",
     aboutUs: "",
     specialInstructions: "",
+    bathroom: 1,
+    bedroom: 1,
+    frequency: "",
+    areas: ""
   });
 
   return (
