@@ -1,81 +1,151 @@
 import * as React from "react";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemText from "@mui/material/ListItemText";
+
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { pickersLayoutClasses } from "@mui/x-date-pickers/PickersLayout";
-import { StaticDatePicker } from "@mui/x-date-pickers/StaticDatePicker";
-import { PickersActionBarProps } from "@mui/x-date-pickers/PickersActionBar";
+// import { pickersLayoutClasses } from "@mui/x-date-pickers/PickersLayout";
 import dayjs, { Dayjs } from "dayjs";
-
-function ActionList(props: PickersActionBarProps) {
-  const { onAccept, onClear, onCancel, onSetToday, className } = props;
-  const actions = [
-    { text: "Accept", method: onAccept },
-    { text: "Clear", method: onClear },
-    { text: "Cancel", method: onCancel },
-    { text: "Today", method: onSetToday },
-  ];
-  return (
-    // Propagate the className such that CSS selectors can be applied
-    <List className={className}>
-      {actions.map(({ text, method }) => (
-        <ListItem key={text} disablePadding>
-          <ListItemButton onClick={method}>
-            <ListItemText primary={text} />
-          </ListItemButton>
-        </ListItem>
-      ))}
-    </List>
-  );
-}
-
-// Define the interface for the component props
+import {
+  MobileDatePicker,
+  MobileTimePicker,
+  StaticDatePicker,
+} from "@mui/x-date-pickers";
+import { styled } from "@mui/material";
+import useFormStorage from "@/hooks/formStorage";
+import { DateIcon } from "@/global/images";
+// import { handleCustomChange } from "@/hooks/formStorage";
 interface CustomDesctopDatePickerProps {
+  value: Dayjs | string | number | any | null | undefined;
   onChange: (date: Dayjs | null) => void;
+  disablePast?: boolean;
+  views?: string[];
+  orientation?: "portrait" | "landscape";
+  openTo?: "day" | "month" | "year";
+  slots?: { actionBar: () => null };
 }
+
 const today = dayjs();
-const yesterday = dayjs().subtract(1, "day");
+
+const CustomCalendarWrapper = styled("div")(({ theme }) => ({
+  borderRadius: "12px",
+  overflow: "hidden",
+  "& .MuiPickersDay-today": {
+    backgroundColor: "#E6BA95",
+  },
+  "& .MuiPickersDay-current": {
+    color: "#5FE4F9E5",
+    backgroundColor: "#DE005D",
+  },
+  "& .MuiPickersDay-Selected": {
+    backgroundColor: "#DE005D",
+    color: theme.palette.common.white,
+  },
+  "& .MuiPickersDay-dayDisabled": {
+    color: theme.palette.grey[500],
+  },
+  "& .MuiPickersDay-dayOutsideMonth": {
+    color: theme.palette.grey[500],
+  },
+  "& .MuiPickersDay-root": {
+    borderRadius: "50%",
+    fontSize: "0.8rem",
+    padding: "4px",
+    "&:hover": {
+      backgroundColor: "#DE005D",
+      color: theme.palette.common.white,
+    },
+  },
+  "& .MuiTypography-h4": {
+    color: "#DE005D", // accent
+  },
+  "& .MuiPickersLayout-root": {
+    padding: "8px 0px",
+    backgroundColor: theme.palette.background.paper,
+  },
+  // "& .MuiDateCalendar-root": {
+  //   borderRadius: "0px", // Reset border-radius for internal container
+  // },
+}));
 
 // Update the component to use the interface
-export default function CustomDesctopDatePicker({
+
+const CustomDesctopDatePicker: React.FC<CustomDesctopDatePickerProps> = ({
   onChange,
-}: CustomDesctopDatePickerProps) {
+  disablePast = false,
+  views = ["year", "month", "day"],
+  orientation = "portrait",
+  openTo = "day",
+}) => {
+  const { form, handleCustomChange } = useFormStorage(
+    {
+      selectedDate: dayjs().format("MM/DD/YYYY"),
+      // selectedDate: null,
+    },
+    "formKey"
+  );
   const [value, setValue] = React.useState<Dayjs | null>(dayjs());
+  const [selectedDate, setSelectedDate] = React.useState<Dayjs | null>(dayjs());
+  const [isDateCalendarOpen, setIsDateCalendarOpen] = React.useState(false);
 
-  const handleDateChange = (newValue: Dayjs | null) => {
-    setValue(newValue);
-    onChange(newValue);
-    console.log("Selected date:", newValue);
+  // const handleDateChange = (date: Dayjs | null) => {
+  //   setValue(date);
+  //   onChange(date);
+  //   setSelectedDate(date);
+  //   // form.selectedDate = date.format("MM-DD-YYYY");
+  //   // console.log("Selected date:", date);
+  //   setIsDateCalendarOpen(false);
+  // };
+  // const handleDateChange = (date: Dayjs | null) => {
+  //   handleCustomChange("selectedDate", date ? date.format("MM/DD/YYYY") : null);
+  //   onChange(date);
+  //   setIsDateCalendarOpen(false);
+  // };
+  const handleDateChange = (date: Dayjs | null) => {
+    handleCustomChange("selectedDate", date ? date.format("MM/DD/YYYY") : null);
+    onChange(date);
+    setSelectedDate(date);
+    setIsDateCalendarOpen(false);
+    localStorage.setItem("formKey", JSON.stringify(form));
   };
-  //   const handleDateChange = (date: Dayjs | null) => {
-  //     setSelectedDate(date);
-  //     console.log("Selected date:", date);
-  //   };
 
+  const handleDateButtonClick = () => {
+    setIsDateCalendarOpen(!isDateCalendarOpen);
+  };
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <StaticDatePicker
-        value={today}
-        onChange={handleDateChange}
-        disablePast
-        views={["year", "month", "day"]}
-        slotProps={{
-          layout: {
-            sx: {
-              [`.${pickersLayoutClasses.actionBar}`]: {
-                gridColumn: 1,
-                gridRow: 2,
-              },
-            },
-          },
-        }}
-        slots={{
-          actionBar: ActionList,
-        }}
-      />
+      <div className="relative w-[100px] mr-5 ">
+        <button
+          type="button"
+          onClick={handleDateButtonClick}
+          className="flex flex-col items-center"
+        >
+          <DateIcon />
+          <span className="text-secondary">Choose Date</span>
+        </button>
+        {isDateCalendarOpen && (
+          <div className="absolute -left-[18px] md:-left-[200px]  top-[72px] shadow-main-shadow rounded-xl w-[300px] md:w-[320px">
+            <CustomCalendarWrapper>
+              <StaticDatePicker
+                value={dayjs(form.selectedDate as string, "MM/DD/YYYY")}
+                onChange={handleDateChange}
+                disablePast
+                views={["year", "month", "day"]}
+                orientation="portrait"
+                openTo="day"
+                slots={{
+                  actionBar: () => null,
+                }}
+                sx={{
+                  width: "100%",
+                  "@media (max-width: 600px)": {
+                    width: "100%",
+                  },
+                }}
+              />
+            </CustomCalendarWrapper>
+          </div>
+        )}
+      </div>
     </LocalizationProvider>
   );
-}
+};
+export default CustomDesctopDatePicker;

@@ -6,6 +6,8 @@ interface InputProps {
   placeholder?: string;
   style: "sign-in-input" | "sign-up-input" | "form-input" | "modal-input";
   width?: string;
+  value?: string | number;
+  name?: string;
 }
 
 export default function Input({
@@ -14,6 +16,8 @@ export default function Input({
   placeholder,
   style,
   width,
+  value,
+  name,
 }: InputProps) {
   let styles = "";
 
@@ -41,6 +45,8 @@ export default function Input({
         type={type}
         placeholder={placeholder}
         onChange={onChange} /*{...register("text")}*/
+        value={value}
+        name={name}
       />
     </>
   );

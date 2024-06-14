@@ -201,14 +201,14 @@ export const FooterImg = () => {
   );
 };
 
-export const FrontDoorForm = () => {
+export const CrossroadImage = () => {
   return (
     <>
       <Image
-        src="/images/front-door.png"
-        alt="picture of front door"
-        width={174}
-        height={307}
+        src="/images/crossroad.png"
+        alt="picture of road and buildings"
+        width={400}
+        height={300}
         layout="responsive"
         objectFit="cover"
         objectPosition="center"
@@ -216,14 +216,15 @@ export const FrontDoorForm = () => {
     </>
   );
 };
-export const DatePikerCustomIcon = () => {
+
+export const DateTimeImage = () => {
   return (
     <>
       <Image
-        src="/images/date-picker.svg"
-        alt="date picker icon"
-        width={24}
-        height={24}
+        src="/images/planning-with-days-marked-on-calendar.png"
+        alt="picture calendar and clock"
+        width={400}
+        height={300}
         layout="responsive"
         objectFit="cover"
         objectPosition="center"
@@ -231,3 +232,34 @@ export const DatePikerCustomIcon = () => {
     </>
   );
 };
+
+export const DateIcon = () => {
+  return (
+    <>
+      <Image src="/icons/date.svg" alt="date icon" width={48} height={48} />
+    </>
+  );
+};
+
+export const TimeIcon = () => {
+  return (
+    <>
+      <Image src="/icons/time.svg" alt="time icon" width={48} height={48} />
+    </>
+  );
+};
+// export const DatePikerCustomIcon = () => {
+//   return (
+//     <>
+//       <Image
+//         src="/images/date-picker.svg"
+//         alt="date picker icon"
+//         width={24}
+//         height={24}
+//         layout="responsive"
+//         objectFit="cover"
+//         objectPosition="center"
+//       />
+//     </>
+//   );
+// };

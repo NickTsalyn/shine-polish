@@ -2,9 +2,10 @@
 
 import { SelectChangeEvent } from "@mui/material";
 import { ChangeEvent, useEffect, useState } from "react";
+import { Dayjs } from "dayjs";
 
 interface Form {
-  [key: string]: string | number | boolean;
+  [key: string]: string | number | Dayjs | boolean | null;
 }
 
 interface HandlerReturn {
@@ -14,7 +15,9 @@ interface HandlerReturn {
       | ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
       | SelectChangeEvent<string | number>
   ) => void;
+
   handleRadioChange: (name: string, value: string) => void;
+  handleCustomChange: (name: string, value: any) => void;
 }
 
 const useFormStorage = (initialForm: Form, formKey = "form"): HandlerReturn => {
@@ -43,8 +46,12 @@ const useFormStorage = (initialForm: Form, formKey = "form"): HandlerReturn => {
     setForm(updatedForm);
     localStorage.setItem(formKey, JSON.stringify(updatedForm));
   };
+  const handleCustomChange = (name: string, value: any) => {
+    const updatedForm = { ...form, [name]: value };
+    setForm(updatedForm);
+  };
 
-  return { form, handleInputChange, handleRadioChange };
+  return { form, handleInputChange, handleRadioChange, handleCustomChange };
 };
 
 export default useFormStorage;
