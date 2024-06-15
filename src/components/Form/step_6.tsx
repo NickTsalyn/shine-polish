@@ -6,16 +6,19 @@ import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
 
 const Step6 = () => {
-  const { form, handleInputChange } = useFormStorage({
+  const { form, handleInputChange, handleRadioChange } = useFormStorage({
     name: "",
     surname: "",
     email: "",
     phone: "",
+    remindersChecked: false,
   });
   const [remindersChecked, setRemindersChecked] = useState(false);
 
   const handleCheckBoxChange = () => {
-    setRemindersChecked(!remindersChecked);
+    const updatedRemindersChecked = !remindersChecked;
+    setRemindersChecked(updatedRemindersChecked);
+    handleRadioChange("remindersChecked", updatedRemindersChecked);
   };
   return (
     <div className="py-4 md:py-6  lg:py-9 ">
