@@ -14,7 +14,7 @@ interface HandlerReturn {
       | ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
       | SelectChangeEvent<string | number>
   ) => void;
-  handleRadioChange: (name: string, value: string) => void;
+  handleRadioChange: (name: string, value: string | boolean) => void;
 }
 
 const useFormStorage = (initialForm: Form, formKey = "form"): HandlerReturn => {
@@ -38,7 +38,7 @@ const useFormStorage = (initialForm: Form, formKey = "form"): HandlerReturn => {
     setForm(updatedForm);
     localStorage.setItem(formKey, JSON.stringify(updatedForm));
   };
-  const handleRadioChange = (name: string, value: string) => {
+  const handleRadioChange = (name: string, value: string | boolean) => {
     const updatedForm = { ...form, [name]: value };
     setForm(updatedForm);
     localStorage.setItem(formKey, JSON.stringify(updatedForm));
