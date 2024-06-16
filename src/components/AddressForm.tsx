@@ -16,10 +16,10 @@ const AddressForm: React.FC = () => {
   );
 
   return (
-    <div>
+    <div className="w-full">
       <form className="flex flex-col gap-5">
-        <div className="md:flex flex-col lg:flex-row gap-5 min-w-[280px]">
-          <div className="md:w-full lg:w-1/2 md:h-[40px]">
+        <div className=" flex gap-5  flex-col lg:flex-row min-w-[280px]">
+          <div className="md:w-full lg:w-1/2 md:h-[48px] ">
             <Input
               type="text"
               style="form-input"
@@ -29,7 +29,7 @@ const AddressForm: React.FC = () => {
               name="address"
             />
           </div>
-          <div className="md:w-full lg:w-1/2 md:h-[40px]">
+          <div className="md:w-full lg:w-1/2 md:h-[48px]">
             <Input
               type="text"
               style="form-input"
@@ -40,8 +40,8 @@ const AddressForm: React.FC = () => {
             />
           </div>
         </div>
-        <div className="md:flex gap-5">
-          <div className="md:w-3/4 md:h-[40px]">
+        <div className="flex gap-5  flex-col md:flex-row">
+          <div className="md:w-3/4 md:h-[48px] gap-5">
             <Input
               type="text"
               style="form-input"
@@ -51,7 +51,7 @@ const AddressForm: React.FC = () => {
               name="city"
             />
           </div>
-          <div className="md:w-1/4 md:h-[40px]">
+          <div className="md:w-1/4 md:h-[48px]">
             <Input
               type="text"
               style="form-input"

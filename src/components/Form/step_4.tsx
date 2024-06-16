@@ -46,48 +46,52 @@ const Step4 = () => {
   };
   return (
     <div className="py-4 md:py-6 lg:py-9">
-      <div className="flex mb-[72px] lg:mb-[92px]">
-        <div className="flex flex-col md:mr-1 lg:mr-[164px]">
-          <h1 className="h1 md:text-[36px] mb-[32px]">
-            Where would you like us to clean?
-          </h1>
+      <div className="flex flex-col mb-[72px] lg:mb-[92px]">
+        {/* <div className="flex flex-comd:mr-1 lg:mr-[164px]"> */}
+        <h1 className="h1 md:text-[36px] mb-[32px]">
+          Where would you like us to clean?
+        </h1>
 
-          <AddressForm />
-        </div>
+        <AddressForm />
+        {/* </div> */}
       </div>
       <div>
         <h2 className="h1 md:text-[36px] mb-[32px]">
           When would you like us to clean?
         </h2>
 
-        <div className="w-full  flex flex-wrap md:flex-nowrap justify-between items-start  mb-8">
-          <div className="w-[300px] md:w-[600px]">
-            <p className="text-subtext text-4 lg:text-5 mb-5">
-              Choose a date and time you would like to us to come.
+        <div className="w-full  flex flex-wrap md:flex-nowrap justify-between items-start  mb-8 gap-20">
+          <div className="w-full md:w-[400px] lg:w-[800px]">
+            <p className="text-subtext text-4 md:text-[20px] lg:text-[24px] mb-5">
+              Please select a date and time that is convenient for you. We want
+              to accommodate your schedule as much as possible, so please choose
+              a time that is most convenient for you.
             </p>
           </div>
-          <div>
-            <CustomDesctopDatePicker
-              onChange={handleDateChange}
-              value={selectedDate}
-            />
-          </div>
-          <div>
-            <TimePickerComponent onChange={handleTimeChange} />
+          <div className="flex gap-5 w-full md:w-[400px] lg:w-[400px] justify-between items-center">
+            <div>
+              <CustomDesctopDatePicker
+                onChange={handleDateChange}
+                value={selectedDate}
+              />
+            </div>
+            <div>
+              <TimePickerComponent onChange={handleTimeChange} />
+            </div>
           </div>
         </div>
 
         <div className="flex flex-col gap-5 justify-center items-center md:flex-row  md:justify-between md:items-end">
-          <div className="w-[200px] md:w-[600px] lg:w-[800px] flex md:justify-between">
+          <div className="w-[280px]  md:w-[600px] lg:w-[680px] ">
             <DateTimeCleaning form={form} />
           </div>
-          <div className="w-[200px]">
+          <div className="w-[200px] md:w-auto lg:w-[400px]">
             <button
               type="button"
               onClick={handleApplyButtonClick}
-              className="w-[200px] h-[56px] rounded-xl bg-accent hover:bg-[#DE005D] text-white font-bold"
+              className="w-auto lg:w-[400px] px-4 py-2 h-full rounded-xl bg-accent hover:bg-[#DE005D] text-white font-bold lg:text-[20px] lg:px-6 lg:py-3"
             >
-              Apply
+              Yes, I want cleaning on this date
             </button>
           </div>
         </div>

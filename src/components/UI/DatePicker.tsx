@@ -30,21 +30,18 @@ const CustomCalendarWrapper = styled("div")(({ theme }) => ({
   overflow: "hidden",
   "& .MuiPickersDay-today": {
     backgroundColor: "#E6BA95",
-  },
-  "& .MuiPickersDay-current": {
-    color: "#5FE4F9E5",
-    backgroundColor: "#DE005D",
-  },
-  "& .MuiPickersDay-Selected": {
-    backgroundColor: "#DE005D",
     color: theme.palette.common.white,
+    borderColor: "#E6BA95",
+    "&:hover": {
+      backgroundColor: "#E6BA95",
+      color: theme.palette.common.white,
+    },
   },
-  "& .MuiPickersDay-dayDisabled": {
-    color: theme.palette.grey[500],
-  },
-  "& .MuiPickersDay-dayOutsideMonth": {
-    color: theme.palette.grey[500],
-  },
+
+  // "& .MuiPickersDay-Selected": {
+  //   backgroundColor: "#DE005D",
+  //   color: theme.palette.common.white,
+  // },
   "& .MuiPickersDay-root": {
     borderRadius: "50%",
     fontSize: "0.8rem",
@@ -54,6 +51,11 @@ const CustomCalendarWrapper = styled("div")(({ theme }) => ({
       color: theme.palette.common.white,
     },
   },
+  "& .Mui-selected": {
+    backgroundColor: "#DE005D",
+    color: theme.palette.common.white,
+  },
+
   "& .MuiTypography-h4": {
     color: "#DE005D", // accent
   },
@@ -61,9 +63,6 @@ const CustomCalendarWrapper = styled("div")(({ theme }) => ({
     padding: "8px 0px",
     backgroundColor: theme.palette.background.paper,
   },
-  // "& .MuiDateCalendar-root": {
-  //   borderRadius: "0px", // Reset border-radius for internal container
-  // },
 }));
 
 // Update the component to use the interface
@@ -108,7 +107,7 @@ const CustomDesctopDatePicker: React.FC<CustomDesctopDatePickerProps> = ({
           <span className="text-secondary">Choose Date</span>
         </button>
         {isDateCalendarOpen && (
-          <div className="absolute -left-[18px] md:-left-[200px]  bottom-[22px] shadow-main-shadow rounded-xl w-[300px] md:w-[320px">
+          <div className="absolute z-10 -left-[6px] md:-left-[200px]  bottom-[22px] shadow-main-shadow rounded-xl w-[300px] md:w-[320px">
             <CustomCalendarWrapper>
               <StaticDatePicker
                 value={dayjs(form.selectedDate as string, "MM/DD/YYYY")}
