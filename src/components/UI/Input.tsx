@@ -47,8 +47,6 @@ export default function Input({
         type={type}
         placeholder={placeholder}
         onChange={onChange} /*{...register("text")}*/
-        value={value}
-        name={name}
       />
     </>
   );
