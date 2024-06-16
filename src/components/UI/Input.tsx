@@ -1,15 +1,20 @@
 import React, { FC, forwardRef } from "react";
 
 type InputProps = {
+  value?: string | number;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  type: "email" | "password" | "text" | "tel";
+  type: "email" | "password" | "text" | "tel" | "checkbox";
   placeholder?: string;
   style: "sign-in-input" | "sign-up-input" | "form-input" | "modal-input";
   width?: string;
+  name?: string;
 };
 
 const Input: FC<InputProps> = forwardRef<HTMLInputElement, InputProps>(
-  ({ onChange, type, placeholder, style, width, ...props }, ref) => {
+  (
+    { onChange, type, placeholder, style, width, value, name, ...props },
+    ref
+  ) => {
     let styles = "";
 
     switch (style) {
@@ -37,6 +42,8 @@ const Input: FC<InputProps> = forwardRef<HTMLInputElement, InputProps>(
         className={styles}
         ref={ref}
         {...props}
+        value={value}
+        name={name}
       />
     );
   }
