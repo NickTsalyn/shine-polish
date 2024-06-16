@@ -1,11 +1,13 @@
 import React from "react";
 
 interface InputProps {
+  value?: string | number;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  type: "email" | "password" | "text" | "tel";
+  type: "email" | "password" | "text" | "tel" | "checkbox";
   placeholder?: string;
   style: "sign-in-input" | "sign-up-input" | "form-input" | "modal-input";
   width?: string;
+  name?: string;
 }
 
 export default function Input({
@@ -14,6 +16,8 @@ export default function Input({
   placeholder,
   style,
   width,
+  value,
+  name,
 }: InputProps) {
   let styles = "";
 
@@ -41,6 +45,8 @@ export default function Input({
         type={type}
         placeholder={placeholder}
         onChange={onChange} /*{...register("text")}*/
+        value={value}
+        name={name}
       />
     </>
   );
