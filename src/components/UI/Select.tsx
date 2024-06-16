@@ -16,7 +16,7 @@ const StyledMenuItem = styled(MenuItem)(() => ({
 }));
 
 type BasicSelectProps = {
-  value: string;
+  value: string | number;
   items: { value?: string | number; label: string; color?: string }[];
   onChange: (event: SelectChangeEvent<string | number>) => void;
   label?: string;
