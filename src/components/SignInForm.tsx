@@ -34,6 +34,7 @@ export default function SignInForm() {
 
 	const onSubmit = async (data: any) => {
 		signin(data);
+    localStorage.setItem('user', JSON.stringify(data));
 		router.push("/");
 	};
 
