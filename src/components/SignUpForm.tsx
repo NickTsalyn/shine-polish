@@ -9,14 +9,28 @@ import google from "../../public/icons/sign-in/google-icon.svg";
 import facebook from "../../public/icons/sign-in/facebook.svg";
 import Image from "next/image";
 
-interface SignUpProps {}
+import { useForm } from "react-hook-form";
 
-export default function SignUpForm({}: SignUpProps) {
+interface SignUpProps {
+  name: string;
+  email: string;
+  password: string;
+}
+
+export default function SignUpForm() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<SignUpProps>();
+
+  const onSubmit = handleSubmit((data) => console.log(data));
+
   return (
     <div className="w-full md:w-[768px] lg:w-[960px] mx-auto">
       <div className="flex flex-col items-center py-10 md:px-8 md:py-[60px] lg:p-16  relative">
-        <div className="flex items-center rounded-full text-main hover:text-white hover:bg-main absolute top-0 right-0 md:top-8 md:right-8 content-center">
-          <Link href={"/"}>
+        <div className="flex items-center rounded-full text-main hover:text-white hover:bg-main absolute top-0 right-0 md:top-8 md:right-8 ">
+          <Link href={"/"} className="flex justify-center">
             <CloseRoundedIcon />
           </Link>
         </div>
@@ -31,19 +45,54 @@ export default function SignUpForm({}: SignUpProps) {
             Sign In here
           </a>
         </h4>
-        <div className="flex flex-col md:flex-row md:flex-wrap gap-x-[78px] lg:gap-x-[90px] gap-y-10 lg:gap-y-12 justify-between w-full  ">
+        <form
+          onSubmit={onSubmit}
+          className="flex flex-col md:flex-row md:flex-wrap gap-x-[78px] lg:gap-x-[90px] gap-y-10 lg:gap-y-12 justify-between w-full  "
+        >
           <div className="flex flex-col gap-3 md:w-[300px] lg:w-[348px]">
-            <label htmlFor="text">
+            <label htmlFor="text" className="relative">
               <span className="text-main text-[14px] md:text-[16px] ml-3">
                 Name:
               </span>
-              <Input type="text" style="sign-up-input" width="lg:w-[348px]" />
+              <Input
+                type="text"
+                style="sign-up-input"
+                width="lg:w-[348px]"
+                {...register("name", {
+                  required: "Field name is required",
+                })}
+                aria-required={errors.name ? "true" : "false"}
+              />
+              {errors.name && (
+                <p
+                  role="alert"
+                  className="text-accent text-[12px] absolute top-0 right-0"
+                >
+                  {errors.name.message}
+                </p>
+              )}
             </label>
-            <label htmlFor="email">
+            <label htmlFor="email" className="relative">
               <span className="text-main text-[14px] md:text-[16px] ml-3">
                 Email:
               </span>
-              <Input type="email" style="sign-up-input" width="lg:w-[348px]" />
+              <Input
+                type="email"
+                style="sign-up-input"
+                width="lg:w-[348px]"
+                {...register("email", {
+                  required: "Email Address is required",
+                })}
+                aria-required={errors.email ? "true" : "false"}
+              />
+              {errors.email && (
+                <p
+                  role="alert"
+                  className="text-accent text-[12px] absolute top-0 right-0"
+                >
+                  {errors.email.message}
+                </p>
+              )}
             </label>
             <label htmlFor="password">
               <span className="text-main text-[14px] md:text-[16px] ml-3">
@@ -53,6 +102,7 @@ export default function SignUpForm({}: SignUpProps) {
                 type="password"
                 style="sign-up-input"
                 width="lg:w-[348px]"
+                {...register("password")}
               />
             </label>
           </div>
@@ -81,7 +131,7 @@ export default function SignUpForm({}: SignUpProps) {
               <span className="text-white text-[20px] uppercase">Sing Up</span>
             </Button>
           </div>
-        </div>
+        </form>
 
         <div className="hidden md:block absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 -z-10 ">
           <div className="flex w-[768px] lg:w-[960px] h-[550px] lg:h-[590px] rounded-xl shadow-main-shadow overflow-hidden relative">
