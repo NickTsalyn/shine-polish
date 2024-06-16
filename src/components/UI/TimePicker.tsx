@@ -24,18 +24,18 @@ const CustomTimePicker = styled("div")(({ theme }) => ({
     },
   },
 
-  // "& .MuiDigitalClock-Selected": {
-  //   backgroundColor: "#DE005D",
-  //   color: theme.palette.common.white,
-  // },
+  "& .MuiDigitalClock-Selected": {
+    backgroundColor: "#DE005D",
+    color: theme.palette.common.white,
+  },
 
-  // "& .MuiButtonBase-root ": {
-  //   borderRadius: "12px",
-  //   "&:hover": {
-  //     backgroundColor: "#DE005D",
-  //     color: theme.palette.common.white,
-  //   },
-  // },
+  "& .MuiButtonBase-root ": {
+    borderRadius: "12px",
+    "&:hover": {
+      backgroundColor: "#DE005D",
+      color: theme.palette.common.white,
+    },
+  },
 
   "& .Mui-selected": {
     backgroundColor: "#DE005D",
