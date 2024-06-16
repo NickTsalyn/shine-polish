@@ -203,15 +203,12 @@ export const FooterImg = () => {
 
 export const ChecklistImg = () => {
   return (
-    <div className="z-[-1] absolute  bottom-0   w-full h-full ">
-      <Image
-        src="/images/CheckList-Icon.png"
-        width={450}
-        height={500}
-        alt="Tell About Us"
-        objectFit="cover"
-        layout="responsive"
-      ></Image>
+    <div className="z-[-1] relative  w-full h-full ">
+      <img
+        className=" object-cover inset-0 w-full h-full    "
+        src="/images/checklist_icon.png"
+        alt="Tell about us"
+      ></img>
     </div>
   );
 };

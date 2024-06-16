@@ -27,7 +27,7 @@ export default function Home() {
       <WorkWithUs/>
       <LastSectionHome /> 
       <Checklist/> */}
-      <Checklist/>
+     
 
     </>
   );
