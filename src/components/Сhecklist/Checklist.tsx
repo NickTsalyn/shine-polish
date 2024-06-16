@@ -127,8 +127,8 @@ export const Checklist = () => {
     <section>
       <div className="container center">
         <div className="p-5">
-          <h1 className="h3 text-main">Checklists</h1>
-          <BasicBreadcrumbs pageHref="checklists" pageName="Checklists" />
+          <h1 className="h3 text-main mb-3 md:mb-[18px] lg:mb-7">Checklists</h1>
+          <BasicBreadcrumbs roomName="Checklist" />
         </div>
         <div className="grid grid-cols-1  lg:grid-cols-2 auto-rows-auto gap-[60px]">
           <ul className="grid grid-cols-1 auto-rows-auto gap-[60px]">
@@ -202,7 +202,7 @@ export const Checklist = () => {
                 return (
                   <li
                     key={index}
-                    className=" max-w-[275px] md:max-w-[686px] lg:max-w-[546px] xl:max-w-[760px] shadow-main-shadow p-5"
+                    className="shadow-main-shadow w-full lg:max-w-[546px] xl:max-w-[760px]  p-5"
                   >
                     <div>
                       <h2 className="text-[18px] md:text-[24px] font-normal leading-[21.6px] md:leading-[28.8px] text-accent mb-[16px] md:mb-[20px] lg:mb-[24px] xl:mb-[32px] ">
@@ -264,7 +264,7 @@ export const Checklist = () => {
                 );
               }
             })}
-            <li className="row-span-2  min-h-[200px] md:min-h-[304px] lg:min-h-[625px] xl:min-h-[646px]  max-w-[275px] md:max-w-[686px] lg:max-w-[546px] xl:max-w-[760px] shadow-main-shadow p-5">
+            <li className="row-span-2  min-h-[200px] md:min-h-[304px] lg:min-h-[625px] xl:min-h-[646px] w-full lg:max-w-[546px] xl:max-w-[760px] shadow-main-shadow p-5 ">
               <AboutUs />
             </li>
           </ul>
