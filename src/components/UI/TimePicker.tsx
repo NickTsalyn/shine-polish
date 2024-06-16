@@ -42,6 +42,7 @@ export default function TimePickerComponent({
 }: CustomTimePickerProps) {
   const { form, handleCustomChange } = useFormStorage(
     {
+      selectedDate: dayjs().format("MM/DD/YYYY"),
       time: dayjs().format("h:mm A"),
     },
     "formKey"
@@ -77,7 +78,7 @@ export default function TimePickerComponent({
           <span className="text-secondary">Choose Time</span>
         </button>
         {isTimeCalendarOpen && (
-          <div className="absolute right-0 top-[72px] shadow-main-shadow rounded-xl">
+          <div className="absolute right-0 bottom-[22px] shadow-main-shadow rounded-xl">
             <CustomTimePicker>
               <DigitalClock
                 value={value}

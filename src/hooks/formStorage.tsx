@@ -2,10 +2,12 @@
 
 import { SelectChangeEvent } from "@mui/material";
 import { ChangeEvent, useEffect, useState } from "react";
-import { Dayjs } from "dayjs";
 
 interface Form {
-  [key: string]: string | number | Dayjs | boolean | null;
+  selectedDate: string | null;
+  time: string | null;
+
+  [key: string]: string | number | boolean | null;
 }
 
 interface HandlerReturn {

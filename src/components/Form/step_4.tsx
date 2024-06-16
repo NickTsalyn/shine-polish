@@ -1,134 +1,67 @@
 "use client";
 import React from "react";
-// import {
-//   CrossroadImage,
-//   // DatePikerCustomIcon,
-//   DateTimeImage,
-//   DateIcon,
-//   TimeIcon,
-// } from "@/global/images";
-import Input from "../UI/Input";
+
 import dayjs, { Dayjs } from "dayjs";
-import CustomDesctopDatePicker from "../UI/DateTimePicker";
+import CustomDesctopDatePicker from "../UI/DatePicker";
 import useFormStorage from "@/hooks/formStorage";
-// import { DigitalClock } from "@mui/x-date-pickers";
 import TimePickerComponent from "../UI/TimePicker";
-// import TimePickerComponent from "../UI/TimePicker";
-// import { register } from "module";
+import DateTimeCleaning from "../DateTimeCleaning";
+import AddressForm from "../AddressForm";
 
 const Step4 = () => {
-  const { form, handleInputChange, handleCustomChange } = useFormStorage(
+  const { form, handleCustomChange } = useFormStorage(
     {
-      adress: "",
+      address: "",
       aptSuite: "",
       city: "",
       zipCode: "",
       selectedDate: dayjs().format("MM/DD/YYYY"),
-      time: dayjs().format("h:mm"),
+      time: dayjs().format("h:mm a"),
     },
     "formKey"
   );
 
   const [selectedDate, setSelectedDate] = React.useState<Dayjs | null>(dayjs());
-  // const [isCalendarOpen, setIsCalendarOpen] = React.useState(false);
-  const [selectedTime, setSelectedTime] = React.useState<Dayjs | null>(dayjs());
   const [isDateCalendarOpen, setIsDateCalendarOpen] = React.useState(false);
   const [isTimeCalendarOpen, setIsTimeCalendarOpen] = React.useState(false);
-  // const [value, setValue] = React.useState<Dayjs | null>(dayjs());
   console.log(form.time);
   console.log(form.selectedDate);
 
-  // Календар з датами
-
-  // const handleDateChange = (date: Dayjs | null) => {
-  //   setSelectedDate(date);
-  //   console.log("Selected date:", date);
-  //   setIsDateCalendarOpen(false);
-  // };
-
-  // const handleTimeChange = (time: Dayjs | null) => {
-  //   setSelectedTime(time);
-  //   console.log("Selected time_4:", time);
-  //   setIsTimeCalendarOpen(false);
-  // };
-
-  const handleDateChange = (date: Dayjs | null) => {
-    setSelectedDate(date);
-    handleCustomChange("selectedDate", date ? date.format("MM/DD/YYYY") : null);
+  const handleDateChange = (date: Dayjs | null): void => {
+    const newDate = date ? date.format("MM/DD/YYYY") : null;
+    handleCustomChange("selectedDate", newDate);
+    console.log(newDate);
     setIsDateCalendarOpen(false);
   };
 
-  const handleTimeChange = (time: Dayjs | null) => {
-    setSelectedTime(time);
-    handleCustomChange("time", time ? time.format("h:mm a") : null);
+  const handleTimeChange = (time: Dayjs | null): void => {
+    const newTime = time ? time.format("HH:mm") : null;
+    handleCustomChange("time", newTime);
+    console.log(newTime);
     setIsTimeCalendarOpen(false);
   };
-
+  const handleApplyButtonClick = () => {
+    localStorage.setItem("formKey", JSON.stringify(form));
+    console.log(form);
+  };
   return (
-    <div className="p-4 md:p-6 lg:p-9 h-[1080px]">
+    <div className="py-4 md:py-6 lg:py-9">
       <div className="flex mb-[72px] lg:mb-[92px]">
         <div className="flex flex-col md:mr-1 lg:mr-[164px]">
           <h1 className="h1 md:text-[36px] mb-[32px]">
             Where would you like us to clean?
           </h1>
-          <form className="flex flex-col gap-5">
-            <div className="md:flex flex-col gap-5">
-              <div className="md:w-[508px] lg:w-[774px] md:h-[40px] ">
-                <Input
-                  type="text"
-                  style="form-input"
-                  placeholder="Adress*"
-                  onChange={handleInputChange}
-                  value={form.adress as string}
-                  name="adress"
-                ></Input>
-              </div>
-              <div className="md:w-[444px] lg:w-[672px] md:h-[40px] ">
-                <Input
-                  type="text"
-                  style="form-input"
-                  placeholder="Apt/Suite#"
-                  onChange={handleInputChange}
-                  value={form.aptSuite as string}
-                  name="aptSuite"
-                ></Input>
-              </div>
-            </div>
-            <div className="md:flex gap-5">
-              <div className="md:w-[332px] lg:w-[504px] md:h-[40px] ">
-                <Input
-                  type="text"
-                  style="form-input"
-                  placeholder="City*"
-                  onChange={handleInputChange}
-                  value={form.city as string}
-                  name="city"
-                ></Input>
-              </div>
-              <div className="md:w-[128px] lg:w-[348px] md:h-[40px] ">
-                <Input
-                  type="text"
-                  style="form-input"
-                  placeholder="Zip Code*"
-                  onChange={handleInputChange}
-                  value={form.zipCode as number}
-                  name="zipCode"
-                ></Input>
-              </div>
-            </div>
-          </form>
+
+          <AddressForm />
         </div>
-        {/* <div className="hidden lg:block md:w-[400px] md:h-[300px]">
-          <CrossroadImage />
-        </div> */}
       </div>
       <div>
         <h2 className="h1 md:text-[36px] mb-[32px]">
           When would you like us to clean?
         </h2>
 
-        <div className="w-full md:w-[712px] flex flex-wrap md:flex-nowrap justify-between items-start  mb-4">
-          <div className="w-[300px]">
+        <div className="w-full  flex flex-wrap md:flex-nowrap justify-between items-start  mb-8">
+          <div className="w-[300px] md:w-[600px]">
             <p className="text-subtext text-4 lg:text-5 mb-5">
               Choose a date and time you would like to us to come.
             </p>
@@ -143,17 +76,20 @@ const Step4 = () => {
             <TimePickerComponent onChange={handleTimeChange} />
           </div>
         </div>
-        {/* <div className="w-[280px] md:w-[400px] md:h-[160px]">
-          <DateTimeImage />
-        </div> */}
-        <div className="w-[200px] flex justify-end">
-          <p className="text-accent text-[24px] lg:text-[32px] text-center">
-            {selectedDate
-              ? `Your cleaning date: ${form.selectedDate}`
-              : "You did not choose a date and time for cleaning."}
-            <br />
-            {form.time ? ` ${form.time}` : ""}
-          </p>
+
+        <div className="flex flex-col gap-5 justify-center items-center md:flex-row  md:justify-between md:items-end">
+          <div className="w-[200px] md:w-[600px] lg:w-[800px] flex md:justify-between">
+            <DateTimeCleaning form={form} />
+          </div>
+          <div className="w-[200px]">
+            <button
+              type="button"
+              onClick={handleApplyButtonClick}
+              className="w-[200px] h-[56px] rounded-xl bg-accent hover:bg-[#DE005D] text-white font-bold"
+            >
+              Apply
+            </button>
+          </div>
         </div>
       </div>
     </div>
