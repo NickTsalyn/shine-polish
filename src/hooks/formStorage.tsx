@@ -4,7 +4,7 @@ import { SelectChangeEvent } from "@mui/material";
 import { ChangeEvent, useEffect, useState } from "react";
 
 interface Form {
-  selectedDate: string | null;
+  date: string | null;
   time: string | null;
 
   [key: string]: string | number | boolean | null;
@@ -51,6 +51,7 @@ const useFormStorage = (initialForm: Form, formKey = "form"): HandlerReturn => {
   const handleCustomChange = (name: string, value: any) => {
     const updatedForm = { ...form, [name]: value };
     setForm(updatedForm);
+    localStorage.setItem(formKey, JSON.stringify(updatedForm));
   };
 
   return { form, handleInputChange, handleRadioChange, handleCustomChange };

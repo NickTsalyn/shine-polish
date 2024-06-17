@@ -2,7 +2,7 @@ import React from "react";
 
 interface DateTimeCleaningProps {
   form: {
-    selectedDate: string | null;
+    date: string | null;
     time: string | null;
   };
 }
@@ -10,10 +10,10 @@ interface DateTimeCleaningProps {
 const DateTimeCleaning: React.FC<DateTimeCleaningProps> = ({ form }) => (
   <div className="">
     <p className="text-accent text-[24px] lg:text-[28px] text-center lg:text-start">
-      {form.selectedDate ? (
+      {form.date ? (
         <>
           Your cleaning date is:{" "}
-          <span className="text-[#DE005D]">{form.selectedDate}</span>
+          <span className="text-[#DE005D]">{form.date} </span>
         </>
       ) : (
         "You did not choose a date and time for cleaning."
@@ -21,7 +21,7 @@ const DateTimeCleaning: React.FC<DateTimeCleaningProps> = ({ form }) => (
       <br className="block md:hidden" />
       {form.time && (
         <>
-          <br className="hidden md:block lg:hidden" /> at:{" "}
+          <br className="hidden md:block lg:hidden" /> at{" "}
           <span className="text-[#DE005D]">{form.time}</span>
         </>
       )}

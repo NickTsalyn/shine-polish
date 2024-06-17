@@ -15,10 +15,10 @@ const Step4 = () => {
       aptSuite: "",
       city: "",
       zipCode: "",
-      selectedDate: dayjs().format("MM/DD/YYYY"),
-      time: dayjs().format("h:mm a"),
+      date: dayjs().format("dddd, MMMM D, YYYY"),
+      time: dayjs().format("h:mm A"),
     },
-    "formKey"
+    "form"
   );
 
   const [selectedDate, setSelectedDate] = React.useState<Dayjs | null>(dayjs());
@@ -28,22 +28,19 @@ const Step4 = () => {
   console.log(form.selectedDate);
 
   const handleDateChange = (date: Dayjs | null): void => {
-    const newDate = date ? date.format("MM/DD/YYYY") : null;
-    handleCustomChange("selectedDate", newDate);
+    const newDate = date ? date.format("dddd, MMMM D, YYYY") : null;
+    handleCustomChange("date", newDate);
     console.log(newDate);
     setIsDateCalendarOpen(false);
   };
 
   const handleTimeChange = (time: Dayjs | null): void => {
-    const newTime = time ? time.format("HH:mm") : null;
+    const newTime = time ? time.format("hh:mm A") : null;
     handleCustomChange("time", newTime);
     console.log(newTime);
     setIsTimeCalendarOpen(false);
   };
-  const handleApplyButtonClick = () => {
-    localStorage.setItem("formKey", JSON.stringify(form));
-    console.log(form);
-  };
+
   return (
     <div className="py-4 md:py-6 lg:py-9">
       <div className="flex flex-col mb-[72px] lg:mb-[92px]">
@@ -82,18 +79,10 @@ const Step4 = () => {
         </div>
 
         <div className="flex flex-col gap-5 justify-center items-center md:flex-row  md:justify-between md:items-end">
-          <div className="w-[280px]  md:w-[600px] lg:w-[680px] ">
+          <div className="w-[280px]  md:w-[600px] lg:w-[800px] ">
             <DateTimeCleaning form={form} />
           </div>
-          <div className="w-[200px] md:w-auto lg:w-[400px]">
-            <button
-              type="button"
-              onClick={handleApplyButtonClick}
-              className="w-auto lg:w-[400px] px-4 py-2 h-full rounded-xl bg-accent hover:bg-[#DE005D] text-white font-bold lg:text-[20px] lg:px-6 lg:py-3"
-            >
-              Yes, I want cleaning on this date
-            </button>
-          </div>
+          <div className="w-[200px] md:w-auto lg:w-[400px]"></div>
         </div>
       </div>
     </div>
