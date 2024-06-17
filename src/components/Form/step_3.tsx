@@ -11,8 +11,6 @@ const Step3 = () => {
     specialInstructions: "",
     bathroom: 1,
     bedroom: 1,
-    frequency: "",
-    areas: ""
   });
 
   return (

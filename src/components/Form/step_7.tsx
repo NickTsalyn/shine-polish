@@ -1,6 +1,7 @@
 import useFormStorage from "@/hooks/formStorage";
 import { getPrice } from "../../../formula";
 import { useEffect, useState } from "react";
+import { area, discount } from "../../../formula";
 
 const Step7 = () => {
 	const { form } = useFormStorage({});
@@ -18,7 +19,16 @@ const Step7 = () => {
 
 		const { bedroom, bathroom, areas, frequency } = form;
 
-		const calculatedPrice = getPrice(Number(bedroom), Number(bathroom), Number(areas), Number(frequency));
+		const areaCoefficient = area.find((area) => area.name === areas)?.value || 1;
+		const discountValue = discount.find((discount) => discount.name === frequency)?.value || 1;
+		// const basePrice = getPrice(Number(bedroom), Number(bathroom));
+
+		// if(bedroom === 1 && bathroom === 1) {
+		// 	return basePrice
+		// }
+	
+		const calculatedPrice = getPrice(Number(bedroom), Number(bathroom)) * areaCoefficient * discountValue
+		// const calculatedPrice = basePrice * areaCoefficient * discountValue
 		setSubTotal(calculatedPrice);
 		
 		const totalPrice = calculatedPrice * 1.06;
