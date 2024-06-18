@@ -27,3 +27,65 @@ select:-webkit-autofill:focus {
   transition: background-color 5000s ease-in-out 0s;
   color: white;
 }
+/*  */
+/* Change Pickers styles */
+.css-15zj7fn-MuiPickersLayout-root {
+  border-radius: 12px;
+  box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.35);
+
+}
+
+
+
+
+.MuiPickersDay-today {
+  background-color: #E6BA95 !important;
+  color: white !important;
+  border: #E6BA95 !important;
+}
+/* .MuiPickersDay-root {
+background-color: white;
+} */
+
+.MuiPickersDay-root:hover {
+  background-color: #DE005D;
+  color: white;
+}
+
+/* .MuiPickersDay  {
+  background-color: #DE005D;
+  color: white;
+} */
+  
+.MuiTypography-h4 {
+     color: "#DE005D",
+   }
+   
+.Mui-selected {
+  background-color: #DE005D;
+  color: #fff;
+}
+.css-hm06p1 {
+  border-radius: "12px";
+  box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.35);
+  background-color: #fff;
+}
+
+   .MuiMenuItem-root {
+   border-radius: 12px;
+   
+  
+  }
+  .MuiMenuItem-root:hover{
+    background-color: #DE005D;
+     color: #fff;
+     }
+       /* .MuiDigitalClock-selected {
+    background-color: #DE005D;
+    color: #fff;
+    } */
+    .css-1kvln7l-MuiButtonBase-root-MuiMenuItem-root-MuiDigitalClock-item.Mui-selected {
+      background-color: #DE005D;
+      color: #fff;
+    }
+  

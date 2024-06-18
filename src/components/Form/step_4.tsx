@@ -2,55 +2,46 @@
 import React from "react";
 
 import dayjs, { Dayjs } from "dayjs";
-import CustomDesctopDatePicker from "../UI/DatePicker";
+import CustomDatePicker from "../UI/DatePicker";
 import useFormStorage from "@/hooks/formStorage";
 import TimePickerComponent from "../UI/TimePicker";
 import DateTimeCleaning from "../DateTimeCleaning";
 import AddressForm from "../AddressForm";
 
-const Step4 = () => {
+const Step4: React.FC = () => {
   const { form, handleCustomChange } = useFormStorage(
     {
       address: "",
       aptSuite: "",
       city: "",
       zipCode: "",
-      date: dayjs().format("dddd, MMMM D, YYYY"),
+      selectedDate: dayjs().format("ddd, MMMM D, YYYY"),
       time: dayjs().format("h:mm A"),
     },
     "form"
   );
-
-  const [selectedDate, setSelectedDate] = React.useState<Dayjs | null>(dayjs());
-  const [isDateCalendarOpen, setIsDateCalendarOpen] = React.useState(false);
-  const [isTimeCalendarOpen, setIsTimeCalendarOpen] = React.useState(false);
-  console.log(form.time);
-  console.log(form.selectedDate);
-
   const handleDateChange = (date: Dayjs | null): void => {
-    const newDate = date ? date.format("dddd, MMMM D, YYYY") : null;
-    handleCustomChange("date", newDate);
-    console.log(newDate);
-    setIsDateCalendarOpen(false);
+    handleCustomChange(
+      "selectedDate",
+      date ? date.format("ddd, MMMM D, YYYY") : null
+    );
   };
 
   const handleTimeChange = (time: Dayjs | null): void => {
-    const newTime = time ? time.format("hh:mm A") : null;
-    handleCustomChange("time", newTime);
-    console.log(newTime);
-    setIsTimeCalendarOpen(false);
+    handleCustomChange("time", time ? time.format("h:mm A") : null);
   };
+
+  console.log(form.time);
+  console.log(form.selectedDate);
 
   return (
     <div className="py-4 md:py-6 lg:py-9">
       <div className="flex flex-col mb-[72px] lg:mb-[92px]">
-        {/* <div className="flex flex-comd:mr-1 lg:mr-[164px]"> */}
         <h1 className="h1 md:text-[36px] mb-[32px]">
           Where would you like us to clean?
         </h1>
 
         <AddressForm />
-        {/* </div> */}
       </div>
       <div>
         <h2 className="h1 md:text-[36px] mb-[32px]">
@@ -67,13 +58,21 @@ const Step4 = () => {
           </div>
           <div className="flex gap-5 w-full md:w-[400px] lg:w-[400px] justify-between items-center">
             <div>
-              <CustomDesctopDatePicker
+              <CustomDatePicker
                 onChange={handleDateChange}
-                value={selectedDate}
+                value={dayjs(form.selectedDate as string, "ddd, MMMM D, YYYY")}
+                // selectedDate={selectedDate}
               />
             </div>
             <div>
-              <TimePickerComponent onChange={handleTimeChange} />
+              <TimePickerComponent
+                onChange={handleTimeChange}
+                value={
+                  form.selectedTime
+                    ? dayjs(form.selectedTime as string, "h:mm A")
+                    : null
+                }
+              />
             </div>
           </div>
         </div>

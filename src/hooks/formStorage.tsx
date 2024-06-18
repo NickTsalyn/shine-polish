@@ -4,7 +4,7 @@ import { SelectChangeEvent } from "@mui/material";
 import { ChangeEvent, useEffect, useState } from "react";
 
 interface Form {
-  date: string | null;
+  selectedDate: string | null;
   time: string | null;
 
   [key: string]: string | number | boolean | null;

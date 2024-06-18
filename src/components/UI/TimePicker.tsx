@@ -2,85 +2,37 @@ import * as React from "react";
 import { DigitalClock, LocalizationProvider } from "@mui/x-date-pickers";
 import dayjs, { Dayjs } from "dayjs";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { styled } from "@mui/material";
 import { TimeIcon } from "@/global/images";
 import useFormStorage from "@/hooks/formStorage";
 import CustomCalendarWrapper from "./CalendarWrapper";
+import { useEffect } from "react";
 
 interface CustomTimePickerProps {
+  value: Dayjs | string | number | any | null | undefined;
   onChange: (time: Dayjs | null) => void;
 }
 
-// const CustomTimePicker = styled("div")(({ theme }) => ({
-//   borderRadius: "12px",
-//   overflow: "hidden",
-
-//   "& .MuiDigitalClock-item": {
-//     borderRaius: "12px",
-//     "&:hover": {
-//       backgroundColor: "#DE005D",
-//       color: theme.palette.common.white,
-//     },
-//   },
-
-//   "& .MuiDigitalClock-Selected": {
-//     backgroundColor: "#DE005D",
-//     color: theme.palette.common.white,
-//   },
-
-//   "& .MuiButtonBase-root ": {
-//     borderRadius: "12px",
-//     "&:hover": {
-//       backgroundColor: "#DE005D",
-//       color: theme.palette.common.white,
-//     },
-//   },
-
-//   "& .Mui-selected": {
-//     backgroundColor: "#DE005D",
-//   },
-//   "& .MuiDigitalClock-root": {
-//     padding: "8px 0px",
-//     backgroundColor: theme.palette.background.paper,
-//   },
-// }));
-
 export default function TimePickerComponent({
   onChange,
+  value,
 }: CustomTimePickerProps) {
   const { form, handleCustomChange } = useFormStorage(
     {
-      date: dayjs().format("dddd, MMMM D, YYYY"),
+      selectedDate: dayjs().format("ddd, MMMM D, YYYY"),
       time: dayjs().format("h:mm A"),
     },
     "form"
   );
   // const [selectedDate, setSelectedDate] = React.useState<Dayjs | null>(dayjs());
   const [isTimeCalendarOpen, setIsTimeCalendarOpen] = React.useState(false);
-  const [value, setValue] = React.useState<Dayjs | null>(
-    form.time ? dayjs(form.time as string, "h:mm A") : dayjs()
-  );
-  const clockRef = React.useRef<HTMLDivElement>(null);
-
-  React.useEffect(() => {
-    const handleClickOutsideClock = (event: MouseEvent) => {
-      if (
-        clockRef.current &&
-        !clockRef.current.contains(event.target as Node)
-      ) {
-        setIsTimeCalendarOpen(false);
-      }
-    };
-    document.addEventListener("click", handleClickOutsideClock);
-    return () => {
-      document.removeEventListener("click", handleClickOutsideClock);
-    };
-  }, []);
+  // const [value, setValue] = React.useState<Dayjs | null>(
+  //   form.time ? dayjs(form.time as string, "h:mm A") : dayjs()
+  // );
 
   const handleTimeChange = (time: Dayjs | null) => {
     if (time) {
       handleCustomChange("time", time.format("h:mm A"));
-      setValue(time);
+      // setValue(time);
       onChange(time);
       setIsTimeCalendarOpen(false);
     }
@@ -89,6 +41,23 @@ export default function TimePickerComponent({
   const handleTimeButtonClick = () => {
     setIsTimeCalendarOpen(!isTimeCalendarOpen);
   };
+  useEffect(() => {
+    const handleClick = (event: MouseEvent) => {
+      if (
+        isTimeCalendarOpen &&
+        !(event.target as Element).closest(
+          `[class*="absolute"][class*="right-0"][class*="bottom-22px"]`
+        )
+      ) {
+        setIsTimeCalendarOpen(false);
+      }
+    };
+
+    document.addEventListener("click", handleClick);
+    return () => {
+      document.removeEventListener("click", handleClick);
+    };
+  }, [isTimeCalendarOpen]);
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -104,7 +73,7 @@ export default function TimePickerComponent({
         {isTimeCalendarOpen && (
           <div
             // ref={clockRef}
-            className="absolute right-0 bottom-[22px] shadow-main-shadow rounded-xl"
+            className="absolute right-0 bottom-[22px] "
           >
             <CustomCalendarWrapper>
               <DigitalClock
