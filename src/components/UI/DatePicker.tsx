@@ -31,7 +31,7 @@ const CustomDatePicker: React.FC<CustomDatePickerProps> = ({
 }) => {
   const { form, handleCustomChange } = useFormStorage(
     {
-      selectedDate: dayjs().format("ddd, MMMM D, YYYY"),
+      selectedDate: dayjs().format("MM/DD/YYYY"),
       time: dayjs().format("h:mm A"),
     },
     "form"
@@ -55,10 +55,7 @@ const CustomDatePicker: React.FC<CustomDatePickerProps> = ({
     };
   }, []);
   const handleDateChange = (date: Dayjs | null) => {
-    handleCustomChange(
-      "selectedDate",
-      date ? date.format("ddd, MMMM D, YYYY") : null
-    );
+    handleCustomChange("selectedDate", date ? date.format("MM/DD/YYYY") : null);
     onChange(date);
     // selectedDate(date);
     setIsDateCalendarOpen(false);
@@ -82,7 +79,8 @@ const CustomDatePicker: React.FC<CustomDatePickerProps> = ({
           <div className="absolute z-10 -left-[6px] md:-left-[200px]  bottom-[22px]  w-[300px] md:w-[320px">
             {/* <CustomCalendarWrapper> */}
             <StaticDatePicker
-              value={value}
+              // value={value}
+              value={dayjs(form.selectedDate, "MM/DD/YYYY")}
               onChange={handleDateChange}
               disablePast
               views={views}

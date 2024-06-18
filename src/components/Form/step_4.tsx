@@ -15,7 +15,7 @@ const Step4: React.FC = () => {
       aptSuite: "",
       city: "",
       zipCode: "",
-      selectedDate: dayjs().format("ddd, MMMM D, YYYY"),
+      selectedDate: dayjs().format("MM/DD/YYYY"),
       time: dayjs().format("h:mm A"),
     },
     "form"
@@ -23,7 +23,7 @@ const Step4: React.FC = () => {
   const handleDateChange = (date: Dayjs | null): void => {
     handleCustomChange(
       "selectedDate",
-      date ? date.format("ddd, MMMM D, YYYY") : null
+      date ? date.format("MM/DD/YYYY") : null
     );
   };
 
@@ -60,7 +60,7 @@ const Step4: React.FC = () => {
             <div>
               <CustomDatePicker
                 onChange={handleDateChange}
-                value={dayjs(form.selectedDate as string, "ddd, MMMM D, YYYY")}
+                value={dayjs(form.selectedDate as string, "MM/DD/YYYY")}
                 // selectedDate={selectedDate}
               />
             </div>

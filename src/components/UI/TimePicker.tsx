@@ -18,7 +18,7 @@ export default function TimePickerComponent({
 }: CustomTimePickerProps) {
   const { form, handleCustomChange } = useFormStorage(
     {
-      selectedDate: dayjs().format("ddd, MMMM D, YYYY"),
+      selectedDate: dayjs().format("MM/DD/YYYY"),
       time: dayjs().format("h:mm A"),
     },
     "form"
@@ -77,7 +77,8 @@ export default function TimePickerComponent({
           >
             <CustomCalendarWrapper>
               <DigitalClock
-                value={value}
+                value={dayjs(form.time, "h:mm A")}
+                // value={value}
                 onChange={handleTimeChange}
                 skipDisabled
                 minTime={dayjs("2022-04-17T08:00")}

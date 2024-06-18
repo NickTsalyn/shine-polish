@@ -52,21 +52,25 @@ background-color: white;
   color: white;
 }
 
-/* .MuiPickersDay  {
+.MuiPickersDay  {
   background-color: #DE005D;
   color: white;
-} */
+}
   
 .MuiTypography-h4 {
-     color: "#DE005D",
+     color: #DE005D;
    }
-   
-.Mui-selected {
+   .css-1wy8uaa-MuiButtonBase-root-MuiPickersDay-root.Mui-selected {
+    color: #fff;
+    background-color: #DE005D !important;
+    font-weight: 500;
+}   
+/* .Mui-selected {
   background-color: #DE005D;
   color: #fff;
-}
+} */
 .css-hm06p1 {
-  border-radius: "12px";
+  border-radius: 12px;
   box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.35);
   background-color: #fff;
 }
@@ -80,10 +84,10 @@ background-color: white;
     background-color: #DE005D;
      color: #fff;
      }
-       /* .MuiDigitalClock-selected {
+       .MuiDigitalClock-selected {
     background-color: #DE005D;
     color: #fff;
-    } */
+    }
     .css-1kvln7l-MuiButtonBase-root-MuiMenuItem-root-MuiDigitalClock-item.Mui-selected {
       background-color: #DE005D;
       color: #fff;
