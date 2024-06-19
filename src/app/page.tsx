@@ -10,25 +10,20 @@ import SectionJustAsk from "@/components/JustAskSection";
 import React from "react";
 import WorkWithUs from "@/components/WorkWithUs";
 import LastSectionHome from "@/components/LastSectionHome";
-import { Checklist } from "@/components/Сhecklist/Checklist";
-
+import dataBackground from "@/data/background-data.json";
+import dataHeroBackground from "@/data/background-hero.json";
 
 export default function Home() {
   return (
     <>
-      {/* <Hero/>
+      <Hero data={dataHeroBackground} />
       <SectionEstimate />
       <BeforeAfter data={dataSlider} />
       <Reviews />
       <ServiceAreas />
-      {/* <CleaningServices />
-      <CleaningProcesses /> */}
-      {/* <SectionJustAsk />
-      <WorkWithUs/>
-      <LastSectionHome /> 
-      <Checklist/> */}
-     
-
+      <SectionJustAsk />
+      <WorkWithUs />
+      <LastSectionHome data={dataBackground} />
     </>
   );
 }

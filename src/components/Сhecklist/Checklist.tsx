@@ -138,7 +138,7 @@ export const Checklist = () => {
                   <li
                     key={index}
                     // className=" max-w-[275px] md:max-w-[686px] lg:max-w-[546px] xl:max-w-[760px] shadow-main-shadow"
-                    className="shadow-main-shadow w-full lg:max-w-[546px] xl:max-w-[760px] p-5"
+                    className="shadow-main-shadow w-full lg:max-w-[546px] xl:max-w-[760px] p-5 rounded-xl"
                   >
                     <div>
                       <h2 className="text-[18px] md:text-[24px] font-normal leading-[21.6px] md:leading-[28.8px] text-accent mb-[16px] md:mb-[20px] lg:mb-[24px] xl:mb-[32px] ">
@@ -202,7 +202,7 @@ export const Checklist = () => {
                 return (
                   <li
                     key={index}
-                    className="shadow-main-shadow w-full lg:max-w-[546px] xl:max-w-[760px]  p-5"
+                    className="shadow-main-shadow w-full lg:max-w-[546px] xl:max-w-[760px]  p-5 rounded-xl"
                   >
                     <div>
                       <h2 className="text-[18px] md:text-[24px] font-normal leading-[21.6px] md:leading-[28.8px] text-accent mb-[16px] md:mb-[20px] lg:mb-[24px] xl:mb-[32px] ">
