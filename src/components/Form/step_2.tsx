@@ -15,41 +15,36 @@ const Step2 = () => {
     extras: [],
   });
 
-  const [disable, setDisable] = useState(true);
-  const prevServices = useRef(form.services);
+  const [disable, setDisable] = useState(false);
+  const [p, setP] =useState([])
   
 
   const handleDisable = () => {
     if (form.services === "Basic Cleaning") {
+   
+      console.log(form)
       setDisable(false);
-    }
-     else {
+    } 
+     else if(form.services === 'Deep Cleaning' || form.services === 'Move In/Move Out' ) {
       setDisable(true);
-   console.log('here')
+  
       form.extras = [];
+console.log(form.extras)
 
-      // // Зчитуємо існуючі дані з локального сховища
-      // const existingDataStr = localStorage.getItem("form");
-      // let existingData = existingDataStr ? JSON.parse(existingDataStr) : {};
-
-      // // Оновлюємо дані
-      // existingData = { ...existingData, ...form };
-
-      // // Зберігаємо об'єднані дані в локальне сховище
-      // localStorage.setItem("form", JSON.stringify(existingData));
     }
   };
 
   
   useEffect(() => {
     // Запобігаємо оновленню, якщо services вже мають значення і нове значення порожнє
-    if (prevServices.current !== "" && form.services === "") {
-      return
-    } else {
-      prevServices.current = form.services;
+    // if (prevServices.current !== "" && form.services === "") {
+    //   return
+    // } else {
+    //   prevServices.current = form.services;
       handleDisable();
-    }
-  }, [form.services]);
+     
+    
+  }, [form]);
 
 
 

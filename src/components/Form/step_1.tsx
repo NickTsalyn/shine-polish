@@ -17,6 +17,7 @@ const Step1 = () => {
     bedrooms: "",
     bathrooms: "",
     frequency: "",
+    extras:[],
   });
 
   return (
