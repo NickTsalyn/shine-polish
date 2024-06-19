@@ -29,7 +29,7 @@ const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY as st
 
 const Step7 = () => {
   const [loading, setLoading] = useState(false);
-  const origin = window.location.origin; // Отримати поточний URL звідки виконується код
+  // const origin = window.location.origin; // Отримати поточний URL звідки виконується код
   const handleCheckout = async () => {
     setLoading(true);
 
