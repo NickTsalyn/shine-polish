@@ -6,6 +6,6 @@ export type RadioCheckProps = {
   checked?: boolean;
   children?: React.ReactNode;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  onClick: () => void;
+  onClick?: () => void;
   disabled?: boolean;
 };
