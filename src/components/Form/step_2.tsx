@@ -19,7 +19,7 @@ const Step2 = () => {
     } else {
       setDisable(true);
       form.extras = [];
-      localStorage.setItem('form', JSON.stringify(form));
+     
       
     }
   };
