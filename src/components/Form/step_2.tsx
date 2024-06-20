@@ -26,7 +26,7 @@ const Step2 = () => {
 
   useEffect(() => {
     handleDisable();
-  }, []);
+  }, [form.services]);
 
 
   return (
