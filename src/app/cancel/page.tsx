@@ -6,6 +6,6 @@ const CancelPage = () => {
       </div>
     );
   };
-  
+
   export default CancelPage;
-  
+

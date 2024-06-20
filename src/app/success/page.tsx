@@ -6,6 +6,5 @@ const SuccessPage = () => {
       </div>
     );
   };
-  
+
   export default SuccessPage;
-  
