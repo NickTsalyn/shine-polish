@@ -17,6 +17,7 @@ const Step1 = () => {
 		aboutUs: "",
 		specialInstructions: "",
 		extras: [],
+		services: ''
 	});
 
 	return (
