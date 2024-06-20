@@ -2,9 +2,9 @@
 
 import { SelectChangeEvent } from "@mui/material";
 import { ChangeEvent, useEffect, useState } from "react";
-
+import { Dayjs } from "dayjs";
 interface Form {
-  [key: string]: string | number | boolean | string[];
+  [key: string]: string | number | boolean | string[] | Dayjs | null | any;
 }
 
 interface HandlerReturn {
@@ -16,6 +16,8 @@ interface HandlerReturn {
   ) => void;
   handleRadioChange: (name: string, value: string | boolean) => void;
   handleCheckboxChange: (name: string, value: string) => void;
+  handleCustomChange: (name: string, value: any) => void;
+
   setForm: (form: Form) => void;
 }
 
@@ -46,6 +48,11 @@ const useFormStorage = (initialForm: Form, formKey = "form"): HandlerReturn => {
     setForm(updatedForm);
     localStorage.setItem(formKey, JSON.stringify(updatedForm));
   };
+  const handleCustomChange = (name: string, value: any) => {
+    const updatedForm = { ...form, [name]: value };
+    setForm(updatedForm);
+    localStorage.setItem(formKey, JSON.stringify(updatedForm));
+  };
 
   const handleCheckboxChange = (name: string, value: string) => {
     const currentValues = form[name] as string[];
@@ -57,7 +64,14 @@ const useFormStorage = (initialForm: Form, formKey = "form"): HandlerReturn => {
     localStorage.setItem(formKey, JSON.stringify(updatedForm));
   };
 
-  return { form, handleInputChange, handleRadioChange, handleCheckboxChange, setForm };
+  return {
+    form,
+    handleInputChange,
+    handleRadioChange,
+    handleCheckboxChange,
+    setForm,
+    handleCustomChange,
+  };
 };
 
 export default useFormStorage;

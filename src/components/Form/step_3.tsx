@@ -3,14 +3,25 @@ import useFormStorage from "@/hooks/formStorage";
 import BasicSelect from "../UI/Select";
 import Textarea from "../UI/Textarea";
 import { aboutUs, homeAccess } from "@/data/booking-form/step_3";
+import dayjs from "dayjs";
 
 const Step3 = () => {
   const { form, handleInputChange } = useFormStorage({
-    homeAccess: "",
-    aboutUs: "",
-    specialInstructions: "",
-    bathroom: 1,
-    bedroom: 1,
+    areas: "",
+		bedroom: 1,
+		bathroom: 1,
+		frequency: "",
+		homeAccess: "",
+		aboutUs: "",
+		specialInstructions: "",
+		extras: [],
+		services: "",
+		selectedDate: dayjs().format("MM/DD/YYYY"),
+		time: dayjs().format("h:mm A"),
+		address: "",
+		aptSuite: "",
+		city: "",
+		zipCode: "",
   });
 
   return (

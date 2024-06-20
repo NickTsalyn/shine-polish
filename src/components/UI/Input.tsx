@@ -5,9 +5,15 @@ interface InputProps {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   type: "email" | "password" | "text" | "tel" | "checkbox";
   placeholder?: string;
-  style: "sign-in-input" | "sign-up-input" | "form-input" | "modal-input";
+  style:
+    | "sign-in-input"
+    | "sign-up-input"
+    | "form-input"
+    | "modal-input"
+    | string;
   width?: string;
   name?: string;
+  // register?: any;
 }
 
 export default function Input({
@@ -18,7 +24,9 @@ export default function Input({
   width,
   value,
   name,
-}: InputProps) {
+}: // register,
+
+InputProps) {
   let styles = "";
 
   switch (style) {
@@ -44,7 +52,8 @@ export default function Input({
         className={styles}
         type={type}
         placeholder={placeholder}
-        onChange={onChange} /*{...register("text")}*/
+        onChange={onChange}
+        // {...register("text")}
         value={value}
         name={name}
       />
