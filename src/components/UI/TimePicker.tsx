@@ -4,7 +4,6 @@ import dayjs, { Dayjs } from "dayjs";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { TimeIcon } from "@/global/images";
 import useFormStorage from "@/hooks/formStorage";
-import CustomCalendarWrapper from "./CalendarWrapper";
 import { useEffect } from "react";
 
 interface CustomTimePickerProps {
@@ -23,16 +22,11 @@ export default function TimePickerComponent({
     },
     "form"
   );
-  // const [selectedDate, setSelectedDate] = React.useState<Dayjs | null>(dayjs());
   const [isTimeCalendarOpen, setIsTimeCalendarOpen] = React.useState(false);
-  // const [value, setValue] = React.useState<Dayjs | null>(
-  //   form.time ? dayjs(form.time as string, "h:mm A") : dayjs()
-  // );
 
   const handleTimeChange = (time: Dayjs | null) => {
     if (time) {
       handleCustomChange("time", time.format("h:mm A"));
-      // setValue(time);
       onChange(time);
       setIsTimeCalendarOpen(false);
     }
@@ -71,31 +65,16 @@ export default function TimePickerComponent({
           <span className="text-secondary">Choose Time</span>
         </button>
         {isTimeCalendarOpen && (
-          <div
-            // ref={clockRef}
-            className="absolute right-0 bottom-[22px] "
-          >
-            <CustomCalendarWrapper>
-              <DigitalClock
-                value={dayjs(form.time, "h:mm A")}
-                // value={value}
-                onChange={handleTimeChange}
-                skipDisabled
-                minTime={dayjs("2022-04-17T08:00")}
-                maxTime={dayjs("2022-04-17T16:30")}
-                timeStep={30}
-                // shouldDisableTime={shouldDisableTime}
-                classes={
-                  {
-                    // selected: "custom-selected",
-                    // disabled: "Mui-disabled",
-                    // pin: "MuiPickersClock-pin",
-                    // root: "MuiDigitalClock-root",
-                    // selected: "Mui-selected",
-                  }
-                }
-              />
-            </CustomCalendarWrapper>
+          <div className="absolute right-0 bottom-[22px] ">
+            <DigitalClock
+              value={dayjs(form.time, "h:mm A")}
+              onChange={handleTimeChange}
+              skipDisabled
+              minTime={dayjs("2022-04-17T08:00")}
+              maxTime={dayjs("2022-04-17T16:30")}
+              timeStep={30}
+              // shouldDisableTime={shouldDisableTime}
+            />
           </div>
         )}
       </div>

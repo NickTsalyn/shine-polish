@@ -57,7 +57,11 @@ const SectionJustAsk: React.FC = () => {
                 placeholder="Email*"
                 onChange={handleEmailChange}
               />
-              {errors.email && <p role="alert">{errors.email.message}</p>}
+              {errors.email && (
+                <p className="error" role="alert">
+                  {errors.email.message}
+                </p>
+              )}
             </div>
             <div className="w-auto lg:w-[400px] xl:w-[630px] h-[102px] md:h-[180px] lg:h-[240px] xl:h-[324px] mb-5 lg:mb-10">
               <Textarea
@@ -65,7 +69,11 @@ const SectionJustAsk: React.FC = () => {
                 placeholder="Your question"
                 onChange={handleQuestionChange}
               />
-              {errors.question && <p role="alert">{errors.question.message}</p>}
+              {errors.question && (
+                <p className="error" role="alert">
+                  {errors.question.message}
+                </p>
+              )}
             </div>
             <div className="flex justify-end lg:justify-start">
               <Button style="send" type="submit">

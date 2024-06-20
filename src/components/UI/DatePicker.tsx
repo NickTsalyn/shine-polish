@@ -6,7 +6,6 @@ import dayjs, { Dayjs } from "dayjs";
 import { DateView, StaticDatePicker } from "@mui/x-date-pickers";
 import useFormStorage from "@/hooks/formStorage";
 import { DateIcon } from "@/global/images";
-import CustomCalendarWrapper from "./CalendarWrapper";
 interface CustomDatePickerProps {
   value: Dayjs | string | number | any | null | undefined;
   onChange: (date: Dayjs | null) => void;
@@ -17,8 +16,6 @@ interface CustomDatePickerProps {
   slots?: { actionBar: () => null };
   autoFocus?: boolean;
 }
-
-// const today = dayjs();
 
 const CustomDatePicker: React.FC<CustomDatePickerProps> = ({
   value,
@@ -57,7 +54,6 @@ const CustomDatePicker: React.FC<CustomDatePickerProps> = ({
   const handleDateChange = (date: Dayjs | null) => {
     handleCustomChange("selectedDate", date ? date.format("MM/DD/YYYY") : null);
     onChange(date);
-    // selectedDate(date);
     setIsDateCalendarOpen(false);
   };
 
@@ -77,9 +73,7 @@ const CustomDatePicker: React.FC<CustomDatePickerProps> = ({
         </button>
         {isDateCalendarOpen && (
           <div className="absolute z-10 -left-[6px] md:-left-[200px]  bottom-[22px]  w-[300px] md:w-[320px">
-            {/* <CustomCalendarWrapper> */}
             <StaticDatePicker
-              // value={value}
               value={dayjs(form.selectedDate, "MM/DD/YYYY")}
               onChange={handleDateChange}
               disablePast
@@ -106,7 +100,6 @@ const CustomDatePicker: React.FC<CustomDatePickerProps> = ({
                 // },
               }}
             />
-            {/* </CustomCalendarWrapper> */}
           </div>
         )}
       </div>
