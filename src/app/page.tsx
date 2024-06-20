@@ -21,8 +21,6 @@ export default function Home() {
       <BeforeAfter data={dataSlider} />
       <Reviews />
       <ServiceAreas />
-      {/* <CleaningServices />
-      <CleaningProcesses /> */}
       <SectionJustAsk />
       <WorkWithUs />
       <LastSectionHome data={dataBackground} />
