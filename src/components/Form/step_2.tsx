@@ -9,6 +9,13 @@ const Step2 = () => {
   const { form, handleRadioChange, handleCheckboxChange, setForm } = useFormStorage({
     services: "",
     extras: [],
+    homeAccess: "",
+		aboutUs: "",
+		specialInstructions: "",
+    areas: "" ,
+		bedroom: 1,
+		bathroom: 1,
+		frequency: "",
   });
 
   const [disable, setDisable] = useState(false);

@@ -12,16 +12,17 @@ import {
 import useFormStorage from "@/hooks/formStorage";
 
 const Step1 = () => {
-  const { form, handleInputChange, handleRadioChange } = useFormStorage({
-    areas: "",
-    bedroom: 1,
-    bathroom: 1,
-    frequency: "",
-    homeAccess: "",
-    aboutUs: "",
-    specialInstructions: "",
-    extras: [],
-  });
+	const { form, handleInputChange, handleRadioChange } = useFormStorage({
+		areas: "" ,
+		bedroom: 1,
+		bathroom: 1,
+		frequency: "",
+		homeAccess: "",
+		aboutUs: "",
+		specialInstructions: "",
+		extras: [],
+		services: ''
+	});
 
   return (
     <div className="py-4 md:py-6 lg:py-9 flex flex-col gap-6 md:gap-[26px] lg:grid lg:grid-flow-col lg:grid-cols-2 lg:gap-[66px] xl:gap-[80px]">
