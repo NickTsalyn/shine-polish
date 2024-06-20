@@ -3,7 +3,7 @@ import { ExtrasOptions, ServicesOptions } from "@/data/booking-form/step_2";
 import useFormStorage from "@/hooks/formStorage";
 import RadioButton from "../UI/RadioButton";
 import CheckBox from "../UI/Сheckbox";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 
 const Step2 = () => {
   const { form, handleRadioChange, handleCheckboxChange, setForm } = useFormStorage({
@@ -13,23 +13,21 @@ const Step2 = () => {
 
   const [disable, setDisable] = useState(false);
 
-  const handleDisable = useCallback(() => {
+  const handleDisable = () => {
     if (form.services === "Basic Cleaning") {
       setDisable(false);
-    } else if (form.services === "Deep Cleaning" || form.services === "Move In/Move Out" || form.services === "Post Constraction") {
+    } else if (form.services === "Deep Cleaning" || form.services === "Move In/Move Out" || form.services === "Post Construction") {
       setDisable(true);
       const updatedForm = { ...form, extras: [] };
       setForm(updatedForm);
       localStorage.setItem("form", JSON.stringify(updatedForm));
     }
-  }, [form.services, setForm]);
-
-  // const onDisableChange = handleDisable
+  };
 
   useEffect(() => {
-    // onDisableChange();
-    handleDisable()
-  }, [handleDisable]);
+    handleDisable();
+  }, []);
+
 
   return (
     <div className="p-4 md:p-6 lg:p-9">
@@ -48,7 +46,7 @@ const Step2 = () => {
           </p>
         </div>
         <ul className="flex gap-[16px] flex-col max-w-[278px] m-auto">
-          <ul className="flex flex-wrap gap-5 lg:gap-6 lg:w-[562px] justify-center md:justify-around md:flex-nowrap lg:flex-wrap ">
+          <ul className="flex flex-wrap gap-5 lg:gap-6 lg:w-[562px] justify-center md:justify-around md:flex-nowrap lg:flex-wrap">
             {ServicesOptions.map(({ value, label }) => {
               return (
                 <li

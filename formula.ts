@@ -34,7 +34,7 @@ export const serviceOption = [
 	{ name: "Basic Cleaning", value: 1 },
 	{ name: "Deep Cleaning", value: 3 },
 	{ name: "Move In/Move Out", value: 2 },
-	{ name: "Post Constraction", value: 3 },
+	{ name: "Post Constraction", value: 2.5 },
 ]
 
 export const extrasOption = [
