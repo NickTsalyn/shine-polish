@@ -83,7 +83,6 @@ export default function BasicSelect(props: BasicSelectProps) {
         <Select
           value={props.value}
           name={props.name}
-          placeholder={props.placeholder}
           displayEmpty
           renderValue={(selected) => {
             if (selected === "") {

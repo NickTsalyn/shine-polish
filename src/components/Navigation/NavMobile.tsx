@@ -16,7 +16,7 @@ interface NavLinksProps {
 }
 
 const NavMobile: FC<NavLinksProps> = ({ links, toggleDrawer }) => {
-  const [auth, setAuth] = useState(false);
+  const [auth, setAuth] = useState(true);
 
   return (
     <ul className="flex flex-col gap-3 md:gap-[18px] justify-start ">
@@ -36,7 +36,7 @@ const NavMobile: FC<NavLinksProps> = ({ links, toggleDrawer }) => {
         {auth ? (
           <p onClick={() => setAuth(false)}>Sign Out</p>
         ) : (
-          <Link href="/sign-in-form">Sign In / Sign Up</Link>
+          <Link href="/authorize">Sign In / Sign Up</Link>
         )}
       </li>
       <li>
