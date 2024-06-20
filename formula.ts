@@ -1,5 +1,5 @@
 const base = 100;
-const coff = 0.3;
+const coff = 0.25;
 const bathPrice = 30;
 
 export const discount = [

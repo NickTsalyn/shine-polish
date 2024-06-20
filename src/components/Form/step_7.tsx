@@ -8,7 +8,7 @@ import { loadStripe } from "@stripe/stripe-js";
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY as string);
 
 const Step7 = () => {
-	const { form } = useFormStorage({});
+	const { form, handleReset } = useFormStorage({});
 	const [subTotal, setSubTotal] = useState(0);
 	const [total, setTotal] = useState(0);
 
@@ -74,6 +74,7 @@ const Step7 = () => {
 		  console.error('Error redirecting to checkout:', error);
 		  setLoading(false);
 		}
+		handleReset()
 	  };
 
 	return (
