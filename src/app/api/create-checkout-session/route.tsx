@@ -8,7 +8,6 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
 //   const redirectToStep7 = (req: NextRequest, status: 'success' | 'cancel') => {
 //     const returnUrl = req.headers.get('referer'); // URL сторінки, з якої був перехід до оплати
 //     const redirectUrl = `${returnUrl}?paymentStatus=${status}`;
-
 //     return new Response(null, {
 //       status: 303, // Redirect
 //       headers: {

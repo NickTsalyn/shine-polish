@@ -120,4 +120,6 @@ const Step7 = () => {
 		</div>
 	);
 };
+
 export default Step7;
+
