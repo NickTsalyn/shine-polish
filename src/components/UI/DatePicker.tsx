@@ -7,7 +7,7 @@ import { DateView, StaticDatePicker } from "@mui/x-date-pickers";
 import useFormStorage from "@/hooks/formStorage";
 import { DateIcon } from "@/global/images";
 interface CustomDatePickerProps {
-  value: Dayjs | string | number | any | null | undefined;
+  value: Dayjs | string | number | any | null;
   onChange: (date: Dayjs | null) => void;
   disablePast?: boolean;
   views?: readonly DateView[];

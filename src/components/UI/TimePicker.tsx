@@ -7,7 +7,7 @@ import useFormStorage from "@/hooks/formStorage";
 import { useEffect } from "react";
 
 interface CustomTimePickerProps {
-  value: Dayjs | string | number | any | null | undefined;
+  value: Dayjs | string | number | any | null;
   onChange: (time: Dayjs | null) => void;
 }
 
