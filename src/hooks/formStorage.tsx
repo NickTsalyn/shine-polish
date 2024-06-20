@@ -2,12 +2,11 @@
 
 import { SelectChangeEvent } from "@mui/material";
 import { ChangeEvent, useEffect, useState } from "react";
-
+import { Dayjs } from "dayjs";
 interface Form {
-  selectedDate: string | null;
-  time: string | null;
-
-  [key: string]: string | number | boolean | null;
+  selectedDate: Dayjs | string | number | any | null;
+  time: Dayjs | string | number | any | null;
+  [key: string]: string | number | boolean | string[];
 }
 
 interface HandlerReturn {
@@ -17,9 +16,11 @@ interface HandlerReturn {
       | ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
       | SelectChangeEvent<string | number>
   ) => void;
-
-  handleRadioChange: (name: string, value: string) => void;
+  handleRadioChange: (name: string, value: string | boolean) => void;
+  handleCheckboxChange: (name: string, value: string) => void;
   handleCustomChange: (name: string, value: any) => void;
+
+  setForm: React.Dispatch<React.SetStateAction<Form>>;
 }
 
 const useFormStorage = (initialForm: Form, formKey = "form"): HandlerReturn => {
@@ -43,6 +44,7 @@ const useFormStorage = (initialForm: Form, formKey = "form"): HandlerReturn => {
     setForm(updatedForm);
     localStorage.setItem(formKey, JSON.stringify(updatedForm));
   };
+
   const handleRadioChange = (name: string, value: string | boolean) => {
     const updatedForm = { ...form, [name]: value };
     setForm(updatedForm);
@@ -54,7 +56,24 @@ const useFormStorage = (initialForm: Form, formKey = "form"): HandlerReturn => {
     localStorage.setItem(formKey, JSON.stringify(updatedForm));
   };
 
-  return { form, handleInputChange, handleRadioChange, handleCustomChange };
+  const handleCheckboxChange = (name: string, value: string) => {
+    const currentValues = form[name] as string[];
+    const newValues = currentValues.includes(value)
+      ? currentValues.filter((v) => v !== value)
+      : [...currentValues, value];
+    const updatedForm = { ...form, [name]: newValues };
+    setForm(updatedForm);
+    localStorage.setItem(formKey, JSON.stringify(updatedForm));
+  };
+
+  return {
+    form,
+    handleInputChange,
+    handleRadioChange,
+    handleCheckboxChange,
+    setForm,
+    handleCustomChange,
+  };
 };
 
 export default useFormStorage;
