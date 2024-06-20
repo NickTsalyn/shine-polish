@@ -3,10 +3,18 @@ import { getPrice } from "../../../formula";
 import { useEffect, useState } from "react";
 import { area, discount } from "../../../formula";
 
+import { loadStripe } from "@stripe/stripe-js";
+
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY as string);
+
 const Step7 = () => {
 	const { form } = useFormStorage({});
 	const [subTotal, setSubTotal] = useState(0);
 	const [total, setTotal] = useState(0);
+
+	const [loading, setLoading] = useState(false);
+  // const origin = window.location.origin; // Отримати поточний URL звідки виконується код
+  
 
 	useEffect(() => {
 		if (Object.keys(form).length === 0) {
@@ -36,6 +44,38 @@ const Step7 = () => {
 
 	}, [form, subTotal, total]);
 
+
+	const handleCheckout = async () => {
+		setLoading(true);
+	
+		// Отримайте остаточну ціну з вашої форми букінгу
+		const price = total * 100; // Наприклад, 50.00 USD
+	
+		const response = await fetch('/api/create-checkout-session', {
+		  method: 'POST',
+		  headers: {
+			'Content-Type': 'application/json',
+		  },
+		  body: JSON.stringify({ price }), // ціна у центах
+		});
+	
+		const session = await response.json();
+	
+		const stripe = await stripePromise;
+	
+		if (!stripe) {
+		  console.error('Stripe has not been initialized');
+		  setLoading(false);
+		  return;
+		}
+		const { error } = await stripe.redirectToCheckout({ sessionId: session.id });
+	
+		if (error) {
+		  console.error('Error redirecting to checkout:', error);
+		  setLoading(false);
+		}
+	  };
+
 	return (
 		<div className="p-4 md:p-6 lg:p-9 flex flex-col gap-5">
 			<div>
@@ -46,7 +86,7 @@ const Step7 = () => {
 			</div>
 			<ul className="list-disc ml-6 flex flex-col gap-0.5">
 				{Object.entries(form).map(([key, value]) => {
-					if (value !== "") {
+					if (['bedroom', 'bathroom', 'areas', 'frequency'].includes(key) && value !== "") {
 						return (
 							<li key={key} className="text-base ">
 								<span>{key === "bathroom" || key === "bedroom" ? `${value} ${key}(s)` : value}</span>
@@ -72,6 +112,8 @@ const Step7 = () => {
 			<button
 				className=" flex justify-center items-center text-white bg-accent rounded-xl py-1.5 w-3/4 m-auto"
 				type="submit"
+				onClick={handleCheckout}
+				disabled={loading}
 			>
 				<span className="text-white text-2xl">BOOK NOW</span>
 			</button>
