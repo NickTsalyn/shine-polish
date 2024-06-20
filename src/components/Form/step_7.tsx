@@ -93,6 +93,15 @@ const Step7 = () => {
 					}
 				})}
 			</ul>
+			<ul className="list-disc ml-6 flex flex-col gap-0.5">
+				{Array.isArray(form.extras)
+					? form.extras.map((extra, index) => (
+							<li key={index} className="text-base">
+								{extra}
+							</li>
+						))
+					: null}
+			</ul>
 			<div className="flex flex-col gap-2 ">
 				<div className=" flex justify-between text-xl">
 					<span>SUB-TOTAL</span>
