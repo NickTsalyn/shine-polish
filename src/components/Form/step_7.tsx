@@ -84,7 +84,7 @@ const Step7 = () => {
 			</div>
 			<ul className="list-disc ml-6 flex flex-col gap-0.5">
 				{Object.entries(form).map(([key, value]) => {
-					if (['bedroom', 'bathroom', 'areas', 'frequency'].includes(key) && value !== "") {
+					if (['bedroom', 'bathroom', 'areas', 'frequency', 'services'].includes(key) && value !== "") {
 						return (
 							<li key={key} className="text-base ">
 								<span>{key === "bathroom" || key === "bedroom" ? `${value} ${key}(s)` : value}</span>
