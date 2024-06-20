@@ -1,9 +1,10 @@
 import React from "react";
+import { Dayjs } from "dayjs";
 
 interface DateTimeCleaningProps {
   form: {
-    selectedDate: string | null;
-    time: string | null;
+    selectedDate: string | number | boolean | string[] | Dayjs | null | any;
+    time: string | number | boolean | string[] | Dayjs | null | any;
   };
 }
 

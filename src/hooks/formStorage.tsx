@@ -4,9 +4,9 @@ import { SelectChangeEvent } from "@mui/material";
 import { ChangeEvent, useEffect, useState } from "react";
 import { Dayjs } from "dayjs";
 interface Form {
-  selectedDate: Dayjs | string | number | any | null;
-  time: Dayjs | string | number | any | null;
-  [key: string]: string | number | boolean | string[];
+  // selectedDate: Dayjs | string | number | any | null;
+  // time: Dayjs | string | number | any | null;
+  [key: string]: string | number | boolean | string[] | Dayjs | null | any;
 }
 
 interface HandlerReturn {

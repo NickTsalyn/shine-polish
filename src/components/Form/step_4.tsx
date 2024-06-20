@@ -21,10 +21,7 @@ const Step4: React.FC = () => {
     "form"
   );
   const handleDateChange = (date: Dayjs | null): void => {
-    handleCustomChange(
-      "selectedDate",
-      date ? date.format("MM/DD/YYYY") : null
-    );
+    handleCustomChange("selectedDate", date ? date.format("MM/DD/YYYY") : null);
   };
 
   const handleTimeChange = (time: Dayjs | null): void => {
@@ -61,7 +58,6 @@ const Step4: React.FC = () => {
               <CustomDatePicker
                 onChange={handleDateChange}
                 value={dayjs(form.selectedDate as string, "MM/DD/YYYY")}
-                // selectedDate={selectedDate}
               />
             </div>
             <div>
@@ -79,7 +75,7 @@ const Step4: React.FC = () => {
 
         <div className="flex flex-col gap-5 justify-center items-center md:flex-row  md:justify-between md:items-end">
           <div className="w-[280px]  md:w-[600px] lg:w-[800px] ">
-            <DateTimeCleaning form={form} />
+            <DateTimeCleaning form={form as any} />
           </div>
           <div className="w-[200px] md:w-auto lg:w-[400px]"></div>
         </div>
