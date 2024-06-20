@@ -3,7 +3,7 @@ import { ExtrasOptions, ServicesOptions } from "@/data/booking-form/step_2";
 import useFormStorage from "@/hooks/formStorage";
 import RadioButton from "../UI/RadioButton";
 import CheckBox from "../UI/Сheckbox";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 const Step2 = () => {
   const { form, handleRadioChange, handleCheckboxChange, setForm } = useFormStorage({
@@ -13,20 +13,20 @@ const Step2 = () => {
 
   const [disable, setDisable] = useState(false);
 
-  const handleDisable = () => {
+  const handleDisable = useCallback(() => {
     if (form.services === "Basic Cleaning") {
       setDisable(false);
-    } else if (form.services === "Deep Cleaning" || form.services === "Move In/Move Out" || form.services === "Post Construction") {
+    } else if (form.services === "Deep Cleaning" || form.services === "Move In/Move Out" || form.services === "Post Constraction") {
       setDisable(true);
       const updatedForm = { ...form, extras: [] };
       setForm(updatedForm);
       localStorage.setItem("form", JSON.stringify(updatedForm));
     }
-  };
+  }, [form.services, setForm]);
 
   useEffect(() => {
     handleDisable();
-  }, [form.services]);
+  }, [handleDisable]);
 
 
   return (
