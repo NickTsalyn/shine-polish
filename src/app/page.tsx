@@ -21,7 +21,7 @@ export default function Home() {
       <BeforeAfter data={dataSlider} />
       <Reviews />
       <ServiceAreas />
-      <SectionJustAsk />
+      {/* <SectionJustAsk /> */}
       <WorkWithUs />
       <LastSectionHome data={dataBackground} />
     </>

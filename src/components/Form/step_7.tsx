@@ -1,14 +1,14 @@
 import useFormStorage from "@/hooks/formStorage";
-import { getPrice } from "../../../formula";
+// import { getPrice, serviceOption } from "../../../formula";
 import { useEffect, useState } from "react";
-import { area, discount } from "../../../formula";
+import { area, discount, serviceOption, extrasOption ,getPrice} from "../../../formula";
 
 import { loadStripe } from "@stripe/stripe-js";
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY as string);
 
 const Step7 = () => {
-	const { form, handleReset } = useFormStorage({});
+	const { form } = useFormStorage({});
 	const [subTotal, setSubTotal] = useState(0);
 	const [total, setTotal] = useState(0);
 
@@ -25,18 +25,16 @@ const Step7 = () => {
 			return;
 		}
 
-		const { bedroom, bathroom, areas, frequency } = form;
+		const { bedroom, bathroom, areas, frequency, services, extras } = form;
 
 		const areaCoefficient = area.find((area) => area.name === areas)?.value || 1;
 		const discountValue = discount.find((discount) => discount.name === frequency)?.value || 1;
-		// const basePrice = getPrice(Number(bedroom), Number(bathroom));
-
-		// if(bedroom === 1 && bathroom === 1) {
-		// 	return basePrice
-		// }
+		const cleaningValue = serviceOption.find((service) => service.name === services)?.value || 1;
+		const extraValue = extrasOption.reduce((acc, item) => {
+			return (extras as string[]).includes(item.name) ? acc + item.value : acc;
+		}, 0);
 	
-		const calculatedPrice = getPrice(Number(bedroom), Number(bathroom)) * areaCoefficient * discountValue
-		// const calculatedPrice = basePrice * areaCoefficient * discountValue
+		const calculatedPrice = getPrice(Number(bedroom), Number(bathroom)) * areaCoefficient * discountValue  * cleaningValue + extraValue
 		setSubTotal(calculatedPrice);
 		
 		const totalPrice = calculatedPrice * 1.06;
@@ -74,7 +72,6 @@ const Step7 = () => {
 		  console.error('Error redirecting to checkout:', error);
 		  setLoading(false);
 		}
-		handleReset()
 	  };
 
 	return (
@@ -123,4 +120,3 @@ const Step7 = () => {
 };
 
 export default Step7;
-
