@@ -4,7 +4,7 @@ import { SelectChangeEvent } from "@mui/material";
 import { ChangeEvent, useEffect, useState } from "react";
 
 interface Form {
-  [key: string]: string | number | boolean;
+  [key: string]: string | number | boolean | string[];
 }
 
 interface HandlerReturn {
@@ -15,7 +15,8 @@ interface HandlerReturn {
       | SelectChangeEvent<string | number>
   ) => void;
   handleRadioChange: (name: string, value: string | boolean) => void;
-  handleReset: () => void;
+  handleCheckboxChange: (name: string, value: string) => void;
+  setForm: React.Dispatch<React.SetStateAction<Form>>;
 }
 
 const useFormStorage = (initialForm: Form, formKey = "form"): HandlerReturn => {
@@ -28,11 +29,6 @@ const useFormStorage = (initialForm: Form, formKey = "form"): HandlerReturn => {
     }
   }, [formKey]);
 
-  const handleReset = () => {
-    setForm(initialForm);
-    localStorage.removeItem(formKey);
-  }
-
   const handleInputChange = (
     event:
       | ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -44,13 +40,24 @@ const useFormStorage = (initialForm: Form, formKey = "form"): HandlerReturn => {
     setForm(updatedForm);
     localStorage.setItem(formKey, JSON.stringify(updatedForm));
   };
+
   const handleRadioChange = (name: string, value: string | boolean) => {
     const updatedForm = { ...form, [name]: value };
     setForm(updatedForm);
     localStorage.setItem(formKey, JSON.stringify(updatedForm));
   };
 
-  return { form, handleInputChange, handleRadioChange, handleReset };
+  const handleCheckboxChange = (name: string, value: string) => {
+    const currentValues = form[name] as string[];
+    const newValues = currentValues.includes(value)
+      ? currentValues.filter((v) => v !== value)
+      : [...currentValues, value];
+    const updatedForm = { ...form, [name]: newValues };
+    setForm(updatedForm);
+    localStorage.setItem(formKey, JSON.stringify(updatedForm));
+  };
+
+  return { form, handleInputChange, handleRadioChange, handleCheckboxChange, setForm };
 };
 
 export default useFormStorage;

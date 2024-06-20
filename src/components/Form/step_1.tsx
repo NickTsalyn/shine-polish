@@ -16,6 +16,7 @@ const Step1 = () => {
 		homeAccess: "",
 		aboutUs: "",
 		specialInstructions: "",
+		extras: [],
 	});
 
 	return (
