@@ -18,7 +18,9 @@ interface HandlerReturn {
   ) => void;
   handleRadioChange: (name: string, value: string | boolean) => void;
   handleCheckboxChange: (name: string, value: string) => void;
-  setForm: (form: Form) => void;
+  handleCustomChange: (name: string, value: any) => void;
+
+  setForm: React.Dispatch<React.SetStateAction<Form>>;
 }
 
 const useFormStorage = (initialForm: Form, formKey = "form"): HandlerReturn => {
