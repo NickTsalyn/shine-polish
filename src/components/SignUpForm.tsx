@@ -27,9 +27,9 @@ export default function SignUpForm() {
   const onSubmit = handleSubmit((data) => console.log(data));
 
   return (
-    <div className="w-full md:w-[768px] lg:w-[960px] mx-auto">
-      <div className="flex flex-col items-center py-10 md:px-8 md:py-[60px] lg:p-16  relative">
-        <div className="flex items-center rounded-full text-main hover:text-white hover:bg-main absolute top-0 right-0 md:top-8 md:right-8 ">
+    <div className="w-[320px] md:w-[712px] lg:w-[960px] mx-auto">
+      <div className="flex flex-col items-center py-10 px-8 md:py-[60px] lg:p-16 mb-10 relative">
+        <div className="flex items-center rounded-full text-main hover:text-white hover:bg-main absolute top-4 right-4 md:top-8 md:right-8 ">
           <Link href={"/"} className="flex justify-center">
             <CloseRoundedIcon />
           </Link>
@@ -94,7 +94,7 @@ export default function SignUpForm() {
                 </p>
               )}
             </label>
-            <label htmlFor="password">
+            <label htmlFor="password" className="relative">
               <span className="text-main text-[14px] md:text-[16px] ml-3">
                 Password:
               </span>
@@ -102,8 +102,19 @@ export default function SignUpForm() {
                 type="password"
                 style="sign-up-input"
                 width="lg:w-[348px]"
-                {...register("password")}
+                {...register("password", {
+                  required: "Hey! forgot your password",
+                })}
+                aria-required={errors.password ? "true" : "false"}
               />
+              {errors.password && (
+                <p
+                  role="alert"
+                  className="text-accent text-[12px] absolute top-0 right-0"
+                >
+                  {errors.password.message}
+                </p>
+              )}
             </label>
           </div>
           <div className="flex flex-col order-last md:order-none gap-4 md:gap-9 w-[256px] lg:w-[300px] mx-auto md:mt-4 md:m-0">
@@ -133,10 +144,10 @@ export default function SignUpForm() {
           </div>
         </form>
 
-        <div className="hidden md:block absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 -z-10 ">
-          <div className="flex w-[768px] lg:w-[960px] h-[550px] lg:h-[590px] rounded-xl shadow-main-shadow overflow-hidden relative">
-            <div className="block clip-path-signup-1 w-[771px] lg:w-[980px] h-[484px] lg:h-[538px] bg-tertial opacity-[.05] absolute bottom-0 left-0  -z-20"></div>
-            <div className="block clip-path-signup-2 w-[570px] lg:w-[724px] h-[277px] lg:h-[286px] bg-tertial opacity-[.32] absolute bottom-0 right-0 -z-30"></div>
+        <div className="block absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 -z-10 ">
+          <div className="flex w-[320px] md:w-[712px] lg:w-[960px] h-[650px] md:h-[540px] lg:h-[584px] rounded-xl md:rounded-[50px] shadow-main-shadow overflow-hidden relative">
+            <div className="hidden md:block clip-path-signup-1 w-[771px] lg:w-[980px] h-[484px] lg:h-[538px] bg-tertial opacity-[.05] absolute bottom-0 left-0  -z-20"></div>
+            <div className="hidden md:block clip-path-signup-2 w-[570px] lg:w-[724px] h-[277px] lg:h-[286px] bg-tertial opacity-[.32] absolute bottom-0 right-0 -z-30"></div>
           </div>
         </div>
       </div>
