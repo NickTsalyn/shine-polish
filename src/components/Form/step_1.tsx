@@ -1,15 +1,15 @@
 import Image from "next/image";
 import BasicSelect from "../UI/Select";
 import RadioButton from "../UI/RadioButton";
+import dayjs from "dayjs";
 
 import img_stub from "../../../public/images/service-area/image-map-stub.png";
 import { areaOptions, bathroomOptions, bedroomOptions, frequencyOptions } from "@/data/booking-form/step_1";
 import useFormStorage from "@/hooks/formStorage";
 
-
 const Step1 = () => {
 	const { form, handleInputChange, handleRadioChange } = useFormStorage({
-		areas: "" ,
+		areas: "",
 		bedroom: 1,
 		bathroom: 1,
 		frequency: "",
@@ -17,6 +17,13 @@ const Step1 = () => {
 		aboutUs: "",
 		specialInstructions: "",
 		extras: [],
+		services: "",
+		selectedDate: dayjs().format("MM/DD/YYYY"),
+		time: dayjs().format("h:mm A"),
+		address: "",
+		aptSuite: "",
+		city: "",
+		zipCode: "",
 	});
 
 	return (

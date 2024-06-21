@@ -5,7 +5,12 @@ type InputProps = {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   type: "email" | "password" | "text" | "tel" | "checkbox";
   placeholder?: string;
-  style: "sign-in-input" | "sign-up-input" | "form-input" | "modal-input";
+  style:
+    | "sign-in-input"
+    | "sign-up-input"
+    | "form-input"
+    | "modal-input"
+    | string;
   width?: string;
   name?: string;
 };
