@@ -13,6 +13,7 @@ interface HandlerReturn {
     event:
       | ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
       | SelectChangeEvent<string | number>
+      // | { target: { name: string; value: string | number } }
   ) => void;
   handleRadioChange: (name: string, value: string | boolean) => void;
   handleCheckboxChange: (name: string, value: string) => void;
@@ -35,6 +36,7 @@ const useFormStorage = (initialForm: Form, formKey = "form"): HandlerReturn => {
     event:
       | ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
       | SelectChangeEvent<string | number>
+      // | { target: { name: string; value: string | number } }
   ) => {
     const { name, value, type, checked } = event.target as HTMLInputElement;
     const newValue = type === "checkbox" ? checked : value;
@@ -48,6 +50,7 @@ const useFormStorage = (initialForm: Form, formKey = "form"): HandlerReturn => {
     setForm(updatedForm);
     localStorage.setItem(formKey, JSON.stringify(updatedForm));
   };
+
   const handleCustomChange = (name: string, value: any) => {
     const updatedForm = { ...form, [name]: value };
     setForm(updatedForm);
