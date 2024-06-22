@@ -1,11 +1,11 @@
 import useFormStorage from "@/hooks/formStorage";
 import Input from "../UI/Input";
 
-import { useState } from "react";
+import { useState, ChangeEvent } from "react";
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
 
-const Step6 = () => {
+const Step6: React.FC = () => {
   const { form, handleInputChange, handleRadioChange } = useFormStorage({
     name: "",
     surname: "",
@@ -20,17 +20,18 @@ const Step6 = () => {
     setRemindersChecked(updatedRemindersChecked);
     handleRadioChange("remindersChecked", updatedRemindersChecked);
   };
+
   return (
-    <div className="py-4 md:py-6  lg:py-9 ">
-      <h2 className="mb-4  md:mb-5 lg:mb-[26px] text-2xl md:text-4xl font-medium md:font-normal ">
+    <div className="py-4 md:py-6 lg:py-9">
+      <h2 className="mb-4 md:mb-5 lg:mb-[26px] text-2xl md:text-4xl font-medium md:font-normal">
         Contact information
       </h2>
-      <p className=" text-subtext md:text-2xl mb-6 md:mb-8 lg:mb-[60px]">
+      <p className="text-subtext md:text-2xl mb-6 md:mb-8 lg:mb-[60px]">
         This information will be used to contact you about service
       </p>
       <div className="flex flex-col gap-2 md:gap-5 lg:gap-10 mb-4 md:mb-[350px] lg:mb-[90px]">
-        <div className="flex flex-col lg:flex-row gap-2 md:gap-5   lg:gap-10 ">
-          <div className="md:w-[340px] lg:w-[523px] ">
+        <div className="flex flex-col lg:flex-row gap-2 md:gap-5 lg:gap-10">
+          <div className="md:w-[340px] lg:w-[523px]">
             <Input
               name="name"
               value={form.name as string}
@@ -38,9 +39,9 @@ const Step6 = () => {
               type="text"
               placeholder="First Name*"
               style="form-input"
-            ></Input>
+            />
           </div>
-          <div className="md:w-[340px] lg:w-[563px] ">
+          <div className="md:w-[340px] lg:w-[563px]">
             <Input
               name="surname"
               value={form.surname as string}
@@ -48,11 +49,11 @@ const Step6 = () => {
               type="text"
               placeholder="Last Name*"
               style="form-input"
-            ></Input>
+            />
           </div>
         </div>
-        <div className="flex flex-col lg:flex-col-reverse  gap-2 md:gap-5 lg:gap-10 ">
-          <div className="lg:w-[700px] lg:h-[57.5px] ">
+        <div className="flex flex-col lg:flex-col-reverse gap-2 md:gap-5 lg:gap-10">
+          <div className="lg:w-[700px] lg:h-[57.5px]">
             <Input
               name="email"
               value={form.email as string}
@@ -60,17 +61,17 @@ const Step6 = () => {
               type="email"
               placeholder="Email*"
               style="form-input"
-            ></Input>
+            />
           </div>
-          <div className="md:w-[515px] lg:w-[390px] lg:h-[57.5px] ">
+          <div className="md:w-[515px] lg:w-[390px] lg:h-[57.5px]">
             <Input
               name="phone"
-              value={form.phone as string}
+              value={form.email as string}
               onChange={handleInputChange}
               type="tel"
               placeholder="Phone*"
               style="form-input"
-            ></Input>
+            />
           </div>
         </div>
       </div>
@@ -93,4 +94,5 @@ const Step6 = () => {
     </div>
   );
 };
+
 export default Step6;
