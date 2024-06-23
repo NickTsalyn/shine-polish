@@ -12,18 +12,21 @@ import WorkWithUs from "@/components/WorkWithUs";
 import LastSectionHome from "@/components/LastSectionHome";
 import dataBackground from "@/data/background-data.json";
 import dataHeroBackground from "@/data/background-hero.json";
+import { MapProvider } from "@/providers/map-provider";
 
 export default function Home() {
   return (
     <>
-      <Hero data={dataHeroBackground} />
-      <SectionEstimate />
-      <BeforeAfter data={dataSlider} />
-      <Reviews />
-      <ServiceAreas />
-      <SectionJustAsk />
-      <WorkWithUs />
-      <LastSectionHome data={dataBackground} />
+      <MapProvider>
+        <Hero data={dataHeroBackground} />
+        <SectionEstimate />
+        <BeforeAfter data={dataSlider} />
+        <Reviews />
+        <ServiceAreas />
+        <SectionJustAsk />
+        <WorkWithUs />
+        <LastSectionHome data={dataBackground} />
+      </MapProvider>
     </>
   );
 }

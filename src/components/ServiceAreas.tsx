@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import img_stub from '../../public/images/service-area/image-map-stub.png';
 import img_phone from '../../public/images/service-area/phone_map_service.png';
+import { MapComponent } from "@/components/Map";
 
 type Props = {};
 
@@ -51,13 +52,13 @@ const ServiceAreas = (props: Props) => {
             </ul>
           </div>
         </div>
-
-        <Image
+        <MapComponent/>
+        {/* <Image
           src={img_stub}
           className="md:w-[726px] lg:w-[626px] lg:h-[500px] xl:w-[926px] xl:h-[540px]"
           alt="map"
           width={376}
-        />
+        /> */}
       </div>
     </section>
   );
