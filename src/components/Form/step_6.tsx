@@ -81,7 +81,7 @@ const Step6: React.FC = () => {
               style="form-input"
             />
             {errors.name && (
-              <p className="text-xs absolute bottom-[-8px] left-2">
+              <p className="text-xs text-secondary lg:text-sm absolute bottom-[-8px] lg:bottom-[-18px] left-2">
                 {errors.name.message}
               </p>
             )}
@@ -97,7 +97,8 @@ const Step6: React.FC = () => {
               style="form-input"
             />
             {errors.surname && (
-              <p className="text-xs absolute bottom-[-8px] left-2">
+              <p className="text-xs text-secondary lg:text-sm absolute bottom-[-8px] lg:bottom-[-18px] left-2">
+                {" "}
                 {errors.surname.message}
               </p>
             )}
@@ -121,7 +122,7 @@ const Step6: React.FC = () => {
               style="form-input"
             />
             {errors.email && (
-              <p className="text-xs absolute bottom-[-8px] left-2">
+              <p className="text-xs text-secondary lg:text-sm absolute bottom-[-8px] lg:bottom-[-18px] left-2">
                 {errors.email.message}
               </p>
             )}
@@ -143,7 +144,8 @@ const Step6: React.FC = () => {
               style="form-input"
             />
             {errors.phone && (
-              <p className="text-xs absolute bottom-[-8px] left-2">
+              <p className="text-xs text-secondary lg:text-sm absolute bottom-[-8px] lg:bottom-[-18px] left-2">
+                {" "}
                 {errors.phone.message}
               </p>
             )}
