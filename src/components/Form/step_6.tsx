@@ -5,8 +5,12 @@ import { useState } from "react";
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
 
+import { IMaskInput } from 'react-imask'
+
+const ContactNumberMask = '(000) 000-0000'
+
 const Step6 = () => {
-  const { form, handleInputChange, handleRadioChange } = useFormStorage({
+  const { form, handleInputChange, handleRadioChange, handlePhoneChange } = useFormStorage({
     name: "",
     surname: "",
     email: "",
@@ -63,14 +67,13 @@ const Step6 = () => {
             ></Input>
           </div>
           <div className="md:w-[515px] lg:w-[390px] lg:h-[57.5px] ">
-            <Input
-              name="phone"
-              value={form.phone as string}
-              onChange={handleInputChange}
-              type="tel"
-              placeholder="Phone*"
-              style="form-input"
-            ></Input>
+             <IMaskInput
+            className="block mx-full mb-[10px] w-full hx-full h-full ${width} py-[8px] lg:py-[12px] px-[8px] lg:px-[16px] bg-transparent text-text border-solid border-2 focus:border-[3px] border-secondary rounded-[12px] focus:shadow-input-shadow outline-none xl:placeholder:text-[16px] placeholder:text-secondary-placeholder placeholder:opacity-50"
+            mask={ContactNumberMask}
+            placeholder="(470) 334-2293"
+            onAccept={handlePhoneChange}
+            value={form.phone as string}
+          />
           </div>
         </div>
       </div>
