@@ -81,4 +81,4 @@ const useFormStorage = (initialForm: Form, formKey = "form"): HandlerReturn => {
     handlePhoneChange
   };
 };
-
+export default useFormStorage;
