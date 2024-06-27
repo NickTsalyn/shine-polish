@@ -17,18 +17,20 @@ interface HandlerReturn {
   handleRadioChange: (name: string, value: string | boolean) => void;
   handleCheckboxChange: (name: string, value: string) => void;
   handleCustomChange: (name: string, value: any) => void;
-
   setForm: (form: Form) => void;
+  // initialized: boolean;
 }
 
 const useFormStorage = (initialForm: Form, formKey = "form"): HandlerReturn => {
   const [form, setForm] = useState(initialForm);
+  // const [initialized, setInitialized] = useState(false);
 
   useEffect(() => {
     const savedForm = localStorage.getItem(formKey);
     if (savedForm) {
       setForm(JSON.parse(savedForm));
     }
+    // setInitialized(true);
   }, [formKey]);
 
   const handleInputChange = (
@@ -71,6 +73,7 @@ const useFormStorage = (initialForm: Form, formKey = "form"): HandlerReturn => {
     handleCheckboxChange,
     setForm,
     handleCustomChange,
+    // initialized,
   };
 };
 
