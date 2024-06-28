@@ -7,7 +7,7 @@ import CheckBoxIcon from "@mui/icons-material/CheckBox";
 
 import { IMaskInput } from 'react-imask'
 
-const ContactNumberMask = '(000) 000-0000'
+const ContactNumberMask = '(000)-000-0000'
 
 const Step6 = () => {
   const { form, handleInputChange, handleRadioChange, handlePhoneChange } = useFormStorage({
@@ -70,7 +70,7 @@ const Step6 = () => {
              <IMaskInput
             className="block mx-full mb-[10px] w-full hx-full h-full ${width} py-[8px] lg:py-[12px] px-[8px] lg:px-[16px] bg-transparent text-text border-solid border-2 focus:border-[3px] border-secondary rounded-[12px] focus:shadow-input-shadow outline-none xl:placeholder:text-[16px] placeholder:text-secondary-placeholder placeholder:opacity-50"
             mask={ContactNumberMask}
-            placeholder="(470) 334-2293"
+            placeholder="(470)-800-3249"
             onAccept={handlePhoneChange}
             value={form.phone as string}
           />
