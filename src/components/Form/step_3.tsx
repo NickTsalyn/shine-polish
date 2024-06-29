@@ -146,8 +146,8 @@ const Step3 = () => {
           This information will be used to contact you about service
         </p>
         <div className="flex flex-col gap-2 md:gap-5 lg:gap-10">
-          <div className="md:flex md:flex-row gap-6 md:h-10 lg:gap-[60px] lg:h-[48px] lg:w-auto">
-            <div className="md:w-1/2 lg:w-3/5 relative mb-4">
+          <div className="md:flex md:flex-row gap-6  md:h-10 lg:gap-[60px] lg:h-[48px] lg:w-auto">
+            <div className="md:w-1/2 md:h-[40px] lg:w-3/5 relative mb-4">
               <Input
                 name="name"
                 value={localName}
@@ -186,7 +186,7 @@ const Step3 = () => {
           </div>
 
           <div className="flex flex-col lg:flex-row-reverse gap-2 md:gap-5 lg:gap-[60px] lg:h-[48px]">
-            <div className="lg:w-3/5 relative">
+            <div className="lg:w-3/5 lg:h-[40px] relative">
               <Input
                 name="email"
                 value={localEmail}
@@ -199,12 +199,12 @@ const Step3 = () => {
                 style="form-input"
               />
               {errors.email && (
-                <p className="text-secondary text-xs  absolute left-2 bottom-[-6px]">
+                <p className="text-secondary text-xs  absolute left-2 bottom-[-6px] lg:bottom-[-16px]">
                   {errors.email}
                 </p>
               )}
             </div>
-            <div className="lg:w-2/5 relative">
+            <div className="lg:w-2/5 lg:h-[40px] relative">
               <IMaskInput
                 className="block mx-full mb-[10px] w-full hx-full h-full py-[8px] lg:py-[12px] px-[8px] lg:px-[16px] bg-transparent text-text border-solid border-2 focus:border-[3px] border-secondary rounded-[12px] focus:shadow-input-shadow outline-none xl:placeholder:text-[16px] placeholder:text-secondary-placeholder placeholder:opacity-50"
                 mask={ContactNumberMask}
@@ -217,7 +217,7 @@ const Step3 = () => {
                 }}
               />
               {errors.phone && (
-                <p className="text-secondary text-xs  absolute left-2 bottom-[-6px]">
+                <p className="text-secondary text-xs  absolute left-2 bottom-[-6px] lg:bottom-[-16px]">
                   {errors.phone}
                 </p>
               )}
@@ -283,9 +283,9 @@ const Step3 = () => {
             Send me reminders about my booking via email
           </p>
         </div>
-        <div className="ml-auto relative lg:absolute lg:right-0 lg:bottom-0">
+        <div className="ml-auto relative hover:text-white lg:absolute lg:right-0 lg:bottom-0">
           <Button style="apply-btn-light-one" type="submit">
-            <span className="text-accent text-xl">CONFIRM</span>
+            CONFIRM
           </Button>
         </div>
       </div>
