@@ -3,7 +3,6 @@ import React from "react";
 interface InputProps {
   value?: string | number;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  onSubmit?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   type: "email" | "password" | "text" | "tel" | "checkbox";
   placeholder?: string;
   style:
@@ -47,13 +46,19 @@ InputProps) {
     default:
       break;
   }
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (onChange) {
+      onChange(event);
+    }
+  };
   return (
     <>
       <input
         className={styles}
         type={type}
         placeholder={placeholder}
-        onChange={onChange}
+        onChange={handleChange}
         // {...register("text")}
         value={value}
         name={name}

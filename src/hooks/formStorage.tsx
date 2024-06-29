@@ -1,7 +1,7 @@
 "use client";
 
 import { SelectChangeEvent } from "@mui/material";
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { Dayjs } from "dayjs";
 interface Form {
   [key: string]: string | number | boolean | string[] | Dayjs | null | any;
@@ -13,6 +13,7 @@ interface HandlerReturn {
     event:
       | ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
       | SelectChangeEvent<string | number>
+      | FormEvent<HTMLFormElement>
   ) => void;
   handleRadioChange: (name: string, value: string | boolean) => void;
   handlePhoneChange: (value: string) => void;
@@ -36,6 +37,7 @@ const useFormStorage = (initialForm: Form, formKey = "form"): HandlerReturn => {
     event:
       | ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
       | SelectChangeEvent<string | number>
+      | FormEvent<HTMLFormElement>
   ) => {
     const { name, value, type, checked } = event.target as HTMLInputElement;
     const newValue = type === "checkbox" ? checked : value;
