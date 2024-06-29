@@ -3,6 +3,7 @@ import React from "react";
 interface InputProps {
   value?: string | number;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onSubmit?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   type: "email" | "password" | "text" | "tel" | "checkbox";
   placeholder?: string;
   style:
