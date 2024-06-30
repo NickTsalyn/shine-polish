@@ -8,4 +8,5 @@ export type RadioCheckProps = {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onClick?: () => void;
   disabled?: boolean;
+  accent?:boolean;
 };

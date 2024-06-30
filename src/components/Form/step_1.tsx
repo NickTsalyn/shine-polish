@@ -80,7 +80,7 @@ const Step1 = () => {
 							<li key={value} className="flex justify-center items-center w-[132px] md:min-w-[160px] lg:min-w-[260px]">
 								<RadioButton
 									value={value}
-									style=" py-[10px] px-[20px] md:py-[8px] md:px-[10px] lg:py-[20px] h-full w-full"
+									style=" py-[10px] px-[20px] md:py-[8px] md:px-[10px] lg:py-[20px] h-full w-full text-main"
 									isActive={value === form.frequency}
 									onClick={() => handleRadioChange("frequency", value)}
 								>
