@@ -1,8 +1,7 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
-// import { redirect } from "next/navigation";
 import Image from "next/image";
 import LogoutIcon from "@mui/icons-material/Logout";
 
@@ -28,31 +27,35 @@ const BgnImg = () => {
 };
 
 const Success = () => {
+  const [timer, setTimer] = useState(5);
+
   useEffect(() => {
     localStorage.clear();
+    const interval = setInterval(() => {
+      setTimer((prevTimer) => {
+        if (prevTimer <= 1) {
+          window.location.href = "/";
+          return 0;
+        }
+        return prevTimer - 1;
+      });
+    }, 1000);
 
-    // const timer = setTimeout(() => {
-    //   window.location.href = "/";
-    // }, 5000);
-
-    // return () => clearTimeout(timer); // Очищення таймера при анмаунті
+    return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="relative h-[calc(100vh-84px)] md:h-[calc(100vh-96px)] lg:h-screen w-full ">
+    <div className="relative h-[calc(100vh-84px)] md:h-[calc(100vh-96px)] lg:h-screen  flex flex-col justify-between ">
       <BgnImg />
-      <div className="container flex flex-col justify-between items-center  py-9 md:py-11 lg:py-12 h-full">
-        <p className="text-main text-xl font-semibold md:text-2xl lg:text-4xl ">
-          Thank you for your payment!
-        </p>
-
-        <div className="flex flex-col md:flex-row  justify-between items-baseline w-full">
-          <p className="text-center text-accent subtext">
-            You will be redirected to the homepage in 5 seconds.
-          </p>
-
-          <div className=" flex justify-end items-center text-main font-semibold text-xl md:text-2xl lg:text-4xl w-full md:w-auto mt-4 md:mt-0">
-            <Link  href={"/"}>
+      <div className="flex-grow flex flex-col justify-end w-full">
+        <div className="container flex flex-col justify-end items-center gap-3 md:gap-6 l py-6 md:py-11 lg:py-12">
+          {timer > 0 && (
+            <p className="text-center text-accent subtext lg:text-4xl">
+              You will be redirected to the homepage in {timer} seconds.
+            </p>
+          )}
+          <div className=" flex justify-end items-center text-text font-semibold text-xl md:text-2xl lg:text-4xl w-full ml-auto">
+            <Link href={"/"}>
               to Home
               <LogoutIcon className="size-5 md:size-7 lg:size-9 xl:size-11 ml-2" />{" "}
             </Link>

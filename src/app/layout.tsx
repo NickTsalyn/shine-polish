@@ -6,6 +6,8 @@ import Sidebar from "@/components/Sidebar";
 import Footer from "@/components/Footer";
 import { FormProvider } from "@/components/FormContext";
 import FooterDesctop from "@/components/FooterDesctop";
+// import { Suspense } from "react";
+// import Loading from "./loading";
 
 const lato = Lato({
   subsets: ["latin"],
@@ -28,7 +30,9 @@ export default function RootLayout({
         <FormProvider>
           <Header />
           <Sidebar />
-          <main className="lg:ml-[200px] xl:ml-[244px]">{children}</main>
+          {/* <Suspense fallback={<Loading />}> */}
+            <main className="lg:ml-[200px] xl:ml-[244px]">{children}</main>
+          {/* </Suspense> */}
           <Footer />
           <FooterDesctop />
         </FormProvider>
