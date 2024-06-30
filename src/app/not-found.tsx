@@ -9,7 +9,7 @@ const BgnImg = () => {
     <div className="absolute inset-0 z-[-1]">
       <Image
         src="/images/error_page_image.webp"
-        alt="photo bedroom"
+        alt="photo not found"
         layout="fill"
         objectFit="cover"
         objectPosition="center"
