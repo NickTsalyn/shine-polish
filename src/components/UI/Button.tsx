@@ -13,6 +13,7 @@ type PropsButtton = {
     | "sidebar-log-out"
     | "auth-sign"
     | "auth-sign-up-border"
+    | "apply-btn-light-one"
     | "apply-btn-light"
     | "apply-btn-blue"
     | "footer-book-now"
@@ -70,6 +71,10 @@ export default function Button(props: PropsButtton) {
     case "apply-btn-light":
       styles =
         " rounded-xl border-2 border-secondary   bg-secondary  py-1 px-[74px] hover:shadow-apply-send-button-shadow  focus:shadow-apply-send-button-shadow  ";
+      break;
+    case "apply-btn-light-one":
+      styles =
+        " rounded-xl border-2 border-secondary  focus:border-accent hover:border-accent text-xl text-accent hover:text-white focus:text-white   bg-secondary  py-1 lg:py-4 px-8 hover:shadow-apply-send-button-shadow  focus:shadow-apply-send-button-shadow hover:bg-accent focus:bg-accent  ";
       break;
     case "apply-btn-blue":
       styles =
