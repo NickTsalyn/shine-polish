@@ -101,13 +101,12 @@ export default function Button(props: PropsButtton) {
     case "transparent-button":
       styles =
         " w-[52px] h-[52px] ld:w-[64px] lg:h-[64px] rounded-full bg-transparent border-none ";
-
-    default:
-      break;
+    break;        
     case "complete-booking":
       styles =
-        "py-1.5 md:py-3 lg:py-[20px] px-10 bg-transparent border-2 border-solid border-white rounded-xl w-full";
+        " py-1.5 md:py-3 lg:py-[20px] px-10 bg-transparent border-2 border-solid border-white rounded-xl ";
       break;
+      default:  
   }
   return (
     <button

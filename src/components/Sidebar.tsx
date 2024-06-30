@@ -33,7 +33,7 @@ const socialIcons = [
 ];
 
 export default function Sidebar() {
-  const [auth, setAuth] = useState(true);
+  const [auth, setAuth] = useState(false);
 
   return (
     <aside className="  hidden lg:flex flex-col content-around fixed inset-y-0 left-0 p-5 xl:p-[26px] w-[200px] h-full xl:w-[244px] bg-main z-30">
@@ -72,7 +72,7 @@ export default function Sidebar() {
                   Sign Out
                 </span>
               ) : (
-                <Link href="/authorize" className="body text-secondary">
+                <Link href="/sign-in-form" className="body text-secondary">
                   Sign In <span className="text-white">or </span>Sign Up
                 </Link>
               )}
