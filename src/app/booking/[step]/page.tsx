@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 import FormStepper from "@/components/Form/FormStepper";
@@ -19,35 +19,23 @@ interface BookingStepProps {
   };
 }
 
-interface FormRef {
-  trigger: () => Promise<boolean>;
-  getValues: () => any;
-}
-
 const BookingStep = ({ params }: BookingStepProps) => {
   const router = useRouter();
   const step = params.step || "1";
   const stepNumber = parseInt(step.replace("step_", ""), 10) - 1;
   const [activeStep, setActiveStep] = useState(stepNumber);
   const [completedSteps, setCompletedSteps] = useState<number[]>([]);
-  
-  const formRefs = useRef<FormRef[]>([]);
 
   useEffect(() => {
     setActiveStep(stepNumber);
   }, [stepNumber]);
 
-  const handleNext = async () => {
-    const form = formRefs.current[activeStep];
-    if (form) {
-      const isValid = await form.trigger();
-      if (isValid) {
-        const nextStep = activeStep + 1;
-        setActiveStep(nextStep);
-        setCompletedSteps([...completedSteps, activeStep]);
-        router.push(`/booking/step_${nextStep + 1}`);
-      }
-    }
+  
+  const handleNext = () => {
+    const nextStep = activeStep + 1;
+    setActiveStep(nextStep);
+    setCompletedSteps([...completedSteps, activeStep]);
+    router.push(`/booking/${nextStep + 1}`);
   };
 
     const handlePrevious = () => {
@@ -58,20 +46,20 @@ const BookingStep = ({ params }: BookingStepProps) => {
     };
 
     const handleStep = (step: number) => {
-      if (step === 3 || step === 4) { // Перевірте, чи це потрібні степи
-        const form = formRefs.current[activeStep];
-        if (form) {
-          form.trigger().then(isValid => {
-            if (isValid) {
+      // if (step === 3 || step === 4) { // Перевірте, чи це потрібні степи
+      //   const form = formRefs.current[activeStep];
+      //   if (form) {
+      //     form.trigger().then(isValid => {
+      //       if (isValid) {
               setActiveStep(step);
               router.push(`/booking/step_${step + 1}`);
-            }
-          });
-        }
-      } else {
-        setActiveStep(step);
-        router.push(`/booking/${step + 1}`);
-      }
+      //       }
+      //     });
+      //   }
+      // } else {
+      //   setActiveStep(step);
+      //   router.push(`/booking/${step + 1}`);
+      // }
 
     };
 
@@ -86,11 +74,7 @@ const BookingStep = ({ params }: BookingStepProps) => {
           handleStep={handleStep}
           completedSteps={completedSteps}
         >
-           <StepComponent
-          formRef={(ref: FormRef | null) => {
-            if (ref) formRefs.current[activeStep] = ref;
-          }}
-        />
+           <StepComponent />
         </FormStepper>
       </div>
     );
