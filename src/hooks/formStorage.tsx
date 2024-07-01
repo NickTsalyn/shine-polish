@@ -19,7 +19,7 @@ interface HandlerReturn {
   handlePhoneChange: (value: string) => void;
   handleCheckboxChange: (name: string, value: string) => void;
   handleCustomChange: (name: string, value: any) => void;
-
+  handleSelectChange: (name: string, value: string | number) => void;
   setForm: (form: Form) => void;
 }
 
@@ -47,6 +47,11 @@ const useFormStorage = (initialForm: Form, formKey = "form"): HandlerReturn => {
   };
 
   const handleRadioChange = (name: string, value: string | boolean) => {
+    const updatedForm = { ...form, [name]: value };
+    setForm(updatedForm);
+    localStorage.setItem(formKey, JSON.stringify(updatedForm));
+  };
+  const handleSelectChange = (name: string, value: string | number) => {
     const updatedForm = { ...form, [name]: value };
     setForm(updatedForm);
     localStorage.setItem(formKey, JSON.stringify(updatedForm));
@@ -80,6 +85,7 @@ const useFormStorage = (initialForm: Form, formKey = "form"): HandlerReturn => {
     setForm,
     handleCustomChange,
     handlePhoneChange,
+    handleSelectChange
   };
 };
 export default useFormStorage;

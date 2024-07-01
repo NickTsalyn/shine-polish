@@ -1,6 +1,7 @@
 "use client";
 
 import { ReactNode } from "react";
+import CheckIcon from "@mui/icons-material/Check";
 import Box from "@mui/material/Box";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
@@ -51,7 +52,11 @@ const FormStepper = ({
                     color: activeStep >= index ? "#fff" : "rgba(0, 0, 0, 0.2)",
                   }}
                 >
-                  {step}
+                  {activeStep > index ? (
+                    <CheckIcon className="size-[14px] md:size-4 lg:size-6" />
+                  ) : (
+                    step
+                  )}
                 </div>
               )}
             />

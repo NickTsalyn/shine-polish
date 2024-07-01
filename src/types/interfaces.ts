@@ -22,3 +22,20 @@ export interface RoomService {
   frequencies: Services[];
   need: Services[];
 }
+export interface FormValues {
+  areas: string;
+  bedroom: number;
+  bathroom: number;
+  frequency: string;
+  homeAccess: string;
+  aboutUs: string;
+  specialInstructions: string;
+  extras: string[];
+  services: string;
+  selectedDate: string;
+  time: string;
+  address: string;
+  aptSuite: string;
+  city: string;
+  zipCode: string;
+}

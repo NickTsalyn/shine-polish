@@ -22,6 +22,7 @@ type BasicSelectProps = {
   label?: string;
   placeholder?: string;
   name?: string;
+  required?: boolean;
 };
 
 export default function BasicSelect(props: BasicSelectProps) {

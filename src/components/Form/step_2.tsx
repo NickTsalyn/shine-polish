@@ -77,6 +77,7 @@ const Step2 = () => {
 										style=" py-[10px] px-[20px] md:py-[8px] md:px-[10px] lg:py-[20px] h-full w-full"
 										isActive={value === form.services}
 										onClick={() => handleRadioChange("services", value)}
+										
 									>
 										<span className="inline-block lg:text-2xl">{label}</span>
 									</RadioButton>

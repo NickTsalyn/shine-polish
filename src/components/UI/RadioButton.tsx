@@ -7,7 +7,7 @@ const RadioButton: React.FC<RadioCheckProps> = ({
   isActive,
   onClick,
   children,
-  onChange,
+  onChange
 }) => {
   return (
     <button
