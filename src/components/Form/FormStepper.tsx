@@ -7,7 +7,7 @@ import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 import Button from "@mui/material/Button";
 
-const steps = [1, 2, 3, 4, 5, 6, 7];
+const steps = [1, 2, 3, 4, 5, 6];
 
 interface FormStepperProps {
   activeStep: number;

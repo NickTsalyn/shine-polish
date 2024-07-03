@@ -4,27 +4,36 @@ import RadioButton from "../UI/RadioButton";
 import dayjs from "dayjs";
 
 import img_stub from "../../../public/images/service-area/image-map-stub.png";
-import { areaOptions, bathroomOptions, bedroomOptions, frequencyOptions } from "@/data/booking-form/step_1";
+import {
+  areaOptions,
+  bathroomOptions,
+  bedroomOptions,
+  frequencyOptions,
+} from "@/data/booking-form/step_1";
 import useFormStorage from "@/hooks/formStorage";
 
 const Step1 = () => {
-	const { form, handleInputChange, handleRadioChange } = useFormStorage({
-		areas: "",
-		bedroom: 1,
-		bathroom: 1,
-		frequency: "",
-		homeAccess: "",
-		aboutUs: "",
-		specialInstructions: "",
-		extras: [],
-		services: "",
-		selectedDate: dayjs().format("MM/DD/YYYY"),
-		time: dayjs().format("h:mm A"),
-		address: "",
-		aptSuite: "",
-		city: "",
-		zipCode: "",
-	});
+  const {
+    form,
+    handleInputChange,
+    handleRadioChange
+  } = useFormStorage({
+    areas: "",
+    bedroom: 1,
+    bathroom: 1,
+    frequency: "",
+    homeAccess: "",
+    aboutUs: "",
+    specialInstructions: "",
+    extras: [],
+    services: "",
+    selectedDate: dayjs().format("MM/DD/YYYY"),
+    time: dayjs().format("h:mm A"),
+    address: "",
+    aptSuite: "",
+    city: "",
+    zipCode: "",
+  });
 
 	return (
 		<div className="py-4 md:py-6 lg:py-9 flex flex-col gap-6 md:gap-[26px] lg:grid lg:grid-flow-col lg:grid-cols-2 lg:gap-[66px] xl:gap-[80px]">
