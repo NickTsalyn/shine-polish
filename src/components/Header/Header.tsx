@@ -8,7 +8,7 @@ import MobileMenu from "./MobileMenu";
 
 export default function Header() {
   const [lightMode, setDarkMode] = useState(false);
-  const [auth] = useState(true);
+  const [auth] = useState(false);
 
   const handleChange = () => {
     setDarkMode(!lightMode);

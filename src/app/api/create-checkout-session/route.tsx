@@ -5,17 +5,6 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
     apiVersion: '2024-04-10',
   });
 
-//   const redirectToStep7 = (req: NextRequest, status: 'success' | 'cancel') => {
-//     const returnUrl = req.headers.get('referer'); // URL сторінки, з якої був перехід до оплати
-//     const redirectUrl = `${returnUrl}?paymentStatus=${status}`;
-//     return new Response(null, {
-//       status: 303, // Redirect
-//       headers: {
-//         Location: redirectUrl,
-//       },
-//     });
-//   };
-
 export async function POST(req: NextRequest) {
   try {
     const { price } = await req.json() as { price: number };
@@ -37,7 +26,7 @@ export async function POST(req: NextRequest) {
   });
 
     const session = await stripe.checkout.sessions.create({
-      payment_method_types: ['card'],
+      payment_method_types: ['card', 'affirm'],
       line_items: [
         {
           price: stripePrice.id, // використовуємо id створеної ціни
@@ -46,7 +35,7 @@ export async function POST(req: NextRequest) {
       ],
       mode: 'payment',
       success_url: `${origin}/success`,
-      cancel_url: `${origin}/cancel`,
+      cancel_url: `${origin}/booking/6`,
     });
 
     return new Response(JSON.stringify({ id: session.id }), { status: 200 });

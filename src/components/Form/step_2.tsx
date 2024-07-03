@@ -40,6 +40,7 @@ const Step2 = () => {
 			setForm(updatedForm);
 			localStorage.setItem("form", JSON.stringify(updatedForm));
 		}
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [form.services, setForm]);
 
 	useEffect(() => {
