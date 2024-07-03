@@ -7,7 +7,7 @@ import { FOOTER_NAV } from "@/global/navigation";
 
 export default function FooterDesctop() {
   return (
-    <footer className="hidden lg:blok bg-transparent w-auto h-[100px] lg:flex lg:flex-col lg:justify-end  lg:ml-[200px] xl:ml-[244px] py-4 absolute inset-x-0 top-auto z-100">
+    <footer className="absolute inset-x-0 top-auto z-100 hidden lg:blok bg-transparent w-auto h-[100px] lg:flex lg:flex-col lg:justify-end  lg:ml-[200px] xl:ml-[244px] py-4">
       <div className="lg:w-[1056px] xl:w-[1200px]  ml-auto mr-auto">
         <FooterMainNav links={FOOTER_NAV} />
       </div>
