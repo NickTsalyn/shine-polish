@@ -2,11 +2,14 @@ import React from "react";
 import Input from "../components/UI/Input";
 import useFormStorage from "@/hooks/formStorage";
 import { useForm } from "react-hook-form";
+import BasicSelect from "./UI/Select";
+import { usStates } from "@/data/booking-form/step_4";
 
 type FormValues = {
   address: string;
   aptSuite: string;
   city: string;
+  state: string;
   zipCode: string;
   selectedDate: string;
   time: string;
@@ -18,6 +21,7 @@ const AddressForm: React.FC = () => {
       address: "",
       aptSuite: "",
       city: "",
+      state: "",
       zipCode: "",
       selectedDate: "",
       time: "",
@@ -107,7 +111,16 @@ const AddressForm: React.FC = () => {
               </p>
             )}
           </div>
-          <div className="md:w-1/4 md:h-[48px]">
+          <div className="md:w-1/6 md:h-[48px]">
+            <BasicSelect
+              name="state"
+              placeholder="GA*"
+              value={form.state as string}
+              onChange={handleInputChange}
+              items={usStates}
+            />
+          </div>
+          <div className="md:w-2/6 md:h-[48px]">
             <Input
               type="text"
               style="form-input"

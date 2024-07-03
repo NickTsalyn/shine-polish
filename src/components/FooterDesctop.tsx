@@ -7,8 +7,8 @@ import { FOOTER_NAV } from "@/global/navigation";
 
 export default function FooterDesctop() {
   return (
-    <footer className="absolute inset-x-0 top-auto z-100 hidden lg:blok bg-transparent w-auto h-[100px] lg:flex lg:flex-col lg:justify-end  lg:ml-[200px] xl:ml-[244px] py-4">
-      <div className="lg:w-[1056px] xl:w-[1200px]  ml-auto mr-auto">
+    <footer className="lg:absolute lg:inset-x-0 lg:top-auto lg:left-50 lg:z-100 lg:left-1/2 transform lg:-translate-x-1/2 hidden lg:blok bg-secondary lg:w-[1000px] h-[100px] lg:flex lg:flex-col lg:justify-end  py-4">
+      <div className="lg:w-[1000px] xl:w-[1200px]  ml-auto mr-auto">
         <FooterMainNav links={FOOTER_NAV} />
       </div>
       <div className="flex flex-col justify-center items-center">
@@ -20,28 +20,6 @@ export default function FooterDesctop() {
           </span>
         </p>
       </div>
-
-      {/* <div className="opacity-95">
-
-  
-        <FooterImg />
-      </div> */}
-      {/* <div className="lg:flex lg:flex-col lg:justify-end gap-3  lg:ml-[200px] xl:ml-[244px] py-2.5">
-        <div className="absolute z-30 inset-x-0  py-2.5 bottom-0">
-          <div className=" absolute z-50  lg:w-[1056px] xl:w-[1200px]  ml-auto mr-auto  ">
-            <FooterMainNav links={FOOTER_NAV} />
-          </div>
-          <div className="flex flex-col justify-center items-center ">
-            <div className=" w-[1000px] h-[1px] bg-gradient-to-r from-orange-200 via-main to-orange-200 mb-2 mx-auto"></div>
-            <p className=" text-white lg:text-main text-[8px] md:text-[10px] lg:text-[14px] font-light">
-              All materials on this website are protected by Copyright ©2024
-              <span className="">
-                <Link href="/"> Lobsters Co.</Link>
-              </span>
-            </p>
-          </div>
-        </div>
-      </div> */}
     </footer>
   );
 }
