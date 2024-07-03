@@ -12,6 +12,8 @@ import Step4 from "@/components/Form/step_4";
 import Step5 from "@/components/Form/step_5";
 import Step6 from "@/components/Form/step_6";
 import dayjs from "dayjs";
+import useFormStorage from "@/hooks/formStorage";
+import { FormValues } from "@/types/interfaces";
 
 const stepsComponents = [Step1, Step2, Step3, Step4, Step5, Step6];
 
@@ -26,14 +28,9 @@ const BookingStep = ({ params }: BookingStepProps) => {
   const step = params.step || "1";
   const stepNumber = parseInt(step.replace("step_", ""), 10) - 1;
   const [activeStep, setActiveStep] = useState(stepNumber);
-  const [completedSteps, setCompletedSteps] = useState<number[]>([]);
 
-  useEffect(() => {
-    setActiveStep(stepNumber);
-  }, [stepNumber]);
-
-  const methods = useForm({
-    defaultValues: {
+  const { form, setForm, completedSteps, setStepCompleted } = useFormStorage(
+    {
       areas: "",
       bedroom: 1,
       bathroom: 1,
@@ -49,11 +46,23 @@ const BookingStep = ({ params }: BookingStepProps) => {
       aptSuite: "",
       city: "",
       zipCode: "",
+      completedSteps: [], 
     },
+    "bookingForm"
+  );
+
+
+  useEffect(() => {
+    setActiveStep(stepNumber);
+  }, [stepNumber]);
+
+  const methods = useForm<FormValues>({
+    defaultValues: form, 
   });
 
-  const validateStep = async () => {
+  const validateStep = async() => {
     const result = await methods.trigger();
+    console.log("Validation result:", result); // Debug log
     return result;
   };
 
@@ -63,41 +72,45 @@ const BookingStep = ({ params }: BookingStepProps) => {
 
     const nextStep = activeStep + 1;
     setActiveStep(nextStep);
-    setCompletedSteps([...completedSteps, activeStep]);
+    setStepCompleted(activeStep); 
     router.push(`/booking/${nextStep + 1}`);
+    console.log("Moved to next step:", nextStep); // Debug log
   };
+  
 
   const handlePrevious = () => {
     const prevStep = activeStep - 1;
-    setActiveStep(prevStep);
-    setCompletedSteps(completedSteps.filter((step) => step !== activeStep));
+    setActiveStep(prevStep);   
     router.push(`/booking/${prevStep + 1}`);
+    console.log("Moved to previous step:", prevStep); // Debug log
   };
 
-  const handleStep = async (step: number) => {
-    const isValid = await validateStep();
-    if (!isValid) return;
-
-    setActiveStep(step);
-    router.push(`/booking/step_${step + 1}`);
+  const handleStep = (step: number) => {
+    if (completedSteps.includes(step) || step <= activeStep) {
+      setActiveStep(step);      
+      router.push(`/booking/${step + 1}`);
+      console.log("Moved to step:", step); // Debug log
+    }
   };
 
   const StepComponent = stepsComponents[activeStep] || Step1;
 
   return (
     <FormProvider {...methods}>
-        <form onSubmit={methods.handleSubmit(() => {})}>
-      <div className="p-4 md:p-6 xl:p-9 lg:pt-[90px] xl:pt-[102px]">
-        <FormStepper
-          activeStep={activeStep}
-          handleNext={handleNext}
-          handlePrevious={handlePrevious}
-          handleStep={handleStep}
-          completedSteps={completedSteps}
-        >
-          <StepComponent control={methods.control} />
-        </FormStepper>
-      </div></form>
+      <form onSubmit={methods.handleSubmit(() => {})}>
+        <div className="p-4 md:p-6 xl:p-9 lg:pt-[90px] xl:pt-[102px]">
+          <FormStepper
+            activeStep={activeStep}
+            handleNext={handleNext}
+            handlePrevious={handlePrevious}
+            handleStep={handleStep}
+            completedSteps={completedSteps}
+          >
+            <StepComponent control={methods.control} setStepCompleted={setStepCompleted} 
+            />
+          </FormStepper>
+        </div>
+      </form>
     </FormProvider>
   );
 };
