@@ -20,6 +20,7 @@ const AddressForm: React.FC = () => {
   const { form, handleCustomChange } = useFormStorage({
     address: "",
     aptSuite: "",
+    state: "",
     city: "",
     zipCode: "",
     selectedDate: "",
@@ -29,11 +30,13 @@ const AddressForm: React.FC = () => {
   const formData = useForm<FormValues>();
   const [inputValue, setInputValue] = useState('');
   const [addressDetails, setAddressDetails] = useState({
-    street: '',
-    city: '',
-    state: '',
-    zip: ''
+    street: form.address,
+    city: form.city,
+    state: form.state,
+    zip: form.zipCode
   });
+  
+  console.log(addressDetails)
 
   const {
     register,
@@ -80,8 +83,10 @@ const AddressForm: React.FC = () => {
 
 const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
   setInputValue(e.target.value);
-  setAddressDetails({ ...addressDetails, street: e.target.value });
-  console.log(addressDetails)
+  // setAddressDetails({ ...addressDetails, street: e.target.value });
+  handleCustomChange("address", addressDetails);
+  setAddressDetails({ ...addressDetails, street: inputValue });
+  
 };
 
 const inputStyles = "block mx-full mb-[10px] w-full hx-full h-full py-[8px] lg:py-[12px] px-[8px] lg:px-[16px] bg-transparent text-text border-solid border-2 focus:border-[3px] border-secondary rounded-[12px] focus:shadow-input-shadow outline-none xl:placeholder:text-[16px] placeholder:text-secondary-placeholder placeholder-opacity-50";
@@ -138,7 +143,7 @@ const inputStyles = "block mx-full mb-[10px] w-full hx-full h-full py-[8px] lg:p
                 required: "City is required",
                 onChange: (e) => {
                   // handleInputChange(e);
-                  handleCustomChange("city", e.target.value);
+                  handleCustomChange("city", addressDetails.city);
                 }
               })}
               // onChange={handleInputChange}
