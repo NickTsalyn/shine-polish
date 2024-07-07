@@ -1,7 +1,7 @@
 "use client";
 
 import { SelectChangeEvent } from "@mui/material";
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { Dayjs } from "dayjs";
 interface Form {
   [key: string]: string | number | boolean | string[] | Dayjs | null | any;
@@ -13,9 +13,10 @@ interface HandlerReturn {
     event:
       | ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
       | SelectChangeEvent<string | number>
-      // | { target: { name: string; value: string | number } }
+      | FormEvent<HTMLFormElement>
   ) => void;
   handleRadioChange: (name: string, value: string | boolean) => void;
+  handlePhoneChange: (value: string) => void;
   handleCheckboxChange: (name: string, value: string) => void;
   handleCustomChange: (name: string, value: any) => void;
 
@@ -36,7 +37,7 @@ const useFormStorage = (initialForm: Form, formKey = "form"): HandlerReturn => {
     event:
       | ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
       | SelectChangeEvent<string | number>
-      // | { target: { name: string; value: string | number } }
+      | FormEvent<HTMLFormElement>
   ) => {
     const { name, value, type, checked } = event.target as HTMLInputElement;
     const newValue = type === "checkbox" ? checked : value;
@@ -57,6 +58,11 @@ const useFormStorage = (initialForm: Form, formKey = "form"): HandlerReturn => {
     localStorage.setItem(formKey, JSON.stringify(updatedForm));
   };
 
+  const handlePhoneChange = (value: string) => {
+    const updatedForm = { ...form, phone: value };
+    localStorage.setItem(formKey, JSON.stringify(updatedForm));
+  };
+
   const handleCheckboxChange = (name: string, value: string) => {
     const currentValues = form[name] as string[];
     const newValues = currentValues.includes(value)
@@ -74,7 +80,7 @@ const useFormStorage = (initialForm: Form, formKey = "form"): HandlerReturn => {
     handleCheckboxChange,
     setForm,
     handleCustomChange,
+    handlePhoneChange,
   };
 };
-
 export default useFormStorage;

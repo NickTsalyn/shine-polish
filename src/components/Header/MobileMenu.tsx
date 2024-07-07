@@ -63,7 +63,6 @@ const socialIcons = [
 
 export default function MobileMenu() {
   const [open, setOpen] = useState(false);
-  const [auth] = useState(false);
 
   const toggleDrawer = () => {
     setOpen((prevOpen) => !prevOpen);
