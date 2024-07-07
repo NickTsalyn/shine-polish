@@ -46,7 +46,7 @@ const FormStepper = ({
                   onClick={() => handleStep(index)}
                   style={{
                     background:
-                      activeStep >= index
+                      activeStep >= index 
                         ? "linear-gradient(180deg, #006778 0%, #00BFDE 100%)"
                         : "linear-gradient(180deg, rgba(0, 103, 120, 0.20) 0%, rgba(0, 191, 222, 0.20) 100%)",
                     color: activeStep >= index ? "#fff" : "rgba(0, 0, 0, 0.2)",

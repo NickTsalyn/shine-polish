@@ -32,10 +32,16 @@ export interface FormValues {
   specialInstructions: string;
   extras: string[];
   services: string;
+  name: string;
+  surname: string;
+  email: string;
+  phone: string;
+  remindersChecked: boolean;
   selectedDate: string;
   time: string;
   address: string;
   aptSuite: string;
   city: string;
   zipCode: string;
+  completedSteps: number[];
 }

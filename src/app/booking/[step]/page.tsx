@@ -29,41 +29,47 @@ const BookingStep = ({ params }: BookingStepProps) => {
   const stepNumber = parseInt(step.replace("step_", ""), 10) - 1;
   const [activeStep, setActiveStep] = useState(stepNumber);
 
-  const { form, setForm, completedSteps, setStepCompleted } = useFormStorage(
-    {
-      areas: "",
-      bedroom: 1,
-      bathroom: 1,
-      frequency: "",
-      homeAccess: "",
-      aboutUs: "",
-      specialInstructions: "",
-      extras: [],
-      services: "",
-      selectedDate: dayjs().format("MM/DD/YYYY"),
-      time: dayjs().format("h:mm A"),
-      address: "",
-      aptSuite: "",
-      city: "",
-      zipCode: "",
-      completedSteps: [], 
-    },
-    "bookingForm"
-  );
-
+  const { form, completedSteps, setStepCompleted } = useFormStorage({
+    areas: "",
+    bedroom: 1,
+    bathroom: 1,
+    frequency: "",
+    homeAccess: "",
+    aboutUs: "",
+    specialInstructions: "",
+    extras: [],
+    services: "",
+    name: "",
+    surname: "",
+    email: "",
+    phone: "",
+    remindersChecked: false,
+    selectedDate: dayjs().format("MM/DD/YYYY"),
+    time: dayjs().format("h:mm A"),
+    address: "",
+    aptSuite: "",
+    city: "",
+    zipCode: "",
+  });
 
   useEffect(() => {
     setActiveStep(stepNumber);
   }, [stepNumber]);
 
   const methods = useForm<FormValues>({
-    defaultValues: form, 
+    defaultValues: form,
+    mode: "onChange",
   });
 
-  const validateStep = async() => {
+  const validateStep = async () => {
     const result = await methods.trigger();
-    console.log("Validation result:", result); // Debug log
     return result;
+  };
+
+  const handlePrevious = () => {
+    const prevStep = activeStep - 1;
+    setActiveStep(prevStep);
+    router.push(`/booking/${prevStep + 1}`);
   };
 
   const handleNext = async () => {
@@ -72,24 +78,15 @@ const BookingStep = ({ params }: BookingStepProps) => {
 
     const nextStep = activeStep + 1;
     setActiveStep(nextStep);
-    setStepCompleted(activeStep); 
+    setStepCompleted(activeStep);
     router.push(`/booking/${nextStep + 1}`);
-    console.log("Moved to next step:", nextStep); // Debug log
-  };
-  
-
-  const handlePrevious = () => {
-    const prevStep = activeStep - 1;
-    setActiveStep(prevStep);   
-    router.push(`/booking/${prevStep + 1}`);
-    console.log("Moved to previous step:", prevStep); // Debug log
   };
 
   const handleStep = (step: number) => {
-    if (completedSteps.includes(step) || step <= activeStep) {
-      setActiveStep(step);      
-      router.push(`/booking/${step + 1}`);
-      console.log("Moved to step:", step); // Debug log
+    if (completedSteps.includes(step)  || step <= activeStep
+    ) {
+      setActiveStep(step);
+      router.push(`/booking/step_${step + 1}`);
     }
   };
 
@@ -106,7 +103,9 @@ const BookingStep = ({ params }: BookingStepProps) => {
             handleStep={handleStep}
             completedSteps={completedSteps}
           >
-            <StepComponent control={methods.control} setStepCompleted={setStepCompleted} 
+            <StepComponent
+              control={methods.control}
+              setStepCompleted={setStepCompleted}
             />
           </FormStepper>
         </div>
