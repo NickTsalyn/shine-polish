@@ -3,7 +3,7 @@ import IconPlus from '../../public/icons/Icon_plus-min.png';
 import {KITCHEN_SERVICES} from '@/global/kitchen';
 import BasicBreadcrumbs from './UI/Breadcrumbs';
 import {CustomTooltip, kitchenIcons} from './UI/Tooltip';
-import {FooterImg, KitchenImage} from '@/global/images';
+import {KitchenImage} from '@/global/images';
 
 const KitchenServices: React.FC = () => {
  const {title, paragraph, processes, frequencies, needs} = KITCHEN_SERVICES;
@@ -84,9 +84,6 @@ const KitchenServices: React.FC = () => {
     ))}
    </ol>
    <p className="body mb-3 md:mb-[18px] lg:mb-7 font-semibold">{needs.summary}</p>
-   <div className="w-screen h-[400px]">
-    <FooterImg />
-   </div>
   </div>
  );
 };

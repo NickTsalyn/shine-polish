@@ -7,7 +7,7 @@ import {FOOTER_NAV} from '@/global/navigation';
 
 export default function FooterDesctop() {
  return (
-  <footer className="hidden backdrop-opacity-10 backdrop-invert bg-white/30 w-full h-[100px] lg:flex lg:flex-col lg:justify-end py-4 absolute bottom-0 z-20 right-0">
+  <footer className="hidden backdrop-opacity-10 backdrop-invert bg-white/60 w-full h-[100px] lg:flex lg:flex-col lg:justify-end py-4 absolute bottom-0 z-20 right-0">
    <div className="lg:w-[1000px] xl:w-[1200px]  ml-auto mr-auto">
     <FooterMainNav links={FOOTER_NAV} />
    </div>
