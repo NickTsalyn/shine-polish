@@ -20,6 +20,7 @@ import { useEffect } from "react";
 interface StepProps {
   control: Control<FormValues>;
   setStepCompleted: (step: number) => void;
+  
 }
 
 const Step1: React.FC<StepProps> = ({ control, setStepCompleted }) => {
@@ -33,6 +34,11 @@ const Step1: React.FC<StepProps> = ({ control, setStepCompleted }) => {
     specialInstructions: "",
     extras: [],
     services: "",
+    name: "",
+    surname: "",
+    email: "",
+    phone: "",
+    remindersChecked: false,
     selectedDate: dayjs().format("MM/DD/YYYY"),
     time: dayjs().format("h:mm A"),
     address: "",

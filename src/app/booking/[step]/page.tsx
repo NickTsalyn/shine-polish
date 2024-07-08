@@ -83,8 +83,7 @@ const BookingStep = ({ params }: BookingStepProps) => {
   };
 
   const handleStep = (step: number) => {
-    if (completedSteps.includes(step)  || step <= activeStep
-    ) {
+    if (completedSteps.includes(step) || step <= activeStep) {
       setActiveStep(step);
       router.push(`/booking/step_${step + 1}`);
     }

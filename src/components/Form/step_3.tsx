@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import useFormStorage from "@/hooks/formStorage";
 import BasicSelect from "../UI/Select";
 import Textarea from "../UI/Textarea";
@@ -9,7 +9,7 @@ import Input from "../UI/Input";
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import { IMaskInput } from "react-imask";
-import { Control, Controller,  useFormContext, useWatch } from "react-hook-form";
+import { Control, Controller, useFormContext, useWatch } from "react-hook-form";
 import { FormValues } from "@/types/interfaces";
 
 interface StepProps {
@@ -19,7 +19,10 @@ interface StepProps {
 
 const ContactNumberMask = "(000) 000-0000";
 
-const Step3: React.FC<StepProps> = ({ control, setStepCompleted }) => {
+const Step3: React.FC<StepProps> = ({
+  control,
+  setStepCompleted,
+}) => {
   const { form, handleCustomChange, handleSelectChange } = useFormStorage({
     areas: "",
     bedroom: 1,
@@ -43,32 +46,40 @@ const Step3: React.FC<StepProps> = ({ control, setStepCompleted }) => {
     zipCode: "",
   });
 
-  const { setError, clearErrors } = useFormContext();
+  const { setError, clearErrors, trigger } = useFormContext();
   const watchedForm = useWatch({ control });
- 
-  useEffect(() => {
-    const checkStepCompletion = async () => {
-      const isValid = await validateForm();
-      if (isValid) {
-        setStepCompleted(3);
-      }
-    };
-    checkStepCompletion();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [watchedForm, form]);
-  
-  
+
   const validateField = (name: string, value: string) => {
     switch (name) {
       case "name":
-      case "surname":
-        if (!value) {
+        if (!value.trim()) {
           setError(name, {
             type: "required",
-            message: `${name === "name" ? "First" : "Last"} Name is required`,
-          
+            message: "First name is required",
           });
-        } else {
+        } else if (value.length < 2) {
+          setError(name, {
+            type: "minLength",
+            message: "First name must be at least 2 characters",
+          });
+        }
+          else {
+          clearErrors(name);
+        }
+        break;
+      case "surname":
+        if (!value.trim()) {
+          setError(name, {
+            type: "required",
+            message: "Surname is required",            
+          });
+        } else if (value.length < 3) {
+          setError(name, {
+            type: "minLength",
+            message: "Surname must be at least 3 characters",          
+          });
+        }
+          else {
           clearErrors(name);
         }
         break;
@@ -91,70 +102,64 @@ const Step3: React.FC<StepProps> = ({ control, setStepCompleted }) => {
         } else {
           clearErrors(name);
         }
-        break;
+         break;
+      // case "homeAccess":
+      //   if (!value) {
+      //     setError(name, {
+      //       type: "required",
+      //       message: "Please select an option",
+      //     });
+      //   } else {
+      //     clearErrors(name);
+      //   }
+      //   break;
+      // case "aboutUs":
+      //   if (!value) {
+      //     setError(name, {
+      //       type: "required",
+      //       message: "Please select an option",
+      //     });
+      //   } else {
+      //     clearErrors(name);
+      //   }
+      //   break;
       default:
         break;
     }
   };
-  const validateForm = async() => {
-    const fields: Array<keyof FormValues> = [
-      "name",
-      "surname",
-      "email",
-      "phone",
-    ];
-    fields.forEach((field) => {
-      validateField(field, form[field]);
-    });
-    return fields.every((field) => !control.getFieldState(field)?.error);
-  };
 
-  // const schema = yup
-  // .object()
-  // .shape({
-  //   name: yup.string().required("First Name is required"),
-  //   surname: yup.string().required("Last Name is required"),
-  //   email: yup
-  //     .string()
-  //     .email("Invalid email format")
-  //     .required("Email is required"),
-  //   phone: yup
-  //     .string()
-  //     .matches(/^\(\d{3}\) \d{3}-\d{4}$/, "Invalid phone number format")
-  //     .required("Phone is required"),
-  // });
-
-  // const validateField = async (name: string, value: string) => {
-  //   try {
-  //     await schema.validateAt(name, { [name]: value });
-  //     setErrors((prevErrors) => ({ ...prevErrors, [name]: "" }));
-  //     return true;
-  //   } catch (error) {
-  //     if (error instanceof yup.ValidationError) {
-  //       setErrors((prevErrors) => ({ ...prevErrors, [name]: error.message }));
-  //     }
-  //     return false;
-  //   }
-  // };
-
-  // const validateForm = async () => {
-  //   const validations = await Promise.all([
-  //     validateField("name", form.name),
-  //     validateField("surname", form.surname),
-  //     validateField("email", form.email),
-  //     validateField("phone", form.phone),
-  //   ]);
-  //   return validations.every((valid) => valid);
+  //  const validateField = async (fieldName:string) =>{
+  //   const result = await trigger(fieldName);
+  //  }
+  // const validateField = async (fieldName: string) => {
+  //   await trigger(fieldName);
   // };
 
   const handleFieldChange = (name: string, value: string) => {
     handleCustomChange(name, value);
-    // validateField(name, value);
+    validateField(name, value);
   };
 
   const handleCheckBoxChange = () => {
     handleCustomChange("remindersChecked", !form.remindersChecked);
   };
+
+const validateSteps = useCallback( async () => {
+  const fields = ["name", "surname", "email", "phone"];
+  const validationResults = await Promise.all(fields.map(field => trigger(field)));
+  
+  return validationResults.every(result => result);
+}, [trigger]);
+
+  useEffect(() => {
+    const checkStepCompletion = async () => {
+      const isValid = await validateSteps();
+      if (isValid && form.homeAccess && form.aboutUs) {
+       setStepCompleted(3);
+      }
+    
+     checkStepCompletion();
+  }}, [form.aboutUs, form.homeAccess, setStepCompleted, validateSteps, watchedForm]);
 
   return (
     <div className="py-4 md:py-6 lg:py-9 xl:pl-[60px] xl:pr-[150px] flex flex-col gap-6">
@@ -170,9 +175,8 @@ const Step3: React.FC<StepProps> = ({ control, setStepCompleted }) => {
             <div className="md:w-1/2 md:h-[40px] lg:w-3/5 relative mb-4">
               <Controller
                 name="name"
-                control={control}
-                rules={{ required: "First Name is required" }}
-                render={({ field, fieldState: { error } }) => (
+                control={control}                
+                render={({ field, fieldState: { error }}) => (
                   <>
                     <Input
                       {...field}
@@ -196,19 +200,18 @@ const Step3: React.FC<StepProps> = ({ control, setStepCompleted }) => {
             <div className="md:w-1/2 lg:w-2/5 relative">
               <Controller
                 name="surname"
-                control={control}
-                rules={{ required: "Last Name is required" }}
-                render={({ field, fieldState: { error } }) => (
+                control={control}               
+                render={({ field, fieldState: { error }}) => (
                   <>
                     <Input
                       {...field}
                       value={form.surname}
                       type="text"
+                      placeholder="Last Name*"
+                      style="form-input"
                       onChange={(e) =>
                         handleFieldChange("surname", e.target.value)
                       }
-                      placeholder="Last Name*"
-                      style="form-input"
                     />
                     {error && (
                       <p className="text-secondary text-xs  absolute left-2 bottom-[-15px]">
@@ -226,18 +229,17 @@ const Step3: React.FC<StepProps> = ({ control, setStepCompleted }) => {
               <Controller
                 name="email"
                 control={control}
-                rules={{ required: "This field is required" }}
                 render={({ field, fieldState: { error } }) => (
                   <>
                     <Input
                       {...field}
                       value={form.email}
                       type="email"
+                      placeholder="Email*"
+                      style="form-input"
                       onChange={(e) =>
                         handleFieldChange("email", e.target.value)
                       }
-                      placeholder="Email*"
-                      style="form-input"
                     />
                     {error && (
                       <p className="text-secondary text-xs  absolute left-2 bottom-[-6px] lg:bottom-[-16px]">
@@ -252,13 +254,6 @@ const Step3: React.FC<StepProps> = ({ control, setStepCompleted }) => {
               <Controller
                 name="phone"
                 control={control}
-                rules={{
-                  required: "Phone is required",
-                  // pattern: {
-                  //   value: /^\(\d{3}\) \d{3}-\d{4}$/,
-                  //   message: "Invalid phone number format",
-                  // },
-                }}
                 render={({ field, fieldState: { error } }) => (
                   <>
                     <IMaskInput
@@ -296,18 +291,25 @@ const Step3: React.FC<StepProps> = ({ control, setStepCompleted }) => {
                   name="homeAccess"
                   control={control}
                   rules={{ required: "This field is required" }}
-                  render={({ field }) => (
-                    <BasicSelect
-                      {...field}
-                      items={homeAccess}
-                      value={form.homeAccess}
-                      placeholder="How will access your home?* "
-                      onChange={(event) => {
-                        const { value } = event.target as HTMLInputElement;
-                        field.onChange(value);
-                        handleSelectChange("homeAccess", value);
-                      }}
-                    />
+                  render={({ field, fieldState: { error } }) => (
+                    <>
+                      <BasicSelect
+                        {...field}
+                        items={homeAccess}
+                        value={form.homeAccess}
+                        placeholder="How will access your home?* "
+                        onChange={(event) => {
+                          const { value } = event.target as HTMLInputElement;
+                          field.onChange(value);
+                          handleSelectChange("homeAccess", value);
+                        }}
+                      />
+                      {error && (
+                        <p className="text-secondary text-xs absolute bottom-[-16px]">
+                          {error.message}
+                        </p>
+                      )}
+                    </>
                   )}
                 />
               </div>
@@ -316,18 +318,25 @@ const Step3: React.FC<StepProps> = ({ control, setStepCompleted }) => {
                   name="aboutUs"
                   control={control}
                   rules={{ required: "This field is required" }}
-                  render={({ field }) => (
-                    <BasicSelect
-                      {...field}
-                      items={aboutUs}
-                      value={form.aboutUs}
-                      placeholder="How did you hear about us?* "
-                      onChange={(event) => {
-                        const { value } = event.target as HTMLInputElement;
-                        field.onChange(value);
-                        handleSelectChange("aboutUs", value);
-                      }}
-                    />
+                  render={({ field, fieldState: { error } }) => (
+                    <>
+                      <BasicSelect
+                        {...field}
+                        items={aboutUs}
+                        value={form.aboutUs}
+                        placeholder="How did you hear about us?* "
+                        onChange={(event) => {
+                          const { value } = event.target as HTMLInputElement;
+                          field.onChange(value);
+                          handleSelectChange("aboutUs", value);
+                        }}
+                      />
+                      {error && (
+                        <p className="text-secondary text-xs absolute bottom-[-16px]">
+                          {error.message}
+                        </p>
+                      )}
+                    </>
                   )}
                 />
               </div>
