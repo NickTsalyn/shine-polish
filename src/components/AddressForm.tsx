@@ -89,7 +89,7 @@ const AddressForm: React.FC = () => {
           </div>
         </div>
         <div className="flex gap-5  flex-col md:flex-row">
-          <div className="md:w-3/4 md:h-[48px] gap-5">
+          <div className="md:w-4/6 md:h-[48px] gap-5">
             <Input
               type="text"
               style="form-input"
@@ -111,7 +111,7 @@ const AddressForm: React.FC = () => {
               </p>
             )}
           </div>
-          <div className="md:w-1/6 md:h-[48px]">
+          <div className="md:w-[40px] md:h-[48px]">
             <BasicSelect
               name="state"
               placeholder="GA*"
@@ -120,7 +120,7 @@ const AddressForm: React.FC = () => {
               items={usStates}
             />
           </div>
-          <div className="md:w-2/6 md:h-[48px]">
+          <div className="md:w-[40px] md:h-[48px]">
             <Input
               type="text"
               style="form-input"
