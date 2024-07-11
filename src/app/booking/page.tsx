@@ -47,14 +47,16 @@ const BookingFormHome = () => {
           <p className=" subtitle-booking text-white text-center mb-4 md:mb-6 lg:mb-9">
             So let’s start to
           </p>
+          <div className="flex justify-center items-center">
           <Button type="button" style="complete-booking">
             <Link
               href={"/booking/step_1"}
-              className="text-white subtitle-booking xl:text-[42px] font-bold"
+              className="text-white subtitle-booking xl:text-[42px] font-bold mx-auto"
             >
               complete your booking
             </Link>
           </Button>
+        </div>
         </div>
       </div>
     </div>
