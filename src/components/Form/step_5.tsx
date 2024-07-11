@@ -59,11 +59,11 @@ const Step5 = () => {
     </div>
    </form>
    {/* tips */}
-   <div className=" flex flex-col lg:flex-row   lg:items-center lg:w-[580px] lg:gap-8">
+   <div className=" flex flex-col md:flex-row  md:w-full md:justify-between lg:flex-row   lg:items-center lg:w-[580px] lg:gap-8">
     <div className=" hidden md:flex  md:w-[422px] md:h-[266px] lg:w-[360px]  ">
      <DiscontImg />
     </div>
-    <div className="flex flex-col justify-end gap-12 ">
+    <div className="flex flex-col justify-end gap-12 md:w-[480px] lg:w-[500px]">
      <p className=" text-text body md:text-2xl md:text-right   md:text-accent">
       Tips are not expected but always appreciated <br />
       by our cleaners
