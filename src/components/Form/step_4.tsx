@@ -25,7 +25,25 @@ const Step4: React.FC = () => {
 		aptSuite: "",
 		city: "",
 		zipCode: "",
-	});
+		// JSON.parse(localStorage.getItem("form") || "{}") || {
+		// 	areas: "",
+		// 	bedroom: 1,
+		// 	bathroom: 1,
+		// 	frequency: "",
+		// 	homeAccess: "",
+		// 	aboutUs: "",
+		// 	specialInstructions: "",
+		// 	extras: [],
+		// 	services: "",
+		// 	selectedDate: dayjs().format("MM/DD/YYYY"),
+		// 	time: dayjs().format("h:mm A"),
+		// 	address: "",
+		// 	aptSuite: "",
+		// 	city: "",
+		// 	zipCode: "",
+		// }
+	}
+	);
 	const handleDateChange = (date: Dayjs | null): void => {
 		handleCustomChange("selectedDate", date ? date.format("MM/DD/YYYY") : null);
 	};
@@ -39,7 +57,7 @@ const Step4: React.FC = () => {
 			<div className="flex flex-col mb-[72px] lg:mb-[92px]">
 				<h1 className="h1 md:text-[36px] mb-[32px]">Where would you like us to clean?</h1>
 
-				<AddressForm />
+				<AddressForm  address={form as any} />
 			</div>
 			<div>
 				<h2 className="h1 md:text-[36px] mb-[32px]">When would you like us to clean?</h2>
