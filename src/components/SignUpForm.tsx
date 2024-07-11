@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Input from "./UI/Input";
 import Button from "@/components/UI/Button";
@@ -10,6 +11,8 @@ import facebook from "../../public/icons/sign-in/facebook.svg";
 import Image from "next/image";
 
 import { useForm } from "react-hook-form";
+import { signup } from "@/helpers/api";
+import { useMutation } from "@tanstack/react-query";
 
 interface SignUpProps {
   name: string;
@@ -24,7 +27,37 @@ export default function SignUpForm() {
     formState: { errors },
   } = useForm<SignUpProps>();
 
-  const onSubmit = handleSubmit((data) => console.log(data));
+  // const onSubmit = handleSubmit((data) => console.log(data));
+  const mutation = useMutation({
+    mutationFn: (credentials: SignUpProps) => signup(credentials),
+    onSuccess: (data) => {
+      console.log("I'm first!", data);
+    },
+    onError: (error) => {
+      // An error happened!
+      console.log(`Була помилка`, error);
+    },
+  });
+  const onSubmit = async (data: SignUpProps) => {
+    console.log("Sent body", data);
+    const res = await mutation.mutate(data);
+    // const res = await signup(data);
+    console.log(res);
+  };
+  // localStorage.setItem("user", JSON.stringify(res));
+  // router.push("/");
+  // };
+  // if (mutation.isPending) {
+  //   return <span>Submitting...</span>;
+  // }
+
+  // if (mutation.isError) {
+  //   return <span>Error: {mutation.error.message}</span>;
+  // }
+
+  // if (mutation.isSuccess) {
+  //   return <span>Post submitted!</span>;
+  // }
 
   return (
     <div className="w-[320px] md:w-[712px] lg:w-[960px] mx-auto">
@@ -46,7 +79,7 @@ export default function SignUpForm() {
           </a>
         </h4>
         <form
-          onSubmit={onSubmit}
+          onSubmit={handleSubmit(onSubmit)}
           className="flex flex-col md:flex-row md:flex-wrap gap-x-[78px] lg:gap-x-[90px] gap-y-10 lg:gap-y-12 justify-between w-full  "
         >
           <div className="flex flex-col gap-3 md:w-[300px] lg:w-[348px]">
@@ -139,7 +172,13 @@ export default function SignUpForm() {
               <span className="text-tertial">Terms of Service</span>
             </p>
             <Button type="submit" style="auth-sign">
-              <span className="text-white text-[20px] uppercase">Sing Up</span>
+              {mutation.isPending ? (
+                <span>Submitting...</span>
+              ) : (
+                <span className="text-white text-[20px] uppercase">
+                  Sing Up
+                </span>
+              )}
             </Button>
           </div>
         </form>
