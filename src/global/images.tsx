@@ -230,7 +230,7 @@ export const ChecklistImg = () => {
 export const DiscontImg = () => {
  return (
   <Image
-   src="/images/discount-img.png"
+   src="/images/girl_cleaning_mirror.png"
    alt="Discount"
    width={265}
    height={258}
@@ -241,9 +241,9 @@ export const DiscontImg = () => {
 export const BannerImg = () => {
  return (
   <Image
-   src="/images/tell-about-discount.png"
+   src="/images/three_girlfriends_drink_tea.png"
    className="md:w-[394px] md:h-[236px]"
-   alt="Tell about us"
+   alt="Three girlfriends drink tea at home and talk"
    width={394}
    height={236}
   />
