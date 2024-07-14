@@ -15,7 +15,7 @@ import { signup } from "@/helpers/api";
 import { useMutation } from "@tanstack/react-query";
 
 interface SignUpProps {
-  name: string;
+  username: string;
   email: string;
   password: string;
 }
@@ -27,11 +27,12 @@ export default function SignUpForm() {
     formState: { errors },
   } = useForm<SignUpProps>();
 
-  // const onSubmit = handleSubmit((data) => console.log(data));
   const mutation = useMutation({
     mutationFn: (credentials: SignUpProps) => signup(credentials),
     onSuccess: (data) => {
       console.log("I'm first!", data);
+      localStorage.setItem("user", JSON.stringify(data.data));
+      // router.push("/");
     },
     onError: (error) => {
       // An error happened!
@@ -40,16 +41,9 @@ export default function SignUpForm() {
   });
   const onSubmit = async (data: SignUpProps) => {
     console.log("Sent body", data);
-    const res = await mutation.mutate(data);
-    // const res = await signup(data);
+    const res = mutation.mutate(data);
     console.log(res);
   };
-  // localStorage.setItem("user", JSON.stringify(res));
-  // router.push("/");
-  // };
-  // if (mutation.isPending) {
-  //   return <span>Submitting...</span>;
-  // }
 
   // if (mutation.isError) {
   //   return <span>Error: {mutation.error.message}</span>;
@@ -91,17 +85,17 @@ export default function SignUpForm() {
                 type="text"
                 style="sign-up-input"
                 width="lg:w-[348px]"
-                {...register("name", {
+                {...register("username", {
                   required: "Field name is required",
                 })}
-                aria-required={errors.name ? "true" : "false"}
+                aria-required={errors.username ? "true" : "false"}
               />
-              {errors.name && (
+              {errors.username && (
                 <p
                   role="alert"
                   className="text-accent text-[12px] absolute top-0 right-0"
                 >
-                  {errors.name.message}
+                  {errors.username.message}
                 </p>
               )}
             </label>
@@ -173,7 +167,9 @@ export default function SignUpForm() {
             </p>
             <Button type="submit" style="auth-sign">
               {mutation.isPending ? (
-                <span>Submitting...</span>
+                <span className="text-white text-[20px] uppercase">
+                  Submitting...
+                </span>
               ) : (
                 <span className="text-white text-[20px] uppercase">
                   Sing Up
