@@ -115,8 +115,8 @@ export const FooterLogo = () => {
   <>
    <Image
     src="/icons/logo/logo_dark_bg.svg"
-    height={28}
-    width={30}
+    height={56}
+    width={60}
     alt="logo"
    ></Image>
   </>
