@@ -1,13 +1,12 @@
-import React, { ChangeEvent, useEffect, useState } from "react";
+import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 import Autocomplete from "react-google-autocomplete";
 import Input from "../components/UI/Input";
 import useFormStorage from "@/hooks/formStorage";
 import { useForm } from "react-hook-form";
-import Button from "./UI/Button";
 import dayjs, { Dayjs } from "dayjs";
 
-// const API_KEY = process.env.GOOGLE_MAPS_API_KEY as string;
-const API_KEY = "AIzaSyCjw4zjS8V3L0IwDnqWwWz5bXh6w9b4Hc8";
+const API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY as string;
+// const API_KEY = "AIzaSyCjw4zjS8V3L0IwDnqWwWz5bXh6w9b4Hc8";
 
 type FormValues = {
 	address: string;
@@ -19,31 +18,16 @@ type FormValues = {
 };
 
 interface AddressFormProps {
-  address: any
+	address: any;
 }
 
-const AddressForm: React.FC<AddressFormProps> = ({address}) => {
-	const { form, handleCustomChange } = useFormStorage(
-		// areas: "",
-		// bedroom: 1,
-		// bathroom: 1,
-		// frequency: "",
-		// homeAccess: "",
-		// aboutUs: "",
-		// specialInstructions: "",
-		// extras: [],
-		// services: "",
-		// selectedDate: dayjs().format("MM/DD/YYYY"),
-		// time: dayjs().format("h:mm A"),
-		// address: "",
-		// aptSuite: "",
-		// city: "",
-		// zipCode: "",
-    JSON.parse(localStorage.getItem("form") || "{}") || {
+const AddressForm: React.FC<AddressFormProps> = ({ address }) => {
+	const { form, handleCustomChange, handleInputChange } = useFormStorage(
+		JSON.parse(localStorage.getItem("form") || "{}") || {
 			areas: "",
 			bedroom: 1,
 			bathroom: 1,
-      address: {},
+			address: {},
 			frequency: "",
 			homeAccess: "",
 			aboutUs: "",
@@ -52,35 +36,32 @@ const AddressForm: React.FC<AddressFormProps> = ({address}) => {
 			services: "",
 			selectedDate: dayjs().format("MM/DD/YYYY"),
 			time: dayjs().format("h:mm A"),
-			
-			// aptSuite: "",
-			// city: "",
-			// zipCode: "",
-		
-  }
+      aptSuite: ""
+		}
 	);
 
 	const formData = useForm<FormValues>();
 	const [inputValue, setInputValue] = useState("");
 	const [addressDetails, setAddressDetails] = useState({
-		address: form.address,
-		city: form.city,
-		state: form.state,
-		zip: form.zipCode,
+		street: form.address?.street || "",
+		city: form.address?.city || "",
+		state: form.address?.state || "",
+		zip: form.address?.zip || "",
 	});
-
-	// console.log(addressDetails);
 
 	const {
 		register,
 		formState: { errors },
 	} = formData;
 
-  useEffect(() => {
-    handleCustomChange("address", addressDetails);
-    
-    // console.log(JSON.parse(localStorage.getItem("form") || "{}"));
-}, [addressDetails]);
+	const prevAddressDetails = useRef(addressDetails);
+
+	useEffect(() => {
+		if (prevAddressDetails.current !== addressDetails) {
+			handleCustomChange("address", addressDetails);
+			prevAddressDetails.current = addressDetails;
+		}
+	}, [addressDetails, handleCustomChange]);
 
 	const handlePlaceSelected = (place: google.maps.places.PlaceResult) => {
 		if (!place || !place.address_components) {
@@ -93,7 +74,6 @@ const AddressForm: React.FC<AddressFormProps> = ({address}) => {
 		let city = "";
 		let state = "";
 		let zip = "";
-    
 
 		const fullAddress = place.formatted_address;
 
@@ -116,37 +96,30 @@ const AddressForm: React.FC<AddressFormProps> = ({address}) => {
 			}
 		});
 		const street = `${streetNumber} ${streetName}`.trim();
-		// setAddressDetails({ street, city, state, zip });
-    setAddressDetails({ ...addressDetails, address: street, city, state, zip });
-		setInputValue(fullAddress ?? ""); // Set the input value to the full street address
-    // if(form.address === "") {
-      handleCustomChange("address", addressDetails);
-    // }
+		setAddressDetails((prevAddressDetails) => ({
+			...prevAddressDetails,
+			street,
+			city,
+			state,
+			zip,
+		}));
+		setInputValue(fullAddress ?? "");
 	};
 
-	const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
-		// setAddressDetails({ ...addressDetails, street: e.target.value });
-		// handleCustomChange("address", addressDetails);
-		// setAddressDetails({ ...addressDetails, street: inputValue });
+	const handleAutoCompleteChange = (e: ChangeEvent<HTMLInputElement>) => {
+		setInputValue(e.target.value);
 	};
-
-	// const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-	// 	e.preventDefault();
-	// 	// setAddressDetails({ ...addressDetails, street: inputValue });
-	// 	handleCustomChange("address", addressDetails);
-	// };
 
 	const inputStyles =
 		"block mx-full mb-[10px] w-full hx-full h-full py-[8px] lg:py-[12px] px-[8px] lg:px-[16px] bg-transparent text-text border-solid border-2 focus:border-[3px] border-secondary rounded-[12px] focus:shadow-input-shadow outline-none xl:placeholder:text-[16px] placeholder:text-secondary-placeholder placeholder-opacity-50";
 
 	return (
 		<div className="w-full">
-			<form className="flex flex-col gap-5">
+			<div className="flex flex-col gap-5">
 				<div className="flex gap-5 flex-col lg:flex-row min-w-[280px]">
 					<div className="md:w-full lg:w-1/2 md:h-[48px]">
 						<Autocomplete
-							apiKey="AIzaSyA5V_Sg1fWA7QzML7JwdQmqu-wMSOomO0g"
+							apiKey={API_KEY}
 							onPlaceSelected={handlePlaceSelected}
 							options={{
 								types: ["address"],
@@ -154,32 +127,26 @@ const AddressForm: React.FC<AddressFormProps> = ({address}) => {
 							}}
 							className={inputStyles}
 							placeholder="Address*"
-							value={inputValue}
-							// onChange={(e: ChangeEvent<HTMLInputElement>) => handleCustomChange("address", e.target.value)}
-							onChange={handleInputChange}
-							name="address"
+							value={inputValue || addressDetails.street}
+							onChange={handleAutoCompleteChange}
+							name="street"
 						/>
-						{errors.address && (
+					</div>
+					<div className="md:w-full lg:w-1/2 md:h-[48px]">
+						<Input
+							type="text"
+							style="form-input"
+							placeholder="Apt/Suite#"
+							onChange={handleInputChange}
+							value={form.aptSuite}
+							name="aptSuite"
+						/>
+						{errors.aptSuite && (
 							<p className="error" role="alert">
-								{errors.address.message}
+								{errors.aptSuite.message}
 							</p>
 						)}
 					</div>
-					<div className="md:w-full lg:w-1/2 md:h-[48px]">
-            <Input
-              type="text"
-              style="form-input"
-              placeholder="Apt/Suite#"
-              // onChange={handleCustomChange("aptSuite", e.target.value)}
-              value={form.aptSuite as string}
-              name="aptSuite"
-            />
-            {errors.aptSuite && (
-              <p className="error" role="alert">
-                {errors.aptSuite.message}
-              </p>
-            )}
-          </div>
 				</div>
 				<div className="flex gap-5 flex-col md:flex-row">
 					<div className="md:w-3/4 md:h-[48px] gap-5">
@@ -187,45 +154,20 @@ const AddressForm: React.FC<AddressFormProps> = ({address}) => {
 							type="text"
 							style="form-input"
 							placeholder="City*"
-							// onChange={handleInputChange}
-							// {...register("city", {
-							// 	required: "City is required",
-							// 	onChange: (e) => {
-							// 		// handleInputChange(e);
-							// 		handleCustomChange("city", addressDetails.city);
-							// 	},
-							// })}
-							// onChange={handleInputChange}
+							onChange={handleInputChange}
 							value={addressDetails.city}
 							name="city"
 						/>
-						{errors.city && (
-							<p className="error" role="alert">
-								{errors.city.message}
-							</p>
-						)}
 					</div>
 					<div className="md:w-full md:h-[48px] gap-5">
 						<Input
 							type="text"
 							style="form-input"
 							placeholder="State*"
-							// onChange={handleInputChange}
-							// {...register("state", {
-							//   required: "State is required",
-							//   onChange: (e) => {
-							//     handleInputChange(e);
-							//   }
-							// })}
-							// onChange={handleInputChange}
+							onChange={handleInputChange}
 							value={addressDetails.state}
 							name="state"
 						/>
-						{errors.city && (
-							<p className="error" role="alert">
-								{errors.city.message}
-							</p>
-						)}
 					</div>
 					<div className="md:w-1/4 md:h-[48px]">
 						<Input
@@ -233,31 +175,11 @@ const AddressForm: React.FC<AddressFormProps> = ({address}) => {
 							style="form-input"
 							placeholder="Zip Code*"
 							value={addressDetails.zip}
-							// {...register("zipCode", {
-							// 	required: "Zip Code is required",
-							// 	minLength: { value: 5, message: "Zip Code must be 5 digits" },
-							// 	maxLength: { value: 5, message: "Zip Code must be 5 digits" },
-							// 	pattern: {
-							// 		value: /^[0-9]+$/,
-							// 		message: "Zip Code must be numeric and 5 digits",
-							// 	},
-							// 	onChange: (e) => {
-							// 		// handleInputChange(e);
-							// 		handleCustomChange("zip", e.target.value);
-							// 	},
-							// })}
+							onChange={handleInputChange}
 						/>
-						{errors.zipCode && (
-							<p className="text-red-500" role="alert">
-								{errors.zipCode.message}
-							</p>
-						)}
 					</div>
 				</div>
-				{/* <Button style="send" type="submit">
-					Submit
-				</Button> */}
-			</form>
+			</div>
 		</div>
 	);
 };
