@@ -22,26 +22,6 @@ const Step4: React.FC = () => {
 		selectedDate: dayjs().format("MM/DD/YYYY"),
 		time: dayjs().format("h:mm A"),
 		address: "",
-		aptSuite: "",
-		city: "",
-		zipCode: "",
-		// JSON.parse(localStorage.getItem("form") || "{}") || {
-		// 	areas: "",
-		// 	bedroom: 1,
-		// 	bathroom: 1,
-		// 	frequency: "",
-		// 	homeAccess: "",
-		// 	aboutUs: "",
-		// 	specialInstructions: "",
-		// 	extras: [],
-		// 	services: "",
-		// 	selectedDate: dayjs().format("MM/DD/YYYY"),
-		// 	time: dayjs().format("h:mm A"),
-		// 	address: "",
-		// 	aptSuite: "",
-		// 	city: "",
-		// 	zipCode: "",
-		// }
 	}
 	);
 	const handleDateChange = (date: Dayjs | null): void => {

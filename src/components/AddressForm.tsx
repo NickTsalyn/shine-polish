@@ -9,7 +9,7 @@ const API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY as string;
 // const API_KEY = "AIzaSyCjw4zjS8V3L0IwDnqWwWz5bXh6w9b4Hc8";
 
 type FormValues = {
-	address: string;
+	address: {};
 	aptSuite: string;
 	city: string;
 	zipCode: string;
@@ -27,7 +27,7 @@ const AddressForm: React.FC<AddressFormProps> = ({ address }) => {
 			areas: "",
 			bedroom: 1,
 			bathroom: 1,
-			address: {},
+			address: "",
 			frequency: "",
 			homeAccess: "",
 			aboutUs: "",
@@ -36,7 +36,6 @@ const AddressForm: React.FC<AddressFormProps> = ({ address }) => {
 			services: "",
 			selectedDate: dayjs().format("MM/DD/YYYY"),
 			time: dayjs().format("h:mm A"),
-      aptSuite: ""
 		}
 	);
 
@@ -47,6 +46,7 @@ const AddressForm: React.FC<AddressFormProps> = ({ address }) => {
 		city: form.address?.city || "",
 		state: form.address?.state || "",
 		zip: form.address?.zip || "",
+    aptSuite: form.address?.aptSuite || ""
 	});
 
 	const {
@@ -74,6 +74,7 @@ const AddressForm: React.FC<AddressFormProps> = ({ address }) => {
 		let city = "";
 		let state = "";
 		let zip = "";
+    let aptSuite = "";
 
 		const fullAddress = place.formatted_address;
 
@@ -102,6 +103,7 @@ const AddressForm: React.FC<AddressFormProps> = ({ address }) => {
 			city,
 			state,
 			zip,
+      aptSuite: "" // reset aptSuite
 		}));
 		setInputValue(fullAddress ?? "");
 	};
@@ -137,15 +139,15 @@ const AddressForm: React.FC<AddressFormProps> = ({ address }) => {
 							type="text"
 							style="form-input"
 							placeholder="Apt/Suite#"
-							onChange={handleInputChange}
-							value={form.aptSuite}
+              onChange={(e) => setAddressDetails((prevAddressDetails) => ({ ...prevAddressDetails, aptSuite: e.target.value }))}
+              value={addressDetails.aptSuite}
 							name="aptSuite"
 						/>
-						{errors.aptSuite && (
+						{/* {errors.aptSuite && (
 							<p className="error" role="alert">
 								{errors.aptSuite.message}
 							</p>
-						)}
+						)} */}
 					</div>
 				</div>
 				<div className="flex gap-5 flex-col md:flex-row">
