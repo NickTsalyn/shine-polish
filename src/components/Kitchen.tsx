@@ -8,7 +8,7 @@ import {KitchenImage} from '@/global/images';
 const KitchenServices: React.FC = () => {
  const {title, paragraph, processes, frequencies, needs} = KITCHEN_SERVICES;
  return (
-  <div>
+  <div className="lg:mb-[120px]">
    <h1 className="h3 text-main mb-3 md:mb-[18px] lg:mb-7">{title}</h1>
    <BasicBreadcrumbs
     pageHref="cleaning-processes"

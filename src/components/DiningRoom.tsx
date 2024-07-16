@@ -9,7 +9,7 @@ export default function DiningRoomServices() {
  const {title, paragraph, processes, frequencies, needs} = DINING_ROOM_SERVICES;
 
  return (
-  <div className="body text-text">
+  <div className="body text-text lg:mb-[120px]">
    <h1 className=" h3 text-main mb-3 md:mb-[18px] lg:mb-7">{title}</h1>
 
    <BasicBreadcrumbs
