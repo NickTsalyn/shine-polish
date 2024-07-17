@@ -49,7 +49,7 @@ const Step2 = () => {
  }, [handleDisable]);
 
  return (
-  <div className="p-4 md:p-6 lg:p-9 ">
+  <div className="p-4 md:p-6 lg:p-9 lg:h-[800px] xl:h-[980px]">
    {/* <div className="container"> */}
    {/* <div className="  mb-5 xl:mb-[35px]"> */}
    <h2 className="text-2xl md:text-4xl font-medium mb-5">Select Extras</h2>

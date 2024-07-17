@@ -73,15 +73,15 @@ const Step6 = () => {
  };
 
  return (
-  <div className="p-4 md:p-6 lg:p-9 flex flex-col gap-5">
+  <div className="p-4 md:p-6 lg:p-9 flex flex-col gap-5 lg:h-[800px] xl:h-[980px] justify-between">
    <div>
     <h2 className=" text-black text-2xl text-center mb-2">BOOKING SUMMARY</h2>
     <p className="text-bookingSubText text-base">
      By clicking the Book Now button, you agree to our Terms of Service and Privacy Policy.
     </p>
    </div>
-   <div className="flex gap-8 lg:gap-10">
-    <ul className="list-disc ml-6 flex flex-col gap-0.5 ">
+   <div className="flex gap-8 lg:gap-10 xl:gap-20">
+    <ul className="list-disc ml-6 flex flex-col gap-0.5 mb-10">
      {Object.entries(form).map(([key, value]) => {
       if (['bedroom', 'bathroom', 'areas', 'frequency', 'services'].includes(key) && value !== '') {
        return (
@@ -126,7 +126,7 @@ const Step6 = () => {
     </div>
    </div>
    <button
-    className=" flex justify-center items-center text-white bg-accent rounded-xl py-1.5 w-3/4 m-auto"
+    className=" flex justify-center  items-center  text-white bg-accent rounded-xl py-1.5 w-3/4 mx-auto"
     type="submit"
     onClick={handleCheckout}
     disabled={loading}
