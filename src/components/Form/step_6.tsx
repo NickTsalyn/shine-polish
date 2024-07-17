@@ -80,7 +80,7 @@ const Step6 = () => {
      By clicking the Book Now button, you agree to our Terms of Service and Privacy Policy.
     </p>
    </div>
-   <div className="flex gap-8">
+   <div className="flex gap-8 lg:gap-10">
     <ul className="list-disc ml-6 flex flex-col gap-0.5 ">
      {Object.entries(form).map(([key, value]) => {
       if (['bedroom', 'bathroom', 'areas', 'frequency', 'services'].includes(key) && value !== '') {
@@ -97,8 +97,8 @@ const Step6 = () => {
     </ul>
     {Array.isArray(form.extras) ? (
      <div className="flex flex-col gap-2">
-      <p className="whitespace-pre-line text-[20px]  text-main">Extras</p>
-      <ul className="list-disc ml-6 flex flex-col columns-2 gap-0.5 ">
+      <p className="text-[20px]  text-main">Extras</p>
+      <ul className="list-disc ml-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-3 lg:gap-x-6 md:grid-rows-3 gap-y-0.5 ">
        {form.extras.map((extra, index) => (
         <li
          key={index}
