@@ -1,143 +1,189 @@
-import React from "react";
+import React, { ChangeEvent, useEffect, useRef, useState } from "react";
+import Autocomplete from "react-google-autocomplete";
 import Input from "../components/UI/Input";
 import useFormStorage from "@/hooks/formStorage";
 import { useForm } from "react-hook-form";
+import dayjs, { Dayjs } from "dayjs";
+
+const API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY as string;
+// const API_KEY = "AIzaSyCjw4zjS8V3L0IwDnqWwWz5bXh6w9b4Hc8";
 
 type FormValues = {
-  address: string;
-  aptSuite: string;
-  city: string;
-  zipCode: string;
-  selectedDate: string;
-  time: string;
+	address: {};
+	aptSuite: string;
+	city: string;
+	zipCode: string;
+	selectedDate: string;
+	time: string;
 };
 
-const AddressForm: React.FC = () => {
-  const { form, handleInputChange } = useFormStorage(
-    {
-      address: "",
-      aptSuite: "",
-      city: "",
-      zipCode: "",
-      selectedDate: "",
-      time: "",
-    },
-    "form"
-  );
-  const formData = useForm<FormValues>();
+interface AddressFormProps {
+	address: any;
+}
 
-  const {
-    register,
+const AddressForm: React.FC<AddressFormProps> = ({ address }) => {
+	const { form, handleCustomChange, handleInputChange } = useFormStorage(
+		JSON.parse(localStorage.getItem("form") || "{}") || {
+			areas: "",
+			bedroom: 1,
+			bathroom: 1,
+			address: "",
+			frequency: "",
+			homeAccess: "",
+			aboutUs: "",
+			specialInstructions: "",
+			extras: [],
+			services: "",
+			selectedDate: dayjs().format("MM/DD/YYYY"),
+			time: dayjs().format("h:mm A"),
+		}
+	);
 
-    control,
-    formState: { errors },
-  } = formData;
+	const formData = useForm<FormValues>();
+	const [inputValue, setInputValue] = useState("");
+	const [addressDetails, setAddressDetails] = useState({
+		street: form.address?.street || "",
+		city: form.address?.city || "",
+		state: form.address?.state || "",
+		zip: form.address?.zip || "",
+    aptSuite: form.address?.aptSuite || ""
+	});
 
-  return (
-    <div className="w-full">
-      <form className="flex flex-col gap-5">
-        <div className=" flex gap-5  flex-col lg:flex-row min-w-[280px]">
-          <div className="md:w-full lg:w-1/2 md:h-[48px] ">
-            <Input
-              type="text"
-              style="form-input"
-              placeholder="Address*"
-              onChange={handleInputChange}
-              value={form.address as string}
-              name="address"
-              // {...register("address", {
-              //   required: "Address is required",
-              //   // message: "Address is required",
-              //   // onChange: (e) => {
-              //   //   handleInputChange(e);
-              //   // },
+	const {
+		register,
+		formState: { errors },
+	} = formData;
 
-              // })}
-            />
-            {errors.address && (
-              <p className="error" role="alert">
-                {errors.address.message}
-              </p>
-            )}
-          </div>
-          <div className="md:w-full lg:w-1/2 md:h-[48px]">
-            <Input
-              type="text"
-              style="form-input"
-              placeholder="Apt/Suite#"
-              onChange={handleInputChange}
-              value={form.aptSuite as string}
-              name="aptSuite"
-              // {...register("aptSuite")}
-              // error={errors.aptSuite?.message}
+	const prevAddressDetails = useRef(addressDetails);
 
-              // {...register("aptSuite", {
-              //   onChange: (e) => {
-              //     handleInputChange(e);
-              //   },
-              // })}
-            />
-            {errors.aptSuite && (
-              <p className="error" role="alert">
-                {errors.aptSuite.message}
-              </p>
-            )}
-          </div>
-        </div>
-        <div className="flex gap-5  flex-col md:flex-row">
-          <div className="md:w-3/4 md:h-[48px] gap-5">
-            <Input
-              type="text"
-              style="form-input"
-              placeholder="City*"
-              onChange={handleInputChange}
-              value={form.city as string}
-              name="city"
+	useEffect(() => {
+		if (prevAddressDetails.current !== addressDetails) {
+			handleCustomChange("address", addressDetails);
+			prevAddressDetails.current = addressDetails;
+		}
+	}, [addressDetails, handleCustomChange]);
 
-              // {...register("city", {
-              //   required: "City is required",
-              //   onChange: (e) => {
-              //     handleInputChange(e);
-              //   },
-              // })}
-            />
-            {errors.city && (
-              <p className="error" role="alert">
-                {errors.city.message}
-              </p>
-            )}
-          </div>
-          <div className="md:w-1/4 md:h-[48px]">
-            <Input
-              type="text"
-              style="form-input"
-              placeholder="Zip Code*"
-              // onChange={handleInputChange}
-              value={form.zipCode as number}
-              // name="zipCode"
-              {...register("zipCode", {
-                required: "Zip Code is required",
-                minLength: { value: 5, message: "Zip Code must be 5 digits" },
-                maxLength: { value: 5, message: "Zip Code must be 5 digits" },
-                pattern: {
-                  value: /^[0-9]+$/,
-                  message: "Zip Code must be numeric and 5 digits",
-                },
-                onChange: (e) => {
-                  handleInputChange(e);
-                },
-              })}
-            />
-            {errors.zipCode && (
-              <p className="text-red-500" role="alert">
-                {errors.zipCode.message}
-              </p>
-            )}
-          </div>
-        </div>
-      </form>
-    </div>
-  );
+	const handlePlaceSelected = (place: google.maps.places.PlaceResult) => {
+		if (!place || !place.address_components) {
+			return;
+		}
+
+		const addressComponents = place.address_components;
+		let streetNumber = "";
+		let streetName = "";
+		let city = "";
+		let state = "";
+		let zip = "";
+    let aptSuite = "";
+
+		const fullAddress = place.formatted_address;
+
+		addressComponents.forEach((component) => {
+			const types = component.types;
+			if (types.includes("street_number")) {
+				streetNumber = component.long_name;
+			}
+			if (types.includes("route")) {
+				streetName = component.long_name;
+			}
+			if (types.includes("locality")) {
+				city = component.long_name;
+			}
+			if (types.includes("administrative_area_level_1")) {
+				state = component.short_name;
+			}
+			if (types.includes("postal_code")) {
+				zip = component.long_name;
+			}
+		});
+		const street = `${streetNumber} ${streetName}`.trim();
+		setAddressDetails((prevAddressDetails) => ({
+			...prevAddressDetails,
+			street,
+			city,
+			state,
+			zip,
+      aptSuite: "" // reset aptSuite
+		}));
+		setInputValue(fullAddress ?? "");
+	};
+
+	const handleAutoCompleteChange = (e: ChangeEvent<HTMLInputElement>) => {
+		setInputValue(e.target.value);
+	};
+
+	const inputStyles =
+		"block mx-full mb-[10px] w-full hx-full h-full py-[8px] lg:py-[12px] px-[8px] lg:px-[16px] bg-transparent text-text border-solid border-2 focus:border-[3px] border-secondary rounded-[12px] focus:shadow-input-shadow outline-none xl:placeholder:text-[16px] placeholder:text-secondary-placeholder placeholder-opacity-50";
+
+	return (
+		<div className="w-full">
+			<div className="flex flex-col gap-5">
+				<div className="flex gap-5 flex-col lg:flex-row min-w-[280px]">
+					<div className="md:w-full lg:w-1/2 md:h-[48px]">
+						<Autocomplete
+							apiKey={API_KEY}
+							onPlaceSelected={handlePlaceSelected}
+							options={{
+								types: ["address"],
+								componentRestrictions: { country: "us" },
+							}}
+							className={inputStyles}
+							placeholder="Address*"
+							value={inputValue || addressDetails.street}
+							onChange={handleAutoCompleteChange}
+							name="street"
+						/>
+					</div>
+					<div className="md:w-full lg:w-1/2 md:h-[48px]">
+						<Input
+							type="text"
+							style="form-input"
+							placeholder="Apt/Suite#"
+              onChange={(e) => setAddressDetails((prevAddressDetails) => ({ ...prevAddressDetails, aptSuite: e.target.value }))}
+              value={addressDetails.aptSuite}
+							name="aptSuite"
+						/>
+						{/* {errors.aptSuite && (
+							<p className="error" role="alert">
+								{errors.aptSuite.message}
+							</p>
+						)} */}
+					</div>
+				</div>
+				<div className="flex gap-5 flex-col md:flex-row">
+					<div className="md:w-3/4 md:h-[48px] gap-5">
+						<Input
+							type="text"
+							style="form-input"
+							placeholder="City*"
+							onChange={handleInputChange}
+							value={addressDetails.city}
+							name="city"
+						/>
+					</div>
+					<div className="md:w-full md:h-[48px] gap-5">
+						<Input
+							type="text"
+							style="form-input"
+							placeholder="State*"
+							onChange={handleInputChange}
+							value={addressDetails.state}
+							name="state"
+						/>
+					</div>
+					<div className="md:w-1/4 md:h-[48px]">
+						<Input
+							type="text"
+							style="form-input"
+							placeholder="Zip Code*"
+							value={addressDetails.zip}
+							onChange={handleInputChange}
+						/>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
 };
 
 export default AddressForm;

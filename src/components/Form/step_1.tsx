@@ -30,9 +30,6 @@ const Step1 = () => {
     selectedDate: dayjs().format("MM/DD/YYYY"),
     time: dayjs().format("h:mm A"),
     address: "",
-    aptSuite: "",
-    city: "",
-    zipCode: "",
   });
 
 	return (
