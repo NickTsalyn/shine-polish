@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useCallback, useEffect } from "react";
 import useFormStorage from "@/hooks/formStorage";
 import BasicSelect from "../UI/Select";
@@ -19,121 +20,101 @@ interface StepProps {
 
 const ContactNumberMask = "(000) 000-0000";
 
-const Step3: React.FC<StepProps> = ({
-  control,
-  setStepCompleted,
-}) => {
-  const { form, handleCustomChange, handleSelectChange } = useFormStorage({
-    areas: "",
-    bedroom: 1,
-    bathroom: 1,
-    frequency: "",
-    homeAccess: "",
-    aboutUs: "",
-    specialInstructions: "",
-    extras: [],
-    services: "",
-    name: "",
-    surname: "",
-    email: "",
-    phone: "",
-    remindersChecked: false,
-    selectedDate: dayjs().format("MM/DD/YYYY"),
-    time: dayjs().format("h:mm A"),
-    address: "",
-    aptSuite: "",
-    city: "",
-    zipCode: "",
-  });
+const Step3: React.FC<StepProps> = ({ control, setStepCompleted }) => {
+  const { form, handleCustomChange, handleSelectChange } = useFormStorage();
 
   const { setError, clearErrors, trigger } = useFormContext();
   const watchedForm = useWatch({ control });
 
-  const validateField = (name: string, value: string) => {
-    switch (name) {
-      case "name":
-        if (!value.trim()) {
-          setError(name, {
-            type: "required",
-            message: "First name is required",
-          });
-        } else if (value.length < 2) {
-          setError(name, {
-            type: "minLength",
-            message: "First name must be at least 2 characters",
-          });
-        }
-          else {
-          clearErrors(name);
-        }
-        break;
-      case "surname":
-        if (!value.trim()) {
-          setError(name, {
-            type: "required",
-            message: "Surname is required",            
-          });
-        } else if (value.length < 3) {
-          setError(name, {
-            type: "minLength",
-            message: "Surname must be at least 3 characters",          
-          });
-        }
-          else {
-          clearErrors(name);
-        }
-        break;
-      case "email":
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-          setError(name, {
-            type: "pattern",
-            message: "Invalid email format",
-          });
-        } else {
-          clearErrors(name);
-        }
-        break;
-      case "phone":
-        if (!/^\(\d{3}\) \d{3}-\d{4}$/.test(value)) {
-          setError(name, {
-            type: "pattern",
-            message: "Invalid phone number format",
-          });
-        } else {
-          clearErrors(name);
-        }
-         break;
-      // case "homeAccess":
-      //   if (!value) {
-      //     setError(name, {
-      //       type: "required",
-      //       message: "Please select an option",
-      //     });
-      //   } else {
-      //     clearErrors(name);
-      //   }
-      //   break;
-      // case "aboutUs":
-      //   if (!value) {
-      //     setError(name, {
-      //       type: "required",
-      //       message: "Please select an option",
-      //     });
-      //   } else {
-      //     clearErrors(name);
-      //   }
-      //   break;
-      default:
-        break;
-    }
-  };
-
-  //  const validateField = async (fieldName:string) =>{
-  //   const result = await trigger(fieldName);
-  //  }
-  // const validateField = async (fieldName: string) => {
-  //   await trigger(fieldName);
-  // };
+  const validateField = useCallback(
+    (name: string, value: string) => {
+      switch (name) {
+        case "name":
+          if (value === "") {
+            setError(name, {
+              type: "required",
+              message: "First name is required",
+            });
+          } else if (value.length < 2) {
+            setError(name, {
+              type: "minLength",
+              message: "First name must be at least 2 characters",
+            });
+          } else {
+            clearErrors(name);
+          }
+          break;
+        case "surname":
+          if (value === "") {
+            setError(name, {
+              type: "required",
+              message: "Surname is required",
+            });
+          } else if (value.length < 3) {
+            setError(name, {
+              type: "minLength",
+              message: "Surname must be at least 3 characters",
+            });
+          } else {
+            clearErrors(name);
+          }
+          break;
+        case "email":
+          if (value === "") {
+            setError(name, {
+              type: "required",
+              message: "Email is required",
+            });
+          } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+            setError(name, {
+              type: "pattern",
+              message: "Invalid email format",
+            });
+          } else {
+            clearErrors(name);
+          }
+          break;
+        case "phone":
+          if (value === "") {
+            setError(name, {
+              type: "required",
+              message: "Phone number is required",
+            });
+          } else if (!/^\(\d{3}\) \d{3}-\d{4}$/.test(value)) {
+            setError(name, {
+              type: "pattern",
+              message: "Invalid phone number format",
+            });
+          } else {
+            clearErrors(name);
+          }
+          break;
+        case "homeAccess":
+          if (value === "") {
+            setError(name, {
+              type: "required",
+              message: "Please select an option",
+            });
+          } else {
+            clearErrors(name);
+          }
+          break;
+        case "aboutUs":
+          if (value === "") {
+            setError(name, {
+              type: "required",
+              message: "Please select an option",
+            });
+          } else {
+            clearErrors(name);
+          }
+          break;
+        default:
+          break;
+      }
+    },
+    [setError, clearErrors]
+  );
 
   const handleFieldChange = (name: string, value: string) => {
     handleCustomChange(name, value);
@@ -144,22 +125,40 @@ const Step3: React.FC<StepProps> = ({
     handleCustomChange("remindersChecked", !form.remindersChecked);
   };
 
-const validateSteps = useCallback( async () => {
-  const fields = ["name", "surname", "email", "phone"];
-  const validationResults = await Promise.all(fields.map(field => trigger(field)));
-  
-  return validationResults.every(result => result);
-}, [trigger]);
+  // const validateValues = useCallback(async () => {
+  //   const fields = [
+  //     "name",
+  //     "surname",
+  //     "email",
+  //     "phone",
+  //     "homeAccess",
+  //     "aboutUs",
+  //   ];
+  //   const validationResults = await Promise.all(
+  //     fields.map((field) => trigger(field))
+  //   );
 
-  useEffect(() => {
-    const checkStepCompletion = async () => {
-      const isValid = await validateSteps();
-      if (isValid && form.homeAccess && form.aboutUs) {
-       setStepCompleted(3);
-      }
-    
-     checkStepCompletion();
-  }}, [form.aboutUs, form.homeAccess, setStepCompleted, validateSteps, watchedForm]);
+  //   return validationResults.every((result) => result);
+  // }, [trigger]);
+
+  // useEffect(() => {
+  //   const checkStepCompletion = async () => {
+  //     const isValid = await validateValues();
+  //     if (isValid) {
+  //       setStepCompleted(3);
+  //     }
+
+  //     checkStepCompletion();
+  //   };
+  // }, [validateValues, watchedForm, setStepCompleted]);
+
+  const isStepCompleted =
+  form.name && form.surname && form.email && form.phone && form.homeAccess && form.aboutUs;
+useEffect(() => {
+  if (isStepCompleted) {
+    setStepCompleted(3);
+  }
+}, [isStepCompleted, setStepCompleted]);
 
   return (
     <div className="py-4 md:py-6 lg:py-9 xl:pl-[60px] xl:pr-[150px] flex flex-col gap-6">
@@ -175,8 +174,9 @@ const validateSteps = useCallback( async () => {
             <div className="md:w-1/2 md:h-[40px] lg:w-3/5 relative mb-4">
               <Controller
                 name="name"
-                control={control}                
-                render={({ field, fieldState: { error }}) => (
+                control={control}
+                rules={{ required: "This field is required" }}
+                render={({ field, fieldState: { error } }) => (
                   <>
                     <Input
                       {...field}
@@ -200,8 +200,9 @@ const validateSteps = useCallback( async () => {
             <div className="md:w-1/2 lg:w-2/5 relative">
               <Controller
                 name="surname"
-                control={control}               
-                render={({ field, fieldState: { error }}) => (
+                control={control}
+                rules={{ required: "This field is required" }}
+                render={({ field, fieldState: { error } }) => (
                   <>
                     <Input
                       {...field}
@@ -229,6 +230,7 @@ const validateSteps = useCallback( async () => {
               <Controller
                 name="email"
                 control={control}
+                rules={{ required: "This field is required" }}
                 render={({ field, fieldState: { error } }) => (
                   <>
                     <Input
@@ -254,6 +256,7 @@ const validateSteps = useCallback( async () => {
               <Controller
                 name="phone"
                 control={control}
+                rules={{ required: "This field is required" }}
                 render={({ field, fieldState: { error } }) => (
                   <>
                     <IMaskInput
@@ -290,7 +293,7 @@ const validateSteps = useCallback( async () => {
                 <Controller
                   name="homeAccess"
                   control={control}
-                  rules={{ required: "This field is required" }}
+                  rules={{ required: "Please select an option" }}
                   render={({ field, fieldState: { error } }) => (
                     <>
                       <BasicSelect
@@ -305,7 +308,7 @@ const validateSteps = useCallback( async () => {
                         }}
                       />
                       {error && (
-                        <p className="text-secondary text-xs absolute bottom-[-16px]">
+                        <p className="text-secondary text-xs ">
                           {error.message}
                         </p>
                       )}
@@ -317,7 +320,7 @@ const validateSteps = useCallback( async () => {
                 <Controller
                   name="aboutUs"
                   control={control}
-                  rules={{ required: "This field is required" }}
+                  rules={{ required: "Please select an option" }}
                   render={({ field, fieldState: { error } }) => (
                     <>
                       <BasicSelect
@@ -332,7 +335,7 @@ const validateSteps = useCallback( async () => {
                         }}
                       />
                       {error && (
-                        <p className="text-secondary text-xs absolute bottom-[-16px]">
+                        <p className="text-secondary text-xs absolute ">
                           {error.message}
                         </p>
                       )}
@@ -348,13 +351,20 @@ const validateSteps = useCallback( async () => {
               cleaning possible?
             </h2>
             <div className="h-[124px] md:h-[220px] lg:h-[250px]">
-              <Textarea
-                placeholder="Special Instructions*"
-                value={form.specialInstructions}
+              <Controller
                 name="specialInstructions"
-                onChange={(e) =>
-                  handleFieldChange("specialInstructions", e.target.value)
-                }
+                control={control}
+                render={({ field }) => (
+                  <Textarea
+                    {...field}
+                    placeholder="Special Instructions*"
+                    value={form.specialInstructions}
+                    name="specialInstructions"
+                    onChange={(e) =>
+                      handleFieldChange("specialInstructions", e.target.value)
+                    }
+                  />
+                )}
               />
             </div>
           </div>

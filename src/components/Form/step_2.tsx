@@ -14,28 +14,7 @@ interface StepProps {
 
 const Step2: React.FC<StepProps> = ({ control, setStepCompleted }) => {
   const { form, handleRadioChange, handleCheckboxChange, setForm } =
-    useFormStorage({
-      areas: "",
-      bedroom: 1,
-      bathroom: 1,
-      frequency: "",
-      homeAccess: "",
-      aboutUs: "",
-      specialInstructions: "",
-      extras: [],
-      services: "",
-      name: "",
-      surname: "",
-      email: "",
-      phone: "",
-      remindersChecked: false,
-      selectedDate: dayjs().format("MM/DD/YYYY"),
-      time: dayjs().format("h:mm A"),
-      address: "",
-      aptSuite: "",
-      city: "",
-      zipCode: "",
-    });
+    useFormStorage();
 
   const [disable, setDisable] = useState(false);
 

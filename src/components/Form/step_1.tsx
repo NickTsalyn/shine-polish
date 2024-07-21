@@ -20,32 +20,10 @@ import { useEffect } from "react";
 interface StepProps {
   control: Control<FormValues>;
   setStepCompleted: (step: number) => void;
-  
 }
 
 const Step1: React.FC<StepProps> = ({ control, setStepCompleted }) => {
-  const { form, handleSelectChange, handleRadioChange } = useFormStorage({
-    areas: "",
-    bedroom: 1,
-    bathroom: 1,
-    frequency: "",
-    homeAccess: "",
-    aboutUs: "",
-    specialInstructions: "",
-    extras: [],
-    services: "",
-    name: "",
-    surname: "",
-    email: "",
-    phone: "",
-    remindersChecked: false,
-    selectedDate: dayjs().format("MM/DD/YYYY"),
-    time: dayjs().format("h:mm A"),
-    address: "",
-    aptSuite: "",
-    city: "",
-    zipCode: "",
-  });
+  const { form, handleSelectChange, handleRadioChange } = useFormStorage();
 
   const isStepCompleted =
     form.areas && form.bedroom && form.bathroom && form.frequency;
@@ -63,7 +41,7 @@ const Step1: React.FC<StepProps> = ({ control, setStepCompleted }) => {
           <Controller
             name="areas"
             control={control}
-            rules={{ required: "This field is required" }}
+            rules={{ required: "Please select an option" }}
             render={({ field }) => (
               <BasicSelect
                 {...field}
@@ -99,7 +77,7 @@ const Step1: React.FC<StepProps> = ({ control, setStepCompleted }) => {
           <Controller
             name="bedroom"
             control={control}
-            rules={{ required: "This field is required" }}
+            rules={{ required: "Please select an option" }}
             render={({ field }) => (
               <BasicSelect
                 {...field}
@@ -117,7 +95,7 @@ const Step1: React.FC<StepProps> = ({ control, setStepCompleted }) => {
           <Controller
             name="bathroom"
             control={control}
-            rules={{ required: "This field is required" }}
+            rules={{ required: "Please select an option" }}
             render={({ field }) => (
               <BasicSelect
                 {...field}

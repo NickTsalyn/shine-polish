@@ -1,7 +1,7 @@
 "use client";
 
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
-import { Dayjs } from "dayjs";
+import dayjs, { Dayjs } from "dayjs";
 interface Form {
   [key: string]: string | number | boolean | string[] | Dayjs | null | any;
 }
@@ -18,10 +18,32 @@ interface HandlerReturn {
   setStepCompleted: (step: number) => void;
 }
 
-const useFormStorage = (initialForm: Form, formKey = "form"): HandlerReturn => {
+const initialForm = {
+  areas: "",
+  bedroom: 1,
+  bathroom: 1,
+  frequency: "",
+  homeAccess: "",
+  aboutUs: "",
+  specialInstructions: "",
+  extras: [],
+  services: "",
+  name: "",
+  surname: "",
+  email: "",
+  phone: "",
+  remindersChecked: false,
+  selectedDate: dayjs().format("MM/DD/YYYY"),
+  time: dayjs().format("h:mm A"),
+  address: "",
+  aptSuite: "",
+  city: "",
+  zipCode: "",
+};
+const useFormStorage = ( formKey = "form"): HandlerReturn => {
   const [form, setForm] = useState(() => {
     if (typeof window !== "undefined") {
-      const storedForm = localStorage.getItem("form");
+      const storedForm = localStorage.getItem(formKey);
       return storedForm ? JSON.parse(storedForm) : initialForm;
     } else {
       return initialForm;
@@ -31,8 +53,8 @@ const useFormStorage = (initialForm: Form, formKey = "form"): HandlerReturn => {
   const [completedSteps, setCompletedSteps] = useState<number[]>([]);
 
   useEffect(() => {
-    localStorage.setItem("form", JSON.stringify(form));
-  }, [form]);
+    localStorage.setItem(formKey, JSON.stringify(form));
+  }, [form, formKey]);
 
   const handleSelectChange = (name: string, value: any) => {
     setForm((prevForm: Form) => ({ ...prevForm, [name]: value }));
@@ -66,7 +88,7 @@ const useFormStorage = (initialForm: Form, formKey = "form"): HandlerReturn => {
       const newCompletedSteps = [...completedSteps, step];
       setCompletedSteps(newCompletedSteps);
       localStorage.setItem(
-        `${formKey}_steps`,
+        `completedSteps`,
         JSON.stringify(newCompletedSteps)
       );
     }

@@ -29,28 +29,8 @@ const BookingStep = ({ params }: BookingStepProps) => {
   const stepNumber = parseInt(step.replace("step_", ""), 10) - 1;
   const [activeStep, setActiveStep] = useState(stepNumber);
 
-  const { form, completedSteps, setStepCompleted } = useFormStorage({
-    areas: "",
-    bedroom: 1,
-    bathroom: 1,
-    frequency: "",
-    homeAccess: "",
-    aboutUs: "",
-    specialInstructions: "",
-    extras: [],
-    services: "",
-    name: "",
-    surname: "",
-    email: "",
-    phone: "",
-    remindersChecked: false,
-    selectedDate: dayjs().format("MM/DD/YYYY"),
-    time: dayjs().format("h:mm A"),
-    address: "",
-    aptSuite: "",
-    city: "",
-    zipCode: "",
-  });
+  const { form, completedSteps, setStepCompleted } = useFormStorage(
+);
 
   useEffect(() => {
     setActiveStep(stepNumber);
