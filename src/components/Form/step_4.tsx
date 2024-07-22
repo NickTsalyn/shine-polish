@@ -9,20 +9,21 @@ import DateTimeCleaning from "../DateTimeCleaning";
 import AddressForm from "../AddressForm";
 
 const Step4: React.FC = () => {
-	const { form, handleCustomChange } = useFormStorage({
-		areas: "",
-		bedroom: 1,
-		bathroom: 1,
-		frequency: "",
-		homeAccess: "",
-		aboutUs: "",
-		specialInstructions: "",
-		extras: [],
-		services: "",
-		selectedDate: dayjs().format("MM/DD/YYYY"),
-		time: dayjs().format("h:mm A"),
-		address: "",
-	}
+	const { form, handleCustomChange } = useFormStorage(
+	// 	{
+	// 	areas: "",
+	// 	bedroom: 1,
+	// 	bathroom: 1,
+	// 	frequency: "",
+	// 	homeAccess: "",
+	// 	aboutUs: "",
+	// 	specialInstructions: "",
+	// 	extras: [],
+	// 	services: "",
+	// 	selectedDate: dayjs().format("MM/DD/YYYY"),
+	// 	time: dayjs().format("h:mm A"),
+	// 	address: "",
+	// }
 	);
 	const handleDateChange = (date: Dayjs | null): void => {
 		handleCustomChange("selectedDate", date ? date.format("MM/DD/YYYY") : null);

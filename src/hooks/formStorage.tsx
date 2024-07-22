@@ -2,12 +2,19 @@
 
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import dayjs, { Dayjs } from "dayjs";
+import { SelectChangeEvent } from "@mui/material";
 interface Form {
   [key: string]: string | number | boolean | string[] | Dayjs | null | any;
 }
 
 interface HandlerReturn {
   form: Form;
+  handleInputChange: (
+    event:
+      | ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+      | SelectChangeEvent<string | number>
+      | FormEvent<HTMLFormElement>
+  ) => void;
   handleRadioChange: (name: string, value: string | boolean) => void;
   handlePhoneChange: (value: string) => void;
   handleCheckboxChange: (name: string, value: string) => void;
@@ -56,6 +63,19 @@ const useFormStorage = ( formKey = "form"): HandlerReturn => {
     localStorage.setItem(formKey, JSON.stringify(form));
   }, [form, formKey]);
 
+  const handleInputChange = (
+    event:
+      | ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+      | SelectChangeEvent<string | number>
+      | FormEvent<HTMLFormElement>
+  ) => {
+    const { name, value, type, checked } = event.target as HTMLInputElement;
+    const newValue = type === "checkbox" ? checked : value;
+    const updatedForm = { ...form, [name]: newValue };
+    setForm(updatedForm);
+    localStorage.setItem(formKey, JSON.stringify(updatedForm));
+  };
+
   const handleSelectChange = (name: string, value: any) => {
     setForm((prevForm: Form) => ({ ...prevForm, [name]: value }));
   };
@@ -98,6 +118,7 @@ const useFormStorage = ( formKey = "form"): HandlerReturn => {
     form,
     completedSteps,
     setForm,
+    handleInputChange,
     handleRadioChange,
     handleCheckboxChange,
     handleCustomChange,

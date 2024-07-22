@@ -117,8 +117,8 @@ const Step3: React.FC<StepProps> = ({ control, setStepCompleted }) => {
   );
 
   const handleFieldChange = (name: string, value: string) => {
-    handleCustomChange(name, value);
     validateField(name, value);
+    handleCustomChange(name, value);    
   };
 
   const handleCheckBoxChange = () => {
@@ -184,9 +184,14 @@ useEffect(() => {
                       type="text"
                       placeholder="First Name*"
                       style="form-input"
-                      onChange={(e) =>
-                        handleFieldChange("name", e.target.value)
-                      }
+                      onChange={(e) => {
+                        const { value } = e.target as HTMLInputElement;
+                        field.onChange(value);
+                        handleFieldChange("name", value)
+                      }}
+                      // onChange={(e) =>
+                      //   handleFieldChange("name", e.target.value)
+                      // }
                     />
                     {error && (
                       <p className="text-secondary text-xs  absolute left-2 bottom-[-15px]">
@@ -210,9 +215,14 @@ useEffect(() => {
                       type="text"
                       placeholder="Last Name*"
                       style="form-input"
-                      onChange={(e) =>
-                        handleFieldChange("surname", e.target.value)
-                      }
+                      onChange={(e) => {
+                        const { value } = e.target as HTMLInputElement;
+                        field.onChange(value);
+                        handleFieldChange("surname", value)
+                      }}
+                      // onChange={(e) =>
+                      //   handleFieldChange("surname", e.target.value)
+                      // }
                     />
                     {error && (
                       <p className="text-secondary text-xs  absolute left-2 bottom-[-15px]">
@@ -239,9 +249,14 @@ useEffect(() => {
                       type="email"
                       placeholder="Email*"
                       style="form-input"
-                      onChange={(e) =>
-                        handleFieldChange("email", e.target.value)
-                      }
+                      onChange={(e) => {
+                        const { value } = e.target as HTMLInputElement;
+                        field.onChange(value);
+                        handleFieldChange("email", value)
+                      }}
+                      // onChange={(e) =>
+                      //   handleFieldChange("email", e.target.value)
+                      // }
                     />
                     {error && (
                       <p className="text-secondary text-xs  absolute left-2 bottom-[-6px] lg:bottom-[-16px]">
@@ -266,8 +281,9 @@ useEffect(() => {
                       placeholder="(000) 000-0000"
                       value={form.phone}
                       onChange={(e) => {
-                        const target = e.target as HTMLInputElement;
-                        handleFieldChange("phone", target.value);
+                        const {value} = e.target as HTMLInputElement;
+                        field.onChange(value);
+                        handleFieldChange("phone", value);
                       }}
                     />
                     {error && (
@@ -360,9 +376,14 @@ useEffect(() => {
                     placeholder="Special Instructions*"
                     value={form.specialInstructions}
                     name="specialInstructions"
-                    onChange={(e) =>
-                      handleFieldChange("specialInstructions", e.target.value)
-                    }
+                    onChange={(e) => {
+                      const { value } = e.target ;
+                      field.onChange(value);
+                      handleFieldChange("specialInstructions", value)
+                    }}
+                    // onChange={(e) =>
+                    //   handleFieldChange("specialInstructions", e.target.value)
+                    // }
                   />
                 )}
               />
