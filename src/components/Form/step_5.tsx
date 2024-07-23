@@ -17,7 +17,7 @@ const Step5 = () => {
  return (
   <div className=" py-8 flex flex-col gap-6 lg:flex-row lg:flex-wrap justify-between">
    {/* question */}
-   <div className=" flex flex-col gap-6 lg:min-w-[600px] mb-[40px] lg:mb-0 xl:w-[900px]">
+   <div className=" flex flex-col gap-6 lg:min-w-[500px] lg:max-w-[600px] w-full mb-[40px] lg:mb-0 xl:w-[900px]">
     <h2 className=" text-2xl md:text-4xl font-medium">Have you any question?</h2>
     <p className=" body text-subtext ">
      If you have a question about our company, ask it in the next field. We’ll answer to you on email{' '}
@@ -46,18 +46,18 @@ const Step5 = () => {
        value={form.discountCode as string}
       />
      </div>
-     <div className="flex justify-center md:w-1/4 lg:w-[500px] lg:justify-end">
+     <div className="flex justify-center md:w-1/4 lg:w-[500px] lg:justify-end md:h-[44px]">
       <Button
        type="submit"
        style="apply-btn-light"
       >
-       <span className=" text-accent text-base leading-8 ">Accept</span>
+       <span className=" text-accent text-base leading-8  ">Accept</span>
       </Button>
      </div>
     </div>
    </form>
    {/* tips */}
-   <div className="lg:relative flex flex-col md:flex-row  md:w-full md:justify-between lg:flex-row lg:items-end lg:min-w-[600px] lg:max-w-[800px] lg:gap-8 mb-[40px] lg:mb-0 xl:w-[900px]">
+   <div className="lg:relative flex flex-col md:flex-row  md:w-full md:justify-between lg:flex-row lg:items-end lg:w-[600px]  lg:gap-8 mb-[40px] lg:mb-0 xl:w-[900px]">
     <div className=" hidden md:flex lg:w-[500px] lg:absolute lg:left-0 lg:bottom-0  ">
      <DiscontImg />
     </div>

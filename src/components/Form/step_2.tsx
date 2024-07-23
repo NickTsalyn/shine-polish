@@ -21,9 +21,6 @@ const Step2 = () => {
   selectedDate: dayjs().format('MM/DD/YYYY'),
   time: dayjs().format('h:mm A'),
   address: '',
-  aptSuite: '',
-  city: '',
-  zipCode: '',
  });
 
  const [disable, setDisable] = useState(false);

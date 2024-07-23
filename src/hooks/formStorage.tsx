@@ -51,6 +51,7 @@ const useFormStorage = (initialForm: Form, formKey = 'form'): HandlerReturn => {
   setForm(updatedForm);
   localStorage.setItem(formKey, JSON.stringify(updatedForm));
  };
+
  const handleCustomChange = (name: string, value: any) => {
   const updatedForm = {...form, [name]: value};
   setForm(updatedForm);
