@@ -8,7 +8,7 @@ import { loadStripe } from "@stripe/stripe-js";
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY as string);
 
 const Step6 = () => {
-	const { form } = useFormStorage({});
+	const { form } = useFormStorage();
 	const [subTotal, setSubTotal] = useState(0);
 	const [total, setTotal] = useState(0);
 
