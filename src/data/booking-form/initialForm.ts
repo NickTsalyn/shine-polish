@@ -1,3 +1,4 @@
+"use client";
 import dayjs from "dayjs";
 
 export const initialForm = {
@@ -14,12 +15,8 @@ export const initialForm = {
     surname: "",
     email: "",
     phone: "",
-    remindersChecked: false,
+    remindersChecked: false,   
     selectedDate: dayjs().format("MM/DD/YYYY"),
     time: dayjs().format("h:mm A"),
-    address: "",
-    aptSuite: "",
-    city: "",
-    zipCode: "",
-    completedSteps: [],
-}
+    address: {},    
+}  

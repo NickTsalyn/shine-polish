@@ -1,3 +1,5 @@
+import { Dayjs } from "dayjs";
+
 interface Item {
   title: string;
   description: string;
@@ -12,7 +14,7 @@ interface Services {
 
 type Paragraph = {
   p: string;
-};
+}
 
 export interface RoomService {
   title: string;
@@ -22,6 +24,7 @@ export interface RoomService {
   frequencies: Services[];
   need: Services[];
 }
+
 export interface FormValues {
   areas: string;
   bedroom: number;
@@ -39,9 +42,9 @@ export interface FormValues {
   remindersChecked: boolean;
   selectedDate: string;
   time: string;
-  address: string;
-  aptSuite: string;
-  city: string;
-  zipCode: string;
-  completedSteps: number[];
+  address: Record<string, never>;
+}
+
+export interface Form {
+  [key: string]: string | number | boolean | string[] | Dayjs | null | any | object;
 }

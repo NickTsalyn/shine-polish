@@ -5,7 +5,7 @@ import useFormStorage from "@/hooks/formStorage";
 import BasicSelect from "../UI/Select";
 import Textarea from "../UI/Textarea";
 import { aboutUs, homeAccess } from "@/data/booking-form/step_3";
-import dayjs from "dayjs";
+// import dayjs from "dayjs";
 import Input from "../UI/Input";
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
@@ -118,7 +118,7 @@ const Step3: React.FC<StepProps> = ({ control, setStepCompleted }) => {
 
   const handleFieldChange = (name: string, value: string) => {
     validateField(name, value);
-    handleCustomChange(name, value);    
+    handleCustomChange(name, value);
   };
 
   const handleCheckBoxChange = () => {
@@ -153,12 +153,17 @@ const Step3: React.FC<StepProps> = ({ control, setStepCompleted }) => {
   // }, [validateValues, watchedForm, setStepCompleted]);
 
   const isStepCompleted =
-  form.name && form.surname && form.email && form.phone && form.homeAccess && form.aboutUs;
-useEffect(() => {
-  if (isStepCompleted) {
-    setStepCompleted(3);
-  }
-}, [isStepCompleted, setStepCompleted]);
+    form.name &&
+    form.surname &&
+    form.email &&
+    form.phone &&
+    form.homeAccess &&
+    form.aboutUs;
+
+  useEffect(() => {
+    isStepCompleted ? setStepCompleted(3) : setStepCompleted(2);
+    // }
+  }, [isStepCompleted, setStepCompleted]);
 
   return (
     <div className="py-4 md:py-6 lg:py-9 xl:pl-[60px] xl:pr-[150px] flex flex-col gap-6">
@@ -187,11 +192,8 @@ useEffect(() => {
                       onChange={(e) => {
                         const { value } = e.target as HTMLInputElement;
                         field.onChange(value);
-                        handleFieldChange("name", value)
+                        handleFieldChange("name", value);
                       }}
-                      // onChange={(e) =>
-                      //   handleFieldChange("name", e.target.value)
-                      // }
                     />
                     {error && (
                       <p className="text-secondary text-xs  absolute left-2 bottom-[-15px]">
@@ -218,11 +220,8 @@ useEffect(() => {
                       onChange={(e) => {
                         const { value } = e.target as HTMLInputElement;
                         field.onChange(value);
-                        handleFieldChange("surname", value)
+                        handleFieldChange("surname", value);
                       }}
-                      // onChange={(e) =>
-                      //   handleFieldChange("surname", e.target.value)
-                      // }
                     />
                     {error && (
                       <p className="text-secondary text-xs  absolute left-2 bottom-[-15px]">
@@ -252,11 +251,8 @@ useEffect(() => {
                       onChange={(e) => {
                         const { value } = e.target as HTMLInputElement;
                         field.onChange(value);
-                        handleFieldChange("email", value)
+                        handleFieldChange("email", value);
                       }}
-                      // onChange={(e) =>
-                      //   handleFieldChange("email", e.target.value)
-                      // }
                     />
                     {error && (
                       <p className="text-secondary text-xs  absolute left-2 bottom-[-6px] lg:bottom-[-16px]">
@@ -281,7 +277,7 @@ useEffect(() => {
                       placeholder="(000) 000-0000"
                       value={form.phone}
                       onChange={(e) => {
-                        const {value} = e.target as HTMLInputElement;
+                        const { value } = e.target as HTMLInputElement;
                         field.onChange(value);
                         handleFieldChange("phone", value);
                       }}
@@ -377,13 +373,10 @@ useEffect(() => {
                     value={form.specialInstructions}
                     name="specialInstructions"
                     onChange={(e) => {
-                      const { value } = e.target ;
+                      const { value } = e.target;
                       field.onChange(value);
-                      handleFieldChange("specialInstructions", value)
+                      handleFieldChange("specialInstructions", value);
                     }}
-                    // onChange={(e) =>
-                    //   handleFieldChange("specialInstructions", e.target.value)
-                    // }
                   />
                 )}
               />

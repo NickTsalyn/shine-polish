@@ -28,7 +28,6 @@ const BookingStep = ({ params }: BookingStepProps) => {
   const step = params.step || "1";
   const stepNumber = parseInt(step.replace("step_", ""), 10) - 1;
   const [activeStep, setActiveStep] = useState(stepNumber);
-
   const { form, completedSteps, setStepCompleted } = useFormStorage(
 );
 
@@ -43,6 +42,13 @@ const BookingStep = ({ params }: BookingStepProps) => {
 
   const validateStep = async () => {
     const result = await methods.trigger();
+    if (activeStep === 3) { // Step4
+      const todayDate = dayjs().format("MM/DD/YYYY");
+      const isAddressComplete = form.address.street && form.address.city && form.address.state && form.address.aptSuite && form.address.zip;
+      if (!isAddressComplete || !form.selectedDate || form.selectedDate === todayDate ) {
+        return false;
+      }
+    }
     return result;
   };
 
@@ -54,8 +60,9 @@ const BookingStep = ({ params }: BookingStepProps) => {
 
   const handleNext = async () => {
     const isValid = await validateStep();
-    if (!isValid) return;
-
+    if (!isValid) {
+      return;
+    } 
     const nextStep = activeStep + 1;
     setActiveStep(nextStep);
     setStepCompleted(activeStep);

@@ -28,9 +28,11 @@ const Step1: React.FC<StepProps> = ({ control, setStepCompleted }) => {
   const isStepCompleted =
     form.areas && form.bedroom && form.bathroom && form.frequency;
   useEffect(() => {
-    if (isStepCompleted) {
-      setStepCompleted(1);
-    }
+    isStepCompleted ? setStepCompleted(1) : setStepCompleted(0);
+
+    // if (isStepCompleted) {
+    //   setStepCompleted(1);
+    // }
   }, [isStepCompleted, setStepCompleted]);
 
   return (

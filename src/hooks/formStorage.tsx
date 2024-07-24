@@ -1,11 +1,10 @@
 "use client";
 
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
-import dayjs, { Dayjs } from "dayjs";
+import { Dayjs } from "dayjs";
 import { SelectChangeEvent } from "@mui/material";
-interface Form {
-  [key: string]: string | number | boolean | string[] | Dayjs | null | any;
-}
+import { initialForm } from "@/data/booking-form/initialForm";
+import { Form } from "@/types/interfaces";
 
 interface HandlerReturn {
   form: Form;
@@ -25,32 +24,10 @@ interface HandlerReturn {
   setStepCompleted: (step: number) => void;
 }
 
-const initialForm = {
-  areas: "",
-  bedroom: 1,
-  bathroom: 1,
-  frequency: "",
-  homeAccess: "",
-  aboutUs: "",
-  specialInstructions: "",
-  extras: [],
-  services: "",
-  name: "",
-  surname: "",
-  email: "",
-  phone: "",
-  remindersChecked: false,
-  selectedDate: dayjs().format("MM/DD/YYYY"),
-  time: dayjs().format("h:mm A"),
-  address: "",
-  aptSuite: "",
-  city: "",
-  zipCode: "",
-};
-const useFormStorage = ( formKey = "form"): HandlerReturn => {
+const useFormStorage = (): HandlerReturn => {
   const [form, setForm] = useState(() => {
     if (typeof window !== "undefined") {
-      const storedForm = localStorage.getItem(formKey);
+      const storedForm = localStorage.getItem("form");
       return storedForm ? JSON.parse(storedForm) : initialForm;
     } else {
       return initialForm;
@@ -60,20 +37,28 @@ const useFormStorage = ( formKey = "form"): HandlerReturn => {
   const [completedSteps, setCompletedSteps] = useState<number[]>([]);
 
   useEffect(() => {
-    localStorage.setItem(formKey, JSON.stringify(form));
-  }, [form, formKey]);
+    localStorage.setItem("form", JSON.stringify(form));
+  }, [form]);
 
   const handleInputChange = (
-    event:
+    e:
       | ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
       | SelectChangeEvent<string | number>
       | FormEvent<HTMLFormElement>
   ) => {
-    const { name, value, type, checked } = event.target as HTMLInputElement;
+    const { name, value, type, checked } = e.target as HTMLInputElement;
     const newValue = type === "checkbox" ? checked : value;
-    const updatedForm = { ...form, [name]: newValue };
-    setForm(updatedForm);
-    localStorage.setItem(formKey, JSON.stringify(updatedForm));
+    if (name === "aptSuite") {
+      setForm((prevForm: Form) => ({
+        ...prevForm,
+        address: {
+          ...prevForm.address,
+          aptSuite: newValue,
+        },
+      }));
+    } else {
+      setForm((prevForm: Form) => ({ ...prevForm, [name]: newValue }));
+    }
   };
 
   const handleSelectChange = (name: string, value: any) => {
@@ -94,23 +79,17 @@ const useFormStorage = ( formKey = "form"): HandlerReturn => {
   };
 
   const handleCustomChange = (name: string, value: any) => {
-    const updatedForm = { ...form, [name]: value };
-    setForm(updatedForm);
-    localStorage.setItem(formKey, JSON.stringify(updatedForm));
+    setForm((prevForm: Form) => ({ ...prevForm, [name]: value }));
   };
   const handlePhoneChange = (value: string) => {
-    const updatedForm = { ...form, phone: value };
-    localStorage.setItem(formKey, JSON.stringify(updatedForm));
+    setForm((prevForm: Form) => ({ ...prevForm, phone: value }));
   };
 
   const setStepCompleted = (step: number) => {
     if (!completedSteps.includes(step)) {
       const newCompletedSteps = [...completedSteps, step];
       setCompletedSteps(newCompletedSteps);
-      localStorage.setItem(
-        `completedSteps`,
-        JSON.stringify(newCompletedSteps)
-      );
+      localStorage.setItem("completedSteps", JSON.stringify(newCompletedSteps));
     }
   };
 
