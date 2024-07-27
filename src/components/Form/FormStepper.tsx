@@ -1,6 +1,7 @@
 "use client";
 
 import { ReactNode } from "react";
+import CheckIcon from "@mui/icons-material/Check";
 import Box from "@mui/material/Box";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
@@ -45,13 +46,17 @@ const FormStepper = ({
                   onClick={() => handleStep(index)}
                   style={{
                     background:
-                      activeStep >= index
+                      activeStep >= index 
                         ? "linear-gradient(180deg, #006778 0%, #00BFDE 100%)"
                         : "linear-gradient(180deg, rgba(0, 103, 120, 0.20) 0%, rgba(0, 191, 222, 0.20) 100%)",
                     color: activeStep >= index ? "#fff" : "rgba(0, 0, 0, 0.2)",
                   }}
                 >
-                  {step}
+                  {activeStep > index ? (
+                    <CheckIcon className="size-[14px] md:size-4 lg:size-6" />
+                  ) : (
+                    step
+                  )}
                 </div>
               )}
             />

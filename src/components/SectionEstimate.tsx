@@ -6,7 +6,7 @@ import minus from "../../public/icons/logo/minus.svg";
 import plus from "../../public/icons/logo/plus.svg";
 
 import img from "../../public/images/young_it_specialist_with_a_laptop-min.png";
-import getPrice from "../../formula";
+import getPrice from "../helpers/formula";
 import { useRouter } from "next/navigation";
 
 const rooms = [
