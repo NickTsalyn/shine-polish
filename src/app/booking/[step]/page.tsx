@@ -5,15 +5,16 @@ import { useForm, FormProvider } from "react-hook-form";
 import { useRouter } from "next/navigation";
 
 import FormStepper from "@/components/Form/FormStepper";
-import Step1 from "@/components/Form/step_1";
-import Step2 from "@/components/Form/step_2";
-import Step3 from "@/components/Form/step_3";
-import Step4 from "@/components/Form/step_4";
-import Step5 from "@/components/Form/step_5";
-import Step6 from "@/components/Form/step_6";
+const Step1 = dynamic(() => import('@/components/Form/step_1'));
+const Step2 = dynamic(() => import('@/components/Form/step_2'));
+const Step3 = dynamic(() => import('@/components/Form/step_3'));
+const Step4 = dynamic(() => import('@/components/Form/step_4'));
+const Step5 = dynamic(() => import('@/components/Form/step_5'));
+const Step6 = dynamic(() => import('@/components/Form/step_6'));
 import dayjs from "dayjs";
 import useFormStorage from "@/hooks/formStorage";
 import { FormValues } from "@/types/interfaces";
+import dynamic from "next/dynamic";
 
 const stepsComponents = [Step1, Step2, Step3, Step4, Step5, Step6];
 
@@ -28,8 +29,7 @@ const BookingStep = ({ params }: BookingStepProps) => {
   const step = params.step || "1";
   const stepNumber = parseInt(step.replace("step_", ""), 10) - 1;
   const [activeStep, setActiveStep] = useState(stepNumber);
-  const { form, completedSteps, setStepCompleted } = useFormStorage(
-);
+  const { form, completedSteps, setStepCompleted } = useFormStorage();
 
   useEffect(() => {
     setActiveStep(stepNumber);
@@ -42,10 +42,18 @@ const BookingStep = ({ params }: BookingStepProps) => {
 
   const validateStep = async () => {
     const result = await methods.trigger();
-    if (activeStep === 3) { // Step4
+    if (activeStep === 3) {   // Step4
       const todayDate = dayjs().format("MM/DD/YYYY");
-      const isAddressComplete = form.address.street && form.address.city && form.address.state && form.address.aptSuite && form.address.zip;
-      if (!isAddressComplete || !form.selectedDate || form.selectedDate === todayDate ) {
+      const isAddressComplete =
+        form.address.street &&
+        form.address.city &&
+        form.address.state &&
+        form.address.zip;
+      if (
+        !isAddressComplete ||
+        !form.selectedDate ||
+        form.selectedDate === todayDate
+      ) {
         return false;
       }
     }
@@ -62,7 +70,7 @@ const BookingStep = ({ params }: BookingStepProps) => {
     const isValid = await validateStep();
     if (!isValid) {
       return;
-    } 
+    }
     const nextStep = activeStep + 1;
     setActiveStep(nextStep);
     setStepCompleted(activeStep);
@@ -80,7 +88,7 @@ const BookingStep = ({ params }: BookingStepProps) => {
 
   return (
     <FormProvider {...methods}>
-      <form onSubmit={methods.handleSubmit(() => {})}>
+      {/* <form onSubmit={methods.handleSubmit(() => {})}> */}
         <div className="p-4 md:p-6 xl:p-9 lg:pt-[90px] xl:pt-[102px]">
           <FormStepper
             activeStep={activeStep}
@@ -95,7 +103,7 @@ const BookingStep = ({ params }: BookingStepProps) => {
             />
           </FormStepper>
         </div>
-      </form>
+      {/* </form> */}
     </FormProvider>
   );
 };

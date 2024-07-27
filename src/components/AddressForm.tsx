@@ -2,9 +2,7 @@ import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 import Autocomplete from "react-google-autocomplete";
 import Input from "../components/UI/Input";
 import useFormStorage from "@/hooks/formStorage";
-// import { useForm, useFormContext } from "react-hook-form";
-// import dayjs, { Dayjs } from "dayjs";
-// import { Form } from "@/types/interfaces";
+import { useFormContext } from "react-hook-form";
 
 const API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY as string;
 // const API_KEY = "AIzaSyCjw4zjS8V3L0IwDnqWwWz5bXh6w9b4Hc8";
@@ -14,7 +12,8 @@ interface AddressFormProps {
 }
 
 const AddressForm: React.FC<AddressFormProps> = ({ onChange }) => {
-  const { form, handleCustomChange, handleInputChange, setForm } = useFormStorage();
+  const { form, handleCustomChange, handleInputChange } = useFormStorage();
+  const { trigger } = useFormContext();
   const [inputValue, setInputValue] = useState(form.address?.street || "");
   const [addressDetails, setAddressDetails] = useState({
     street: form.address?.street || "",
@@ -33,50 +32,25 @@ const AddressForm: React.FC<AddressFormProps> = ({ onChange }) => {
       aptSuite: form.address?.aptSuite || "",
     });
   }, [form.address]);
-  
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    const inputName = name.toString(); 
+    const inputName = name.toString();
 
     setAddressDetails((prev) => ({
-        ...prev,
-        [inputName]: value,
+      ...prev,
+      [inputName]: value,
     }));
 
     handleCustomChange("address", { ...addressDetails, [inputName]: value });
     onChange("address", { ...addressDetails, [inputName]: value });
-};
-  // const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-  //   const { name, value } = e.target;
-  //   setAddressDetails((prev) => ({ ...prev, [name]: value }));
-
-  //   // if (name === "aptSuite") {
-  //     setForm((prevForm: Form) => ({
-  //       ...prevForm,
-  //       address: {
-  //         ...prevForm.address,
-  //         aptSuite: value,
-  //       },
-  //     }));
-  //   // } else {
-  //   //   setForm((prevForm: Form) => ({
-  //   //     ...prevForm,
-  //   //     address: {
-  //   //       ...prevForm.address,
-  //   //       [name]: value,
-  //   //     },
-  //   //   }));
-  //   }
-
-  //   handleCustomChange("address", { ...addressDetails, [name]: value });
-  //   onChange("address", { ...addressDetails, [name]: value });
-  // };
+  };
 
   const handlePlaceSelected = (place: google.maps.places.PlaceResult) => {
     const addressComponents = place.address_components || [];
-    const streetNumber = addressComponents.find((c) => c.types.includes("street_number")) ?.long_name || "";
+    const streetNumber = addressComponents.find((c) => c.types.includes("street_number"))?.long_name || "";
     const streetName = addressComponents.find((c) => c.types.includes("route"))?.long_name || "";
-    const city = addressComponents.find((c) => c.types.includes("locality"))?.long_name ||"";
+    const city = addressComponents.find((c) => c.types.includes("locality"))?.long_name || "";
     const state = addressComponents.find((c) => c.types.includes("administrative_area_level_1"))?.short_name || "";
     const zip = addressComponents.find((c) => c.types.includes("postal_code")) ?.long_name || "";
     const street = `${streetNumber} ${streetName}`.trim();
@@ -156,6 +130,7 @@ const AddressForm: React.FC<AddressFormProps> = ({ onChange }) => {
 
   const handleAutoCompleteChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
+    trigger();
   };
 
   const inputStyles =
@@ -165,7 +140,7 @@ const AddressForm: React.FC<AddressFormProps> = ({ onChange }) => {
     <div className="w-full">
       <div className="flex flex-col gap-5">
         <div className="flex gap-5 flex-col lg:flex-row min-w-[280px]">
-          <div className="md:w-full lg:w-1/2 md:h-[48px]">
+          <div className="md:w-full lg:w-1/2 md:h-[48px] ">
             <Autocomplete
               apiKey={API_KEY}
               onPlaceSelected={handlePlaceSelected}
@@ -189,15 +164,10 @@ const AddressForm: React.FC<AddressFormProps> = ({ onChange }) => {
               value={addressDetails.aptSuite}
               onChange={handleChange}
             />
-            {/* {errors.aptSuite && (
-							<p className="error" role="alert">
-								{errors.aptSuite.message}
-							</p>
-						)} */}
           </div>
         </div>
         <div className="flex gap-5 flex-col md:flex-row">
-          <div className="md:w-3/4 md:h-[48px] gap-5">
+          <div className="md:w-3/4 md:h-[48px] gap-5 ">
             <Input
               type="text"
               style="form-input"

@@ -5,20 +5,15 @@ import useFormStorage from "@/hooks/formStorage";
 import BasicSelect from "../UI/Select";
 import Textarea from "../UI/Textarea";
 import { aboutUs, homeAccess } from "@/data/booking-form/step_3";
-// import dayjs from "dayjs";
 import Input from "../UI/Input";
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import { IMaskInput } from "react-imask";
-import { Control, Controller, useFormContext, useWatch } from "react-hook-form";
-import { FormValues } from "@/types/interfaces";
+import { Controller, useFormContext, useWatch } from "react-hook-form";
+import { StepProps } from "@/types/interfaces";
+import { validateField } from "@/helpers/validation";
 
-interface StepProps {
-  control: Control<FormValues>;
-  setStepCompleted: (step: number) => void;
-}
-
-const ContactNumberMask = "(000) 000-0000";
+const ContactNumberMask = "(404) 000-0000";
 
 const Step3: React.FC<StepProps> = ({ control, setStepCompleted }) => {
   const { form, handleCustomChange, handleSelectChange } = useFormStorage();
@@ -26,100 +21,100 @@ const Step3: React.FC<StepProps> = ({ control, setStepCompleted }) => {
   const { setError, clearErrors, trigger } = useFormContext();
   const watchedForm = useWatch({ control });
 
-  const validateField = useCallback(
-    (name: string, value: string) => {
-      switch (name) {
-        case "name":
-          if (value === "") {
-            setError(name, {
-              type: "required",
-              message: "First name is required",
-            });
-          } else if (value.length < 2) {
-            setError(name, {
-              type: "minLength",
-              message: "First name must be at least 2 characters",
-            });
-          } else {
-            clearErrors(name);
-          }
-          break;
-        case "surname":
-          if (value === "") {
-            setError(name, {
-              type: "required",
-              message: "Surname is required",
-            });
-          } else if (value.length < 3) {
-            setError(name, {
-              type: "minLength",
-              message: "Surname must be at least 3 characters",
-            });
-          } else {
-            clearErrors(name);
-          }
-          break;
-        case "email":
-          if (value === "") {
-            setError(name, {
-              type: "required",
-              message: "Email is required",
-            });
-          } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-            setError(name, {
-              type: "pattern",
-              message: "Invalid email format",
-            });
-          } else {
-            clearErrors(name);
-          }
-          break;
-        case "phone":
-          if (value === "") {
-            setError(name, {
-              type: "required",
-              message: "Phone number is required",
-            });
-          } else if (!/^\(\d{3}\) \d{3}-\d{4}$/.test(value)) {
-            setError(name, {
-              type: "pattern",
-              message: "Invalid phone number format",
-            });
-          } else {
-            clearErrors(name);
-          }
-          break;
-        case "homeAccess":
-          if (value === "") {
-            setError(name, {
-              type: "required",
-              message: "Please select an option",
-            });
-          } else {
-            clearErrors(name);
-          }
-          break;
-        case "aboutUs":
-          if (value === "") {
-            setError(name, {
-              type: "required",
-              message: "Please select an option",
-            });
-          } else {
-            clearErrors(name);
-          }
-          break;
-        default:
-          break;
-      }
-    },
-    [setError, clearErrors]
-  );
+  // const validateField = useCallback(
+  //   (name: string, value: string) => {
+  //     switch (name) {
+  //       case "name":
+  //         if (value === "") {
+  //           setError(name, {
+  //             type: "required",
+  //             message: "First name is required",
+  //           });
+  //         } else if (value.length < 2) {
+  //           setError(name, {
+  //             type: "minLength",
+  //             message: "First name must be at least 2 characters",
+  //           });
+  //         } else {
+  //           clearErrors(name);
+  //         }
+  //         break;
+  //       case "surname":
+  //         if (value === "") {
+  //           setError(name, {
+  //             type: "required",
+  //             message: "Surname is required",
+  //           });
+  //         } else if (value.length < 3) {
+  //           setError(name, {
+  //             type: "minLength",
+  //             message: "Surname must be at least 3 characters",
+  //           });
+  //         } else {
+  //           clearErrors(name);
+  //         }
+  //         break;
+  //       case "email":
+  //         if (value === "") {
+  //           setError(name, {
+  //             type: "required",
+  //             message: "Email is required",
+  //           });
+  //         } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+  //           setError(name, {
+  //             type: "pattern",
+  //             message: "Invalid email format",
+  //           });
+  //         } else {
+  //           clearErrors(name);
+  //         }
+  //         break;
+  //       case "phone":
+  //         if (value === "") {
+  //           setError(name, {
+  //             type: "required",
+  //             message: "Phone number is required",
+  //           });
+  //         } else if (!/^\(\d{3}\) \d{3}-\d{4}$/.test(value)) {
+  //           setError(name, {
+  //             type: "pattern",
+  //             message: "Invalid phone number format",
+  //           });
+  //         } else {
+  //           clearErrors(name);
+  //         }
+  //         break;
+  //       case "homeAccess":
+  //         if (value === "") {
+  //           setError(name, {
+  //             type: "required",
+  //             message: "Please select an option",
+  //           });
+  //         } else {
+  //           clearErrors(name);
+  //         }
+  //         break;
+  //       case "aboutUs":
+  //         if (value === "") {
+  //           setError(name, {
+  //             type: "required",
+  //             message: "Please select an option",
+  //           });
+  //         } else {
+  //           clearErrors(name);
+  //         }
+  //         break;
+  //       default:
+  //         break;
+  //     }
+  //   },
+  //   [setError, clearErrors]
+  // );
 
-  const handleFieldChange = (name: string, value: string) => {
-    validateField(name, value);
+  function handleFieldChange(name: string, value: string) {
+    validateField(name, value, setError, clearErrors);
     handleCustomChange(name, value);
-  };
+  }
 
   const handleCheckBoxChange = () => {
     handleCustomChange("remindersChecked", !form.remindersChecked);
@@ -196,7 +191,7 @@ const Step3: React.FC<StepProps> = ({ control, setStepCompleted }) => {
                       }}
                     />
                     {error && (
-                      <p className="text-secondary text-xs  absolute left-2 bottom-[-15px]">
+                      <p className="text-accent-light text-xs lg:text-base  absolute left-2 bottom-[-16px] lg:bottom-[-24px]">
                         {error.message}
                       </p>
                     )}
@@ -224,7 +219,7 @@ const Step3: React.FC<StepProps> = ({ control, setStepCompleted }) => {
                       }}
                     />
                     {error && (
-                      <p className="text-secondary text-xs  absolute left-2 bottom-[-15px]">
+                      <p className="text-accent-light text-xs lg:text-base  absolute left-2 bottom-[-16px] lg:bottom-[-24px]">
                         {error.message}
                       </p>
                     )}
@@ -255,7 +250,7 @@ const Step3: React.FC<StepProps> = ({ control, setStepCompleted }) => {
                       }}
                     />
                     {error && (
-                      <p className="text-secondary text-xs  absolute left-2 bottom-[-6px] lg:bottom-[-16px]">
+                      <p className="text-accent-light text-xs lg:text-base  absolute left-2 bottom-[-6px] lg:bottom-[-24px]">
                         {error.message}
                       </p>
                     )}
@@ -274,7 +269,7 @@ const Step3: React.FC<StepProps> = ({ control, setStepCompleted }) => {
                       {...field}
                       className="block mx-full mb-[10px] w-full hx-full h-full py-[8px] lg:py-[12px] px-[8px] lg:px-[16px] bg-transparent text-text border-solid border-2 focus:border-[3px] border-secondary rounded-[12px] focus:shadow-input-shadow outline-none xl:placeholder:text-[16px] placeholder:text-secondary-placeholder placeholder:opacity-50"
                       mask={ContactNumberMask}
-                      placeholder="(000) 000-0000"
+                      placeholder="(404) 000-0000"
                       value={form.phone}
                       onChange={(e) => {
                         const { value } = e.target as HTMLInputElement;
@@ -283,7 +278,7 @@ const Step3: React.FC<StepProps> = ({ control, setStepCompleted }) => {
                       }}
                     />
                     {error && (
-                      <p className="text-secondary text-xs  absolute left-2 bottom-[-6px] lg:bottom-[-16px]">
+                      <p className="text-accent-light text-xs lg:text-base  absolute left-2 bottom-[-6px] lg:bottom-[-24px]">
                         {error.message}
                       </p>
                     )}
@@ -301,7 +296,7 @@ const Step3: React.FC<StepProps> = ({ control, setStepCompleted }) => {
               Additional information
             </h2>
             <div className="mb-10 md:mb-[60px] flex flex-col gap-4 md:flex-row lg:flex-col md:gap-6 md:h-10">
-              <div className="md:w-1/2 lg:w-full">
+              <div className="md:w-1/2 lg:w-full relative">
                 <Controller
                   name="homeAccess"
                   control={control}
@@ -320,15 +315,13 @@ const Step3: React.FC<StepProps> = ({ control, setStepCompleted }) => {
                         }}
                       />
                       {error && (
-                        <p className="text-secondary text-xs ">
-                          {error.message}
-                        </p>
+                        <p className="text-accent-light left-2 text-xs lg:text-base  absolute ">{error.message}</p>
                       )}
                     </>
                   )}
                 />
               </div>
-              <div className="md:w-1/2 lg:w-full">
+              <div className="md:w-1/2 lg:w-full relative">
                 <Controller
                   name="aboutUs"
                   control={control}
@@ -347,7 +340,7 @@ const Step3: React.FC<StepProps> = ({ control, setStepCompleted }) => {
                         }}
                       />
                       {error && (
-                        <p className="text-secondary text-xs absolute ">
+                        <p className="text-accent-light left-2 text-xs lg:text-base  absolute ">
                           {error.message}
                         </p>
                       )}
@@ -369,7 +362,7 @@ const Step3: React.FC<StepProps> = ({ control, setStepCompleted }) => {
                 render={({ field }) => (
                   <Textarea
                     {...field}
-                    placeholder="Special Instructions*"
+                    placeholder="Special Instructions"
                     value={form.specialInstructions}
                     name="specialInstructions"
                     onChange={(e) => {

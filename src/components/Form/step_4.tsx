@@ -7,17 +7,13 @@ import useFormStorage from "@/hooks/formStorage";
 import TimePickerComponent from "../UI/TimePicker";
 import DateTimeCleaning from "../DateTimeCleaning";
 import AddressForm from "../AddressForm";
-import { useFormContext } from "react-hook-form";
-import { FormValues } from "@/types/interfaces";
-
-interface StepProps {
-  setStepCompleted: (step: number) => void;
-}
+import { Controller, useFormContext } from "react-hook-form";
+import { StepProps } from "@/types/interfaces";
 
 const Step4: React.FC<StepProps> = ({ setStepCompleted }) => {
   const { form, handleCustomChange } = useFormStorage();
 
-  const { trigger } = useFormContext<FormValues>();
+  const { control, setError, trigger } = useFormContext();
   const handleDateChange = (date: Dayjs | null): void => {
     handleCustomChange("selectedDate", date ? date.format("MM/DD/YYYY") : null);
   };
@@ -26,16 +22,17 @@ const Step4: React.FC<StepProps> = ({ setStepCompleted }) => {
     handleCustomChange("time", time ? time.format("h:mm A") : null);
   };
 
-  
   const todayDate = dayjs().format("MM/DD/YYYY");
-  const isAddressComplete = form.address.street && form.address.city && form.address.state && form.address.aptSuite && form.address.zip;
-   
-  const isStepCompleted = isAddressComplete && form.selectedDate !== todayDate ;
+  const isAddressComplete =
+    form.address.street &&
+    form.address.city &&
+    form.address.state &&
+    form.address.zip;
+  const isStepCompleted = isAddressComplete && form.selectedDate !== todayDate;
 
-  useEffect(() => {  
-	  isStepCompleted ? setStepCompleted(4) : setStepCompleted(3);
-    trigger();
-  }, [form, isStepCompleted, setStepCompleted, todayDate, trigger]);
+  useEffect(() => {
+    isStepCompleted ? setStepCompleted(4) : setStepCompleted(3);
+  }, [form, isStepCompleted, setStepCompleted, todayDate]);
 
   return (
     <div className="py-4 md:py-6 lg:py-9">
@@ -43,8 +40,16 @@ const Step4: React.FC<StepProps> = ({ setStepCompleted }) => {
         <h1 className="h1 md:text-[36px] mb-[32px]">
           Where would you like us to clean?
         </h1>
-
-        <AddressForm  onChange={handleCustomChange} />
+        <div className="relative">
+          <Controller
+            name="street"
+            control={control}
+            rules={{ required: "Please enter an address" }}
+            render={({ field }) => (
+              <AddressForm {...field} onChange={handleCustomChange} />
+            )}
+          />
+        </div>
       </div>
       <div>
         <h2 className="h1 md:text-[36px] mb-[32px]">

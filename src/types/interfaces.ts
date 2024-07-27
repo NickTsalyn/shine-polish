@@ -1,4 +1,5 @@
 import { Dayjs } from "dayjs";
+import { Control } from "react-hook-form";
 
 interface Item {
   title: string;
@@ -43,8 +44,16 @@ export interface FormValues {
   selectedDate: string;
   time: string;
   address: Record<string, never>;
+  question: string,
+  discountCode: string,
+  tips: string,
 }
 
 export interface Form {
   [key: string]: string | number | boolean | string[] | Dayjs | null | any | object;
+}
+
+export interface StepProps {
+  control: Control<FormValues>;
+  setStepCompleted: (step: number) => void;
 }
