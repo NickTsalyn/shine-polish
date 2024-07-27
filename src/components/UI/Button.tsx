@@ -13,6 +13,7 @@ type PropsButtton = {
     | "sidebar-log-out"
     | "auth-sign"
     | "auth-sign-up-border"
+    | "apply-btn-light-one"
     | "apply-btn-light"
     | "apply-btn-blue"
     | "footer-book-now"
@@ -69,7 +70,11 @@ export default function Button(props: PropsButtton) {
       break;
     case "apply-btn-light":
       styles =
-        " rounded-xl border-2 border-secondary   bg-secondary  py-1 px-[74px] hover:shadow-apply-send-button-shadow  focus:shadow-apply-send-button-shadow  ";
+        " rounded-xl border-2 border-secondary   bg-secondary  py-1 px-[54px] hover:shadow-apply-send-button-shadow  focus:shadow-apply-send-button-shadow  ";
+      break;
+    case "apply-btn-light-one":
+      styles =
+        " rounded-xl border-2 border-secondary  focus:border-accent hover:border-accent text-xl text-accent hover:text-white focus:text-white   bg-secondary  py-1 lg:py-4 px-8 hover:shadow-apply-send-button-shadow  focus:shadow-apply-send-button-shadow hover:bg-accent focus:bg-accent  ";
       break;
     case "apply-btn-blue":
       styles =
@@ -96,13 +101,12 @@ export default function Button(props: PropsButtton) {
     case "transparent-button":
       styles =
         " w-[52px] h-[52px] ld:w-[64px] lg:h-[64px] rounded-full bg-transparent border-none ";
-
-    default:
-      break;
+    break;        
     case "complete-booking":
       styles =
-        "py-1.5 md:py-3 lg:py-[20px] px-10 bg-transparent border-2 border-solid border-white rounded-xl w-full";
+        " py-1.5 md:py-3 lg:py-[20px] px-10 bg-transparent border-2 border-solid border-white rounded-xl ";
       break;
+      default:  
   }
   return (
     <button
