@@ -1,6 +1,6 @@
 "use client";
 
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 
 // import {useQuery} from "@tanstack/react-query";
@@ -17,6 +17,7 @@ import {
 } from "./UI/SignInDesing";
 import Link from "next/link";
 import { signin } from "@/helpers/api";
+import { useMutation } from "@tanstack/react-query";
 
 interface SignInInput {
   email: string;
@@ -32,10 +33,28 @@ export default function SignInForm() {
     formState: { errors },
   } = useForm<SignInInput>();
 
-  const onSubmit = async (data: any) => {
-    signin(data);
-    localStorage.setItem("user", JSON.stringify(data));
-    router.push("/");
+  const mutation = useMutation({
+    mutationFn: (credentials: SignInInput) => signin(credentials),
+    onSuccess: (data) => {
+      console.log("I'm first!", data);
+      localStorage.setItem("user", JSON.stringify(data.data));
+      router.push("/");
+    },
+    onError: (error: any) => {
+      // An error happened!
+      console.log(`Була помилка`, error);
+    },
+  });
+
+  // const onSubmit = async (data: any) => {
+  //   signin(data);
+  //   localStorage.setItem("user", JSON.stringify(data));
+  //   router.push("/");
+  // };
+  const onSubmit = async (data: SignInInput) => {
+    console.log("Sent body", data);
+    const res = mutation.mutate(data);
+    console.log(res);
   };
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -78,26 +97,68 @@ export default function SignInForm() {
                   Or sing using E-Mail Address
                 </span>
               </label>
-              <Input
-                {...register("email", { required: "It's Ok" })}
-                style="sign-in-input"
-                type="email"
-                placeholder="Email*"
-                onChange={handleEmailChange}
-              />
-              <Input
-                {...register("password", {
-                  required: "You're the best",
-                  minLength: {
-                    value: 6,
-                    message: "Min lenght is 6",
-                  },
-                })}
-                style="sign-in-input"
-                type="password"
-                placeholder="Password"
-                onChange={handlePasswordChange}
-              />
+              <label htmlFor="email" className="relative">
+                <Input
+                  {...register("email", {
+                    required: "Email Address is required",
+                  })}
+                  style="sign-in-input"
+                  type="email"
+                  placeholder="Email*"
+                  onChange={handleEmailChange}
+                  aria-required={
+                    errors.email ||
+                    (mutation.isError && mutation.error.response.status === 401)
+                      ? "true"
+                      : "false"
+                  }
+                />
+                {errors.email && (
+                  <p
+                    role="alert"
+                    className="text-accent-light text-[12px] absolute bottom-[0] right-2"
+                  >
+                    {errors.email.message}
+                  </p>
+                )}
+              </label>
+              <label htmlFor="password" className="relative">
+                <Input
+                  {...register("password", {
+                    required: "Hey! forgot your password",
+                    // minLength: {
+                    //   value: 6,
+                    //   message: "Your password must be at least 6 characters long",
+                    // },
+                  })}
+                  style="sign-in-input"
+                  type="password"
+                  placeholder="Password"
+                  onChange={handlePasswordChange}
+                  aria-required={
+                    errors.password ||
+                    (mutation.isError && mutation.error.response.status === 401)
+                      ? "true"
+                      : "false"
+                  }
+                />
+                {errors.password && (
+                  <p
+                    role="alert"
+                    className="text-accent-light text-[12px] absolute bottom-[0] right-2"
+                  >
+                    {errors.password.message}
+                  </p>
+                )}
+                {mutation.isError && mutation.error.response.status === 401 && (
+                  <p
+                    role="alert"
+                    className="text-accent-light text-[12px] absolute bottom-[0] right-2"
+                  >
+                    {mutation.error.response.data.message}
+                  </p>
+                )}
+              </label>
               <p className="text-accent text-[14px] lg:text-[20px] mb-[18px] md:mb-[30px] lg:font-light">
                 Forgot your password?
               </p>
