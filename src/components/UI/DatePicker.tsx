@@ -27,11 +27,11 @@ const CustomDatePicker: React.FC<CustomDatePickerProps> = ({
   autoFocus = true,
 }) => {
   const { form, handleCustomChange } = useFormStorage(
-    {
-      selectedDate: dayjs().format("MM/DD/YYYY"),
-      time: dayjs().format("h:mm A"),
-    },
-    "form"
+    // {
+    //   selectedDate: dayjs().format("MM/DD/YYYY"),
+    //   time: dayjs().format("h:mm A"),
+    // },
+    // "form"
   );
   const [isDateCalendarOpen, setIsDateCalendarOpen] = React.useState(false);
   const pickerRef = React.useRef<HTMLDivElement>(null);

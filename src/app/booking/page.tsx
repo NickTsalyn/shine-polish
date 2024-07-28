@@ -1,4 +1,5 @@
 "use client";
+
 import Button from "@/components/UI/Button";
 import Image from "next/image";
 import Link from "next/link";
@@ -50,7 +51,7 @@ const BookingFormHome = () => {
           <div className="flex justify-center items-center">
           <Button type="button" style="complete-booking">
             <Link
-              href={"/booking/step_1"}
+              href={"/booking/1"}
               className="text-white subtitle-booking xl:text-[42px] font-bold mx-auto"
             >
               complete your booking
