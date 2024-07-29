@@ -1,8 +1,10 @@
+"use client";
 import React from "react";
 import Input from "./UI/Input";
 import Button from "@/components/UI/Button";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import Link from "next/link";
+// import axios, { AxiosError } from "axios";
 
 import whatsup from "../../public/icons/sign-in/whatsapp-icon.svg";
 import google from "../../public/icons/sign-in/google-icon.svg";
@@ -10,21 +12,51 @@ import facebook from "../../public/icons/sign-in/facebook.svg";
 import Image from "next/image";
 
 import { useForm } from "react-hook-form";
+import { signup } from "@/helpers/api";
+import { useMutation } from "@tanstack/react-query";
+import Spinner from "@/components/UI/Spinner";
+import { useRouter } from "next/navigation";
 
 interface SignUpProps {
-  name: string;
+  username: string;
   email: string;
   password: string;
 }
 
 export default function SignUpForm() {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<SignUpProps>();
 
-  const onSubmit = handleSubmit((data) => console.log(data));
+  const mutation = useMutation({
+    mutationFn: (credentials: SignUpProps) => signup(credentials),
+    onSuccess: (data) => {
+      console.log("I'm first!", data);
+      localStorage.setItem("user", JSON.stringify(data.data));
+      router.push("/");
+    },
+    onError: (error: any) => {
+      // An error happened!
+      console.log(`Була помилка`, error);
+    },
+  });
+  const onSubmit = async (data: SignUpProps) => {
+    console.log("Sent body", data);
+    const res = mutation.mutate(data);
+    console.log(res);
+  };
+
+  // if (mutation.isError) {
+  //   console.log(mutation.error.message);
+  // }
+
+  // if (mutation.isSuccess) {
+  //   console.log(mutation.error.message);
+  // }
+  // console.log(axios.defaults.headers.common["Authorization"]);
 
   return (
     <div className="w-[320px] md:w-[712px] lg:w-[960px] mx-auto">
@@ -41,15 +73,15 @@ export default function SignUpForm() {
         <h4 className="text-base/[22px] md:text-[18px] text-text text-center block mb-8 md:mb-4">
           Let’s set up your account. <br className="md:hidden" /> Already have
           one?{" "}
-          <a href="/" className="text-tertial">
+          <a href="/sign-in-form" className="text-tertial">
             Sign In here
           </a>
         </h4>
         <form
-          onSubmit={onSubmit}
+          onSubmit={handleSubmit(onSubmit)}
           className="flex flex-col md:flex-row md:flex-wrap gap-x-[78px] lg:gap-x-[90px] gap-y-10 lg:gap-y-12 justify-between w-full  "
         >
-          <div className="flex flex-col gap-3 md:w-[300px] lg:w-[348px]">
+          <div className="flex flex-col gap-4 md:w-[300px] lg:w-[348px]">
             <label htmlFor="text" className="relative">
               <span className="text-main text-[14px] md:text-[16px] ml-3">
                 Name:
@@ -58,17 +90,17 @@ export default function SignUpForm() {
                 type="text"
                 style="sign-up-input"
                 width="lg:w-[348px]"
-                {...register("name", {
+                {...register("username", {
                   required: "Field name is required",
                 })}
-                aria-required={errors.name ? "true" : "false"}
+                aria-required={errors.username ? "true" : "false"}
               />
-              {errors.name && (
+              {errors.username && (
                 <p
                   role="alert"
-                  className="text-accent text-[12px] absolute top-0 right-0"
+                  className="text-accent-light text-[12px] absolute bottom-[-8] right-2"
                 >
-                  {errors.name.message}
+                  {errors.username.message}
                 </p>
               )}
             </label>
@@ -83,14 +115,28 @@ export default function SignUpForm() {
                 {...register("email", {
                   required: "Email Address is required",
                 })}
-                aria-required={errors.email ? "true" : "false"}
+                aria-required={
+                  errors.email ||
+                  (mutation.isError && mutation.error.response.status === 409)
+                    ? "true"
+                    : "false"
+                }
               />
               {errors.email && (
                 <p
                   role="alert"
-                  className="text-accent text-[12px] absolute top-0 right-0"
+                  className="text-accent-light text-[12px] absolute bottom-[-8] right-2"
                 >
                   {errors.email.message}
+                </p>
+              )}
+
+              {mutation.isError && mutation.error.response.status === 409 && (
+                <p
+                  role="alert"
+                  className="text-accent-light text-[12px] absolute bottom-[-8] right-2"
+                >
+                  {mutation.error.response.data.message}
                 </p>
               )}
             </label>
@@ -110,7 +156,7 @@ export default function SignUpForm() {
               {errors.password && (
                 <p
                   role="alert"
-                  className="text-accent text-[12px] absolute top-0 right-0"
+                  className="text-accent-light text-[12px] absolute bottom-[-8] right-2"
                 >
                   {errors.password.message}
                 </p>
@@ -139,7 +185,15 @@ export default function SignUpForm() {
               <span className="text-tertial">Terms of Service</span>
             </p>
             <Button type="submit" style="auth-sign">
-              <span className="text-white text-[20px] uppercase">Sing Up</span>
+              {mutation.isPending ? (
+                <span className="text-white py-3">
+                  <Spinner />
+                </span>
+              ) : (
+                <span className="text-white text-[20px] uppercase">
+                  Sing Up
+                </span>
+              )}
             </Button>
           </div>
         </form>

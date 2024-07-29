@@ -6,6 +6,7 @@ import Sidebar from "@/components/Sidebar";
 import Footer from "@/components/Footer";
 import { FormProvider } from "@/components/FormContext";
 import FooterDesctop from "@/components/FooterDesctop";
+import QueryProvider from "@/app/_tansctackprovider";
 // import { Suspense } from "react";
 // import Loading from "./loading";
 
@@ -27,15 +28,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={lato.className}>
-        <FormProvider>
-          <Header />
-          <Sidebar />
-          {/* <Suspense fallback={<Loading />}> */}
+        <QueryProvider>
+          <FormProvider>
+            <Header />
+            <Sidebar />
+            {/* <Suspense fallback={<Loading />}> */}
             <main className="lg:ml-[200px] xl:ml-[244px]">{children}</main>
-          {/* </Suspense> */}
-          <Footer />
-          <FooterDesctop />
-        </FormProvider>
+            {/* </Suspense> */}
+            <Footer />
+            <FooterDesctop />
+          </FormProvider>
+        </QueryProvider>
       </body>
     </html>
   );
