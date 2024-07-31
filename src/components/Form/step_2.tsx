@@ -47,7 +47,7 @@ const Step2 = () => {
       setForm(updatedForm);
       localStorage.setItem("form", JSON.stringify(updatedForm));
     }
-  }, [form.services, setForm]);
+  }, [form, setForm]);
 
   useEffect(() => {
     handleDisable();
