@@ -1,12 +1,9 @@
 import useFormStorage from "@/hooks/formStorage";
-// import { getPrice, serviceOption } from "../../../formula";
 import { useEffect, useState } from "react";
-// import { area, discount, serviceOption, extrasOption ,getPrice} from "../../../formula";
 
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
 import getPrice from "../../../formula";
-// import { extrasOption } from '../../../.next/static/chunks/app/booking/[step]/page';
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY as string);
 
@@ -21,73 +18,57 @@ const getData = async () => {
 
 const Step6 = () => {
 	const { form } = useFormStorage({});
-	const [subTotal, setSubTotal] = useState(0);
 	const [total, setTotal] = useState(0);
 	const [data, setData] = useState<{
 		areaOptions: { name: string; value: number }[];
 		discountOptions: { name: string; value: number }[];
 		serviceOptions: { name: string; value: number }[];
 		extrasOptions: { name: string; value: number }[];
-		base: number,
+		base: number ,
 		coff: number,
 		bathPrice: number
 	} | null>(null);
 
 	const [loading, setLoading] = useState(false);
-	// const origin = window.location.origin; // Отримати поточний URL звідки виконується код
 
 	useEffect(() => {
-		if (Object.keys(form).length === 0) {
-			if (subTotal !== 0 || total !== 0) {
-				setSubTotal(0);
-				setTotal(0);
+		const fetchData = async () => {
+			const result = await getData();
+			if (result) {
+				setData(result);
 			}
-			return;
-		}
-
-		// const { bedroom, bathroom, areas, frequency, services, extras } = form;
-
-		// const areaCoefficient = area.find((area) => area.name === areas)?.value || 1;
-		// const discountValue = discount.find((discount) => discount.name === frequency)?.value || 1;
-		// const cleaningValue = serviceOption.find((service) => service.name === services)?.value || 1;
-		// const extraValue = extrasOption.reduce((acc, item) => {
-		// 	return (extras as string[]).includes(item.name) ? acc + item.value : acc;
-		// }, 0);
-
-		// const calculatedPrice = getPrice(Number(bedroom), Number(bathroom)) * areaCoefficient * discountValue  * cleaningValue + extraValue
-		// setSubTotal(calculatedPrice);
-
-		// const totalPrice = calculatedPrice * 1.06;
-		// setTotal(totalPrice);
-
-		const getResult = async () => {
-			// const { areaOptions, discountOptions, serviceOptions, extrasOptions } = await getData();
-			const result = await axios.get("https://shine-polish-server.onrender.com/bookings/options")
-			console.log(result.data)
-			console.log(result.data.base)
-			setData(result.data)
-			console.log(data?.base)
 		};
-		getResult();
+		fetchData();
+	}, []);
 
-		const { bedroom, bathroom, areas, frequency, services, extras } = form;
-		console.log(form)
+	useEffect(() => {
+		const calculatePrices = async () => {
+			if (!data) return;
 
-		// const areaCoefficient = data.areasOptions.find((area: any) => area.name === areas)?.value || 1;
-		// const discountValue = discountOptions.find((discount: any) => discount.name === frequency)?.value || 1;
-		// const cleaningValue = serviceOptions.find((service: any) => service.name === services)?.value || 1;
-		// const extraValue = extrasOptions.reduce((acc: number, item: any) => {
-		// 	return (extras as string[]).includes(item.name) ? acc + item.value : acc;
-		// }, 0);
+			if (Object.keys(form).length === 0) {
+				if (total !== 0) {
+					setTotal(0);
+				}
+				return;
+			}
 
-		// const calculatedPrice =
-		// 	( getPrice(Number(bedroom), Number(bathroom))) * areaCoefficient * discountValue * cleaningValue +
-		// 	extraValue;
-		// setSubTotal(calculatedPrice);
+			const { bedroom, bathroom, areas, frequency, services, extras } = form;
 
-		// const totalPrice = calculatedPrice * 1.06;
-		// setTotal(totalPrice);
-	}, [form, subTotal, total]);
+			const areaCoefficient = data.areaOptions.find((area) => area.name === areas)?.value || 1;
+			const discountValue = data.discountOptions.find((discount) => discount.name === frequency)?.value || 1;
+			const cleaningValue = data.serviceOptions.find((service) => service.name === services)?.value || 1;
+			const extraValue = data.extrasOptions.reduce((acc, item) => {
+				return (extras as string[]).includes(item.name) ? acc + item.value : acc;
+			}, 0) || 0;
+
+			const basePrice = await getPrice(Number(bedroom), Number(bathroom));
+			const calculatedPrice = basePrice * areaCoefficient * discountValue * cleaningValue + extraValue;
+			setTotal(calculatedPrice);
+
+		};
+
+		calculatePrices();
+	}, [form, data, total]);
 
 	const handleCheckout = async () => {
 		setLoading(true);
@@ -152,14 +133,6 @@ const Step6 = () => {
 				</>
 			) : null}
 			<div className="flex flex-col gap-2 ">
-				<div className=" flex justify-between text-xl">
-					<span>SUB-TOTAL</span>
-					<span className=" ">$ {subTotal.toFixed(2)}</span>
-				</div>
-				<div className=" flex justify-between text-xl">
-					<span>SALES TAX</span>
-					<span className="">$ {(subTotal * 0.06).toFixed(2)}</span>
-				</div>
 				<div className=" flex justify-between text-xl text-main">
 					<span>TOTAL</span>
 					<span className="">$ {total.toFixed(2)}</span>

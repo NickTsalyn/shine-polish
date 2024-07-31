@@ -6,9 +6,15 @@ import CheckBox from "../UI/Сheckbox";
 import { useState, useEffect, useCallback } from "react";
 import dayjs from "dayjs";
 import Image from "next/image";
+import axios from "axios";
 
 
 const Step2 = () => {
+  const [data, setData] = useState<{
+		serviceOptions: { name: string; value: number }[];
+		extrasOptions: { name: string; value: number }[];
+	} | null>(null);
+
   const { form, handleRadioChange, handleCheckboxChange, setForm } =
     useFormStorage({
       areas: "",
@@ -47,6 +53,37 @@ const Step2 = () => {
     handleDisable();
   }, [handleDisable]);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("https://shine-polish-server.onrender.com/bookings/options");
+        setData(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+  
+    fetchData();
+  }, []);
+
+  const services = data?.serviceOptions.map((service) => {
+		return {
+			value: service.name,
+			label: service.name
+		}
+	}) || []
+
+  const combinedExtrasOptions = data?.extrasOptions.map((backendExtra) => {
+    const frontEndExtra = ExtrasOptions.find(extra => extra.value === backendExtra.name);
+    return {
+      ...backendExtra,
+      value: backendExtra.name,
+      label: backendExtra.name,
+      path: frontEndExtra?.path || '',
+      style: frontEndExtra?.style || ''
+    };
+  }) || []
+
   return (
     <div className="p-4 md:p-6 lg:p-9">
       <div className="container">
@@ -78,7 +115,7 @@ const Step2 = () => {
         </div>
         <ul className="flex gap-[16px] flex-col max-w-[278px] md:max-w-[682px] lg:max-w-[1160px] xl:max-w-[1572px] m-auto">
           <ul className="flex flex-wrap gap-5 md:gap-[22px] lg:w-[1160px] xl:w-[1572px] justify-center md:justify-around lg:justify-start md:flex-nowrap lg:flex-wrap">
-            {ServicesOptions.map(({ value, label }) => {
+            {services.map(({ value, label }) => {
               return (
                 <li
                   key={value}
@@ -114,7 +151,7 @@ const Step2 = () => {
             </li>
           </ul>
           <ul className="flex flex-wrap gap-5 md:gap-[22px] lg:gap-6 lg:w-[1160px]  xl:w-[1572px] md:flex-wrap lg:flex-wrap">
-            {ExtrasOptions.map(({ value, label,style,path }) => {
+            {combinedExtrasOptions.map(({ value, label,style,path }) => {
               return (
                 <li
                   key={value}

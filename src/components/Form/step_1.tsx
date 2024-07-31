@@ -1,3 +1,5 @@
+'use client'
+'use strict'
 import Image from "next/image";
 import BasicSelect from "../UI/Select";
 import RadioButton from "../UI/RadioButton";
@@ -11,8 +13,15 @@ import {
   frequencyOptions,
 } from "@/data/booking-form/step_1";
 import useFormStorage from "@/hooks/formStorage";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const Step1 = () => {
+
+	const [data, setData] = useState<{
+		areaOptions: { name: string; value: number | string}[];
+		discountOptions: { name: string; value: number }[];
+	} | null>(null);
   const {
     form,
     handleInputChange,
@@ -32,6 +41,34 @@ const Step1 = () => {
     address: "",
   });
 
+  useEffect(() => {
+	const fetchData = async () => {
+		try {
+			const response = await axios.get("https://shine-polish-server.onrender.com/bookings/options");
+			setData(response.data);
+		} catch (error) {
+			console.error(error);
+		}
+	};
+
+	fetchData();
+}, []);
+
+	const areas = data?.areaOptions.map((area) => {
+		return {
+			value: area.name,
+			label: area.name
+		}
+	}) || []
+
+	const frequency = data?.discountOptions.map((item) => {
+		return {
+			value: item.name,
+			label: item.name
+		}
+	}) || []
+
+
 	return (
 		<div className="py-4 md:py-6 lg:py-9 flex flex-col gap-6 md:gap-[26px] lg:grid lg:grid-flow-col lg:grid-cols-2 lg:gap-[66px] xl:gap-[80px]">
 			<div className="md:flex md:flex-row md:justify-between lg:flex-col lg:gap-[33px] xl:gap-[30px] lg:col-span-2 lg:row-span-2">
@@ -41,7 +78,7 @@ const Step1 = () => {
 						name="areas"
 						placeholder="Select an area*"
 						value={form.areas as string}
-						items={areaOptions}
+						items={areas}
 						onChange={handleInputChange}
 					/>
 				</div>
@@ -81,7 +118,7 @@ const Step1 = () => {
 					Scheduling is flexible. Cancel or reschedule anytime.
 				</p>
 				<ul className="flex flex-wrap justify-center gap-5 lg:gap-6 lg:w-[562px]  md:justify-around md:flex-nowrap lg:flex-wrap">
-					{frequencyOptions.map(({ value, label }) => {
+					{frequency.map(({ value, label }) => {
 						return (
 							<li key={value} className="flex justify-center items-center w-[132px] md:min-w-[160px] lg:min-w-[260px]">
 								<RadioButton
