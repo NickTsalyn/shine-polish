@@ -1,5 +1,5 @@
 export const usStates = [
-    { value: 'Alabama', label: 'AL', color: 'red' },
+    { value: "Alabama", label: "AL", color: "red" },
     { value: 'Alaska', label: 'AK', color: 'blue' },
     { value: 'Arizona', label: 'AZ', color: 'orange' },
     { value: 'Arkansas', label: 'AR', color: 'red' },

@@ -1,9 +1,9 @@
-import Image from 'next/image';
-import IconPlus from '../../public/icons/Icon_plus-min.png';
-import {KITCHEN_SERVICES} from '@/global/kitchen';
-import BasicBreadcrumbs from './UI/Breadcrumbs';
-import {CustomTooltip, kitchenIcons} from './UI/Tooltip';
-import {KitchenImage} from '@/global/images';
+import Image from "next/image";
+import IconPlus from "../../public/icons/Icon_plus-min.png";
+import {KITCHEN_SERVICES} from "@/global/kitchen";
+import BasicBreadcrumbs from "./UI/Breadcrumbs";
+import {CustomTooltip, kitchenIcons} from "./UI/Tooltip";
+import {KitchenImage} from "@/global/images";
 
 const KitchenServices: React.FC = () => {
  const {title, paragraph, processes, frequencies, needs} = KITCHEN_SERVICES;

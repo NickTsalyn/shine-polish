@@ -1,9 +1,9 @@
-import Image from 'next/legacy/image';
-import {LIVING_ROOM_SERVICES} from '@/global/living-room';
-import IconPlus from '../../public/icons/Icon_plus-min.png';
-import BasicBreadcrumbs from './UI/Breadcrumbs';
-import {CustomTooltip, livingroomIcons} from './UI/Tooltip';
-import {RoomImage} from '@/global/images';
+import Image from "next/legacy/image";
+import {LIVING_ROOM_SERVICES} from "@/global/living-room";
+import IconPlus from "../../public/icons/Icon_plus-min.png";
+import BasicBreadcrumbs from "./UI/Breadcrumbs";
+import {CustomTooltip, livingroomIcons} from "./UI/Tooltip";
+import {RoomImage} from "@/global/images";
 
 export default function LivingRoomServices() {
  const {title, paragraph, processes, frequencies, needs} = LIVING_ROOM_SERVICES;

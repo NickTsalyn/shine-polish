@@ -1,46 +1,46 @@
-'use client';
-import {ExtrasOptions, ServicesOptions} from '@/data/booking-form/step_2';
-import useFormStorage from '@/hooks/formStorage';
-import RadioButton from '../UI/RadioButton';
-import CheckBox from '../UI/Сheckbox';
-import {useState, useEffect, useCallback} from 'react';
-import dayjs from 'dayjs';
-import Image from 'next/image';
+"use client";
+import {ExtrasOptions, ServicesOptions} from "@/data/booking-form/step_2";
+import useFormStorage from "@/hooks/formStorage";
+import RadioButton from "../UI/RadioButton";
+import CheckBox from "../UI/Сheckbox";
+import {useState, useEffect, useCallback} from "react";
+import dayjs from "dayjs";
+import Image from "next/image";
 
 const Step2 = () => {
  const {form, handleRadioChange, handleCheckboxChange, setForm} = useFormStorage({
-  areas: '',
+  areas: "",
   bedroom: 1,
   bathroom: 1,
-  frequency: '',
-  homeAccess: '',
-  aboutUs: '',
-  specialInstructions: '',
+  frequency: "",
+  homeAccess: "",
+  aboutUs: "",
+  specialInstructions: "",
   extras: [],
-  services: '',
-  selectedDate: dayjs().format('MM/DD/YYYY'),
-  time: dayjs().format('h:mm A'),
-  address: '',
-  aptSuite: '',
-  city: '',
-  zipCode: '',
+  services: "",
+  selectedDate: dayjs().format("MM/DD/YYYY"),
+  time: dayjs().format("h:mm A"),
+  address: "",
+  aptSuite: "",
+  city: "",
+  zipCode: "",
  });
 
  const [disable, setDisable] = useState(false);
 
  const handleDisable = useCallback(() => {
-  if (form.services === 'Basic Cleaning') {
+  if (form.services === "Basic Cleaning") {
    setDisable(false);
   } else if (
-   form.services === 'Deep Cleaning' ||
-   form.services === 'Move In/Move Out' ||
-   form.services === 'Post Constraction' ||
-   form.services === 'Visit property for estimate'
+   form.services === "Deep Cleaning" ||
+   form.services === "Move In/Move Out" ||
+   form.services === "Post Constraction" ||
+   form.services === "Visit property for estimate"
   ) {
    setDisable(true);
    const updatedForm = {...form, extras: []};
    setForm(updatedForm);
-   localStorage.setItem('form', JSON.stringify(updatedForm));
+   localStorage.setItem("form", JSON.stringify(updatedForm));
   }
  }, [form, setForm]);
 
@@ -83,7 +83,7 @@ const Step2 = () => {
          value={value}
          style=" py-[10px] px-[20px] md:py-[22px] md:px-[10px] lg:py-[20px] h-[136px]  lg:h-[72px]w-full md:text-[24px] text-main md:text-accent md:leading-[28.8px]"
          isActive={value === form.services}
-         onClick={() => handleRadioChange('services', value)}
+         onClick={() => handleRadioChange("services", value)}
         >
          <span className="inline-block lg:text-2xl">{label}</span>
         </RadioButton>
@@ -91,16 +91,16 @@ const Step2 = () => {
       );
      })}
      <li
-      key={'Visit property for estimate'}
+      key={"Visit property for estimate"}
       className="justify-center items-center w-[278px] md:w-[693px] lg:w-[176px] xl:w-[246px] xl:min-h-[140px] hidden lg:flex"
      >
       <RadioButton
-       value={'Visit property for estimate'}
+       value={"Visit property for estimate"}
        style=" py-[10px] px-[20px] md:py-[22px] md:px-[10px] lg:py-[20px] h-full w-full text-accent md:text-accent md:text-[24px]  md:leading-[28.8px]"
-       isActive={'Visit property for estimate' === form.services}
-       onClick={() => handleRadioChange('services', 'Visit property for estimate')}
+       isActive={"Visit property for estimate" === form.services}
+       onClick={() => handleRadioChange("services", "Visit property for estimate")}
       >
-       <span className="inline-block lg:text-2xl">{'Visit property for estimate'}</span>
+       <span className="inline-block lg:text-2xl">{"Visit property for estimate"}</span>
       </RadioButton>
      </li>
     </ul>
@@ -116,7 +116,7 @@ const Step2 = () => {
          value={value}
          style=" py-2 px-2  h-full w-full"
          isActive={(form.extras as string[]).includes(value)}
-         onClick={() => handleCheckboxChange('extras', value)}
+         onClick={() => handleCheckboxChange("extras", value)}
         >
          <div
           className={` md:h-[48px] md:w-[48px] lg:h-[52px] lg:w-[52px] xl:w-[56px] xl:h-[56px] hidden md:block relative`}
@@ -138,16 +138,16 @@ const Step2 = () => {
       );
      })}
      <li
-      key={'Visit property for estimate'}
+      key={"Visit property for estimate"}
       className="flex justify-center items-center w-[278px] md:w-[693px] lg:w-[176px] xl:w-[246px] xl:min-h-[140px] lg:hidden"
      >
       <RadioButton
-       value={'Visit property for estimate'}
+       value={"Visit property for estimate"}
        style=" py-2 px-[20px] md:py-4 md:px-[10px] lg:py-5 h-full w-full text-accent md:text-accent md:text-[24px]  md:leading-[28.8px]"
-       isActive={'Visit property for estimate' === form.services}
-       onClick={() => handleRadioChange('services', 'Visit property for estimate')}
+       isActive={"Visit property for estimate" === form.services}
+       onClick={() => handleRadioChange("services", "Visit property for estimate")}
       >
-       <span className="inline-block lg:text-2xl">{'Visit property for estimate'}</span>
+       <span className="inline-block lg:text-2xl">{"Visit property for estimate"}</span>
       </RadioButton>
      </li>
     </ul>

@@ -1,38 +1,38 @@
-'use client';
-import React from 'react';
+"use client";
+import React from "react";
 
-import dayjs, {Dayjs} from 'dayjs';
-import CustomDatePicker from '../UI/DatePicker';
-import useFormStorage from '@/hooks/formStorage';
-import TimePickerComponent from '../UI/TimePicker';
-import DateTimeCleaning from '../DateTimeCleaning';
-import AddressForm from '../AddressForm';
+import dayjs, {Dayjs} from "dayjs";
+import CustomDatePicker from "../UI/DatePicker";
+import useFormStorage from "@/hooks/formStorage";
+import TimePickerComponent from "../UI/TimePicker";
+import DateTimeCleaning from "../DateTimeCleaning";
+import AddressForm from "../AddressForm";
 
 const Step4: React.FC = () => {
  const {form, handleCustomChange} = useFormStorage({
-  areas: '',
+  areas: "",
   bedroom: 1,
   bathroom: 1,
-  frequency: '',
-  homeAccess: '',
-  aboutUs: '',
-  specialInstructions: '',
+  frequency: "",
+  homeAccess: "",
+  aboutUs: "",
+  specialInstructions: "",
   extras: [],
-  services: '',
-  selectedDate: dayjs().format('MM/DD/YYYY'),
-  time: dayjs().format('h:mm A'),
-  address: '',
-  aptSuite: '',
-  city: '',
-  state: '',
-  zipCode: '',
+  services: "",
+  selectedDate: dayjs().format("MM/DD/YYYY"),
+  time: dayjs().format("h:mm A"),
+  address: "",
+  aptSuite: "",
+  city: "",
+  state: "",
+  zipCode: "",
  });
  const handleDateChange = (date: Dayjs | null): void => {
-  handleCustomChange('selectedDate', date ? date.format('MM/DD/YYYY') : null);
+  handleCustomChange("selectedDate", date ? date.format("MM/DD/YYYY") : null);
  };
 
  const handleTimeChange = (time: Dayjs | null): void => {
-  handleCustomChange('time', time ? time.format('h:mm A') : null);
+  handleCustomChange("time", time ? time.format("h:mm A") : null);
  };
 
  return (
@@ -56,13 +56,13 @@ const Step4: React.FC = () => {
       <div>
        <CustomDatePicker
         onChange={handleDateChange}
-        value={dayjs(form.selectedDate as string, 'MM/DD/YYYY')}
+        value={dayjs(form.selectedDate as string, "MM/DD/YYYY")}
        />
       </div>
       <div>
        <TimePickerComponent
         onChange={handleTimeChange}
-        value={form.selectedTime ? dayjs(form.selectedTime as string, 'h:mm A') : null}
+        value={form.selectedTime ? dayjs(form.selectedTime as string, "h:mm A") : null}
        />
       </div>
      </div>

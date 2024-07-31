@@ -1,29 +1,29 @@
-import Image from 'next/image';
-import BasicSelect from '../UI/Select';
-import RadioButton from '../UI/RadioButton';
-import dayjs from 'dayjs';
+import Image from "next/image";
+import BasicSelect from "../UI/Select";
+import RadioButton from "../UI/RadioButton";
+import dayjs from "dayjs";
 
-import img_stub from '../../../public/images/service-area/image-map-stub.png';
-import {areaOptions, bathroomOptions, bedroomOptions, frequencyOptions} from '@/data/booking-form/step_1';
-import useFormStorage from '@/hooks/formStorage';
+import img_stub from "../../../public/images/service-area/image-map-stub.png";
+import {areaOptions, bathroomOptions, bedroomOptions, frequencyOptions} from "@/data/booking-form/step_1";
+import useFormStorage from "@/hooks/formStorage";
 
 const Step1 = () => {
  const {form, handleInputChange, handleRadioChange} = useFormStorage({
-  areas: '',
+  areas: "",
   bedroom: 1,
   bathroom: 1,
-  frequency: '',
-  homeAccess: '',
-  aboutUs: '',
-  specialInstructions: '',
+  frequency: "",
+  homeAccess: "",
+  aboutUs: "",
+  specialInstructions: "",
   extras: [],
-  services: '',
-  selectedDate: dayjs().format('MM/DD/YYYY'),
-  time: dayjs().format('h:mm A'),
-  address: '',
-  aptSuite: '',
-  city: '',
-  zipCode: '',
+  services: "",
+  selectedDate: dayjs().format("MM/DD/YYYY"),
+  time: dayjs().format("h:mm A"),
+  address: "",
+  aptSuite: "",
+  city: "",
+  zipCode: "",
  });
 
  return (
@@ -87,7 +87,7 @@ const Step1 = () => {
          value={value}
          style=" py-[10px] px-[20px] md:py-[8px] md:px-[10px] lg:py-[20px] h-full w-full text-main"
          isActive={value === form.frequency}
-         onClick={() => handleRadioChange('frequency', value)}
+         onClick={() => handleRadioChange("frequency", value)}
         >
          <span className="inline-block lg:text-2xl">{label}</span>
         </RadioButton>

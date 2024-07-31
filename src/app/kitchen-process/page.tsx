@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import KitchenServices from '@/components/Kitchen';
+import KitchenServices from "@/components/Kitchen";
 
 export interface PageProps {}
 

@@ -1,9 +1,10 @@
-import useFormStorage from '@/hooks/formStorage';
+import useFormStorage from "@/hooks/formStorage";
 // import { getPrice, serviceOption } from "../../../formula";
-import {useEffect, useState} from 'react';
-import {area, discount, serviceOption, extrasOption, getPrice} from '../../../formula';
+import {useEffect, useState} from "react";
+import {area, discount, serviceOption, extrasOption, getPrice} from "../../../formula";
 
-import {loadStripe} from '@stripe/stripe-js';
+import {loadStripe} from "@stripe/stripe-js";
+import DateTimeCleaning from "../DateTimeCleaning";
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY as string);
 
@@ -47,10 +48,10 @@ const Step6 = () => {
   // Отримайте остаточну ціну з вашої форми букінгу
   const price = total * 100; // Наприклад, 50.00 USD
 
-  const response = await fetch('/api/create-checkout-session', {
-   method: 'POST',
+  const response = await fetch("/api/create-checkout-session", {
+   method: "POST",
    headers: {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
    },
    body: JSON.stringify({price}), // ціна у центах
   });
@@ -60,14 +61,14 @@ const Step6 = () => {
   const stripe = await stripePromise;
 
   if (!stripe) {
-   console.error('Stripe has not been initialized');
+   console.error("Stripe has not been initialized");
    setLoading(false);
    return;
   }
   const {error} = await stripe.redirectToCheckout({sessionId: session.id});
 
   if (error) {
-   console.error('Error redirecting to checkout:', error);
+   console.error("Error redirecting to checkout:", error);
    setLoading(false);
   }
  };
@@ -80,16 +81,16 @@ const Step6 = () => {
      By clicking the Book Now button, you agree to our Terms of Service and Privacy Policy.
     </p>
    </div>
-   <div className="flex gap-8 lg:gap-10 xl:gap-20">
+   <div className="flex-row md:flex gap-8 lg:gap-10 xl:gap-40 justify-between">
     <ul className="list-disc ml-6 flex flex-col gap-0.5 mb-10">
      {Object.entries(form).map(([key, value]) => {
-      if (['bedroom', 'bathroom', 'areas', 'frequency', 'services'].includes(key) && value !== '') {
+      if (["bedroom", "bathroom", "areas", "frequency", "services"].includes(key) && value !== "") {
        return (
         <li
          key={key}
          className="text-main "
         >
-         <span>{key === 'bathroom' || key === 'bedroom' ? `${value} ${key}(s)` : value}</span>
+         <span>{key === "bathroom" || key === "bedroom" ? `${value} ${key}(s)` : value}</span>
         </li>
        );
       }
@@ -97,8 +98,8 @@ const Step6 = () => {
     </ul>
     {Array.isArray(form.extras) ? (
      <div className="flex flex-col gap-2">
-      <p className="text-[20px]  text-main">Extras</p>
-      <ul className="list-disc ml-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-3 lg:gap-x-6 md:grid-rows-3 gap-y-0.5 ">
+      <p className="text-[20px]  text-main text-center">Extras</p>
+      <ul className="list-disc ml-6 grid  md:grid-cols-3 lg:grid-cols-5 gap-x-6 lg:gap-x-6 md:grid-rows-3 gap-y-0.5 ">
        {form.extras.map((extra, index) => (
         <li
          key={index}
@@ -111,6 +112,7 @@ const Step6 = () => {
      </div>
     ) : null}
    </div>
+   <DateTimeCleaning form={form as any} />
    <div className="flex flex-col gap-2 ">
     <div className=" flex justify-between text-xl">
      <span>SUB-TOTAL</span>

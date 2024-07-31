@@ -1,82 +1,82 @@
-import React, {useState, useEffect} from 'react';
-import useFormStorage from '@/hooks/formStorage';
-import BasicSelect from '../UI/Select';
-import Textarea from '../UI/Textarea';
-import {aboutUs, homeAccess} from '@/data/booking-form/step_3';
-import dayjs from 'dayjs';
-import Input from '../UI/Input';
-import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
-import CheckBoxIcon from '@mui/icons-material/CheckBox';
-import {IMaskInput} from 'react-imask';
-import Button from '../UI/Button';
-import * as yup from 'yup';
+import React, {useState, useEffect} from "react";
+import useFormStorage from "@/hooks/formStorage";
+import BasicSelect from "../UI/Select";
+import Textarea from "../UI/Textarea";
+import {aboutUs, homeAccess} from "@/data/booking-form/step_3";
+import dayjs from "dayjs";
+import Input from "../UI/Input";
+import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
+import CheckBoxIcon from "@mui/icons-material/CheckBox";
+import {IMaskInput} from "react-imask";
+import Button from "../UI/Button";
+import * as yup from "yup";
 
-const ContactNumberMask = '(000)-000-0000';
+const ContactNumberMask = "(000)-000-0000";
 
 const Step3 = () => {
  const {form, handleInputChange, handleRadioChange} = useFormStorage({
-  areas: '',
+  areas: "",
   bedroom: 1,
   bathroom: 1,
-  frequency: '',
-  homeAccess: '',
-  aboutUs: '',
-  specialInstructions: '',
+  frequency: "",
+  homeAccess: "",
+  aboutUs: "",
+  specialInstructions: "",
   extras: [],
-  services: '',
-  selectedDate: dayjs().format('MM/DD/YYYY'),
-  time: dayjs().format('h:mm A'),
-  address: '',
-  aptSuite: '',
-  city: '',
-  zipCode: '',
-  name: '',
-  surname: '',
-  email: '',
-  phone: '',
+  services: "",
+  selectedDate: dayjs().format("MM/DD/YYYY"),
+  time: dayjs().format("h:mm A"),
+  address: "",
+  aptSuite: "",
+  city: "",
+  zipCode: "",
+  name: "",
+  surname: "",
+  email: "",
+  phone: "",
   remindersChecked: false,
  });
 
- const [localName, setLocalName] = useState('');
- const [localSurname, setLocalSurname] = useState('');
- const [localEmail, setLocalEmail] = useState('');
- const [localPhone, setLocalPhone] = useState('');
+ const [localName, setLocalName] = useState("");
+ const [localSurname, setLocalSurname] = useState("");
+ const [localEmail, setLocalEmail] = useState("");
+ const [localPhone, setLocalPhone] = useState("");
  const [remindersChecked, setRemindersChecked] = useState(false);
  const [errors, setErrors] = useState({
-  name: '',
-  surname: '',
-  email: '',
-  phone: '',
+  name: "",
+  surname: "",
+  email: "",
+  phone: "",
  });
 
  useEffect(() => {
-  const storedForm = localStorage.getItem('form');
+  const storedForm = localStorage.getItem("form");
   if (storedForm) {
    const parsedForm = JSON.parse(storedForm);
-   setLocalName(parsedForm.name || '');
-   setLocalSurname(parsedForm.surname || '');
-   setLocalEmail(parsedForm.email || '');
-   setLocalPhone(parsedForm.phone || '');
+   setLocalName(parsedForm.name || "");
+   setLocalSurname(parsedForm.surname || "");
+   setLocalEmail(parsedForm.email || "");
+   setLocalPhone(parsedForm.phone || "");
    setRemindersChecked(parsedForm.remindersChecked || false);
   }
  }, []);
 
  const handleCheckBoxChange = () => {
   setRemindersChecked(!remindersChecked);
-  handleRadioChange('remindersChecked', !remindersChecked);
+  handleRadioChange("remindersChecked", !remindersChecked);
  };
 
  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
   event.preventDefault();
 
   const schema = yup.object().shape({
-   name: yup.string().required('First Name is required'),
-   surname: yup.string().required('Last Name is required'),
-   email: yup.string().email('Invalid email format').required('Email is required'),
+   name: yup.string().required("First Name is required"),
+   surname: yup.string().required("Last Name is required"),
+   email: yup.string().email("Invalid email format").required("Email is required"),
    phone: yup
     .string()
-    .matches(/^\(\d{3}\)-\d{3}-\d{4}$/, 'Invalid phone number format')
-    .required('Phone is required'),
+    .matches(/^\(\d{3}\)-\d{3}-\d{4}$/, "Invalid phone number format")
+    .required("Phone is required"),
   });
 
   try {
@@ -99,15 +99,15 @@ const Step3 = () => {
     remindersChecked,
    };
 
-   localStorage.setItem('form', JSON.stringify(updatedForm));
-   alert('Form submitted successfully!');
+   localStorage.setItem("form", JSON.stringify(updatedForm));
+   alert("Form submitted successfully!");
   } catch (error) {
    if (error instanceof yup.ValidationError) {
     const validationErrors = {
-     name: '',
-     surname: '',
-     email: '',
-     phone: '',
+     name: "",
+     surname: "",
+     email: "",
+     phone: "",
     };
 
     error.inner.forEach((err) => {
@@ -115,10 +115,10 @@ const Step3 = () => {
       validationErrors[err.path as keyof typeof validationErrors] = err.message;
      }
     });
-    if (validationErrors.name !== localName) setErrors({...errors, name: ''});
-    if (validationErrors.surname !== localSurname) setErrors({...errors, surname: ''});
-    if (validationErrors.email !== localEmail) setErrors({...errors, email: ''});
-    if (validationErrors.phone !== localPhone) setErrors({...errors, phone: ''});
+    if (validationErrors.name !== localName) setErrors({...errors, name: ""});
+    if (validationErrors.surname !== localSurname) setErrors({...errors, surname: ""});
+    if (validationErrors.email !== localEmail) setErrors({...errors, email: ""});
+    if (validationErrors.phone !== localPhone) setErrors({...errors, phone: ""});
 
     setErrors(validationErrors);
    }
@@ -144,7 +144,7 @@ const Step3 = () => {
         type="text"
         onChange={(e) => {
          setLocalName(e.target.value);
-         setErrors({...errors, name: ''});
+         setErrors({...errors, name: ""});
         }}
         placeholder="First Name*"
         style="form-input"
@@ -158,7 +158,7 @@ const Step3 = () => {
         type="text"
         onChange={(e) => {
          setLocalSurname(e.target.value);
-         setErrors({...errors, surname: ''});
+         setErrors({...errors, surname: ""});
         }}
         placeholder="Last Name*"
         style="form-input"
@@ -175,7 +175,7 @@ const Step3 = () => {
         type="email"
         onChange={(e) => {
          setLocalEmail(e.target.value);
-         setErrors({...errors, email: ''});
+         setErrors({...errors, email: ""});
         }}
         placeholder="Email*"
         style="form-input"
@@ -193,7 +193,7 @@ const Step3 = () => {
         onChange={(e) => {
          const target = e.target as HTMLInputElement;
          setLocalPhone(target.value);
-         setErrors({...errors, phone: ''});
+         setErrors({...errors, phone: ""});
         }}
        />
        {errors.phone && (

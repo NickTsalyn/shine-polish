@@ -1,9 +1,9 @@
-import Image from 'next/legacy/image';
-import BasicBreadcrumbs from './UI/Breadcrumbs';
-import {DINING_ROOM_SERVICES} from '@/global/dining-room';
-import IconPlus from '../../public/icons/Icon_plus-min.png';
-import {DiningroomImage} from '@/global/images';
-import {CustomTooltip, diningroomIcons} from './UI/Tooltip';
+import Image from "next/legacy/image";
+import BasicBreadcrumbs from "./UI/Breadcrumbs";
+import {DINING_ROOM_SERVICES} from "@/global/dining-room";
+import IconPlus from "../../public/icons/Icon_plus-min.png";
+import {DiningroomImage} from "@/global/images";
+import {CustomTooltip, diningroomIcons} from "./UI/Tooltip";
 
 export default function DiningRoomServices() {
  const {title, paragraph, processes, frequencies, needs} = DINING_ROOM_SERVICES;

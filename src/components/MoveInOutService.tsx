@@ -1,5 +1,5 @@
-import {MOVE_INOUT_SERVICES} from '@/global/move-cleaning';
-import BasicBreadcrumbs from './UI/Breadcrumbs';
+import {MOVE_INOUT_SERVICES} from "@/global/move-cleaning";
+import BasicBreadcrumbs from "./UI/Breadcrumbs";
 
 export default function MoveServices() {
  const {title, paragraphs, benefits, outServices, inServices, involves, aboutUs} = MOVE_INOUT_SERVICES;

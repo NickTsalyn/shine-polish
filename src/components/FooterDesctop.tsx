@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import FooterMainNav from './Navigation/FooterNav';
-import {FOOTER_NAV} from '@/global/navigation';
+import Link from "next/link";
+import FooterMainNav from "./Navigation/FooterNav";
+import {FOOTER_NAV} from "@/global/navigation";
 // import { FooterImg } from "@/global/images";
 
 export default function FooterDesctop() {

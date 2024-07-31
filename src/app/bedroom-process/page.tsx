@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import Bedroom from '@/components/Bedroom';
+import Bedroom from "@/components/Bedroom";
 
 export interface PageProps {}
 
