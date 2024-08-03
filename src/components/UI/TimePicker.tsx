@@ -16,11 +16,11 @@ export default function TimePickerComponent({
   value,
 }: CustomTimePickerProps) {
   const { form, handleCustomChange } = useFormStorage(
-    {
-      selectedDate: dayjs().format("MM/DD/YYYY"),
-      time: dayjs().format("h:mm A"),
-    },
-    "form"
+    // {
+    //   selectedDate: dayjs().format("MM/DD/YYYY"),
+    //   time: dayjs().format("h:mm A"),
+    // },
+    // "form"
   );
   const [isTimeCalendarOpen, setIsTimeCalendarOpen] = React.useState(false);
 

@@ -1,7 +1,8 @@
-'use client';
-import Button from '@/components/UI/Button';
-import Image from 'next/image';
-import Link from 'next/link';
+"use client";
+
+import Button from "@/components/UI/Button";
+import Image from "next/image";
+import Link from "next/link";
 
 const BgnImg = () => {
  return (
