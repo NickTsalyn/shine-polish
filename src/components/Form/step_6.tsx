@@ -15,8 +15,9 @@ const stripePromise = loadStripe(
 );
 
 import { StepProps } from "@/types/interfaces";
+import Loading from "@/app/loading";
 
-const Step6: React.FC<StepProps> = ({ setStepCompleted }) => {
+const Step6: React.FC<StepProps> = () => {
   const { form } = useFormStorage();
   const [total, setTotal] = useState(0);
 
@@ -54,31 +55,38 @@ const Step6: React.FC<StepProps> = ({ setStepCompleted }) => {
   const handleCheckout = async () => {
     setLoading(true);
 
-    const price = total * 100;
+    try {
+      const price = total * 100;
 
-    const response = await fetch("/api/create-checkout-session", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ price }),
-    });
+      const response = await fetch("/api/create-checkout-session", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ price }),
+      });
 
-    const session = await response.json();
+      const session = await response.json();
 
-    const stripe = await stripePromise;
+      const stripe = await stripePromise;
 
-    if (!stripe) {
-      console.error("Stripe has not been initialized");
+      if (!stripe) {
+        console.error("Stripe has not been initialized");
+        setLoading(false);
+        return;
+      }
+      const { error } = await stripe.redirectToCheckout({
+        sessionId: session.id,
+      });
+
+      if (error) {
+        console.error("Error redirecting to checkout:", error);
+        setLoading(false);
+      }
+    } catch (error) {
+      console.error("Error during checkout:", error);
       setLoading(false);
-      return;
-    }
-    const { error } = await stripe.redirectToCheckout({
-      sessionId: session.id,
-    });
-
-    if (error) {
-      console.error("Error redirecting to checkout:", error);
+    } finally {
       setLoading(false);
     }
   };
@@ -114,9 +122,9 @@ const Step6: React.FC<StepProps> = ({ setStepCompleted }) => {
           }
         })}
       </ul>
-      {Array.isArray(form.extras) ? (
+      {Array.isArray(form.extras) && form.extras.length > 0 ? (
         <>
-          {!form.extras && <p>Extras</p>}
+          <p>Extras</p>
           <ul className="list-disc ml-6 flex flex-col gap-0.5">
             {form.extras.map((extra, index) => (
               <li key={index} className="text-base">
@@ -132,14 +140,18 @@ const Step6: React.FC<StepProps> = ({ setStepCompleted }) => {
           <span className="">$ {total.toFixed(2)}</span>
         </div>
       </div>
-      <button
-        className=" flex justify-center items-center text-white bg-accent rounded-xl py-1.5 w-3/4 m-auto"
-        type="submit"
-        onClick={handleCheckout}
-        disabled={loading}
-      >
-        <span className="text-white text-2xl">BOOK NOW</span>
-      </button>
+      {loading ? (
+        <Loading />
+      ) : (
+        <button
+          className=" flex justify-center items-center text-white bg-accent rounded-xl py-1.5 w-3/4 m-auto"
+          type="submit"
+          onClick={handleCheckout}
+          disabled={loading}
+        >
+          <span className="text-white text-2xl">BOOK NOW</span>
+        </button>
+      )}
     </div>
   );
 };

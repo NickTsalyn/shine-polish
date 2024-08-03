@@ -31,8 +31,9 @@ const Step4: React.FC<StepProps> = ({ setStepCompleted }) => {
   const isStepCompleted = isAddressComplete && form.selectedDate !== todayDate;
 
   useEffect(() => {
-    isStepCompleted ? setStepCompleted(4) : setStepCompleted(3);
-  }, [form, isStepCompleted, setStepCompleted, todayDate]);
+    isStepCompleted ? setStepCompleted(4) : null;
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [form, setStepCompleted, todayDate]);
 
   return (
     <div className="py-4 md:py-6 lg:py-9">
@@ -40,16 +41,15 @@ const Step4: React.FC<StepProps> = ({ setStepCompleted }) => {
         <h1 className="h1 md:text-[36px] mb-[32px]">
           Where would you like us to clean?
         </h1>
-        <div className="relative">
-          <Controller
+        {/* <div className="relative"> */}
+          {/* <Controller
             name="street"
             control={control}
             rules={{ required: "Please enter an address" }}
-            render={({ field }) => (
-              <AddressForm {...field} onChange={handleCustomChange} />
-            )}
-          />
-        </div>
+            render={({ field }) => ( */}
+              <AddressForm  onChange={handleCustomChange} />
+             {/* )} */}
+              {/* /> */}
       </div>
       <div>
         <h2 className="h1 md:text-[36px] mb-[32px]">

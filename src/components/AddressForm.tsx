@@ -2,7 +2,7 @@ import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 import Autocomplete from "react-google-autocomplete";
 import Input from "../components/UI/Input";
 import useFormStorage from "@/hooks/formStorage";
-import { useFormContext } from "react-hook-form";
+import { Controller, useFormContext } from "react-hook-form";
 
 const API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY as string;
 // const API_KEY = "AIzaSyCjw4zjS8V3L0IwDnqWwWz5bXh6w9b4Hc8";
@@ -13,7 +13,7 @@ interface AddressFormProps {
 
 const AddressForm: React.FC<AddressFormProps> = ({ onChange }) => {
   const { form, handleCustomChange, handleInputChange } = useFormStorage();
-  const { trigger } = useFormContext();
+  const { control, trigger } = useFormContext();
   const [inputValue, setInputValue] = useState(form.address?.street || "");
   const [addressDetails, setAddressDetails] = useState({
     street: form.address?.street || "",
@@ -48,11 +48,21 @@ const AddressForm: React.FC<AddressFormProps> = ({ onChange }) => {
 
   const handlePlaceSelected = (place: google.maps.places.PlaceResult) => {
     const addressComponents = place.address_components || [];
-    const streetNumber = addressComponents.find((c) => c.types.includes("street_number"))?.long_name || "";
-    const streetName = addressComponents.find((c) => c.types.includes("route"))?.long_name || "";
-    const city = addressComponents.find((c) => c.types.includes("locality"))?.long_name || "";
-    const state = addressComponents.find((c) => c.types.includes("administrative_area_level_1"))?.short_name || "";
-    const zip = addressComponents.find((c) => c.types.includes("postal_code")) ?.long_name || "";
+    const streetNumber =
+      addressComponents.find((c) => c.types.includes("street_number"))
+        ?.long_name || "";
+    const streetName =
+      addressComponents.find((c) => c.types.includes("route"))?.long_name || "";
+    const city =
+      addressComponents.find((c) => c.types.includes("locality"))?.long_name ||
+      "";
+    const state =
+      addressComponents.find((c) =>
+        c.types.includes("administrative_area_level_1")
+      )?.short_name || "";
+    const zip =
+      addressComponents.find((c) => c.types.includes("postal_code"))
+        ?.long_name || "";
     const street = `${streetNumber} ${streetName}`.trim();
 
     const address = {
@@ -141,18 +151,27 @@ const AddressForm: React.FC<AddressFormProps> = ({ onChange }) => {
       <div className="flex flex-col gap-5">
         <div className="flex gap-5 flex-col lg:flex-row min-w-[280px]">
           <div className="md:w-full lg:w-1/2 md:h-[48px] ">
-            <Autocomplete
-              apiKey={API_KEY}
-              onPlaceSelected={handlePlaceSelected}
-              options={{
-                types: ["address"],
-                componentRestrictions: { country: "us" },
-              }}
+            <Controller
               name="street"
-              className={inputStyles}
-              placeholder="Address*"
-              value={inputValue}
-              onChange={handleAutoCompleteChange}
+              control={control}
+              defaultValue={addressDetails.street}
+              rules={{ required: "Please enter a street address" }}
+              render={({ field }) => (
+                <Autocomplete
+                  {...field}
+                  apiKey={API_KEY}
+                  onPlaceSelected={handlePlaceSelected}
+                  options={{
+                    types: ["address"],
+                    componentRestrictions: { country: "us" },
+                  }}
+                  // name="street"
+                  className={inputStyles}
+                  placeholder="Address*"
+                  value={inputValue}
+                  onChange={handleAutoCompleteChange}
+                />
+              )}
             />
           </div>
           <div className="md:w-full lg:w-1/2 md:h-[48px]">
@@ -168,32 +187,59 @@ const AddressForm: React.FC<AddressFormProps> = ({ onChange }) => {
         </div>
         <div className="flex gap-5 flex-col md:flex-row">
           <div className="md:w-3/4 md:h-[48px] gap-5 ">
-            <Input
-              type="text"
-              style="form-input"
-              placeholder="City*"
-              onChange={handleInputChange}
-              value={addressDetails.city}
+            <Controller
               name="city"
+              control={control}
+              defaultValue={addressDetails.city}
+              rules={{ required: "Please enter a city" }}
+              render={({ field }) => (
+                <Input
+                  {...field}
+                  type="text"
+                  style="form-input"
+                  placeholder="City*"
+                  onChange={handleInputChange}
+                  value={addressDetails.city}
+                  // name="city"
+                />
+              )}
             />
           </div>
           <div className="md:w-full md:h-[48px] gap-5">
-            <Input
-              type="text"
-              style="form-input"
-              placeholder="State*"
-              onChange={handleInputChange}
-              value={addressDetails.state}
+            <Controller
               name="state"
+              control={control}
+              defaultValue={addressDetails.state}
+              rules={{ required: "Please enter a state" }}
+              render={({ field }) => (
+                <Input
+                  {...field}
+                  type="text"
+                  style="form-input"
+                  placeholder="State*"
+                  onChange={handleInputChange}
+                  value={addressDetails.state}
+                  // name="state"
+                />
+              )}
             />
           </div>
           <div className="md:w-1/4 md:h-[48px]">
-            <Input
-              type="text"
-              style="form-input"
-              placeholder="Zip Code*"
-              value={addressDetails.zip}
-              onChange={handleInputChange}
+            <Controller
+              name="zip"
+              control={control}
+              defaultValue={addressDetails.zip}
+              rules={{ required: "Please enter a zip code" }}
+              render={({ field }) => (
+                <Input
+                  {...field}
+                  type="text"
+                  style="form-input"
+                  placeholder="Zip Code*"
+                  value={addressDetails.zip}
+                  onChange={handleInputChange}
+                />
+              )}
             />
           </div>
         </div>

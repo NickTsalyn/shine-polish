@@ -57,3 +57,8 @@ export interface StepProps {
   control: Control<FormValues>;
   setStepCompleted: (step: number) => void;
 }
+
+export interface Areas {
+  name: string;
+  value: number | string;
+}

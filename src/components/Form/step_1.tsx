@@ -5,19 +5,47 @@ import BasicSelect from "../UI/Select";
 import RadioButton from "../UI/RadioButton";
 
 import img_stub from "../../../public/images/service-area/image-map-stub.png";
-import {
-  areaOptions,
-  bathroomOptions,
-  bedroomOptions,
-  frequencyOptions,
-} from "@/data/booking-form/step_1";
+import { bathroomOptions, bedroomOptions } from "@/data/booking-form/step_1";
 import useFormStorage from "@/hooks/formStorage";
 import { Controller } from "react-hook-form";
-import { StepProps } from "@/types/interfaces";
-import { useEffect } from "react";
+import { Areas, StepProps } from "@/types/interfaces";
+import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { getOptions } from "@/api";
+import Loading from "@/app/loading";
+
+interface Discounts {
+  name: string;
+  value: number;
+}
 
 const Step1: React.FC<StepProps> = ({ control, setStepCompleted }) => {
   const { form, handleSelectChange, handleRadioChange } = useFormStorage();
+
+  const { data, error, isLoading } = useQuery<{
+    areaOptions: Areas[];
+    discountOptions: Discounts[];
+  }>({
+    queryKey: ["getOptions"],
+    queryFn: getOptions,
+  });
+
+
+  const areas =
+    data?.areaOptions.map((area: Areas) => {
+      return {
+        value: area.name,
+        label: area.name,
+      };
+    }) || [];
+
+  const frequency =
+    data?.discountOptions.map((item: Discounts) => {
+      return {
+        value: item.name,
+        label: item.name,
+      };
+    }) || [];
 
   const isStepCompleted =
     form.areas && form.bedroom && form.bathroom && form.frequency;
@@ -25,12 +53,20 @@ const Step1: React.FC<StepProps> = ({ control, setStepCompleted }) => {
     isStepCompleted ? setStepCompleted(1) : setStepCompleted(0);
   }, [isStepCompleted, setStepCompleted]);
 
+  if (isLoading) {
+    return <Loading />;
+  }
+
+  if (error) {
+    return <p>Error: {(error as Error).message}</p>;
+  }
+
   return (
     <div className="py-4 md:py-6 lg:py-9 flex flex-col gap-6 md:gap-[26px] lg:grid lg:grid-flow-col lg:grid-cols-2 lg:gap-[66px] xl:gap-[80px]">
       <div className="md:flex md:flex-row md:justify-between lg:flex-col lg:gap-[33px] xl:gap-[30px] lg:row-span-2">
         <div className="flex flex-col gap-4 md:gap-6">
           <h2 className=" text-2xl md:text-4xl font-medium">Choose area</h2>
-          <div >
+          <div>
             <Controller
               name="areas"
               control={control}
@@ -41,7 +77,7 @@ const Step1: React.FC<StepProps> = ({ control, setStepCompleted }) => {
                     {...field}
                     placeholder="Select an area*"
                     value={form.areas}
-                    items={areaOptions}
+                    items={areas}
                     onChange={(event) => {
                       const { value } = event.target as HTMLInputElement;
                       field.onChange(value);
@@ -117,7 +153,7 @@ const Step1: React.FC<StepProps> = ({ control, setStepCompleted }) => {
           Scheduling is flexible. Cancel or reschedule anytime.
         </p>
         <ul className="flex flex-wrap justify-center gap-5 lg:gap-6 lg:w-[562px]  md:justify-around md:flex-nowrap lg:flex-wrap">
-          {frequencyOptions.map(({ value, label }) => {
+          {frequency.map(({ value, label }) => {
             return (
               <li
                 key={value}
@@ -127,7 +163,7 @@ const Step1: React.FC<StepProps> = ({ control, setStepCompleted }) => {
                   name="frequency"
                   control={control}
                   rules={{ required: "This field is required" }}
-                  render={({ field}) => (
+                  render={({ field }) => (
                     <RadioButton
                       {...field}
                       style="py-[10px] px-[20px] md:py-[8px] md:px-[10px] lg:py-[20px] h-full w-full"
