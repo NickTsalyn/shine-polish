@@ -39,7 +39,6 @@ export default function BasicSelect(props: BasicSelectProps) {
             "&::-webkit-scrollbar": {
               width: "8px",
             },
-
             "&::-webkit-scrollbar-track": {
               background: "transparent",
             },

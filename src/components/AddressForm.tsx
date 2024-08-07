@@ -245,7 +245,41 @@ const AddressForm: React.FC<AddressFormProps> = ({ onChange }) => {
         </div>
       </div>
     </div>
-  );
+  //   <div className="flex gap-4  flex-col md:flex-row">
+  //    <div className="md:w-4/6 lg:w-5/6 md:h-[48px] gap-5">
+  //     <Input
+  //      type="text"
+  //      style="form-input"
+  //      placeholder="City*"
+  //      onChange={handleInputChange}
+  //      value={form.city as string}
+  //      name="city"
+  //     />
+  //    </div>
+  //    <div className="md:w-[120px] md:h-[48px]">
+  //     <BasicSelect
+  //      name="state"
+  //      placeholder="GA*"
+  //      value={form.state as string}
+  //      onChange={handleInputChange}
+  //      items={usStates}
+  //      style={{width: '120px'}}
+  //     />
+  //    </div>
+  //    <div className="md:w-1/6 md:h-[48px]">
+  //     <Input
+  //      type="text"
+  //      style="form-input"
+  //      placeholder="Zip Code*"
+  //      value={form.zipCode as number}
+  //      onChange={handleInputChange}
+  //      name="zipCode"
+  //     />
+  //    </div>
+  //   </div>
+  //  </form>
+  // </div>
+ );
 };
 
 export default AddressForm;

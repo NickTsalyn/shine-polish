@@ -4,7 +4,7 @@ import BasicBreadcrumbs from "./UI/Breadcrumbs";
 export default function DeepCleaning() {
   const { title, paragraphs, services, homeNeeds, yourArea } = DEEP_CLEANING;
   return (
-    <div className=" body text-text  flex flex-col justify-start items-start ">
+    <div className=" body text-text  flex flex-col justify-start items-start lg:mb-[120px]">
       <h1 className=" subtitle-booking md:text-5xl lg:text-6xl md:leading-6 text-main max-w-64 md:max-w-[682px] lg:max-w-[920px] text-start mb-5 md:mb-10 lg:mb-7 ">
         {title}
       </h1>

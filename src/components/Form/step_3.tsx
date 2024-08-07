@@ -315,7 +315,9 @@ const Step3: React.FC<StepProps> = ({ control, setStepCompleted }) => {
                         }}
                       />
                       {error && (
-                        <p className="text-accent-light left-2 text-xs lg:text-base  absolute ">{error.message}</p>
+                        <p className="text-accent-light left-2 text-xs lg:text-base  absolute ">
+                          {error.message}
+                        </p>
                       )}
                     </>
                   )}

@@ -16,6 +16,7 @@ const stripePromise = loadStripe(
 
 import { StepProps } from "@/types/interfaces";
 import { CircularProgress } from "@mui/material";
+import DateTimeCleaning from "../DateTimeCleaning";
 
 const Step6: React.FC<StepProps> = () => {
   const { form } = useFormStorage();
@@ -92,9 +93,9 @@ const Step6: React.FC<StepProps> = () => {
   };
 
   return (
-    <div className="p-4 md:p-6 lg:p-9 flex flex-col gap-5">
+    <div className="p-4 md:p-6 lg:p-9 flex flex-col gap-5 xl:h-[980px] justify-between">
       <div>
-        <h2 className=" text-black text-2xl text-center mb-2">
+        <h2 className=" text-black text-2xl text-center mb-2 lg:h-[800px] ">
           BOOKING SUMMARY
         </h2>
         <p className="text-bookingSubText text-base">

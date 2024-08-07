@@ -44,13 +44,13 @@ const ServiceAreas = (props: Props) => {
             Service Areas
           </h2>
 
-          <div className="flex gap-16 md:gap-20 xl:gap-24 items-center justify-center">
-            <Image
-              src={img_phone}
-              className="lg:w-[200px] xl:w-[232px]"
-              alt="phone with map"
-              width={122}
-            />
+     <div className="flex gap-16 md:gap-20 xl:gap-24 items-center justify-center">
+      <Image
+       src={img_phone}
+       className="lg:w-[200px] xl:w-[232px]"
+       alt="phone with map"
+       width={122}
+      />
 
             <ul className="list-disc sm:grid md:grid-cols-2 md:gap-9 lg:grid-cols-1 lg:gap-0 xl:grid-cols-1 xl:gap-0 list-text text-text ">
               {/* Перша колонка */}
@@ -70,15 +70,15 @@ const ServiceAreas = (props: Props) => {
           </div>
         </div>
 
-        <Image
-          src={img_stub}
-          className="md:w-[726px] lg:w-[626px] lg:h-[500px] xl:w-[926px] xl:h-[540px]"
-          alt="map"
-          width={376}
-        />
-      </div>
-    </section>
-  );
+    <Image
+     src={img_stub}
+     className="md:w-[726px] lg:w-[626px] lg:h-[500px] xl:w-[926px] xl:h-[540px]"
+     alt="map"
+     width={376}
+    />
+   </div>
+  </section>
+ );
 };
 
 export default ServiceAreas;
