@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useCallback, useEffect } from "react";
+import React, { useEffect } from "react";
 import useFormStorage from "@/hooks/formStorage";
 import BasicSelect from "../UI/Select";
 import Textarea from "../UI/Textarea";
-import { aboutUs, homeAccess } from "@/data/booking-form/step_3";
+import { aboutUs, homeAccess } from "@/data/booking-form/stepsData";
 import Input from "../UI/Input";
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
@@ -111,7 +111,7 @@ const Step3: React.FC<StepProps> = ({ control, setStepCompleted }) => {
   //   [setError, clearErrors]
   // );
 
-  function handleFieldChange(name: string, value: string) {
+  const handleFieldChange = (name: string, value: string) => {
     validateField(name, value, setError, clearErrors);
     handleCustomChange(name, value);
   }
@@ -157,7 +157,7 @@ const Step3: React.FC<StepProps> = ({ control, setStepCompleted }) => {
 
   useEffect(() => {
     isStepCompleted ? setStepCompleted(3) : setStepCompleted(2);
-    // }
+ 
   }, [isStepCompleted, setStepCompleted]);
 
   return (

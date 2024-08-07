@@ -3,7 +3,7 @@ import Image from "next/image";
 import img_stub from "../../public/images/service-area/image-map-stub.png";
 import img_phone from "../../public/images/service-area/phone_map_service.png";
 import { useQuery } from "@tanstack/react-query";
-import { Areas } from "@/types/interfaces";
+import { Options } from "@/types/interfaces";
 import Loading from "@/app/loading";
 import { getOptions } from "@/api";
 
@@ -12,13 +12,13 @@ type Props = {};
 const ServiceAreas = (props: Props) => {
 
   const { data, error, isLoading } = useQuery<{
-    areaOptions: Areas[];
+    areaOptions: Options[];
   }>({
     queryKey: ["getOptions"],
     queryFn: getOptions,
   });
   const areas =
-    data?.areaOptions.map((area: Areas) => {
+    data?.areaOptions.map((area: Options) => {
       return {
         value: area.name,
         label: area.name,
@@ -52,7 +52,7 @@ const ServiceAreas = (props: Props) => {
               width={122}
             />
 
-            <ul className="list-disc sm:grid md:grid-cols-2 md:gap-4 lg:grid-cols-1 lg:gap-0 xl:grid-cols-1 xl:gap-0 list-text text-text">
+            <ul className="list-disc sm:grid md:grid-cols-2 md:gap-9 lg:grid-cols-1 lg:gap-0 xl:grid-cols-1 xl:gap-0 list-text text-text ">
               {/* Перша колонка */}
               <div className="sm:col-span-1 md:col-span-1 lg:col-span-1 xl:col-span-1">
                 {areas.slice(0, 5).map((area) => (

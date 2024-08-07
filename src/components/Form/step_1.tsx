@@ -5,26 +5,21 @@ import BasicSelect from "../UI/Select";
 import RadioButton from "../UI/RadioButton";
 
 import img_stub from "../../../public/images/service-area/image-map-stub.png";
-import { bathroomOptions, bedroomOptions } from "@/data/booking-form/step_1";
+import { bathroomOptions, bedroomOptions } from "@/data/booking-form/stepsData";
 import useFormStorage from "@/hooks/formStorage";
 import { Controller } from "react-hook-form";
-import { Areas, StepProps } from "@/types/interfaces";
-import { useEffect, useState } from "react";
+import { Options, StepProps } from "@/types/interfaces";
+import { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { getOptions } from "@/api";
 import Loading from "@/app/loading";
-
-interface Discounts {
-  name: string;
-  value: number;
-}
 
 const Step1: React.FC<StepProps> = ({ control, setStepCompleted }) => {
   const { form, handleSelectChange, handleRadioChange } = useFormStorage();
 
   const { data, error, isLoading } = useQuery<{
-    areaOptions: Areas[];
-    discountOptions: Discounts[];
+    areaOptions: Options[];
+    discountOptions: Options[];
   }>({
     queryKey: ["getOptions"],
     queryFn: getOptions,
@@ -32,7 +27,7 @@ const Step1: React.FC<StepProps> = ({ control, setStepCompleted }) => {
 
 
   const areas =
-    data?.areaOptions.map((area: Areas) => {
+    data?.areaOptions.map((area: Options) => {
       return {
         value: area.name,
         label: area.name,
@@ -40,7 +35,7 @@ const Step1: React.FC<StepProps> = ({ control, setStepCompleted }) => {
     }) || [];
 
   const frequency =
-    data?.discountOptions.map((item: Discounts) => {
+    data?.discountOptions.map((item: Options) => {
       return {
         value: item.name,
         label: item.name,
@@ -48,7 +43,7 @@ const Step1: React.FC<StepProps> = ({ control, setStepCompleted }) => {
     }) || [];
 
   const isStepCompleted =
-    form.areas && form.bedroom && form.bathroom && form.frequency;
+    form.area && form.bedroom && form.bathroom && form.frequency;
   useEffect(() => {
     isStepCompleted ? setStepCompleted(1) : setStepCompleted(0);
   }, [isStepCompleted, setStepCompleted]);
@@ -68,7 +63,7 @@ const Step1: React.FC<StepProps> = ({ control, setStepCompleted }) => {
           <h2 className=" text-2xl md:text-4xl font-medium">Choose area</h2>
           <div>
             <Controller
-              name="areas"
+              name="area"
               control={control}
               rules={{ required: "Please select an area" }}
               render={({ field, fieldState: { error } }) => (
@@ -76,12 +71,12 @@ const Step1: React.FC<StepProps> = ({ control, setStepCompleted }) => {
                   <BasicSelect
                     {...field}
                     placeholder="Select an area*"
-                    value={form.areas}
+                    value={form.area}
                     items={areas}
                     onChange={(event) => {
                       const { value } = event.target as HTMLInputElement;
                       field.onChange(value);
-                      handleSelectChange("areas", value);
+                      handleSelectChange("area", value);
                     }}
                   />
                   {error && (

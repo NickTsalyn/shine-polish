@@ -2,7 +2,7 @@
 import useFormStorage from "@/hooks/formStorage";
 import { useEffect, useState } from "react";
 import {
-  area,
+  areas,
   discount,
   serviceOption,
   extrasOption,
@@ -15,7 +15,7 @@ const stripePromise = loadStripe(
 );
 
 import { StepProps } from "@/types/interfaces";
-import Loading from "@/app/loading";
+import { CircularProgress } from "@mui/material";
 
 const Step6: React.FC<StepProps> = () => {
   const { form } = useFormStorage();
@@ -31,14 +31,14 @@ const Step6: React.FC<StepProps> = () => {
       return;
     }
 
-    const { bedroom, bathroom, areas, frequency, services, extras } = form;
+    const { bedroom, bathroom, area, frequency, service, extras } = form;
 
     const areaCoefficient =
-      area.find((area) => area.name === areas)?.value || 1;
+      areas.find((ar) => ar.name === area)?.value || 1;
     const discountValue =
       discount.find((discount) => discount.name === frequency)?.value || 1;
     const cleaningValue =
-      serviceOption.find((service) => service.name === services)?.value || 1;
+      serviceOption.find((serv) => serv.name === service)?.value || 1;
     const extraValue = extrasOption.reduce((acc, item) => {
       return (extras as string[]).includes(item.name) ? acc + item.value : acc;
     }, 0);
@@ -63,7 +63,7 @@ const Step6: React.FC<StepProps> = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ price }),
+        body: JSON.stringify({ price, form }),// Send form data along with the price
       });
 
       const session = await response.json();
@@ -105,7 +105,7 @@ const Step6: React.FC<StepProps> = () => {
       <ul className="list-disc ml-6 flex flex-col gap-0.5">
         {Object.entries(form).map(([key, value]) => {
           if (
-            ["bedroom", "bathroom", "areas", "frequency", "services"].includes(
+            ["bedroom", "bathroom", "area", "frequency", "service"].includes(
               key
             ) &&
             value !== ""
@@ -140,18 +140,22 @@ const Step6: React.FC<StepProps> = () => {
           <span className="">$ {total.toFixed(2)}</span>
         </div>
       </div>
-      {loading ? (
-        <Loading />
-      ) : (
-        <button
-          className=" flex justify-center items-center text-white bg-accent rounded-xl py-1.5 w-3/4 m-auto"
-          type="submit"
-          onClick={handleCheckout}
-          disabled={loading}
-        >
+
+      <button
+        className=" flex justify-center items-center text-white bg-accent rounded-xl py-1.5 w-3/4 m-auto"
+        type="submit"
+        onClick={handleCheckout}
+        disabled={loading}
+      >
+        {loading ? (
+          <div className="flex justify-center items-center gap-5">
+            <span className="text-white text-2xl">Processing...</span>            
+            <CircularProgress className="text-sand stroke-2 flex-right justify-items-end"/>
+          </div>
+        ) : (
           <span className="text-white text-2xl">BOOK NOW</span>
-        </button>
-      )}
+        )}
+      </button>
     </div>
   );
 };

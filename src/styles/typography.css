@@ -159,7 +159,7 @@
 
 @screen md {
   .list-text {
-    @apply text-[36px];
+    @apply text-[24px];
     @apply font-normal;
     @apply leading-[1.2];
   }

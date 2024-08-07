@@ -4,15 +4,51 @@ import Textarea from "../UI/Textarea";
 
 import useFormStorage from "@/hooks/formStorage";
 import { BannerImg, DiscontImg } from "../../global/images";
-import { useEffect } from "react";
+import {  useEffect, useState } from "react";
 import { StepProps } from "@/types/interfaces";
-
+import { IMaskInput } from "react-imask";
+const TipsNumberMask = "$ 000";
 const Step5: React.FC<StepProps> = ({ setStepCompleted }) => {
-  const { form, handleInputChange } = useFormStorage();
-
+  const { form, handleInputChange, handleCustomChange } = useFormStorage();
+//  const [inputValue, setInputValue] = useState("");
   useEffect(() => {
     setStepCompleted(5);
   }, [setStepCompleted]);
+
+  
+  // const handleTipsChange = (value: string) => {
+  //   const numericValue = value.replace(/\D/g, ""); // Витягаємо лише цифри
+
+    // let formattedValue = "";
+    // if (numericValue.length > 0) {
+    //   const cents = numericValue.slice(-2);
+    //   const dollars = numericValue.slice(0, -2) || "00";
+
+    //   formattedValue = `${dollars}.${cents}`;
+    // }
+
+    // setInputValue(formattedValue);
+    // handleCustomChange("tips", formattedValue);
+
+    // if (numericValue.length === 0) {
+    //   setInputValue("00.00");
+    //   handleCustomChange("tips", "00.00");
+    //   return;
+    // }
+
+    // Форматуємо значення: останні дві цифри - це центи, решта - долари
+  //   const cents = numericValue.slice(-2).padStart(2, "0");
+  //   const dollars = numericValue.slice(0, -2).padStart(1, "0");
+
+  //   const formattedValue = `${dollars}.${cents}`;
+  //   setInputValue(formattedValue);
+  //   handleCustomChange("tips", formattedValue);
+
+  // };
+  const handleTipsChange = (value: string) => {
+    
+    handleCustomChange("tips", value);
+  };
 
   return (
     <div className=" py-8 flex flex-col gap-6 lg:flex-row lg:flex-wrap justify-between">
@@ -68,13 +104,25 @@ const Step5: React.FC<StepProps> = ({ setStepCompleted }) => {
             by our cleaners
           </p>
           <div className=" h-[60px]">
-            <Input
-              style="form-input"
-              type="text"
-              onChange={handleInputChange}
+            <IMaskInput
               name="tips"
-              value={form.tips as string}
+              mask={TipsNumberMask}
+              placeholder="$ 000"
+              thousandsSeparator=","
+              // radix="."
+              // mapToRadix={["."]}
+              // scale={2}
+              min={0}
+              max={9999} 
+              value={form.tips}          
+              unmask={true} // повертає значення без маски
+              className="block mx-full mb-[10px] w-full hx-full h-full  py-[8px] lg:py-[12px] px-[8px] lg:px-[16px] bg-transparent text-text border-solid border-2 focus:border-[3px] border-secondary rounded-[12px] focus:shadow-input-shadow outline-none xl:placeholder:text-[16px] placeholder:text-secondary-placeholder placeholder:opacity-50"
+              padFractionalZeros={true}
+              onAccept={(value: string) => {
+                handleTipsChange( value);
+              }}
             />
+           
           </div>
         </div>
       </div>

@@ -7,7 +7,7 @@ import useFormStorage from "@/hooks/formStorage";
 import TimePickerComponent from "../UI/TimePicker";
 import DateTimeCleaning from "../DateTimeCleaning";
 import AddressForm from "../AddressForm";
-import { Controller, useFormContext } from "react-hook-form";
+import { useFormContext } from "react-hook-form";
 import { StepProps } from "@/types/interfaces";
 
 const Step4: React.FC<StepProps> = ({ setStepCompleted }) => {

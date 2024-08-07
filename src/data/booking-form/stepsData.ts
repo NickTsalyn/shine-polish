@@ -1,9 +1,27 @@
-export const ServicesOptions = [
-	{ value: "Basic Cleaning", label: "Basic Cleaning" },
-	{ value: "Deep Cleaning", label: "Deep Cleaning" },
-	{ value: "Move In/Move Out", label: "Move In/Move Out" },
-	{ value: "Post Constraction", label: "Post Constraction" },
+export const bedroomOptions = [
+  { value: 1, label: "1 bedroom" },
+  { value: 2, label: "2 bedroom" },
+  { value: 3, label: "3 bedroom" },
+  { value: 4, label: "4 bedroom" },
+  { value: 5, label: "5 bedroom" },
+  { value: 6, label: "6 bedroom" },
+  { value: 7, label: "7 bedroom" },
+  { value: 8, label: "8 bedroom" },
+  { value: 9, label: "9 bedroom" },
 ];
+
+export const bathroomOptions = [
+  { value: 1, label: "1 bathroom" },
+  { value: 2, label: "2 bathroom" },
+  { value: 3, label: "3 bathroom" },
+  { value: 4, label: "4 bathroom" },
+  { value: 5, label: "5 bathroom" },
+  { value: 6, label: "6 bathroom" },
+  { value: 7, label: "7 bathroom" },
+  { value: 8, label: "8 bathroom" },
+  { value: 9, label: "9 bathroom" },
+];
+
 export const  ExtrasOptions  = [
 	{ value: "Organizing", label: "Organizing", path:'/icons/step_2_form_icons/organizing.svg', style:'hidden md:block md:w-[70.64px] md:h-[47.25px] lg:w-[70.64px] lg:h-[47.23px] xl:w-[85px] xl:h-[63px]' },
 	{ value: "Load of Laundry", label: "Load of Laundry", path:'/icons/step_2_form_icons/laundry.svg', style:'hidden md:block md:w-[44px] md:h-[49px] lg:w-[49.03px] lg:h-[56.25px] xl:w-[59px] xl:h-[75px]' },
@@ -16,4 +34,20 @@ export const  ExtrasOptions  = [
     { value: "Walls", label: "Walls", path:'/icons/step_2_form_icons/walls.svg', style:'hidden md:block md:w-[55.68px] md:h-[53.38px] lg:w-[56.45px] lg:h-[60.13px] xl:w-[67px] xl:h-[71.17px]' },
 	{ value: "Basement", label: "Basement", path:'/icons/step_2_form_icons/basement.svg' ,style:'hidden md:block md:w-[62px] md:h-[85px] lg:w-[64px] lg:h-[90px]' },
 	
+];
+
+export const homeAccess = [
+	{ value: "I will leave a key", label: "I will leave a key" },
+	{ value: "Someone will be home", label: "Someone will be home" },
+	{ value: "Go to apartment office for key", label: "Go to apartment office for key" },
+	{ value: "Other", label: "Other" },
+];
+
+export const aboutUs = [
+	{ value: "From friends", label: "From friends" },
+	{ value: "Returning customer", label: "Returning customer" },
+	{ value: "Google", label: "Google" },
+	{ value: "Instagram", label: "Instagram" },
+	{ value: "Facebook", label: "Facebook" },
+	{ value: "Other", label: "Other" },
 ];
