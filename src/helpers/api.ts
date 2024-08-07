@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const setAuthHeader = (token: string) => {
-  axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
 const clearAuthHeader = () => {
@@ -40,4 +40,16 @@ export const signout = async () => {
   const res = await axios.post(`${BASE_URL}/auth/signout`);
   clearAuthHeader();
   return res;
+};
+
+export const fetchClientBookings = async (id: string) => {
+  const user: any = localStorage.getItem("user");
+  if (user === null) {
+    alert("Please sign in")
+  } else {
+    const objUser = JSON.parse(user);
+    setAuthHeader(objUser.accessToken);
+    const res = await axios.get(`${BASE_URL}/bookings/${id}`);
+    return res.data;
+  }
 };
