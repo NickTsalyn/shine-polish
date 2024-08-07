@@ -26,11 +26,15 @@ const Step1: React.FC<StepProps> = ({ control, setStepCompleted }) => {
   }, [isStepCompleted, setStepCompleted]);
 
   return (
-    <div className="py-4 md:py-6 lg:py-9 flex flex-col gap-6 md:gap-[26px] lg:grid lg:grid-flow-col lg:grid-cols-2 lg:gap-[66px] xl:gap-[80px]">
+    <div
+      className="py-4 md:py-6 lg:py-9 flex flex-col gap-6 md:gap-[26px] lg:grid lg:grid-flow-col lg:grid-cols-2 lg:gap-[66px] xl:gap-[80px] 
+      // lg:h-[800px] xl:h-[980px]
+      "
+    >
       <div className="md:flex md:flex-row md:justify-between lg:flex-col lg:gap-[33px] xl:gap-[30px] lg:row-span-2">
         <div className="flex flex-col gap-4 md:gap-6">
           <h2 className=" text-2xl md:text-4xl font-medium">Choose area</h2>
-          <div >
+          <div className="w-full md:w-[280px]">
             <Controller
               name="areas"
               control={control}
@@ -127,7 +131,7 @@ const Step1: React.FC<StepProps> = ({ control, setStepCompleted }) => {
                   name="frequency"
                   control={control}
                   rules={{ required: "This field is required" }}
-                  render={({ field}) => (
+                  render={({ field }) => (
                     <RadioButton
                       {...field}
                       style="py-[10px] px-[20px] md:py-[8px] md:px-[10px] lg:py-[20px] h-full w-full"

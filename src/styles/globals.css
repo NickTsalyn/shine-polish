@@ -85,6 +85,10 @@ select:-webkit-autofill:focus {
       background-color: #DE005D;
       color: #fff;
     }
+    .css-tlbplz-MuiButtonBase-root-MuiMenuItem-root.Mui-selected {
+      background-color: #DE005D;
+      color: #fff;
+     }
 .error {
   color: red;
   font-size: 12px;

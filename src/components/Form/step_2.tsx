@@ -14,7 +14,7 @@ const Step2: React.FC<StepProps> = ({ control, setStepCompleted }) => {
   const { form, handleRadioChange, handleCheckboxChange, setForm } =
     useFormStorage();
 
-  const [disable, setDisable] = useState(false);
+ const [disable, setDisable] = useState(false);
 
   const handleDisable = useCallback(() => {
     if (form.services === "Basic Cleaning") {
@@ -32,16 +32,16 @@ const Step2: React.FC<StepProps> = ({ control, setStepCompleted }) => {
     }
   }, [form, setForm]);
 
-  useEffect(() => {
-    handleDisable();
-  }, [handleDisable]);
+ useEffect(() => {
+  handleDisable();
+ }, [handleDisable]);
 
   useEffect(() => {
     form.services ? setStepCompleted(2) : setStepCompleted(1);
   }, [form.services, setStepCompleted]);
 
   return (
-    <div className="p-4 md:p-6 lg:p-9">
+    <div className="p-4 md:p-6 lg:p-9 lg:h-[800px] xl:h-[980px]">
       <div className="max-w-[278px] md:max-w-[682px] lg:max-w-[1160px] xl:max-w-[1572px] m-auto mb-5 xl:mb-[35px]">
         <h2 className="text-2xl md:text-4xl font-medium mb-5">Select Extras</h2>
         <p className="text-bookingSubText font-normal mb-5 leading-[14.4px] text-[12px] md:text-[24px] md:leading-[32px] lg:leading-[28.8px] xl:hidden">

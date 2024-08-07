@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
 
-import dayjs, { Dayjs } from "dayjs";
+import dayjs, {Dayjs} from "dayjs";
 import CustomDatePicker from "../UI/DatePicker";
 import useFormStorage from "@/hooks/formStorage";
 import TimePickerComponent from "../UI/TimePicker";
@@ -35,8 +35,8 @@ const Step4: React.FC<StepProps> = ({ setStepCompleted }) => {
   }, [form, isStepCompleted, setStepCompleted, todayDate]);
 
   return (
-    <div className="py-4 md:py-6 lg:py-9">
-      <div className="flex flex-col mb-[72px] lg:mb-[92px]">
+    <div className="py-4 md:py-6 lg:py-9 lg:h-[800px] xl:h-[980px] lg:justify-between">
+      <div className="flex flex-col mb-[72px] lg:mb-[92px] ">
         <h1 className="h1 md:text-[36px] mb-[32px]">
           Where would you like us to clean?
         </h1>

@@ -13,7 +13,7 @@ export default function Footer() {
   return (
     <footer className="lg:hidden  bg-main w-auto h-auto ">
       <div className="container grid  grid-cols-2 py-6 md:grid-cols-4 gap-5  ">
-        <div className="lg:pr-px-[240px] xl:pr-px-[282px] w-[68px] h-[60px] md:w-[80px] md:h-[70px] lg:w-[120px] lg:h-[90px] xl:w-[150px] xl:h-[130px]">
+        <div className="w-[68px] h-[60px] lg:pr-px-[240px] xl:pr-px-[282px]  md:w-[80px] md:h-[70px] lg:w-[120px] lg:h-[90px] xl:w-[150px] xl:h-[130px]">
           <Link href={"#hero"}>
             <FooterLogo />
           </Link>

@@ -2,29 +2,24 @@
 
 import Link from "next/link";
 import FooterMainNav from "./Navigation/FooterNav";
-import { FOOTER_NAV } from "@/global/navigation";
-import { FooterImg } from "@/global/images";
+import {FOOTER_NAV} from "@/global/navigation";
+// import { FooterImg } from "@/global/images";
 
 export default function FooterDesctop() {
-  return (
-    <footer className="hidden relative lg:flex lg:flex-col lg:justify-end gap-3 lg:h-[460px] xl:h-[612px] lg:ml-[200px] xl:ml-[244px] py-2.5">
-      <div className="opacity-95">
-        <FooterImg />
-      </div>
-      <div className="absolute z-30 inset-x-0  py-2.5 bottom-0">
-        <div className=" lg:w-[1056px] xl:w-[1200px]  ml-auto mr-auto  ">
-          <FooterMainNav links={FOOTER_NAV} />
-        </div>
-        <div className="flex flex-col justify-center items-center ">
-          <div className=" w-[1000px] h-[1px] bg-gradient-to-r from-orange-200 via-main to-orange-200 mb-2 mx-auto"></div>
-          <p className=" text-white lg:text-main text-[8px] md:text-[10px] lg:text-[14px] font-light">
-            All materials on this website are protected by Copyright ©2024
-            <span className="">
-              <Link href="/"> Lobsters Co.</Link>
-            </span>
-          </p>
-        </div>
-      </div>
-    </footer>
-  );
+ return (
+  <footer className="hidden backdrop-opacity-10 backdrop-invert bg-black/70 lg:bg-black/60 w-full h-[100px] lg:flex lg:flex-col lg:justify-end py-4 absolute bottom-0 z-20 right-0">
+   <div className="lg:w-[1000px] xl:w-[1200px]  mx-auto">
+    <FooterMainNav links={FOOTER_NAV} />
+   </div>
+   <div className="flex flex-col justify-center items-center">
+    <div className=" w-[1000px] h-[1px] bg-gradient-to-r from-transparent via-tertial to-transparent mb-2 mt-2"></div>
+    <p className=" text-white lg:text-secondary text-[8px] md:text-[10px] lg:text-[14px] font-light">
+     All materials on this website are protected by Copyright ©2024
+     <span className="">
+      <Link href="/"> Lobsters Co.</Link>
+     </span>
+    </p>
+   </div>
+  </footer>
+ );
 }

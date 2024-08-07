@@ -15,6 +15,7 @@ const stripePromise = loadStripe(
 );
 
 import { StepProps } from "@/types/interfaces";
+import DateTimeCleaning from "../DateTimeCleaning";
 
 const Step6: React.FC<StepProps> = ({ setStepCompleted }) => {
   const { form } = useFormStorage();
@@ -84,9 +85,9 @@ const Step6: React.FC<StepProps> = ({ setStepCompleted }) => {
   };
 
   return (
-    <div className="p-4 md:p-6 lg:p-9 flex flex-col gap-5">
+    <div className="p-4 md:p-6 lg:p-9 flex flex-col gap-5 xl:h-[980px] justify-between">
       <div>
-        <h2 className=" text-black text-2xl text-center mb-2">
+        <h2 className=" text-black text-2xl text-center mb-2 lg:h-[800px] ">
           BOOKING SUMMARY
         </h2>
         <p className="text-bookingSubText text-base">
@@ -94,38 +95,44 @@ const Step6: React.FC<StepProps> = ({ setStepCompleted }) => {
           Privacy Policy.
         </p>
       </div>
-      <ul className="list-disc ml-6 flex flex-col gap-0.5">
-        {Object.entries(form).map(([key, value]) => {
-          if (
-            ["bedroom", "bathroom", "areas", "frequency", "services"].includes(
-              key
-            ) &&
-            value !== ""
-          ) {
-            return (
-              <li key={key} className="text-base ">
-                <span>
-                  {key === "bathroom" || key === "bedroom"
-                    ? `${value} ${key}(s)`
-                    : value}
-                </span>
-              </li>
-            );
-          }
-        })}
+      <div className="flex-row md:flex gap-8 lg:gap-10 xl:gap-40 justify-between">
+        <ul className="list-disc ml-6 flex flex-col gap-0.5">
+          {Object.entries(form).map(([key, value]) => {
+            if (
+              ["bedroom", "bathroom", "areas", "frequency", "services"].includes(
+                key
+              ) &&
+              value !== ""
+            ) {
+              return (
+                <li key={key} className="text-main ">
+                  <span>
+                    {key === "bathroom" || key === "bedroom"
+                      ? `${value} ${key}(s)`
+                      : value}
+                  </span>
+                </li>
+              );
+            }
+          })}
+        </ul>
+        {Array.isArray(form.extras) ? (
+     <div className="flex flex-col gap-2">
+      <p className="text-[20px]  text-main text-center">Extras</p>
+      <ul className="list-disc ml-6 grid  md:grid-cols-3 lg:grid-cols-5 gap-x-6 lg:gap-x-6 md:grid-rows-3 gap-y-0.5 ">
+       {form.extras.map((extra, index) => (
+        <li
+         key={index}
+         className="text-base"
+        >
+         {extra}
+        </li>
+       ))}
       </ul>
-      {Array.isArray(form.extras) ? (
-        <>
-          {!form.extras && <p>Extras</p>}
-          <ul className="list-disc ml-6 flex flex-col gap-0.5">
-            {form.extras.map((extra, index) => (
-              <li key={index} className="text-base">
-                {extra}
-              </li>
-            ))}
-          </ul>
-        </>
-      ) : null}
+     </div>
+    ) : null}
+   </div>
+   <DateTimeCleaning form={form as any} />
       <div className="flex flex-col gap-2 ">
         <div className=" flex justify-between text-xl text-main">
           <span>TOTAL</span>

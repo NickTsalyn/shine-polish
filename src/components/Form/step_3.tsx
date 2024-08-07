@@ -157,7 +157,6 @@ const Step3: React.FC<StepProps> = ({ control, setStepCompleted }) => {
 
   useEffect(() => {
     isStepCompleted ? setStepCompleted(3) : setStepCompleted(2);
-    // }
   }, [isStepCompleted, setStepCompleted]);
 
   return (
@@ -315,7 +314,9 @@ const Step3: React.FC<StepProps> = ({ control, setStepCompleted }) => {
                         }}
                       />
                       {error && (
-                        <p className="text-accent-light left-2 text-xs lg:text-base  absolute ">{error.message}</p>
+                        <p className="text-accent-light left-2 text-xs lg:text-base  absolute ">
+                          {error.message}
+                        </p>
                       )}
                     </>
                   )}
