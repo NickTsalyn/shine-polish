@@ -32,10 +32,9 @@ const Step6: React.FC<StepProps> = () => {
       return;
     }
 
-    const { bedroom, bathroom, area, frequency, service, extras } = form;
+    const { bedroom, bathroom, area, frequency, service, extras, tips } = form;
 
-    const areaCoefficient =
-      areas.find((ar) => ar.name === area)?.value || 1;
+    const areaCoefficient = areas.find((ar) => ar.name === area)?.value || 1;
     const discountValue =
       discount.find((discount) => discount.name === frequency)?.value || 1;
     const cleaningValue =
@@ -50,7 +49,9 @@ const Step6: React.FC<StepProps> = () => {
         discountValue *
         cleaningValue +
       extraValue;
-    setTotal(calculatedPrice);
+    // setTotal(calculatedPrice);
+    const totalWithTips = calculatedPrice + (Number(tips) || 0);
+    setTotal(totalWithTips);
   }, [form, total]);
 
   const handleCheckout = async () => {
@@ -64,7 +65,7 @@ const Step6: React.FC<StepProps> = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ price, form }),// Send form data along with the price
+        body: JSON.stringify({ price, form }), // Send form data along with the price
       });
 
       const session = await response.json();
@@ -95,7 +96,7 @@ const Step6: React.FC<StepProps> = () => {
   return (
     <div className="p-4 md:p-6 lg:p-9 flex flex-col gap-5 xl:h-[980px] justify-between">
       <div>
-        <h2 className=" text-black text-2xl text-center mb-2 lg:h-[800px] ">
+        <h2 className=" text-black text-2xl text-center mb-2  ">
           BOOKING SUMMARY
         </h2>
         <p className="text-bookingSubText text-base">
@@ -122,9 +123,14 @@ const Step6: React.FC<StepProps> = () => {
             );
           }
         })}
+        {form.tips && Number(form.tips) > 0 && (
+          <li className="text-base ">
+            <span>Tips $ {Number(form.tips).toFixed(2)}</span>
+          </li>
+        )}
       </ul>
       {Array.isArray(form.extras) && form.extras.length > 0 ? (
-        <>
+        <div className="flex flex-col gap-2">
           <p>Extras</p>
           <ul className="list-disc ml-6 flex flex-col gap-0.5">
             {form.extras.map((extra, index) => (
@@ -133,8 +139,10 @@ const Step6: React.FC<StepProps> = () => {
               </li>
             ))}
           </ul>
-        </>
+        </div>
       ) : null}
+
+      <DateTimeCleaning form={form as any} />
       <div className="flex flex-col gap-2 ">
         <div className=" flex justify-between text-xl text-main">
           <span>TOTAL</span>
@@ -150,8 +158,11 @@ const Step6: React.FC<StepProps> = () => {
       >
         {loading ? (
           <div className="flex justify-center items-center gap-5">
-            <span className="text-white text-2xl">Processing...</span>            
-            <CircularProgress className="text-sand stroke-2 flex-right justify-items-end"/>
+            <span className="text-white text-2xl">Processing...</span>
+            <CircularProgress
+              size={24}
+              className="text-sand  flex-right justify-items-end"
+            />
           </div>
         ) : (
           <span className="text-white text-2xl">BOOK NOW</span>

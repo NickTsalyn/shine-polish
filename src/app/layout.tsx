@@ -30,13 +30,15 @@ export default function RootLayout({
       <body className={lato.className}>
         <QueryProvider>
           <FormProvider>
-            <Header />
-            <Sidebar />
-            <Suspense fallback={<Loading />}>
-            <main className="lg:ml-[200px] xl:ml-[244px]">{children}</main>
-            </Suspense>
-            <Footer />
-            <FooterDesctop />
+            <div className="relative h-full">
+              <Header />
+              <Sidebar />
+              <Suspense fallback={<Loading />}>
+                <main className="lg:ml-[200px] xl:ml-[244px]">{children}</main>
+              </Suspense>
+              <Footer />
+              <FooterDesctop />
+            </div>
           </FormProvider>
         </QueryProvider>
       </body>

@@ -14,9 +14,9 @@ import { getOptions } from "@/api";
 import Loading from "@/app/loading";
 
 const Step2: React.FC<StepProps> = ({ control, setStepCompleted }) => {
-  const { form, handleRadioChange, handleCheckboxChange, setForm } =
-    useFormStorage();
-
+  const { form, handleRadioChange, handleCheckboxChange, setForm } = useFormStorage();
+  const [disable, setDisable] = useState(false);
+  
   const { data, error, isLoading } = useQuery<{
     extrasOptions: Options[];
     serviceOptions: Options[];
@@ -47,8 +47,6 @@ const Step2: React.FC<StepProps> = ({ control, setStepCompleted }) => {
       };
     }) || [];
 
-  const [disable, setDisable] = useState(false);
-
   const handleDisable = useCallback(() => {
     if (form.service === "Basic Cleaning") {
       setDisable(false);
@@ -65,9 +63,9 @@ const Step2: React.FC<StepProps> = ({ control, setStepCompleted }) => {
     }
   }, [form, setForm]);
 
- useEffect(() => {
-  handleDisable();
- }, [handleDisable]);
+  useEffect(() => {
+    handleDisable();
+  }, [handleDisable]);
 
   useEffect(() => {
     form.service ? setStepCompleted(2) : setStepCompleted(1);

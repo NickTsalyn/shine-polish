@@ -31,9 +31,9 @@ const Step4: React.FC<StepProps> = ({ setStepCompleted }) => {
   const isStepCompleted = isAddressComplete && form.selectedDate !== todayDate;
 
   useEffect(() => {
-    isStepCompleted ? setStepCompleted(4) : null;
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [form, setStepCompleted, todayDate]);
+    isStepCompleted ? setStepCompleted(4) : setStepCompleted(3);
+  
+  }, [form, isStepCompleted, setStepCompleted, todayDate]);
 
   return (
     <div className="py-4 md:py-6 lg:py-9 lg:h-[800px] xl:h-[980px] lg:justify-between">
