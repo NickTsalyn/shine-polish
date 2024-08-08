@@ -4,26 +4,57 @@ import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 
 import { Controller } from "react-hook-form";
-import { ExtrasOptions, ServicesOptions } from "@/data/booking-form/step_2";
+import { ExtrasOptions } from "@/data/booking-form/stepsData";
 import useFormStorage from "@/hooks/formStorage";
 import RadioButton from "../UI/RadioButton";
 import CheckBox from "../UI/Сheckbox";
-import { StepProps } from "@/types/interfaces";
+import { Options, StepProps } from "@/types/interfaces";
+import { useQuery } from "@tanstack/react-query";
+import { getOptions } from "@/api";
+import Loading from "@/app/loading";
 
 const Step2: React.FC<StepProps> = ({ control, setStepCompleted }) => {
-  const { form, handleRadioChange, handleCheckboxChange, setForm } =
-    useFormStorage();
+  const { form, handleRadioChange, handleCheckboxChange, setForm } = useFormStorage();
+  const [disable, setDisable] = useState(false);
+  
+  const { data, error, isLoading } = useQuery<{
+    extrasOptions: Options[];
+    serviceOptions: Options[];
+  }>({
+    queryKey: ["getOptions"],
+    queryFn: getOptions,
+  });
 
- const [disable, setDisable] = useState(false);
+  const services =
+    data?.serviceOptions?.map((service) => {
+      return {
+        value: service.name,
+        label: service.name,
+      };
+    }) || [];
+
+  const combinedExtrasOptions =
+    data?.extrasOptions.map((backendExtra) => {
+      const frontEndExtra = ExtrasOptions.find(
+        (extra) => extra.value === backendExtra.name
+      );
+      return {
+        ...backendExtra,
+        value: backendExtra.name,
+        label: backendExtra.name,
+        path: frontEndExtra?.path || "",
+        style: frontEndExtra?.style || "",
+      };
+    }) || [];
 
   const handleDisable = useCallback(() => {
-    if (form.services === "Basic Cleaning") {
+    if (form.service === "Basic Cleaning") {
       setDisable(false);
     } else if (
-      form.services === "Deep Cleaning" ||
-      form.services === "Move In/Move Out" ||
-      form.services === "Post Constraction" ||
-      form.services === "Visit property for estimate"
+      form.service === "Deep Cleaning" ||
+      form.service === "Move In/Move Out" ||
+      form.service === "Post Constraction" ||
+      form.service === "Visit property for estimate"
     ) {
       setDisable(true);
       const updatedForm = { ...form, extras: [] };
@@ -32,13 +63,21 @@ const Step2: React.FC<StepProps> = ({ control, setStepCompleted }) => {
     }
   }, [form, setForm]);
 
- useEffect(() => {
-  handleDisable();
- }, [handleDisable]);
+  useEffect(() => {
+    handleDisable();
+  }, [handleDisable]);
 
   useEffect(() => {
-    form.services ? setStepCompleted(2) : setStepCompleted(1);
-  }, [form.services, setStepCompleted]);
+    form.service ? setStepCompleted(2) : setStepCompleted(1);
+  }, [form.service, setStepCompleted]);
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
+  if (error) {
+    return <p>Error: {(error as Error).message}</p>;
+  }
 
   return (
     <div className="p-4 md:p-6 lg:p-9 lg:h-[800px] xl:h-[980px]">
@@ -68,14 +107,14 @@ const Step2: React.FC<StepProps> = ({ control, setStepCompleted }) => {
       </div>
       <div className="flex gap-[16px] flex-col max-w-[278px] md:max-w-[682px] lg:max-w-[1160px] xl:max-w-[1572px] m-auto">
         <ul className="flex flex-wrap gap-5 md:gap-[22px] lg:gap-6 lg:w-[1160px] xl:w-[1572px] justify-center md:justify-around lg:justify-start md:flex-nowrap lg:flex-wrap ">
-          {ServicesOptions.map(({ value, label }) => {
+          {services.map(({ value, label }) => {
             return (
               <li
                 key={value}
                 className="flex justify-center items-center w-[128px] md:w-[150px] lg:w-[176px] xl:w-[246px] xl:min-h-[140px]"
               >
                 <Controller
-                  name="services"
+                  name="service"
                   control={control}
                   rules={{ required: "This field is required" }}
                   render={({ field }) => (
@@ -83,10 +122,10 @@ const Step2: React.FC<StepProps> = ({ control, setStepCompleted }) => {
                       {...field}
                       value={value}
                       style=" py-[10px] px-[20px] md:py-[22px] md:px-[10px] lg:py-[20px] h-full w-full md:text-[24px] text-main md:text-accent md:leading-[28.8px]"
-                      isActive={value === form.services}
+                      isActive={value === form.service}
                       onClick={() => {
                         field.onChange(value);
-                        handleRadioChange("services", value);
+                        handleRadioChange("service", value);
                       }}
                     >
                       <span className="inline-block lg:text-2xl">{label}</span>
@@ -101,7 +140,7 @@ const Step2: React.FC<StepProps> = ({ control, setStepCompleted }) => {
             className="justify-center items-center w-[278px] md:w-[693px] lg:w-[176px] xl:w-[246px] xl:min-h-[140px] hidden lg:flex"
           >
             <Controller
-              name="services"
+              name="service"
               control={control}
               rules={{ required: "This field is required" }}
               render={({ field }) => (
@@ -109,7 +148,7 @@ const Step2: React.FC<StepProps> = ({ control, setStepCompleted }) => {
                   {...field}
                   value={"Visit property for estimate"}
                   style=" py-[10px] px-[20px] md:py-[22px] md:px-[10px] lg:py-[20px] h-full w-full text-accent md:text-accent md:text-[24px]  md:leading-[28.8px]"
-                  isActive={"Visit property for estimate" === form.services}
+                  isActive={"Visit property for estimate" === form.service}
                   onClick={() =>
                     handleRadioChange("services", "Visit property for estimate")
                   }
@@ -123,7 +162,7 @@ const Step2: React.FC<StepProps> = ({ control, setStepCompleted }) => {
           </li>
         </ul>
         <ul className="flex flex-wrap justify-center  lg:justify-start gap-5 md:gap-[22px] lg:gap-6 lg:w-[1160px]  xl:w-[1572px] md:flex-wrap lg:flex-wrap ">
-          {ExtrasOptions.map(({ value, label, style, path }) => {
+          {combinedExtrasOptions.map(({ value, label, path }) => {
             return (
               <li
                 key={value}
@@ -169,7 +208,7 @@ const Step2: React.FC<StepProps> = ({ control, setStepCompleted }) => {
             className="flex justify-center items-center w-[278px] md:w-[693px] lg:w-[176px] xl:w-[246px] xl:min-h-[140px] lg:hidden"
           >
             <Controller
-              name="services"
+              name="service"
               control={control}
               rules={{ required: "This field is required" }}
               render={({ field }) => (
@@ -177,7 +216,7 @@ const Step2: React.FC<StepProps> = ({ control, setStepCompleted }) => {
                   {...field}
                   value={"Visit property for estimate"}
                   style=" py-[10px] px-[20px] md:py-[22px] md:px-[10px] lg:py-[20px] h-full w-full text-accent md:text-accent md:text-[24px]  md:leading-[28.8px]"
-                  isActive={"Visit property for estimate" === form.services}
+                  isActive={"Visit property for estimate" === form.service}
                   onClick={() =>
                     handleRadioChange("services", "Visit property for estimate")
                   }

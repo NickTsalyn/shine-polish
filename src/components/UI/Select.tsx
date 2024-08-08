@@ -47,12 +47,12 @@ export default function BasicSelect(props: BasicSelectProps) {
               borderRadius: "32px",
             },
             "&::-webkit-scrollbar-thumb:hover": {
-              background: "#DE005D",
+              background: "#555",
             },
           },
         }}
       />
-      <Box className=" lg:text-[24px] xl:text-[32px]">
+      <Box className="min-w-[280px] lg:text-[24px] xl:text-[32px]">
         {props.label && (
           <label className="body lg:text-[24px] xl:text-[32px]">
             {props.label}
@@ -60,9 +60,9 @@ export default function BasicSelect(props: BasicSelectProps) {
         )}
 
         <FormControl
-          //  fullWidth
+          fullWidth
           sx={{
-            width: "100%",
+            // padding: "12",
             border: "2px solid #E6BA95",
             borderRadius: "12px",
             transition: "all 0.3s ease",
@@ -126,9 +126,9 @@ export default function BasicSelect(props: BasicSelectProps) {
             MenuProps={{
               PaperProps: {
                 style: {
-                  borderRadius: "12px",
+                  borderRadius: "20px",
                   maxHeight: 146,
-                  width: "auto",
+                  // overflow: 'hidden',
                 },
               },
             }}

@@ -3,18 +3,18 @@
 import { useEffect, useState } from "react";
 import { useForm, FormProvider } from "react-hook-form";
 import { useRouter } from "next/navigation";
-
-import FormStepper from "@/components/Form/FormStepper";
-const Step1 = dynamic(() => import('@/components/Form/step_1'));
-const Step2 = dynamic(() => import('@/components/Form/step_2'));
-const Step3 = dynamic(() => import('@/components/Form/step_3'));
-const Step4 = dynamic(() => import('@/components/Form/step_4'));
-const Step5 = dynamic(() => import('@/components/Form/step_5'));
-const Step6 = dynamic(() => import('@/components/Form/step_6'));
-import dayjs from "dayjs";
+import dynamic from "next/dynamic";
 import useFormStorage from "@/hooks/formStorage";
 import { FormValues } from "@/types/interfaces";
-import dynamic from "next/dynamic";
+import Loading from "@/app/loading";
+
+import FormStepper from "@/components/Form/FormStepper";
+const Step1 = dynamic(() => import('@/components/Form/step_1'), {loading: () => <Loading/>});
+const Step2 = dynamic(() => import('@/components/Form/step_2'), {loading: () => <Loading/>});
+const Step3 = dynamic(() => import('@/components/Form/step_3'), {loading: () => <Loading/>});
+const Step4 = dynamic(() => import('@/components/Form/step_4'), {loading: () => <Loading/>});
+const Step5 = dynamic(() => import('@/components/Form/step_5'), {loading: () => <Loading/>});
+const Step6 = dynamic(() => import('@/components/Form/step_6'), {loading: () => <Loading/>});
 
 const stepsComponents = [Step1, Step2, Step3, Step4, Step5, Step6];
 
@@ -41,22 +41,7 @@ const BookingStep = ({ params }: BookingStepProps) => {
   });
 
   const validateStep = async () => {
-    const result = await methods.trigger();
-    if (activeStep === 3) {   // Step4
-      const todayDate = dayjs().format("MM/DD/YYYY");
-      const isAddressComplete =
-        form.address.street &&
-        form.address.city &&
-        form.address.state &&
-        form.address.zip;
-      if (
-        !isAddressComplete ||
-        !form.selectedDate ||
-        form.selectedDate === todayDate
-      ) {
-        return false;
-      }
-    }
+    const result = await methods.trigger();   
     return result;
   };
 
@@ -89,7 +74,7 @@ const BookingStep = ({ params }: BookingStepProps) => {
   return (
     <FormProvider {...methods}>
       {/* <form onSubmit={methods.handleSubmit(() => {})}> */}
-        <div className="p-4 md:p-6 xl:p-9 lg:pt-[90px] xl:pt-[102px]">
+        <div className="p-4 md:p-6 xl:p-9 lg:pt-[90px] xl:pt-[102px] ">
           <FormStepper
             activeStep={activeStep}
             handleNext={handleNext}

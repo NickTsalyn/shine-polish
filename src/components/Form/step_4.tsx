@@ -7,7 +7,7 @@ import useFormStorage from "@/hooks/formStorage";
 import TimePickerComponent from "../UI/TimePicker";
 import DateTimeCleaning from "../DateTimeCleaning";
 import AddressForm from "../AddressForm";
-import { Controller, useFormContext } from "react-hook-form";
+import { useFormContext } from "react-hook-form";
 import { StepProps } from "@/types/interfaces";
 
 const Step4: React.FC<StepProps> = ({ setStepCompleted }) => {
@@ -32,6 +32,7 @@ const Step4: React.FC<StepProps> = ({ setStepCompleted }) => {
 
   useEffect(() => {
     isStepCompleted ? setStepCompleted(4) : setStepCompleted(3);
+  
   }, [form, isStepCompleted, setStepCompleted, todayDate]);
 
   return (
@@ -40,16 +41,15 @@ const Step4: React.FC<StepProps> = ({ setStepCompleted }) => {
         <h1 className="h1 md:text-[36px] mb-[32px]">
           Where would you like us to clean?
         </h1>
-        <div className="relative">
-          <Controller
+        {/* <div className="relative"> */}
+          {/* <Controller
             name="street"
             control={control}
             rules={{ required: "Please enter an address" }}
-            render={({ field }) => (
-              <AddressForm {...field} onChange={handleCustomChange} />
-            )}
-          />
-        </div>
+            render={({ field }) => ( */}
+              <AddressForm  onChange={handleCustomChange} />
+             {/* )} */}
+              {/* /> */}
       </div>
       <div>
         <h2 className="h1 md:text-[36px] mb-[32px]">

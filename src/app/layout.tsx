@@ -7,8 +7,8 @@ import Footer from "@/components/Footer";
 import { FormProvider } from "@/components/FormContext";
 import FooterDesctop from "@/components/FooterDesctop";
 import QueryProvider from "@/app/_tansctackprovider";
-// import { Suspense } from "react";
-// import Loading from "./loading";
+import { Suspense } from "react";
+import Loading from "./loading";
 
 const lato = Lato({
   subsets: ["latin"],
@@ -30,12 +30,12 @@ export default function RootLayout({
       <body className={lato.className}>
         <QueryProvider>
           <FormProvider>
-            <div className="relative">
+            <div className="relative h-full">
               <Header />
               <Sidebar />
-              {/* <Suspense fallback={<Loading />}> */}
-              <main className="lg:ml-[200px] xl:ml-[244px]">{children}</main>
-              {/* </Suspense> */}
+              <Suspense fallback={<Loading />}>
+                <main className="lg:ml-[200px] xl:ml-[244px]">{children}</main>
+              </Suspense>
               <Footer />
               <FooterDesctop />
             </div>
