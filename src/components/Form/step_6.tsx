@@ -35,7 +35,6 @@ const Step6: React.FC<StepProps> = () => {
 
   const calculatedPrice =
    getPrice(Number(bedroom), Number(bathroom)) * areaCoefficient * discountValue * cleaningValue + extraValue;
-  // setTotal(calculatedPrice);
   const totalWithTips = calculatedPrice + (Number(tips) || 0);
   setTotal(totalWithTips);
  }, [form, total]);
@@ -80,7 +79,7 @@ const Step6: React.FC<StepProps> = () => {
  };
 
  return (
-  <div className="p-4 md:p-6 lg:p-9 flex flex-col gap-5 xl:h-[7800px] justify-between">
+  <div className="p-4 md:p-6 lg:p-9 flex flex-col gap-5 xl:h-[980px] justify-between   lg:h-[800px] ">
    <div>
     <h2 className=" text-black text-2xl text-center mb-2  ">BOOKING SUMMARY</h2>
     <p className="text-bookingSubText text-base">

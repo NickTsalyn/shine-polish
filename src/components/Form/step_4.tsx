@@ -22,14 +22,14 @@ const Step4: React.FC<StepProps> = ({setStepCompleted}) => {
   handleCustomChange("time", time ? time.format("h:mm A") : null);
  };
 
- const todayDate = dayjs().format("MM/DD/YYYY");
+ const isDate = dayjs().format("MM/DD/YYYY");
  const isTime = dayjs().format("h:mm A");
  const isAddressComplete = form.address.street && form.address.city && form.address.state && form.address.zip;
- const isStepCompleted = isAddressComplete && form.selectedDate !== todayDate;
+ const isStepCompleted = isAddressComplete && form.selectedDate !== isDate;
 
  useEffect(() => {
   isStepCompleted ? setStepCompleted(4) : setStepCompleted(3);
- }, [form, isStepCompleted, setStepCompleted, todayDate, isTime]);
+ }, [form, isStepCompleted, setStepCompleted, isDate, isTime]);
 
  return (
   <div className="py-4 md:py-6 lg:py-9 lg:h-[800px] xl:h-[980px] lg:justify-between">

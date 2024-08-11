@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from "next/image";
 
 export const KitchenImage = () => {
  return (
@@ -103,7 +103,7 @@ export const FriendsIcon = () => {
    <Image
     src="/images/friends_sitting_by_the_window_and_talking-min.png"
     alt="happy friends tolking about something when their house is being cleaned by tye cleaning company Shine and Polish "
-    width={667}
+    width={900}
     height={900}
     sizes="(max-width: 480px) 480px, (max-width: 768px) 768px, 1200px"
    />
@@ -215,26 +215,25 @@ export const ChecklistImg = () => {
  );
 };
 
-
 export const DiscontImg = () => {
-    return (
-     <Image
-      src="/images/girl_cleaning_mirror.png"
-      alt="Discount"
-      width={265}
-      height={258}
-     />
-    );
-   };
-   
-   export const BannerImg = () => {
-    return (
-     <Image
-      src="/images/three_girlfriends_drink_tea.png"
-      className="md:w-[394px] md:h-[236px]"
-      alt="Three girlfriends drink tea at home and talk"
-      width={394}
-      height={236}
-     />
-    );
-   };
+ return (
+  <Image
+   src="/images/girl_cleaning_mirror.png"
+   alt="Discount"
+   width={265}
+   height={258}
+  />
+ );
+};
+
+export const BannerImg = () => {
+ return (
+  <Image
+   src="/images/three_girlfriends_drink_tea.png"
+   className="md:w-[394px] md:h-[236px]"
+   alt="Three girlfriends drink tea at home and talk"
+   width={394}
+   height={236}
+  />
+ );
+};

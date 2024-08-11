@@ -6,7 +6,7 @@ const RadioButton: React.FC<RadioCheckProps> = ({style, text, isActive, onClick,
  return (
   <button
    className={`${style} border justify-center flex flex-col items-center rounded-xl text-center font-intro_book text-base font-normal leading-6 ${
-    isActive ? "text-white bg-tertial border-main/35 shadow-hover-shadow " : " border-main shadow-hover-shadow"
+    isActive ? "text-white bg-light border-main/35 shadow-hover-shadow " : " border-main shadow-hover-shadow"
    }`}
    onClick={onClick}
   >
