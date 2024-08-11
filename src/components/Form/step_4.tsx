@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
 
-import dayjs, {Dayjs} from "dayjs";
+import dayjs, { Dayjs } from "dayjs";
 import CustomDatePicker from "../UI/DatePicker";
 import useFormStorage from "@/hooks/formStorage";
 import TimePickerComponent from "../UI/TimePicker";
@@ -22,18 +22,16 @@ const Step4: React.FC<StepProps> = ({ setStepCompleted }) => {
     handleCustomChange("time", time ? time.format("h:mm A") : null);
   };
 
-  const todayDate = dayjs().format("MM/DD/YYYY");
-  const isAddressComplete =
-    form.address.street &&
-    form.address.city &&
-    form.address.state &&
-    form.address.zip;
-  const isStepCompleted = isAddressComplete && form.selectedDate !== todayDate;
+  
 
   useEffect(() => {
+    const todayDate = dayjs().format("MM/DD/YYYY");
+    console.log(form.address.street);
+  const isStepCompleted =
+  form.address.street !== "" && form.selectedDate !== todayDate;
+
     isStepCompleted ? setStepCompleted(4) : setStepCompleted(3);
-  
-  }, [form, isStepCompleted, setStepCompleted, todayDate]);
+  }, [form.address, form.selectedDate, setStepCompleted]);
 
   return (
     <div className="py-4 md:py-6 lg:py-9 lg:h-[800px] xl:h-[980px] lg:justify-between">
@@ -41,21 +39,12 @@ const Step4: React.FC<StepProps> = ({ setStepCompleted }) => {
         <h1 className="h1 md:text-[36px] mb-[32px]">
           Where would you like us to clean?
         </h1>
-        {/* <div className="relative"> */}
-          {/* <Controller
-            name="street"
-            control={control}
-            rules={{ required: "Please enter an address" }}
-            render={({ field }) => ( */}
-              <AddressForm  onChange={handleCustomChange} />
-             {/* )} */}
-              {/* /> */}
+        <AddressForm onChange={handleCustomChange} />
       </div>
       <div>
         <h2 className="h1 md:text-[36px] mb-[32px]">
           When would you like us to clean?
         </h2>
-
         <div className="w-full  flex flex-wrap md:flex-nowrap justify-between items-start  mb-8 gap-20">
           <div className="w-full md:w-[400px] lg:w-[800px]">
             <p className="text-subtext text-4 md:text-[20px] lg:text-[24px] mb-5">

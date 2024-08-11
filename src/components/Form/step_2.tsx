@@ -14,9 +14,10 @@ import { getOptions } from "@/api";
 import Loading from "@/app/loading";
 
 const Step2: React.FC<StepProps> = ({ control, setStepCompleted }) => {
-  const { form, handleRadioChange, handleCheckboxChange, setForm } = useFormStorage();
+  const { form, handleRadioChange, handleCheckboxChange, setForm } =
+    useFormStorage();
   const [disable, setDisable] = useState(false);
-  
+
   const { data, error, isLoading } = useQuery<{
     extrasOptions: Options[];
     serviceOptions: Options[];
