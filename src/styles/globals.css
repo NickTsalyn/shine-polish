@@ -97,3 +97,17 @@ select:-webkit-autofill:focus {
   margin-bottom: 4px;
   text-align: left;
 }
+/* steps next-prewious */
+.css-2royc9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  padding-top: 16px;
+  margin-bottom: 120px;
+}
+
+
