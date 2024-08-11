@@ -12,7 +12,7 @@ export async function POST(req: NextRequest) {
 
     const extras =
       form.extras && form.extras.length > 0 ? form.extras.join(", ") : "";
-    const productName = `${form.services}${extras ? `/${extras}` : ""}/${
+    const productName = `${form.service}${extras ? `/${extras}` : ""}/${
       form.bedroom
     } bedrooms/${form.bathroom} bathrooms/${form.area}`;
 
@@ -26,7 +26,7 @@ export async function POST(req: NextRequest) {
 
     // Створення ціни для продукту
     const stripePrice = await stripe.prices.create({
-      unit_amount: price, // ціна у центах, яка приходить з форми букінгу
+      unit_amount: price, 
       currency: "usd",
       product: productId,
     });
@@ -35,7 +35,7 @@ export async function POST(req: NextRequest) {
       payment_method_types: ["card", "affirm"],
       line_items: [
         {
-          price: stripePrice.id, // використовуємо id створеної ціни
+          price: stripePrice.id, 
           quantity: 1,
         },
       ],

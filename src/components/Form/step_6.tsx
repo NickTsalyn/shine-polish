@@ -49,7 +49,6 @@ const Step6: React.FC<StepProps> = () => {
         discountValue *
         cleaningValue +
       extraValue;
-    // setTotal(calculatedPrice);
     const totalWithTips = calculatedPrice + (Number(tips) || 0);
     setTotal(totalWithTips);
   }, [form, total]);

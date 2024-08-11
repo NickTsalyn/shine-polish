@@ -76,14 +76,10 @@ const Step5: React.FC<StepProps> = ({ setStepCompleted }) => {
               name="tips"
               mask={TipsNumberMask}
               placeholder="$ 00"
-              thousandsSeparator=","
-              // radix="."
-              // mapToRadix={["."]}
-              // scale={2}
               min={0}
               max={9999}
               value={form.tips}
-              unmask={true} // повертає значення без маски
+              unmask={true}
               className="block mx-full mb-[10px] w-full hx-full h-full  py-[8px] lg:py-[12px] px-[8px] lg:px-[16px] bg-transparent text-text border-solid border-2 focus:border-[3px] border-secondary rounded-[12px] focus:shadow-input-shadow outline-none xl:placeholder:text-[16px] placeholder:text-secondary-placeholder placeholder:opacity-50"
               padFractionalZeros={true}
               onAccept={(value: string) => {
