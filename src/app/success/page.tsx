@@ -1,9 +1,13 @@
 "use client";
-
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import LogoutIcon from "@mui/icons-material/Logout";
+import { addBooking } from "@/api";
+import { useMutation } from "@tanstack/react-query";
+import { FormValues } from "@/types/interfaces";
+import { useRouter } from "next/navigation";
+import useFormStorage from "@/hooks/formStorage";
 
 const BgnImg = () => {
   return (
@@ -27,31 +31,54 @@ const BgnImg = () => {
 };
 
 const Success = () => {
-  const [timer, setTimer] = useState(5);
+  const router = useRouter();
+  const { form, setForm } = useFormStorage();
+  const [timeLeft, setTimeLeft] = useState(5);
+  console.log(form);
+
+  const mutation = useMutation({
+    mutationFn: (booking: FormValues) => addBooking(booking),
+    onSuccess: (data) => {
+      console.log(data);
+      localStorage.clear();
+    },
+    onError: (error: any) => {
+      console.error("Error:", error);
+    },
+  });
 
   useEffect(() => {
-    localStorage.clear();
+    if (form) mutation.mutate(form as FormValues);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [form]);
+
+  useEffect(() => {
     const interval = setInterval(() => {
-      setTimer((prevTimer) => {
-        if (prevTimer <= 1) {
-          window.location.href = "/";
-          return 0;
+      setTimeLeft((prev) => {
+        const newTime = prev - 1;
+        if (newTime <= 0) {
+          clearInterval(interval);
         }
-        return prevTimer - 1;
+        return newTime;
       });
     }, 1000);
 
     return () => clearInterval(interval);
   }, []);
 
-  return (
+  useEffect(() => {
+    if (timeLeft <= 0) {
+      router.push("/");
+    }
+  }, [timeLeft, router]);
+return (
     <div className="relative h-[calc(100vh-84px)] md:h-[calc(100vh-96px)] lg:h-screen  flex flex-col justify-between ">
       <BgnImg />
       <div className="flex-grow flex flex-col justify-end w-full">
         <div className="container flex flex-col justify-end items-center gap-3 md:gap-6 l py-6 md:py-11 lg:py-12">
-          {timer > 0 && (
+          {timeLeft > 0 && (
             <p className="text-center text-accent subtext lg:text-4xl">
-              You will be redirected to the homepage in {timer} seconds.
+              You will be redirected to the homepage in {timeLeft} seconds.
             </p>
           )}
           <div className=" flex justify-end items-center text-text font-semibold text-xl md:text-2xl lg:text-4xl w-full ml-auto">
@@ -65,5 +92,4 @@ const Success = () => {
     </div>
   );
 };
-
 export default Success;

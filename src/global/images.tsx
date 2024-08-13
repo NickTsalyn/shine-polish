@@ -1,14 +1,13 @@
-import Image from 'next/image';
+import Image from "next/image";
 
 export const KitchenImage = () => {
  return (
   <Image
-   src="/public/images/pexels-curtis-adams@2x.jpg"
+   src="/images/kitchen/pexels-curtis-adams@2x.webp"
    alt="Kitchen"
    width={1556}
    height={896}
-   sizes="(max-width:378px) 279px, (width: 768px) 720px, (width: 1440px) 1076px; (width:1920px) 1556px;"
-   // fill
+   sizes="(max-width:378px) 278px, (width: 768px) 716px, (width: 1440px) 1076px; (width:1920px) 1556px;"
    className="rounted-xl"
   />
  );
@@ -22,13 +21,6 @@ export const RoomImage = () => {
    sizes="(max-width: 375px) 278px, (max-width: 768px) 716px, (max-width: 1440px) 1076px"
    width={1556}
    height={100}
-   // fill
-   // style={{
-   //   width: "100%",
-   //   height: "auto",
-   //   objectFit: "cover",
-   //   objectPosition: "center",
-   // }}
   />
  );
 };
@@ -39,9 +31,10 @@ export const BathroomImage = () => {
    <Image
     src="/images/bathroom@2x.jpg"
     alt="photo of living room"
-    width={278}
-    height={159}
-    // fill
+    width={1556}
+    height={100}
+    sizes="(max-width: 375px) 278px, (max-width: 768px) 716px, (max-width: 1440px) 1076px"
+    className="rounted-xl"
    />
   </>
  );
@@ -53,13 +46,16 @@ export const BedroomImage = () => {
    <Image
     src="/images/bedroom/bedroom@2x.webp"
     alt="photo of bedroom"
-    width={280}
-    height={160}
-    sizes="100vw"
-    style={{
-     width: '100%',
-     height: 'auto',
-    }}
+    width={1556}
+    height={100}
+    sizes="(max-width: 375px) 278px, (max-width: 768px) 716px, (max-width: 1440px) 1076px"
+    className="rounted-xl"
+
+    // sizes="100vw"
+    // style={{
+    //  width: '100%',
+    //  height: 'auto',
+    // }}
    />
   </>
  );
@@ -71,8 +67,16 @@ export const DiningroomImage = () => {
    <Image
     src="/images/diningroom@2x.jpg"
     alt="photo of dining room"
-    width={278}
-    height={159}
+    width={1556}
+    height={100}
+    sizes="(max-width: 375px) 278px, (max-width: 768px) 716px, (max-width: 1440px) 1076px"
+    className="rounted-xl"
+
+    // sizes="100vw"
+    // style={{
+    //  width: '100%',
+    //  height: 'auto',
+    // }}
     // fill
     // sizes="100vw"
    />
@@ -93,16 +97,17 @@ export const BackgroundImg = () => {
  );
 };
 
-export const FriendsIcon: React.FC = () => {
+export const FriendsIcon = () => {
  return (
-  <Image
-   src="/images/friends_sitting_by_the_window_and_talking-min.png"
-   alt="happy friends tolking about something when their house is being cleaned by tye cleaning company Shine and Polish "
-   width={667}
-   height={900}
-   // fill
-   sizes="(max-width: 480px) 480px, (max-width: 768px) 768px, 1200px"
-  />
+  <>
+   <Image
+    src="/images/friends_sitting_by_the_window_and_talking-min.png"
+    alt="happy friends tolking about something when their house is being cleaned by tye cleaning company Shine and Polish "
+    width={900}
+    height={900}
+    sizes="(max-width: 480px) 480px, (max-width: 768px) 768px, 1200px"
+   />
+  </>
  );
 };
 export const FooterLogo = () => {
@@ -110,38 +115,22 @@ export const FooterLogo = () => {
   <>
    <Image
     src="/icons/logo/logo_dark_bg.svg"
-    height={28}
-    width={30}
+    height={56}
+    width={60}
     alt="logo"
    ></Image>
   </>
  );
 };
 
-// export const FooterImg = () => {
-//   return (
-//     <div className="">
-//       <Image
-//         src="/images/atlantaSkylineSecondarySmall.png"
-//         height={100}
-//         width={1440}
-//         layout="responsive"
-//         objectFit="cover"
-//         objectPosition="center"
-//         alt="Footer Image"
-//       ></Image>
-//     </div>
-//   );
-// };
-
 export const FooterImg = () => {
  return (
-  <div className="z-[-1] absolute  bottom-0  opacity-60 w-full h-full ">
+  <div className="relative -z-10">
    <Image
     src="/images/atlantaSkylineSecondarySmall.png"
-    // height={400}
-    // width={1156}
-    fill
+    height={400}
+    width={1920}
+    // fill
     alt="Footer Image"
    ></Image>
   </div>
@@ -156,7 +145,6 @@ export const CrossroadImage = () => {
     alt="picture of road and buildings"
     width={400}
     height={300}
-    // fill
    />
   </>
  );

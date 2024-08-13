@@ -2,7 +2,7 @@
 import dayjs from "dayjs";
 
 export const initialForm = {
-  areas: "",
+  area: "",
   bedroom: 1,
   bathroom: 1,
   frequency: "",
@@ -10,7 +10,7 @@ export const initialForm = {
   aboutUs: "",
   specialInstructions: "",
   extras: [],
-  services: "",
+  service: "",
   name: "",
   surname: "",
   email: "",

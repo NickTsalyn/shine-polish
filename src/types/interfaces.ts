@@ -27,7 +27,7 @@ export interface RoomService {
 }
 
 export interface FormValues {
-  areas: string;
+  area: string;
   bedroom: number;
   bathroom: number;
   frequency: string;
@@ -35,7 +35,7 @@ export interface FormValues {
   aboutUs: string;
   specialInstructions: string;
   extras: string[];
-  services: string;
+  service: string;
   name: string;
   surname: string;
   email: string;
@@ -56,4 +56,9 @@ export interface Form {
 export interface StepProps {
   control: Control<FormValues>;
   setStepCompleted: (step: number) => void;
+}
+
+export interface Options {
+  name: string;
+  value: number | string;
 }
