@@ -10,6 +10,7 @@ const bookings = {
   name: "Vasya",
   surname: "Dirty",
   owner:'6671f0a9bf6eb983867dcfdd'
+  //  owner:'6685cc15f940822f66ca8230'
 };
 
 export default function Page({}: PageProps) {

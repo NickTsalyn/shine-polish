@@ -237,3 +237,27 @@ export const BannerImg = () => {
   />
  );
 };
+export const AddressIcon = () => {
+    return (
+     <>
+      <Image
+       src="/icons/client-bookings/address-icon.svg"
+       alt="Address icon"
+       width={24}
+       height={24}
+      />
+     </>
+    );
+   };
+export const EmailIcon = () => {
+    return (
+     <>
+      <Image
+       src="/icons/client-bookings/email-icon.svg"
+       alt="Email icon"
+       width={24}
+       height={24}
+      />
+     </>
+    );
+   };
