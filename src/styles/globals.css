@@ -110,4 +110,22 @@ select:-webkit-autofill:focus {
   margin-bottom: 120px;
 }
 
+::-webkit-scrollbar {
+  /* Customize the scrollbar width */
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  /* Customize the scrollbar track */
+  background: #ffffff;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb {
+  /* Customize the scrollbar thumb */
+  background: #D9D9D9;
+    border-radius: 20px;
+    margin-left: 5px;
+}
+
 

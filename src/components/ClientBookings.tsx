@@ -24,10 +24,10 @@ export default function ClientBookings({
     queryKey: ["client-bookings", ownerId],
     queryFn: () => fetchClientBookings(ownerId),
   });
-  
+
   const bookings = query.data;
   console.log(query.data);
- 
+
   if (query.isError) {
     // console.log(query.error.message);
   }
@@ -45,6 +45,15 @@ export default function ClientBookings({
     email,
     address: { street, city, state, zip },
   } = bookings[0];
+
+  const handleChooseBooking = (index: number):any => {
+    const selectedBooking = bookings.find((booking, idx) => {
+      index === idx;
+    });
+    console.log(selectedBooking);
+    return selectedBooking;
+  };
+  
   return (
     query.isSuccess && (
       <div>
@@ -78,15 +87,24 @@ export default function ClientBookings({
           </div>
         </div>
 
-        <div className="w-[220px] shadow-main-shadow rounded-xl p-4">
+        <div className="w-[220px] shadow-main-shadow rounded-xl p-4 px-2">
           <h3 className="text-[20px] mb-5 text-accent text-center">
             Your bookings
           </h3>
-          <ul className="flex flex-col gap-y-1">
+          <ul className="flex flex-col gap-y-1 max-h-[225px] overflow-y-auto overflow-x-hidden ">
             {bookings.map((booking: any, index: number) => (
-              <li className="flex flex-col items-center text-[20px]" key={index}>
-                {booking.createdAt.slice(0, 10).split("-").reverse().join("/")}
-                <div className="w-[187px] h-0.5 bg-gray-300"></div>
+              <li
+                className="flex flex-col items-center text-[20px]"
+                key={index}
+              >
+                <button type="button" onClick={handleChooseBooking(index)}>
+                  {booking.createdAt
+                    .slice(0, 10)
+                    .split("-")
+                    .reverse()
+                    .join("/")}
+                  <div className="w-[187px] h-0.5 bg-gray-300"></div>
+                </button>
               </li>
             ))}
           </ul>
