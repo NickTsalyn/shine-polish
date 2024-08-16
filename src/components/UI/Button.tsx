@@ -37,7 +37,7 @@ export default function Button(props: PropsButtton) {
    break;
   case "home-book-now":
    styles =
-    "py-1 md:py-2 lg:py-2 xl:py-4  px-4 md:px-[54px] lg:px-12 xl:px-[70px]  border border-solid border-secondary rounded-[10px] backdrop-blur-[10px]   ";
+    "py-1 md:py-2 lg:py-2 xl:py-4  px-4 md:px-[54px] lg:px-12 xl:px-[70px]  border border-solid border-secondary rounded-[10px] backdrop-blur-[10px] ";
    break;
   case "footer-book-now":
    styles =
@@ -81,14 +81,15 @@ export default function Button(props: PropsButtton) {
     " w-[140px] lg:w-[160px] xl:w-[196px] h-9 lg:h-10 border rounded-xl border-secondary bg-main mb-5 flex justify-center items-center";
    break;
   case "send":
-   styles = "w-[148px] h-[36px] md:w-[162px] md:h-[48px] lg:w-[220px] rounded-xl bg-secondary hover:bg-[#F6AD70]";
+   styles = "w-[148px] h-[36px] md:w-[162px] md:h-[48px] lg:w-[220px] rounded-xl bg-secondary hover:bg-[#F6AD70] ";
    break;
   case "deep-cleaning":
    styles =
     " px-5 py-3 border-2 rounded-xl border-tertial hover:border-main/30 focus:border-main/30 hover:bg-tertial focus:bg-tertial shadow-button-shadow hover:shadow-button-hover-shadow disabled:border-tertial/30 ";
    break;
   case "work-with-us":
-   styles = " px-8 md:px-12 lg:px-[150px] xl:px-[424px] py-1 md:py-9 xl:py-14 rounded-xl bg-main ";
+   styles =
+    "w-[80%] px-4  lg:px-20 xl:px-14 py-4  rounded-xl bg-white border-main border-[1px] hover:shadow-button-shadow hover:border-transparent hover:bg-[#F6AD70] focus:shadow-button-shadow focus:bg-secondary transiton-all duration-300";
    break;
   case "close-button":
    styles = " w-3 h-3 md:w-4 md:h-4 rounded-full bg-transparent ";

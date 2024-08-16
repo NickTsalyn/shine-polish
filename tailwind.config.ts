@@ -43,6 +43,7 @@ const config: Config = {
         backdrop: 'rgba(51, 77, 81, 0.50)',
         bookingSubText: "rgba(0, 0, 0, 0.50)",
         customRed: "#FF4E56",
+        lightBlue:"#1dd0ee4d",
       },
 
       boxShadow: {

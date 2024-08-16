@@ -5,8 +5,8 @@ import {RadioCheckProps} from "@/types/types";
 const RadioButton: React.FC<RadioCheckProps> = ({style, text, isActive, onClick, children, onChange, accent}) => {
  return (
   <button
-   className={`${style} border justify-center flex flex-col items-center rounded-xl text-center font-intro_book text-base font-normal leading-6 ${
-    isActive ? "text-white bg-light border-main/35 shadow-hover-shadow " : " border-main shadow-hover-shadow"
+   className={`${style} border justify-center flex flex-col items-center rounded-xl text-center font-intro_book text-base font-normal leading-6  ${
+    isActive ? "text-white bg-accent-light border-transparent shadow-hover-shadow " : " border-main shadow-hover-shadow"
    }`}
    onClick={onClick}
   >

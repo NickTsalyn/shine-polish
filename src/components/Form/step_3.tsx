@@ -44,8 +44,8 @@ const Step3: React.FC<StepProps> = ({control, setStepCompleted}) => {
      This information will be used to contact you about service
     </p>
     <div className="flex flex-col gap-2 md:gap-5 lg:gap-10">
-     <div className="md:flex md:flex-row gap-6  md:h-10 lg:gap-[60px] lg:h-[48px] lg:w-auto">
-      <div className="md:w-1/2 md:h-[40px] lg:w-3/5 relative mb-4">
+     <div className="md:flex md:flex-row gap-6  md:h-10 lg:gap-[60px] lg:h-[48px] lg:w-auto mb-5">
+      <div className="md:w-1/2 md:h-[56px] lg:w-3/5 relative mb-4">
        <Controller
         name="name"
         control={control}
@@ -73,7 +73,7 @@ const Step3: React.FC<StepProps> = ({control, setStepCompleted}) => {
         )}
        />
       </div>
-      <div className="md:w-1/2 lg:w-2/5 relative">
+      <div className="md:w-1/2 lg:w-2/5 md:h-[56px] relative">
        <Controller
         name="surname"
         control={control}
@@ -104,7 +104,7 @@ const Step3: React.FC<StepProps> = ({control, setStepCompleted}) => {
      </div>
 
      <div className="flex flex-col lg:flex-row-reverse gap-2 md:gap-5 lg:gap-[60px] lg:h-[48px]">
-      <div className="lg:w-3/5 lg:h-[40px] relative">
+      <div className="lg:w-3/5 md:h-[56px] relative">
        <Controller
         name="email"
         control={control}
@@ -132,7 +132,7 @@ const Step3: React.FC<StepProps> = ({control, setStepCompleted}) => {
         )}
        />
       </div>
-      <div className="lg:w-2/5 lg:h-[40px] relative">
+      <div className="lg:w-2/5 md:h-[56px] relative">
        <Controller
         name="phone"
         control={control}
