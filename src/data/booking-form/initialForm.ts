@@ -22,4 +22,5 @@ export const initialForm = {
   question: "",
   discountCode: "",
   tips: "",
+  totalPrice: 0,
 };

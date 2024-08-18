@@ -47,6 +47,7 @@ export interface FormValues {
   question: string,
   discountCode: string,
   tips: string,
+  totalPrice: number
 }
 
 export interface Form {

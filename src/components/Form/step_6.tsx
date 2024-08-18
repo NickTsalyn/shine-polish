@@ -11,7 +11,7 @@ import {CircularProgress} from "@mui/material";
 import DateTimeCleaning from "../DateTimeCleaning";
 
 const Step6: React.FC<StepProps> = () => {
- const {form} = useFormStorage();
+ const {form, handleCustomChange} = useFormStorage();
  const [total, setTotal] = useState(0);
 
  const [loading, setLoading] = useState(false);
@@ -37,6 +37,7 @@ const Step6: React.FC<StepProps> = () => {
    getPrice(Number(bedroom), Number(bathroom)) * areaCoefficient * discountValue * cleaningValue + extraValue;
   const totalWithTips = calculatedPrice + (Number(tips) || 0);
   setTotal(totalWithTips);
+  handleCustomChange("totalPrice", totalWithTips);
  }, [form, total]);
 
  const handleCheckout = async () => {

@@ -23,8 +23,7 @@ interface HandlerReturn {
  completedSteps: number[];
  setStepCompleted: (step: number) => void;
 }
-// console.log("selectedDate", initialForm.selectedDate);
-// console.log("time", initialForm.time);
+
 const useFormStorage = (): HandlerReturn => {
  const [form, setForm] = useState(() => {
   if (typeof window !== "undefined") {
