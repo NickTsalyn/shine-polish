@@ -171,8 +171,8 @@ const Step2: React.FC<StepProps> = ({control, setStepCompleted}) => {
             handleCheckboxChange("extras", value);
            }}
           >
-           <div className="  ">
-            <div>
+           <div className="w-full md:h-[76px]  ">
+            <div className="hidden md:flex">
              <Image
               src={path}
               alt="icons"
@@ -184,7 +184,9 @@ const Step2: React.FC<StepProps> = ({control, setStepCompleted}) => {
              ></Image>
             </div>
             <div className="w-full items-end  ">
-             <p className="lg:text-[16px] md:absolute md:inset-x-0 md:bottom-1">{label}</p>
+             <p className="lg:text-[16px] md:absolute md:inset-x-0 md:bottom-1 whitespace-normal text-center">
+              {label}
+             </p>
             </div>
            </div>
           </CheckBox>
