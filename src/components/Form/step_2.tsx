@@ -78,8 +78,8 @@ const Step2: React.FC<StepProps> = ({control, setStepCompleted}) => {
  }
 
  return (
-  <div className="p-4 md:p-6 lg:p-9 lg:h-[800px] xl:h-[980px]">
-   <div className="max-w-[278px] md:max-w-[682px] lg:max-w-[1160px] xl:max-w-[1572px] m-auto mb-5 xl:mb-[35px]">
+  <div className="py-4 md:py-6 lg:py-9 lg:min-h-[600px] xl:h-[1000px]">
+   <div className="max-w-[278px] md:max-w-[682px] lg:max-w-[1160px] xl:max-w-[1572px]  mb-5 xl:mb-[35px]">
     <h2 className="text-2xl md:text-4xl font-medium mb-5">Select Extras</h2>
     <p className="text-bookingSubText font-normal mb-5 leading-[14.4px] text-[12px] md:text-[18px] md:leading-[32px] lg:leading-[28.8px] ">
      Add extras to customize your cleaning service.
@@ -161,7 +161,7 @@ const Step2: React.FC<StepProps> = ({control, setStepCompleted}) => {
            {...field}
            disabled={disable}
            value={value}
-           style=" py-1 px-2 lg:py-2 md:h-[140px] md:w-[150px] relative flex md:flex-col"
+           style=" py-1 px-2 lg:py-2 md:h-[140px] md:w-[150px] lg:w-[180px] relative flex md:flex-col"
            isActive={(form.extras as string[]).includes(value)}
            onClick={() => {
             const newValue = (field.value || []).includes(value)

@@ -8,7 +8,7 @@ const CheckBox = (props: RadioCheckProps) => {
    className={`${props.style}  border py-1 flex flex-col rounded-xl items-center   
        ${
         props.isActive
-         ? "text-accent-light bg-lightBlue/20 border-main shadow-hover-shadow "
+         ? "text-accent-light bg-lightBlue/20 border-tertial border-[2px]  shadow-hover-shadow "
          : "text-main border-main shadow-hover-shadow"
        }
        ${props.disabled && "pointer-events-none opacity-30"}`}

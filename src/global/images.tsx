@@ -220,8 +220,8 @@ export const DiscontImg = () => {
   <Image
    src="/images/girl_cleaning_mirror.png"
    alt="Discount"
-   width={265}
-   height={258}
+   width={200}
+   height={180}
   />
  );
 };
