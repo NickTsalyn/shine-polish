@@ -16,7 +16,7 @@ export default function Arrow() {
    if (scrollPosition === 0) {
     setShowScrollDown(true);
     setShowScrollUp(false);
-   } else if (scrollPosition + windowHeight >= documentHeight - 100) {
+   } else if (scrollPosition + windowHeight >= documentHeight - 300) {
     setShowScrollDown(false);
     setShowScrollUp(true);
    } else {
@@ -39,23 +39,23 @@ export default function Arrow() {
  };
 
  return (
-  <div className="fixed bottom-10 right-5 z-30">
+  <div className="fixed bottom-40 right-5 z-30">
    {showScrollDown && (
     <svg
-     className="animate-bounce w-[40px] h-[40px] text-blue border-[1px] border-blue rounded-full cursor-pointer"
+     className="animate-bounce w-[40px] h-[80px] text-secondary border-[1px] border-secondary rounded-full cursor-pointer"
      onClick={scrollToBottom}
      viewBox="0 0 24 24"
     >
-     <ArrowDownwardRoundedIcon className="w-6 h-6 text-blue" />
+     <ArrowDownwardRoundedIcon className="w-6 h-6 text-secondary" />
     </svg>
    )}
    {showScrollUp && (
     <svg
-     className="animate-bounce w-[40px] h-[40px] text-blue border-[1px] border-blue rounded-full cursor-pointer"
+     className="animate-bounce w-[40px] h-[80px] text-secondary border-[1px] border-secondary rounded-full cursor-pointer"
      onClick={scrollToTop}
      viewBox="0 0 24 24"
     >
-     <ArrowUpwardRoundedIcon className="w-6 h-6 text-blue" />
+     <ArrowUpwardRoundedIcon className="w-6 h-6 text-secondary" />
     </svg>
    )}
   </div>

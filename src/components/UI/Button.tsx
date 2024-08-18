@@ -37,7 +37,7 @@ export default function Button(props: PropsButtton) {
    break;
   case "home-book-now":
    styles =
-    "py-1 md:py-2 lg:py-2 xl:py-4  px-4 md:px-[54px] lg:px-12 xl:px-[70px]  border border-solid border-secondary rounded-[10px] backdrop-blur-[10px] ";
+    "py-1 md:py-2 lg:py-2 xl:py-4  px-4 md:px-[54px] lg:px-12 xl:px-[70px]  border border-solid border-secondary rounded-[10px] backdrop-blur-[10px] bg-gradient-to-r from-#006778 via-#E6BA95 to-#DE005D bg-600% animate-gradient";
    break;
   case "footer-book-now":
    styles =
