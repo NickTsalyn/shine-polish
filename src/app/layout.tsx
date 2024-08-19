@@ -1,4 +1,5 @@
-import type {Metadata} from "next";
+"use client";
+// import type {Metadata} from "next";
 import {Lato} from "next/font/google";
 import "../styles/globals.css";
 import Header from "@/components/Header/Header";
@@ -9,22 +10,43 @@ import FooterDesctop from "@/components/FooterDesctop";
 import QueryProvider from "@/app/_tansctackprovider";
 import {Suspense} from "react";
 import Loading from "./loading";
+import {usePathname} from "next/navigation";
 
 const lato = Lato({
  subsets: ["latin"],
  weight: ["300", "400", "700", "900"],
 });
 
-export const metadata: Metadata = {
- title: "Shine&Polish",
- description: "Cleaning service Atlanta",
-};
+// export const metadata: Metadata = {
+//  title: "Shine&Polish",
+//  description: "Cleaning service Atlanta",
+// };
 
 export default function RootLayout({
  children,
 }: Readonly<{
  children: React.ReactNode;
 }>) {
+ //  const router = useRouter();
+ const pathname = usePathname();
+ const hideFooter =
+  pathname === "/booking" ||
+  pathname === "/booking/step_1" ||
+  pathname === "/booking/1" ||
+  pathname === "/booking/step_2" ||
+  pathname === "/booking/2" ||
+  pathname === "/booking/step_3" ||
+  pathname === "/booking/3" ||
+  pathname === "/booking/step_4" ||
+  pathname === "/booking/4" ||
+  pathname === "/booking/step_5" ||
+  pathname === "/booking/5" ||
+  pathname === "/booking/step_6" ||
+  pathname === "/booking/6" ||
+  pathname === "/success" ||
+  pathname === "/sign-in-form" ||
+  pathname === "/sign-up" ||
+  pathname === "/not-found";
  return (
   <html lang="en">
    <body className={lato.className}>
@@ -37,7 +59,8 @@ export default function RootLayout({
         <main className="lg:ml-[200px] xl:ml-[244px]">{children}</main>
        </Suspense>
        <Footer />
-       <FooterDesctop />
+       {!hideFooter && <FooterDesctop />}
+       {/* <FooterDesctop /> */}
       </div>
      </FormProvider>
     </QueryProvider>

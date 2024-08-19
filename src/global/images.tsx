@@ -220,7 +220,7 @@ export const DiscontImg = () => {
   <Image
    src="/images/girl_cleaning_mirror.png"
    alt="Discount"
-   width={200}
+   width={600}
    height={180}
   />
  );
@@ -232,8 +232,8 @@ export const BannerImg = () => {
    src="/images/three_girlfriends_drink_tea.png"
    className="md:w-[394px] md:h-[236px]"
    alt="Three girlfriends drink tea at home and talk"
-   width={394}
-   height={236}
+   width={700}
+   height={400}
   />
  );
 };

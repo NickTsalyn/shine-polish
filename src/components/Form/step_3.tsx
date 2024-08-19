@@ -37,8 +37,8 @@ const Step3: React.FC<StepProps> = ({control, setStepCompleted}) => {
  }, [isStepCompleted, setStepCompleted]);
 
  return (
-  <div className="py-4 md:py-6 lg:py-9 lg:min-h-[600px] xl:h-[1000px] lg:justify-between">
-   <div className="mb-10">
+  <div className="py-4 md:py-6 lg:py-9 lg:h-[80vh] lg:justify-between lg:gap-6">
+   <div className="mb-10 xl:mb-20">
     <h2 className="mb-4 md:mb-5 lg:mb-[26px] text-2xl md:text-4xl font-medium md:font-normal">Contact information</h2>
     <p className="text-subtext md:text-2xl mb-6 md:mb-8 lg:mb-5">
      This information will be used to contact you about service
@@ -240,7 +240,7 @@ const Step3: React.FC<StepProps> = ({control, setStepCompleted}) => {
      <h2 className="mb-4 md:mb-5 lg:mb-[26px] text-2xl md:text-4xl lg:text-4xl font-medium md:font-normal">
       Anything else we should know to provide the best cleaning possible?
      </h2>
-     <div className="h-[124px] md:h-[220px] lg:h-[160px] lg:w-full">
+     <div className="h-[124px] md:h-[220px] lg:h-[160px] xl:h-[280px] lg:w-full">
       <Controller
        name="specialInstructions"
        control={control}
