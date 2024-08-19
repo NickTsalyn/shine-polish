@@ -78,8 +78,8 @@ const Step2: React.FC<StepProps> = ({control, setStepCompleted}) => {
  }
 
  return (
-  <div className="p-4 md:p-6 lg:p-9 lg:h-[800px] xl:h-[980px]">
-   <div className="max-w-[278px] md:max-w-[682px] lg:max-w-[1160px] xl:max-w-[1572px] m-auto mb-5 xl:mb-[35px]">
+  <div className="py-4 md:py-6 lg:py-9 lg:min-h-[600px] xl:h-[1000px]">
+   <div className="max-w-[278px] md:max-w-[682px] lg:max-w-[1160px] xl:max-w-[1572px]  mb-5 xl:mb-[35px]">
     <h2 className="text-2xl md:text-4xl font-medium mb-5">Select Extras</h2>
     <p className="text-bookingSubText font-normal mb-5 leading-[14.4px] text-[12px] md:text-[18px] md:leading-[32px] lg:leading-[28.8px] ">
      Add extras to customize your cleaning service.
@@ -93,14 +93,9 @@ const Step2: React.FC<StepProps> = ({control, setStepCompleted}) => {
      <span className=" font-bold">Move In/Move Out</span> requires a vacant home with water and electricity for a proper
      cleaning.
     </p>
-    {/* <p className="hidden xl:block text-bookingSubText font-normal lg:leading-[28.8px] md:text-[24px] mb-5 ">
-     Add extras to customize your cleaning service. Remember deep cleaning is recommended for all first time cleans to
-     prepare your home for routine services. Move In/Move Out requires a vacant home with water and electricity for a
-     proper cleaning
-    </p> */}
    </div>
    <div className="flex gap-[16px] flex-col max-w-[278px] md:max-w-[682px] lg:max-w-[1160px] xl:max-w-[1572px] m-auto">
-    <ul className="flex flex-wrap gap-5 md:gap-[22px] lg:gap-5 lg:w-[1160px] xl:w-[1572px] justify-center md:justify-around lg:justify-start md:flex-nowrap lg:flex-wrap ">
+    <ul className="flex flex-wrap gap-5 md:gap-6 lg:gap-5 lg:w-[1160px] xl:w-[1572px] justify-center md:justify-around lg:justify-start md:flex-nowrap lg:flex-wrap ">
      {services.map(({value, label}) => {
       return (
        <li
@@ -115,7 +110,7 @@ const Step2: React.FC<StepProps> = ({control, setStepCompleted}) => {
           <RadioButton
            {...field}
            value={value}
-           style=" py-2 px-2 md:py-2 md:px-2 lg:py-2 h-full w-full md:text-[18px] text-main md:text-accent md:leading-[28.8px]"
+           style=" py-2 px-2 md:py-2 md:px-2 lg:py-2 h-full w-full md:text-[18px] text-main  md:leading-[28.8px]"
            isActive={value === form.service}
            onClick={() => {
             field.onChange(value);
@@ -151,12 +146,12 @@ const Step2: React.FC<StepProps> = ({control, setStepCompleted}) => {
       />
      </li>
     </ul>
-    <ul className="flex flex-wrap justify-center  lg:justify-start gap-5  lg:w-[1160px]  xl:w-[1572px] md:flex-wrap lg:flex-wrap ">
+    <ul className="flex flex-wrap gap-5 md:gap-6 lg:gap-5 lg:w-[1160px] xl:w-[1572px] justify-center md:justify-around lg:justify-start ">
      {combinedExtrasOptions.map(({value, label, path}) => {
       return (
        <li
         key={value}
-        className="flex justify-between items-center w-[128px] md:w-[150px] lg:w-[180px] xl:w-[246px] md:h-[132px] xl:h-[140px] "
+        className="flex w-[128px] md:w-[150px] lg:w-[180px] xl:w-[246px] md:h-[140px] "
        >
         <Controller
          name="extras"
@@ -166,7 +161,7 @@ const Step2: React.FC<StepProps> = ({control, setStepCompleted}) => {
            {...field}
            disabled={disable}
            value={value}
-           style=" py-1 px-2   lg:py-2 h-full w-full"
+           style=" py-1 px-2 lg:py-2 md:h-[140px] md:w-[150px] lg:w-[180px] relative flex md:flex-col"
            isActive={(form.extras as string[]).includes(value)}
            onClick={() => {
             const newValue = (field.value || []).includes(value)
@@ -176,21 +171,23 @@ const Step2: React.FC<StepProps> = ({control, setStepCompleted}) => {
             handleCheckboxChange("extras", value);
            }}
           >
-           <div
-            className={`md:w-[70px] md:h-[54px] lg:max-w-[90px]  lg:max-h-[54px]  hidden md:block justify-center items-center`}
-           >
-            <Image
-             src={path}
-             alt="icons"
-             objectFit="cover"
-             width={100}
-             height={100}
-             margin-bottom={4}
-             //  layout="fill"
-            ></Image>
-           </div>
-           <div className="w-full items-end">
-            <p className="lg:text-[16px]">{label}</p>
+           <div className="w-full md:h-[76px]  ">
+            <div className="hidden md:flex">
+             <Image
+              src={path}
+              alt="icons"
+              objectFit="cover"
+              width={80}
+              height={100}
+              className="justify-start items-start md:h-[76px] w-full mb-2 md:absolute md:inset-x-0 md:top-2"
+              //   layout="fill"
+             ></Image>
+            </div>
+            <div className="w-full items-end  ">
+             <p className="lg:text-[16px] md:absolute md:inset-x-0 md:bottom-1 whitespace-normal text-center">
+              {label}
+             </p>
+            </div>
            </div>
           </CheckBox>
          )}

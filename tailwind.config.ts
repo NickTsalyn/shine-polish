@@ -43,6 +43,7 @@ const config: Config = {
         backdrop: 'rgba(51, 77, 81, 0.50)',
         bookingSubText: "rgba(0, 0, 0, 0.50)",
         customRed: "#FF4E56",
+        lightBlue:"#1dd0ee4d",
       },
 
       boxShadow: {
@@ -89,6 +90,19 @@ const config: Config = {
 
         "background-img-grad":
           "linear-gradient(185deg, rgba(10, 10, 10, 0.49) 2.66%, rgba(120, 120, 120, 0.00) 81.3%);",
+      },
+      backgroundSize: {
+        '600%': '600% 600%',
+      },
+      animation: {
+        'gradient': 'gradient 5s ease infinite',
+      },
+      keyframes: {
+        gradient: {
+          '0%': { 'background-position': '0% 50%' },
+          '50%': { 'background-position': '100% 50%' },
+          '100%': { 'background-position': '0% 50%' },
+        },
       },
     },
   },
@@ -155,4 +169,8 @@ const config: Config = {
     },
   ],
 };
+
+// gradient animation button
+
+
 export default config;

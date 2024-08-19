@@ -19,8 +19,8 @@ const Step5: React.FC<StepProps> = ({setStepCompleted}) => {
  };
 
  return (
-  <div className=" py-8 flex flex-col gap-6 lg:flex-row lg:flex-wrap justify-between lg:h-[800px]">
-   <div className=" flex flex-col gap-6 lg:min-w-[500px] lg:max-w-[600px] w-full mb-[40px] lg:mb-0 xl:w-[900px]">
+  <div className=" py-4 md:py-6 lg:py-9 lg:min-h-[680px] xl:h-[1000px] flex flex-col gap-6 lg:flex-row lg:flex-wrap justify-between ">
+   <div className=" flex flex-col gap-6  lg:min-w-[500px] lg:max-w-[600px] w-full  lg:mb-0 xl:w-[900px]">
     <h2 className=" text-2xl md:text-4xl font-medium">Have you any question?</h2>
     <p className=" body text-subtext ">
      If you have a question about our company, ask it in the next field. We’ll answer to you on email{" "}
@@ -35,30 +35,12 @@ const Step5: React.FC<StepProps> = ({setStepCompleted}) => {
     </div>
    </div>
 
-   <form className=" flex flex-col justify-center lg:justify-start gap-4 mb-[40px]">
-    <h2 className="text-2xl md:text-4xl font-medium lg:mb-5">Discount code</h2>
-
-    <div className="md:flex  gap-4 lg:flex-col lg:w-[500px]">
-     <div className="w-full md:w-3/4 lg:w-full h-[60px] mb-5">
-      <Input
-       style="form-input"
-       type="text"
-       placeholder="Discount code (or leave this blank)"
-       onChange={handleInputChange}
-       name="discountCode"
-       value={form.discountCode as string}
-      />
-     </div>
-     <div className="flex justify-center md:w-1/4 lg:w-[500px] lg:justify-end md:h-[60px]">
-      <Button
-       type="submit"
-       style="apply-btn-light"
-      >
-       <span className=" text-accent text-base leading-8  ">Accept</span>
-      </Button>
-     </div>
+   <div className=" lg:flex md:flex-col lg:w-[500px]">
+    <h2 className="text-center text-rose-900 text-4xl mb-5">Tell about us your friends and get discount!</h2>
+    <div className=" flex justify-center">
+     <BannerImg />
     </div>
-   </form>
+   </div>
 
    <div className="lg:relative flex flex-col md:flex-row  md:w-full md:justify-between lg:flex-row lg:items-end lg:w-[600px]  lg:gap-8 mb-[40px] lg:mb-0 xl:w-[900px]">
     <div className=" hidden md:flex lg:w-[500px] lg:absolute lg:left-0 lg:bottom-0  ">
@@ -69,7 +51,7 @@ const Step5: React.FC<StepProps> = ({setStepCompleted}) => {
       Tips are not expected but always appreciated <br />
       by our cleaners
      </p>
-     <div className=" h-[60px]">
+     <div className=" h-[48px]">
       <IMaskInput
        name="tips"
        mask={TipsNumberMask}
@@ -87,13 +69,30 @@ const Step5: React.FC<StepProps> = ({setStepCompleted}) => {
      </div>
     </div>
    </div>
+   <form className=" flex flex-col justify-center lg:justify-between gap-4 mb-[40px] lg:mb-0">
+    <h2 className="text-2xl md:text-4xl font-medium lg:mb-5">Discount code</h2>
 
-   <div className=" lg:flex md:flex-col lg:w-[500px]">
-    <h2 className="text-center text-rose-900 text-4xl mb-5">Tell about us your friends and get discount!</h2>
-    <div className=" flex justify-center">
-     <BannerImg />
+    <div className="md:flex  gap-4 lg:flex-col lg:w-[500px]">
+     <div className="w-full md:w-3/4 lg:w-full h-[48px]">
+      <Input
+       style="form-input"
+       type="text"
+       placeholder="Discount code (or leave this blank)"
+       onChange={handleInputChange}
+       name="discountCode"
+       value={form.discountCode as string}
+      />
+     </div>
+     <div className="flex justify-center md:w-1/4 lg:w-[500px] lg:justify-end md:h-[48px]">
+      <Button
+       type="submit"
+       style="apply-btn-light"
+      >
+       <span className=" text-accent text-base leading-8  ">Accept</span>
+      </Button>
+     </div>
     </div>
-   </div>
+   </form>
   </div>
  );
 };
