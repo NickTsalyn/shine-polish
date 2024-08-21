@@ -38,7 +38,8 @@ const Step6: React.FC<StepProps> = () => {
   const totalWithTips = calculatedPrice + (Number(tips) || 0);
   setTotal(totalWithTips);
   handleCustomChange("totalPrice", totalWithTips);
- }, [form, total]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+ }, []);
 
  const handleCheckout = async () => {
   setLoading(true);
@@ -109,12 +110,12 @@ const Step6: React.FC<StepProps> = () => {
     </ul>
     {Array.isArray(form.extras) && form.extras.length > 0 ? (
      <div className="flex flex-col  gap-2">
-      <p className="underline underline-offset-4 text-[20px] xl:text-[28px]">Extras</p>
-      <ul className="list-disc list-inside ml-6 flex flex-col gap-1 lg:grid lg:grid-cols-3 lg:gap-12 xl:gap-14">
+      {/* <p className="underline underline-offset-4 text-[20px] xl:text-[28px]">Extras</p> */}
+      <ul className="list-disc list-inside ml-6 flex flex-col gap-1 lg:grid lg:grid-cols-3 lg:gap-y-12 xl:gap-y-14">
        {form.extras.map((extra, index) => (
         <li
          key={index}
-         className="text-[20px] xl:text-[28px] "
+         className="text-[20px] xl:text-[28px] text-subtext "
         >
          {extra}
         </li>

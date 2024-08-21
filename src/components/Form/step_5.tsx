@@ -42,14 +42,13 @@ const Step5: React.FC<StepProps> = ({setStepCompleted}) => {
     </div>
    </div>
 
-   <div className="lg:relative flex flex-col md:gap-5 md:flex-row  md:w-full md:justify-between lg:h-[486px] lg:flex-row lg:items-end lg:w-[50%]  lg:gap-8 mb-[40px] lg:mb-0 xl:w-[50%]">
-    <div className=" hidden md:flex lg:w-[500px] lg:absolute lg:left-0 lg:bottom-0 xl:bottom-[-14px] xl:h-[500px] xl:w-[500px] ">
+   <div className="lg:relative flex flex-col md:gap-5 md:flex-row  md:w-full md:justify-between lg:flex-row lg:items-end lg:w-[50%]  lg:gap-8 mb-[40px] lg:mb-0 xl:w-[50%]">
+    <div className=" hidden md:flex lg:w-[300px] lg:absolute lg:left-0 lg:bottom-0 xl:bottom-[-14px] xl:h-[500px] xl:w-[500px] ">
      <DiscontImg />
     </div>
-    <div className="flex flex-col justify-end gap-5 md:w-[480px] lg:w-[200px] lg:absolute lg:right-0 lg:top-0 xl:bottom-[12px] xl:w-[250px] xl:justify-end">
-     <p className=" body md:text-2xl md:text-right xl:text-4xl text-accent">
-      Tips <br />
-      are not expected but always appreciated <br />
+    <div className="flex flex-col justify-end gap-5 md:w-[480px] lg:w-[300px] lg:absolute lg:right-0 lg:top-0 xl:bottom-[16px] xl:w-[250px] xl:justify-end">
+     <p className=" body md:text-2xl  xl:text-4xl text-accent">
+      Tips are not expected but always appreciated <br />
       by our cleaners
      </p>
      <div className=" h-[48px] xl:h-[56px]">
@@ -74,8 +73,8 @@ const Step5: React.FC<StepProps> = ({setStepCompleted}) => {
    <form className=" flex flex-col justify-center lg:justify-between gap-4 mb-[40px] lg:mb-0 xl:w-[700px]">
     <h2 className="text-2xl md:text-4xl font-medium lg:mb-5">Discount code</h2>
 
-    <div className="flex  gap-4 lg:flex-col lg:w-[500px] xl:w-[700px]">
-     <div className="w-3/4 lg:w-full h-[48px] xl:h-[56px]">
+    <div className="flex flex-col md:flex-row  gap-4 lg:flex-col lg:w-[500px] xl:w-[700px]">
+     <div className="w-full md:w-3/4 lg:w-full h-[48px] xl:h-[56px]">
       <Input
        style="form-input"
        type="text"
@@ -85,12 +84,12 @@ const Step5: React.FC<StepProps> = ({setStepCompleted}) => {
        value={form.discountCode as string}
       />
      </div>
-     <div className="flex justify-center w-1/4 lg:w-[500px] lg:justify-end md:h-[48px] xl:h-[56px] xl:w-full">
+     <div className="flex justify-center w-[40px] md:w-1/4 lg:w-[500px] lg:justify-end md:h-[48px] xl:h-[56px] xl:w-full">
       <Button
        type="submit"
        style="apply-btn-light"
       >
-       <span className=" text-accent text-base leading-8  ">Accept</span>
+       <span className=" text-accent text-base leading-8">Accept</span>
       </Button>
      </div>
     </div>
