@@ -80,21 +80,21 @@ const Step6: React.FC<StepProps> = () => {
  };
 
  return (
-  <div className="p-4 md:p-6 lg:p-9 flex flex-col gap-5 lg:h-[80vh] justify-between">
+  <div className="p-4 md:p-6 lg:p-9 xl:py-12 flex flex-col gap-5 lg:h-[80vh] justify-between">
    <div>
-    <h2 className=" text-black text-3xl text-center mb-2 lg:mb-5 ">BOOKING SUMMARY</h2>
-    <p className="text-bookingSubText text-base">
+    <h2 className=" text-black text-3xl text-center mb-2 lg:mb-5 xl:mb-12 xl:text-[48px]  ">BOOKING SUMMARY</h2>
+    <p className="text-bookingSubText text-base lg:text-[24px] xl:text-[32px] ">
      By clicking the Book Now button, you agree to our Terms of Service and Privacy Policy.
     </p>
    </div>
-   <div className="flex flex-row gap-16">
+   <div className="flex flex-col md:flex-row gap-16 xl:gap-20">
     <ul className="list-disc ml-6 flex flex-col gap-0.5 ">
      {Object.entries(form).map(([key, value]) => {
       if (["bedroom", "bathroom", "area", "frequency", "service"].includes(key) && value !== "") {
        return (
         <li
          key={key}
-         className="text-[20px] "
+         className="text-[20px] xl:text-[28px]"
         >
          <span>{key === "bathroom" || key === "bedroom" ? `${value} ${key}(s)` : value}</span>
         </li>
@@ -102,19 +102,19 @@ const Step6: React.FC<StepProps> = () => {
       }
      })}
      {form.tips && Number(form.tips) > 0 && (
-      <li className="text-[20px] ">
+      <li className="text-[20px] xl:text-[28px]">
        <span>Tips $ {Number(form.tips).toFixed(2)}</span>
       </li>
      )}
     </ul>
     {Array.isArray(form.extras) && form.extras.length > 0 ? (
      <div className="flex flex-col  gap-2">
-      <p className="underline underline-offset-4 text-[20px]">Extras</p>
-      <ul className="list-disc list-inside ml-6 flex flex-col gap-0.5 lg:grid lg:grid-cols-3 lg:column-gap-[2rem]">
+      <p className="underline underline-offset-4 text-[20px] xl:text-[28px]">Extras</p>
+      <ul className="list-disc list-inside ml-6 flex flex-col gap-1 lg:grid lg:grid-cols-3 lg:gap-12 xl:gap-14">
        {form.extras.map((extra, index) => (
         <li
          key={index}
-         className="text-[20px]"
+         className="text-[20px] xl:text-[28px] "
         >
          {extra}
         </li>
@@ -125,7 +125,7 @@ const Step6: React.FC<StepProps> = () => {
    </div>
    <DateTimeCleaning form={form as any} />
    <div className="flex flex-col gap-2 ">
-    <div className=" flex justify-between text-2xl text-main">
+    <div className=" flex justify-between text-2xl text-main xl:text-4xl">
      <span>TOTAL</span>
      <span className="">$ {total.toFixed(2)}</span>
     </div>
@@ -139,14 +139,14 @@ const Step6: React.FC<StepProps> = () => {
    >
     {loading ? (
      <div className="flex justify-center items-center gap-5">
-      <span className="text-white text-2xl">Processing...</span>
+      <span className="text-white text-2xl xl:text-4xl">Processing...</span>
       <CircularProgress
        size={24}
        className="text-sand  flex-right justify-items-end"
       />
      </div>
     ) : (
-     <span className="text-white text-2xl">BOOK NOW</span>
+     <span className="text-white text-2xl xl:text-4xl">BOOK NOW</span>
     )}
    </button>
   </div>

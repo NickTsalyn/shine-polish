@@ -62,7 +62,7 @@ export default function LastSectionHome({children, data}: LastSectionBgProps) {
      </h2>
 
      <div className="flex  items-center z-10 justify-between lg:pr-[40px] xl:pr-[80px] lg:pl-[40px] xl:pl-[80px]">
-      <span className="h2  text-white">...in a clean house</span>
+      <span className="h2 xl:text-6xl  text-white">...in a clean house</span>
 
       <Button
        style="home-book-now"
