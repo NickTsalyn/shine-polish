@@ -38,7 +38,7 @@ const Step6: React.FC<StepProps> = () => {
   const totalWithTips = calculatedPrice + (Number(tips) || 0);
   setTotal(totalWithTips);
   handleCustomChange("totalPrice", totalWithTips);
- }, [form, handleCustomChange, total]);
+ }, [form, total]);
 
  const handleCheckout = async () => {
   setLoading(true);
