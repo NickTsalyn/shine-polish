@@ -34,7 +34,7 @@ export const  ExtrasOptions  = [
     { value: "Walls", label: "Walls", path:'/icons/step_2_form_icons/walls_c.svg', style:'hidden md:block md:w-full md:h-full' },
 	{ value: "Basement", label: "Basement", path:'/icons/step_2_form_icons/basement_copy.svg' ,style:'hidden md:block md:w-full md:h-full' },
   { value: "Green cleaning", label: "Green cleaning", path:'/icons/step_2_form_icons/green_cleaning.svg', style:'hidden md:block md:w-full md:h-full' },
-  { value: "Other (tell about it in special instruction)", label: "Other", path:'', style:'hidden md:block md:w-full md:h-full' },
+  { value: "Other", label: "Other", path:'/icons/step_2_form_icons/other-icon.svg', style:'hidden md:block md:w-full md:h-full' },
 	
 ];
 

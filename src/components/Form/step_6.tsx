@@ -9,6 +9,7 @@ const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY as st
 import {StepProps} from "@/types/interfaces";
 import {CircularProgress} from "@mui/material";
 import DateTimeCleaning from "../DateTimeCleaning";
+import CheckRoundedIcon from "@mui/icons-material/CheckRounded";
 
 const Step6: React.FC<StepProps> = () => {
  const {form, handleCustomChange} = useFormStorage();
@@ -89,7 +90,7 @@ const Step6: React.FC<StepProps> = () => {
     </p>
    </div>
    <div className="flex flex-col md:flex-row gap-16 xl:gap-20">
-    <ul className="list-disc ml-6 flex flex-col gap-0.5 ">
+    <ul className="list-disc ml-6 flex flex-col gap-0.5 md:gap-1 ">
      {Object.entries(form).map(([key, value]) => {
       if (["bedroom", "bathroom", "area", "frequency", "service"].includes(key) && value !== "") {
        return (
@@ -109,14 +110,15 @@ const Step6: React.FC<StepProps> = () => {
      )}
     </ul>
     {Array.isArray(form.extras) && form.extras.length > 0 ? (
-     <div className="flex flex-col  gap-2">
+     <div className="flex flex-col  gap-2 ">
       {/* <p className="underline underline-offset-4 text-[20px] xl:text-[28px]">Extras</p> */}
-      <ul className="list-disc list-inside ml-6 flex flex-col gap-1 lg:grid lg:grid-cols-3 lg:gap-y-12 xl:gap-y-14">
+      <ul className=" ml-6 flex flex-col gap-1  md:gap-x-8 md:gap-y-1 md:grid md:grid-rows-6 lg:grid-rows-5 md:grid-flow-col">
        {form.extras.map((extra, index) => (
         <li
          key={index}
-         className="text-[20px] xl:text-[28px] text-subtext "
+         className="text-[16px] lg:text-[20px] xl:text-[28px] text-subtext break-inside-avoid"
         >
+         <CheckRoundedIcon className="mr-2 text-green-500" />
          {extra}
         </li>
        ))}

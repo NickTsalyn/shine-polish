@@ -43,10 +43,10 @@ const Step5: React.FC<StepProps> = ({setStepCompleted}) => {
    </div>
 
    <div className="lg:relative flex flex-col md:gap-5 md:flex-row  md:w-full md:justify-between lg:flex-row lg:items-end lg:w-[50%]  lg:gap-8 mb-[40px] lg:mb-0 xl:w-[50%]">
-    <div className=" hidden md:flex lg:w-[300px] lg:absolute lg:left-0 lg:bottom-0 xl:bottom-[-14px] xl:h-[500px] xl:w-[500px] ">
+    <div className=" hidden xl:flex lg:w-[300px] lg:absolute lg:left-0 lg:bottom-0 xl:bottom-[-14px] xl:h-[500px] xl:w-[500px] ">
      <DiscontImg />
     </div>
-    <div className="flex flex-col justify-end gap-5 md:w-[480px] lg:w-[300px] lg:absolute lg:right-0 lg:top-0 xl:bottom-[16px] xl:w-[250px] xl:justify-end">
+    <div className="flex flex-col justify-end items-stretch  gap-5 md:w-[480px] lg:place-content-end lg:w-[500px] xl:absolute xl:right-0  xl:bottom-[16px] xl:w-[250px] xl:justify-end">
      <p className=" body md:text-2xl  xl:text-4xl text-accent">
       Tips are not expected but always appreciated <br />
       by our cleaners
@@ -60,7 +60,7 @@ const Step5: React.FC<StepProps> = ({setStepCompleted}) => {
        max={9999}
        value={form.tips}
        unmask={true}
-       className="block mx-full mb-[10px] w-full hx-full h-full  py-[8px] lg:py-[12px] px-[8px] lg:px-[16px] bg-transparent text-text border-solid border-2 focus:border-[3px] border-secondary rounded-[12px] focus:shadow-input-shadow outline-none xl:placeholder:text-[16px] placeholder:text-secondary-placeholder placeholder:opacity-50 xl:h-[56px]"
+       className="block mx-full mb-[10px] w-full hx-full h-full  py-[8px] lg:py-[12px] px-[8px] lg:px-[16px] lg:w-[200px] lg:self-end bg-transparent text-text border-solid border-2 focus:border-[3px] border-secondary rounded-[12px] focus:shadow-input-shadow outline-none xl:placeholder:text-[16px] placeholder:text-secondary-placeholder placeholder:opacity-50 xl:h-[56px]"
        padFractionalZeros={true}
        onAccept={(value: string) => {
         handleTipsChange(value);
