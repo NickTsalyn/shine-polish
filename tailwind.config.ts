@@ -88,6 +88,12 @@ const config: Config = {
         "disabled-button-border":
           "linear-gradient(90deg, #006778 30%, #00BFDE 30%)",
 
+        "repeat-last-booking-bgn":
+          "linear-gradient(90deg, #780032 0%, #DE005D 100%)",
+
+        "create-new-booking-bgn":
+          "linear-gradient(90deg, rgba(255, 247, 239, 0.68) 26%, rgba(245, 222, 203, 0.68) 61.5%, rgba(230, 186, 149, 0.68) 100%)",
+
         "background-img-grad":
           "linear-gradient(185deg, rgba(10, 10, 10, 0.49) 2.66%, rgba(120, 120, 120, 0.00) 81.3%);",
       },

@@ -53,3 +53,14 @@ export const fetchClientBookings = async (id: string) => {
     return res.data;
   }
 };
+export const getBookingOptions = async () => {
+  const user: any = localStorage.getItem("user");
+  if (user === null) {
+    alert("Please sign in")
+  } else {
+    const objUser = JSON.parse(user);
+    setAuthHeader(objUser.accessToken);
+    const res = await axios.get(`${BASE_URL}/bookings/options`);
+    return res.data;
+  }
+};
