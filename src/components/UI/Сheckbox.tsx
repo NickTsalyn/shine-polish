@@ -5,15 +5,13 @@ const CheckBox = (props: RadioCheckProps) => {
  return (
   <button
    disabled={props.disabled}
-   className={`${
-    props.style
-   }  border  flex flex-col  rounded-xl text-center  text-base font-normal items-center justify-between
+   className={`${props.style} w-full border py-1 px-0 flex flex-col rounded-xl items-center   
        ${
         props.isActive
-         ? "text-accent bg-light border-main/50 shadow-hover-shadow "
+         ? "text-accent-light bg-lightBlue/20 border-tertial border-[2px]  shadow-hover-shadow "
          : "text-main border-main shadow-hover-shadow"
        }
-       ${props.disabled && "pointer-events-none opacity-50"}`}
+       ${props.disabled && "pointer-events-none opacity-30"}`}
    onClick={props.onClick}
   >
    {props.children}

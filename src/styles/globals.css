@@ -32,6 +32,7 @@ select:-webkit-autofill:focus {
 .css-15zj7fn-MuiPickersLayout-root {
   border-radius: 12px;
   box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.35);
+  background-color: #fff;
 
 }
 
@@ -64,7 +65,7 @@ select:-webkit-autofill:focus {
 .css-foipgg-MuiDigitalClock-root {
   border-radius: 12px;
   box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.35);
-  background-color: #fff;
+  background-color: #fff !important;
 }
 
 .MuiMenuItem-root {
@@ -72,17 +73,17 @@ select:-webkit-autofill:focus {
 }
 
 .MuiMenuItem-root:hover{
-    background-color: #DE005D;
+    background-color: #DE005D !important;
      color: #fff;
      }
 
-.MuiDigitalClock-selected {
-    background-color: #DE005D;
+/* .MuiDigitalClock-selected {
+    background-color: #DE005D !important; 
     color: #fff;
-    }
+    } */
 
 .css-1kvln7l-MuiButtonBase-root-MuiMenuItem-root-MuiDigitalClock-item.Mui-selected {
-      background-color: #DE005D;
+      background-color: #DE005D !important;
       color: #fff;
     }
     .css-tlbplz-MuiButtonBase-root-MuiMenuItem-root.Mui-selected {
