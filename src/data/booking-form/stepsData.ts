@@ -27,15 +27,14 @@ export const  ExtrasOptions  = [
 	{ value: "Load of Laundry", label: "Load of Laundry", path:'/icons/step_2_form_icons/washing_mashine_c.svg', style:'hidden md:block md:w-full md:h-full ' },
 	{ value: "Inside Fridge", label: "Inside Fridge", path:'/icons/step_2_form_icons/fridge_c.svg', style:'hidden md:block md:w-full md:h-full' },
 	{ value: "Inside Oven", label: "Inside Oven", path:'/icons/step_2_form_icons/oven_c.svg', style:'hidden md:block  md:w-full md:h-full' },
-    { value: "Inside Windows", label: "Inside Windows", path:'/icons/step_2_form_icons/window_c.svg', style:'hidden md:block md:w-full md:h-full px-2 whitespace-normal text-center' },
+  { value: "Inside Windows", label: "Inside Windows", path:'/icons/step_2_form_icons/window_c.svg', style:'hidden md:block md:w-full md:h-full px-2 whitespace-normal text-center' },
 	{ value: "Unload dishwasher", label: "Unload dishwasher", path:'/icons/step_2_form_icons/dishwasher_с.svg', style:'hidden md:block md:w-full md:h-full' },
 	{ value: "Blinds", label: "Blinds", path:'/icons/step_2_form_icons/blinds_copy.svg', style:'hidden md:block md:w-full md:h-full' },
 	{ value: "Ironing", label: "Ironing", path:'/icons/step_2_form_icons/ironing_c.svg', style:'hidden md:block md:w-full md:h-full' },
-    { value: "Walls", label: "Walls", path:'/icons/step_2_form_icons/walls_c.svg', style:'hidden md:block md:w-full md:h-full' },
+  { value: "Walls", label: "Walls", path:'/icons/step_2_form_icons/walls_c.svg', style:'hidden md:block md:w-full md:h-full' },
 	{ value: "Basement", label: "Basement", path:'/icons/step_2_form_icons/basement_copy.svg' ,style:'hidden md:block md:w-full md:h-full' },
   { value: "Green cleaning", label: "Green cleaning", path:'/icons/step_2_form_icons/green_cleaning.svg', style:'hidden md:block md:w-full md:h-full' },
-  { value: "Other", label: "Other", path:'/icons/step_2_form_icons/other-icon.svg', style:'hidden md:block md:w-full md:h-full' },
-	
+  { value: "Other", label: "Other", path:'/icons/step_2_form_icons/other-icon.svg', style:'hidden md:block md:w-full md:h-full' }	
 ];
 
 export const homeAccess = [

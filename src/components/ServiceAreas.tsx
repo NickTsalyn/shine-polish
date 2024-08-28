@@ -7,9 +7,9 @@ import { Options } from "@/types/interfaces";
 import Loading from "@/app/loading";
 import { getOptions } from "@/api";
 
-type Props = {};
+type Props = {id: string};
 
-const ServiceAreas = (props: Props) => {
+const ServiceAreas = ({id}: Props) => {
 
   const { data, error, isLoading } = useQuery<{
     areaOptions: Options[];
@@ -35,7 +35,7 @@ const ServiceAreas = (props: Props) => {
 
   return (
     <section
-      id="service-areas"
+      id={id}
       className="mb-[60px] md:mb-20 lg:mb-[120px] xl:mb-40"
     >
       <div className="container mx-auto my-0 flex flex-col lg:flex-row lg:gap-12 xl:gap-10 items-center justify-center">

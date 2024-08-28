@@ -35,7 +35,7 @@ const Step2: React.FC<StepProps> = ({control, setStepCompleted}) => {
 
  const combinedExtrasOptions =
   data?.extrasOptions.map((backendExtra) => {
-   const frontEndExtra = ExtrasOptions.find((extra) => extra.value === backendExtra.name);
+   const frontEndExtra = ExtrasOptions.find((extra) => extra.value == backendExtra.name);
    return {
     ...backendExtra,
     value: backendExtra.name,
@@ -184,8 +184,9 @@ const Step2: React.FC<StepProps> = ({control, setStepCompleted}) => {
               objectFit="cover"
               width={80}
               height={100}
+              priority={true}
               className="justify-start items-start md:h-[76px] w-full mb-2 md:absolute md:inset-x-0 md:top-2"
-              //   layout="fill"
+                // layout="fill"
              ></Image>
             </div>
             <div className="w-full items-end  ">

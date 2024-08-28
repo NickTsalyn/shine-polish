@@ -21,6 +21,7 @@ const AdditionalInformation: React.FC<{control: any}> = ({control}) => {
      <Controller
       name="homeAccess"
       control={control}
+      rules={{required: "Please select an option"}}
       render={({field, fieldState: {error}}) => (
        <>
         <BasicSelect
@@ -29,10 +30,12 @@ const AdditionalInformation: React.FC<{control: any}> = ({control}) => {
          value={form.homeAccess}
          placeholder="How will access your home?*"
          onChange={(event) => {
+            const {value} = event.target as HTMLInputElement;
+          field.onChange(value);
           handleSelectChange("homeAccess", event.target.value);
          }}
         />
-        {error && <p className="text-accent-light left-2 text-xs absolute">{error.message}</p>}
+        {error && <p className="text-accent-light left-2 text-xs lg:text-base  absolute">{error.message}</p>}
        </>
       )}
      />

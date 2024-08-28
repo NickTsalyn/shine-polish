@@ -22,7 +22,7 @@ export default function Home() {
    <SectionEstimate />
    <BeforeAfter data={dataSlider} />
    <Reviews />
-   <ServiceAreas />
+   <ServiceAreas id="service-areas" />
    <SectionJustAsk />
    <WorkWithUs />
    <LastSectionHome data={dataBackground} />

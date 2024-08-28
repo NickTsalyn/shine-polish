@@ -32,7 +32,7 @@ const SectionJustAsk: React.FC = () => {
 
  return (
   <section
-   id="just-ask"
+//    id="just-ask"
    className="mb-[60px] md:mb-20 lg:mb-[120px] xl:mb-40"
   >
    <div className="container relative flex flex-col lg:flex-row mx-auto lg:gap-12 xl:gap-10 items-center justify-center lg:items-start lg:justify-normal lg:max-w-[1156px] xl:max-w-[1516px]">
