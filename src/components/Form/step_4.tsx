@@ -32,7 +32,7 @@ const Step4: React.FC<StepProps> = ({setStepCompleted}) => {
  }, [form, isStepCompleted, setStepCompleted, isDate, isTime]);
 
  return (
-  <div className="py-4 md:py-6 lg:py-9 lg:h-[680px] xl:h-[1000px] lg:justify-between">
+  <div className="py-4 md:py-6 lg:py-9 lg:h-[80vh]  lg:justify-between">
    <div className="flex flex-col mb-[72px] lg:mb-[92px] ">
     <h1 className="h1 md:text-[36px] mb-[32px]">Where would you like us to clean?</h1>
     {/* <div className="relative"> */}

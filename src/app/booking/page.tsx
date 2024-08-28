@@ -40,7 +40,7 @@ const BookingFormHome = () => {
      <h1 className="h2 font-bold text-white text-center mb-4 md:mb-6 lg:mb-9">Tell us about your house</h1>
      <p className=" subtitle-booking text-white text-center">We don’t share your personal information with anyone</p>
     </div>
-    <div className="mt-auto w-full  lg:absolute lg:bottom-[120px] lg:right-5 md:right-0">
+    <div className="mt-auto w-full  lg:absolute lg:bottom-[28px] lg:right-5 md:right-0">
      <p className=" subtitle-booking text-white text-center mb-4 md:mb-6 lg:mb-9">So let’s start to</p>
      <div className="flex justify-center items-center w-full] ">
       <Button

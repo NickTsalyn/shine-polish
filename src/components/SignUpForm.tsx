@@ -59,7 +59,7 @@ export default function SignUpForm() {
  // console.log(axios.defaults.headers.common["Authorization"]);
 
  return (
-  <div className="w-[320px] md:w-[712px] lg:w-[960px] mx-auto lg:h-screen">
+  <div className="w-[320px] md:w-[712px] lg:w-[960px] m-auto lg:h-screen">
    <div className="flex flex-col items-center py-10 px-8 md:py-[60px] lg:p-16 mb-10 relative">
     <div className="flex items-center rounded-full text-main hover:text-white hover:bg-main absolute top-4 right-4 md:top-8 md:right-8 ">
      <Link
