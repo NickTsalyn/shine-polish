@@ -3,18 +3,16 @@ import useFormStorage from "@/hooks/formStorage";
 import {useEffect, useState} from "react";
 import {areas, discount, serviceOption, extrasOption, getPrice} from "../../helpers/formula";
 import {loadStripe} from "@stripe/stripe-js";
-
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY as string);
-
 import {StepProps} from "@/types/interfaces";
 import {CircularProgress} from "@mui/material";
 import DateTimeCleaning from "../DateTimeCleaning";
 import CheckRoundedIcon from "@mui/icons-material/CheckRounded";
 
-const Step6: React.FC<StepProps> = () => {
- const {form, handleCustomChange} = useFormStorage();
- const [total, setTotal] = useState(0);
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY as string);
 
+const Step6 = ({setStepCompleted}: StepProps) => {
+ const {form, handleCustomChange, } = useFormStorage();
+ const [total, setTotal] = useState(0);
  const [loading, setLoading] = useState(false);
 
  useEffect(() => {
@@ -80,6 +78,10 @@ const Step6: React.FC<StepProps> = () => {
    setLoading(false);
   }
  };
+
+ useEffect(() => {
+    setStepCompleted(6);
+  }, [setStepCompleted]);
 
  return (
   <div className="p-4 md:p-6 lg:p-9 xl:py-12 flex flex-col gap-5 lg:h-[80vh] justify-between">

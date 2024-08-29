@@ -1,7 +1,7 @@
 export const SIDEBAR_LINKS = [
   { href: "/", text: "Home" },
   { href: "/checklist", text: "Checklists" },
-  { href: "#service-areas", text: "Service Areas" },
+  // { href: "#service-areas", text: "Service Areas" },
   // { href: "#reviews", text: "Reviews" },
   // { href: "#just-ask", text: "Not sure? Just Ask!" },
 ];
@@ -30,7 +30,7 @@ export const SERVICES_LINKS = [
 
 export const FOOTER_MOBILE_LINKS = [
   { href: "/", text: "Cleaning Services" },
-  { href: "/#service-areas", text: "Service Areas" },
+  { href: "#service-areas", text: "Service Areas" },
   { href: "/", text: "About us" },
 ]
 
