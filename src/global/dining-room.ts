@@ -1,5 +1,5 @@
 export const DINING_ROOM_SERVICES = {
-  title: "Dining Room Cleaning Services",
+  title: "Dining Room Cleaning",
   paragraph: [
     "Tending to the cleanliness of your dining room might not be the initial priority on your extensive to-do list. During your free moments, you may lean towards addressing the more frequently used spaces in your home, such as the kitchen and bathrooms. However, regardless of whether your dining room is a setting for formal occasions, family gatherings, or part of your daily routine, it should not be underestimated. Given that meals are enjoyed in this space, inevitable occurrences like crumbs, spills, and stains demand attention.",
   ],
@@ -39,23 +39,19 @@ export const DINING_ROOM_SERVICES = {
       },
       {
         title: "Clean and Polish Hardware:",
-        description:
-          "Wipe down and polish any hardware, such as door handles, drawer pulls, or cabinet knobs.",
+        description: "Wipe down and polish any hardware, such as door handles, drawer pulls, or cabinet knobs.",
       },
       {
         title: "Check and Clean Air Vents:",
-        description:
-          "Check and clean air vents or grilles to ensure proper air circulation. Remove dust and cobwebs.",
+        description: "Check and clean air vents or grilles to ensure proper air circulation. Remove dust and cobwebs.",
       },
       {
         title: "Decorative Elements:",
-        description:
-          "Clean and dust any decorative elements, such as wall art, mirrors, or centerpieces.",
+        description: "Clean and dust any decorative elements, such as wall art, mirrors, or centerpieces.",
       },
       {
         title: "Check and Replace Tablecloths or Runners:",
-        description:
-          "Check tablecloths or runners for stains or spills. Launder or replace them as needed.",
+        description: "Check tablecloths or runners for stains or spills. Launder or replace them as needed.",
       },
       {
         title: "Upholstery Cleaning:",
@@ -69,8 +65,7 @@ export const DINING_ROOM_SERVICES = {
       },
       {
         title: "Set the Table:",
-        description:
-          "Set the table with clean placemats, dishes, and utensils to create an inviting atmosphere.",
+        description: "Set the table with clean placemats, dishes, and utensils to create an inviting atmosphere.",
       },
       {
         title: "Regular Maintenance:",
@@ -87,9 +82,7 @@ export const DINING_ROOM_SERVICES = {
     items: [
       {
         title: "Daily:",
-        description: [
-          "Clear the dining table after meals and wipe it down to remove crumbs and spills.",
-        ],
+        description: ["Clear the dining table after meals and wipe it down to remove crumbs and spills."],
       },
       {
         title: "Weekly:",

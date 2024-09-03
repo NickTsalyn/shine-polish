@@ -10,7 +10,7 @@ const KitchenServices: React.FC = () => {
       <h1 className="h3 text-main mb-3 md:mb-[18px] lg:mb-7">{title}</h1>
       <BasicBreadcrumbs pageHref="cleaning-processes" pageName="Cleaning Process" roomName="Kitchen" />
       <div className="relative mb-5 md:mb-10 lg:mb-[60px] min-w-[278px] md:min-w-[712px] lg:min-w-[1076px] xl:min-w-[1556px] 4xl:min-w-[2156px]">
-        <SynchronizedImage src="/images/kitchen/kitchen-room@2x.webp" roomType="kitchen" />
+        <SynchronizedImage src="/images/processes-img/kitchen-room@2x.webp" roomType="kitchen" />
       </div>
       <ul className="flex flex-col gap-1.5 mb-3 md:mb-[18px] lg:mb-7">
         {paragraph.map((p, index) => (

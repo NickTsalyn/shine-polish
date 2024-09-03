@@ -1,5 +1,5 @@
 export const LIVING_ROOM_SERVICES = {
-  title: "Living room Cleaning Services",
+  title: "Living room Cleaning",
   paragraph: [
     "Your family room serves as a central hub in your home, a space where relaxation, family bonding, and favorite TV shows take center stage. It's a place to unwind after a busy day and create cherished moments with loved ones. In the hustle and bustle of life, every moment is precious, and the last thing you want to worry about is spending your time cleaning the living room. Modern Maids is here to make sure you can fully embrace and live in those moments without the concern of maintaining a pristine space.",
 
@@ -48,13 +48,11 @@ export const LIVING_ROOM_SERVICES = {
       },
       {
         title: "Clean Light Fixtures:",
-        description:
-          "Dust and clean light fixtures, including lampshades and bulbs. Replace any burnt-out bulbs.",
+        description: "Dust and clean light fixtures, including lampshades and bulbs. Replace any burnt-out bulbs.",
       },
       {
         title: "Check and Clean Air Vents:",
-        description:
-          "Check and clean air vents or grilles to ensure proper air circulation. Remove dust and cobwebs.",
+        description: "Check and clean air vents or grilles to ensure proper air circulation. Remove dust and cobwebs.",
       },
       {
         title: "Address Pet Hair:",
@@ -63,18 +61,15 @@ export const LIVING_ROOM_SERVICES = {
       },
       {
         title: "Spot Clean Carpets and Rugs:",
-        description:
-          "Address any stains or spills on carpets and rugs using a carpet cleaner or spot treatment.",
+        description: "Address any stains or spills on carpets and rugs using a carpet cleaner or spot treatment.",
       },
       {
         title: "Disinfect High-Touch Areas:",
-        description:
-          "Disinfect frequently-touched areas, such as doorknobs, light switches, and remote controls.",
+        description: "Disinfect frequently-touched areas, such as doorknobs, light switches, and remote controls.",
       },
       {
         title: "Freshen Up:",
-        description:
-          "Consider using a fabric freshener or room spray to add a pleasant scent to the room.",
+        description: "Consider using a fabric freshener or room spray to add a pleasant scent to the room.",
       },
       {
         title: "Arrange Furniture:",
@@ -83,8 +78,7 @@ export const LIVING_ROOM_SERVICES = {
       },
       {
         title: "Final Touches:",
-        description:
-          "Return decluttered items to their designated places. Fluff pillows and arrange decorative items.",
+        description: "Return decluttered items to their designated places. Fluff pillows and arrange decorative items.",
       },
       {
         title: "Regular Maintenance:",

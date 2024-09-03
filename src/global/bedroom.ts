@@ -1,5 +1,5 @@
 export const BEDROOM_SERVICES = {
-  title: "Bedroom Cleaning Services",
+  title: "Bedroom Cleaning",
   paragraph: [
     "Your bedroom serves as a sanctuary where you seek solace after a long day. It deserves to be a pristine and welcoming haven, promoting relaxation and ensuring a restful night's sleep, allowing you to wake up rejuvenated for the day ahead. Recognizing that a cluttered bedroom can compromise your ability to unwind, Modern Maids is committed to addressing the essential aspects of maintaining a clean and serene space.",
 
@@ -97,18 +97,11 @@ export const BEDROOM_SERVICES = {
       {
         title: "Daily:",
         subtitle: ["Make the Bed:"],
-        description: [
-          "Making the bed daily helps maintain a neat and organized appearance in the bedroom.",
-        ],
+        description: ["Making the bed daily helps maintain a neat and organized appearance in the bedroom."],
       },
       {
         title: "Weekly:",
-        subtitle: [
-          "Dust Surfaces:",
-          "Vacuum or Sweep:",
-          "Change Bedding:",
-          "Clean Electronics:",
-        ],
+        subtitle: ["Dust Surfaces:", "Vacuum or Sweep:", "Change Bedding:", "Clean Electronics:"],
         description: [
           "Dust furniture, shelves, and other surfaces weekly to prevent the buildup of allergens and keep the room clean.",
           "Vacuum or sweep the bedroom floor weekly, including under the bed and in corners, to remove dust, dirt, and debris.",
@@ -118,10 +111,7 @@ export const BEDROOM_SERVICES = {
       },
       {
         title: "Bi-Weekly/Monthly:",
-        subtitle: [
-          "Clean Windows and Window Treatments:",
-          "Deep Clean Furniture:",
-        ],
+        subtitle: ["Clean Windows and Window Treatments:", "Deep Clean Furniture:"],
         description: [
           "Clean windows and window treatments every two weeks to a month, depending on your preference and the accumulation of dust.",
           "Deep clean furniture surfaces, such as nightstands and dressers, on a monthly basis.",
@@ -137,11 +127,7 @@ export const BEDROOM_SERVICES = {
       },
       {
         title: "As Needed:",
-        subtitle: [
-          "Deep Clean Carpets:",
-          "Clean Light Fixtures:",
-          "Freshen Up:",
-        ],
+        subtitle: ["Deep Clean Carpets:", "Clean Light Fixtures:", "Freshen Up:"],
         description: [
           "Deep clean carpets as needed, depending on foot traffic and the presence of stains.",
           "Clean light fixtures, including lampshades and bulbs, as needed.",
