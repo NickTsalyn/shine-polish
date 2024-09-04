@@ -108,7 +108,7 @@ select:-webkit-autofill:focus {
   -ms-flex-direction: row;
   flex-direction: row;
   padding-top: 16px;
-  margin-bottom: 120px;
+margin-bottom: 0;
 }
 
 ::-webkit-scrollbar {

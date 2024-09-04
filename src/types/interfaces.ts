@@ -42,6 +42,7 @@ export interface FormValues {
   phone: string;
   remindersChecked: boolean;
   selectedDate: string;
+  endDate: string;
   time: string;
   address: Record<string, never>;
   question: string,

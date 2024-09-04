@@ -115,6 +115,13 @@
     @apply leading-[1.2];
   }
 }
+@screen xl {
+  .subtitle-booking {
+    @apply text-[42px];
+    @apply font-normal;
+    @apply leading-[1.2];
+  }
+}
 /* main text */
 .body {
   @apply text-[16px];

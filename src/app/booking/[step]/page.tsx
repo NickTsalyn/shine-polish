@@ -100,7 +100,7 @@ const BookingStep = ({params}: BookingStepProps) => {
 
  return (
   <FormProvider {...methods}>
-   <div className="p-4 md:p-6 xl:p-9 lg:pt-[90px] xl:pt-[102px] ">
+   <div className="p-4 md:p-6 xl:p-9 lg:pt-[90px] xl:pt-[102px] lg:h-screen ">
     <FormStepper
      activeStep={activeStep}
      handleNext={handleNext}

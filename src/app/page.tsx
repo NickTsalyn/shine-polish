@@ -12,8 +12,6 @@ import WorkWithUs from "@/components/WorkWithUs";
 import LastSectionHome from "@/components/LastSectionHome";
 import dataBackground from "@/data/background-data.json";
 import dataHeroBackground from "@/data/background-hero.json";
-
-import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import Arrow from "@/components/Arrow";
 
 export default function Home() {

@@ -24,7 +24,7 @@ const ErrorPage = () => {
     <div className="relative h-[calc(100vh-84px)] md:h-[calc(100vh-96px)] lg:h-screen w-full ">
       <BgnImg />
       <div className="container flex flex-col justify-between items-center  py-9 md:py-11 lg:py-12 h-full">
-        <h1 className="text-[48px] md:text-[60px] lg:text-[80px] xl:text-[116px] font-light text-white text-center">
+        <h1 className="text-[48px] md:text-[60px] lg:text-[180px] xl:text-[200px] font-light text-white text-center">
           404
           <br />
           Page not found
