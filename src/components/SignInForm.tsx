@@ -38,7 +38,8 @@ export default function SignInForm() {
   onSuccess: (data) => {
    console.log("I'm first!", data);
    localStorage.setItem("user", JSON.stringify(data.data));
-   router.push("/");
+   console.log(data.data.user.id);
+   router.push(`/client-bookings/${data.data.user.id}`);
   },
   onError: (error: any) => {
    // An error happened!
