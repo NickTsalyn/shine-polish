@@ -44,6 +44,7 @@ export interface FormValues {
   selectedDate: string;
   endDate: string;
   time: string;
+  endTime: string;
   address: Record<string, never>;
   question: string,
   discountCode: string,
