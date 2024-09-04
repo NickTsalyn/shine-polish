@@ -1,16 +1,16 @@
-import { KITCHEN_SERVICES } from "@/global/kitchen";
-
+import { KITCHEN_PROCESS } from "@/global/cleaning-process/kitchen";
 import BasicBreadcrumbs from "../UI/Breadcrumbs";
-import { SynchronizedImage } from "../SynchronizedImage";
+import { SynchronizedImage } from "./SynchronizedImage";
 
 const KitchenServices: React.FC = () => {
-  const { title, paragraph, processes, frequencies, needs } = KITCHEN_SERVICES;
+  const { title, paragraph, processes, frequencies, needs } = KITCHEN_PROCESS;
+
   return (
     <div className="lg:mb-[120px]">
       <h1 className="h3 text-main mb-3 md:mb-[18px] lg:mb-7">{title}</h1>
       <BasicBreadcrumbs pageHref="cleaning-processes" pageName="Cleaning Process" roomName="Kitchen" />
-      <div className="relative mb-5 md:mb-10 lg:mb-[60px] min-w-[278px] md:min-w-[712px] lg:min-w-[1076px] xl:min-w-[1556px] 4xl:min-w-[2156px]">
-        <SynchronizedImage src="/images/processes-img/kitchen-room@2x.webp" roomType="kitchen" />
+      <div className="relative mb-5 md:mb-10 lg:mb-[60px] min-w-[278px] md:min-w-[712px] lg:min-w-[1076px] xl:min-w-[1516px]">
+        <SynchronizedImage src="/images/processes-img/kitchen@2x.webp" roomType="kitchen" />
       </div>
       <ul className="flex flex-col gap-1.5 mb-3 md:mb-[18px] lg:mb-7">
         {paragraph.map((p, index) => (
@@ -21,7 +21,7 @@ const KitchenServices: React.FC = () => {
       </ul>
       <h2 className="text-main h4 mb-1 md:mb-2 lg:mb-4">{processes.title}</h2>
       <p className="mb-1 body">{processes.text}</p>
-      <ol className="flex flex-col gap-1.5 list-decimal pl-6 marker:font-semibold body">
+      <ol className="flex flex-col gap-1.5 list-decimal pl-6 lg:pl-7 marker:font-semibold body">
         {processes.items.map((item, index) => (
           <li key={index}>
             <h3 className="font-semibold mb-1">{item.title}</h3>
@@ -51,7 +51,7 @@ const KitchenServices: React.FC = () => {
 
       <h2 className="text-main h4 mb-1 md:mb-2 lg:mb-4">{needs.title}</h2>
       <p className="body mb-1">{needs.text}</p>
-      <ol className="flex flex-col gap-1.5 mb-3 md:mb-[18px] lg:mb-7 list-decimal pl-6 marker:font-semibold body">
+      <ol className="flex flex-col gap-1.5 mb-3 md:mb-[18px] lg:mb-7 list-decimal pl-6 lg:pl-7  marker:font-semibold body">
         {needs.items.map((item, index) => (
           <li key={index}>
             <h3 className="font-semibold mb-1">{item.title}</h3>

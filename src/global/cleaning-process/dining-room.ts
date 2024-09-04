@@ -1,4 +1,4 @@
-export const DINING_ROOM_SERVICES = {
+export const DINING_ROOM_PROCESS = {
   title: "Dining Room Cleaning",
   paragraph: [
     "Tending to the cleanliness of your dining room might not be the initial priority on your extensive to-do list. During your free moments, you may lean towards addressing the more frequently used spaces in your home, such as the kitchen and bathrooms. However, regardless of whether your dining room is a setting for formal occasions, family gatherings, or part of your daily routine, it should not be underestimated. Given that meals are enjoyed in this space, inevitable occurrences like crumbs, spills, and stains demand attention.",

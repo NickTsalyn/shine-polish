@@ -1,4 +1,4 @@
-export const BEDROOM_SERVICES = {
+export const BEDROOM_PROCESS = {
   title: "Bedroom Cleaning",
   paragraph: [
     "Your bedroom serves as a sanctuary where you seek solace after a long day. It deserves to be a pristine and welcoming haven, promoting relaxation and ensuring a restful night's sleep, allowing you to wake up rejuvenated for the day ahead. Recognizing that a cluttered bedroom can compromise your ability to unwind, Modern Maids is committed to addressing the essential aspects of maintaining a clean and serene space.",

@@ -12,7 +12,7 @@ export default function Loading({ height }: Props) {
       sx={{
         display: "flex",
         justifyContent: "center",
-        height: height,
+        height: height || "100vh",
         alignItems: "center",
         color: "#006778",
       }}

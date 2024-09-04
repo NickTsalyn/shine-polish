@@ -1,4 +1,4 @@
-export const LIVING_ROOM_SERVICES = {
+export const LIVING_ROOM_PROCESS = {
   title: "Living room Cleaning",
   paragraph: [
     "Your family room serves as a central hub in your home, a space where relaxation, family bonding, and favorite TV shows take center stage. It's a place to unwind after a busy day and create cherished moments with loved ones. In the hustle and bustle of life, every moment is precious, and the last thing you want to worry about is spending your time cleaning the living room. Modern Maids is here to make sure you can fully embrace and live in those moments without the concern of maintaining a pristine space.",

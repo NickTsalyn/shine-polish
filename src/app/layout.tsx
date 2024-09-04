@@ -55,7 +55,7 @@ export default function RootLayout({
             <div className="relative h-full">
               <Header />
               <Sidebar />
-              <Suspense fallback={<Loading height="100vh" />}>
+              <Suspense fallback={<Loading />}>
                 <main className="lg:ml-[200px] xl:ml-[244px]">{children}</main>
               </Suspense>
               <Footer />

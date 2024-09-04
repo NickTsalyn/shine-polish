@@ -1,4 +1,4 @@
-export const KITCHEN_SERVICES = {
+export const KITCHEN_PROCESS = {
   title: "Kitchen Cleaning",
   paragraph: [
     "Shine & Polish is well-equipped to handle the cleaning of every room in your home, with the kitchen often presenting one of the more challenging cleaning tasks. Given the high level of activity, this space inevitably accumulates dirt and buildup from cooking, eating, and regular foot traffic. Our professional team employs proven processes that guarantee exceptional results, providing both visible and tangible cleanliness.",

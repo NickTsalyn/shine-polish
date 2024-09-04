@@ -1,9 +1,9 @@
 import { useState } from "react";
 import Image from "next/legacy/image";
-import IconPlus from "../../public/icons/Icon_plus-min.png";
-import { CustomTooltip } from "./UI/Tooltip";
+import IconPlus from "../../../public/icons/Icon_plus-min.png";
 import Loading from "@/app/loading";
 import * as icons from "@/global/plus-icon-positioning";
+import { CustomTooltip } from "../UI/Tooltip";
 
 interface Props {
   src: string;

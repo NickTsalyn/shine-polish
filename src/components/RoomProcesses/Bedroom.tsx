@@ -1,14 +1,14 @@
-import { BEDROOM_SERVICES } from "@/global/bedroom";
+import { BEDROOM_PROCESS } from "@/global/cleaning-process/bedroom";
 import BasicBreadcrumbs from "../UI/Breadcrumbs";
-import { SynchronizedImage } from "../SynchronizedImage";
+import { SynchronizedImage } from "./SynchronizedImage";
 
 export default function Bedroom() {
-  const { title, paragraph, processes, frequencies, needs } = BEDROOM_SERVICES;
+  const { title, paragraph, processes, frequencies, needs } = BEDROOM_PROCESS;
   return (
     <div className="body text-text lg:mb-[120px]">
       <h1 className="h3 text-main mb-3 md:mb-[18px] lg:mb-7">{title}</h1>
       <BasicBreadcrumbs pageHref="cleaning-process" pageName="Cleaning Process" roomName="Bedroom" />
-      <div className="relative mb-5 md:mb-10 lg:mb-[60px] min-w-[278px] md:min-w-[712px] lg:min-w-[1076px] xl:min-w-[1516px] 4xl:min-w-[2156px]">
+      <div className="relative mb-5 md:mb-10 lg:mb-[60px] min-w-[278px] md:min-w-[712px] lg:min-w-[1076px] xl:min-w-[1516px]">
         <SynchronizedImage src="/images/processes-img/bedroom@2x.webp" roomType="bedroom" />
       </div>
 
@@ -22,7 +22,7 @@ export default function Bedroom() {
 
       <h2 className="text-main h4 mb-1 md:mb-2 lg:mb-4">{processes.title}</h2>
       <p className="mb-1">{processes.text}</p>
-      <ol className="flex flex-col gap-1.5 list-decimal marker:font-semibold pl-6 md:pl-8 mb-3">
+      <ol className="flex flex-col gap-1.5 list-decimal marker:font-semibold pl-6 md:pl-7 mb-3">
         {processes.items.map((item, index) => (
           <li key={index}>
             <h3 className="font-semibold mb-1">{item.title}</h3>
@@ -42,7 +42,7 @@ export default function Bedroom() {
         {frequencies.items.map((item, index) => (
           <li key={index}>
             <h3 className="font-semibold text-main mb-1">{item.title}</h3>
-            <ol className="flex flex-col gap-1.5 list-decimal marker:font-semibold pl-4 md:pl-8 mb-3">
+            <ol className="flex flex-col gap-1.5 list-decimal marker:font-semibold pl-4 md:pl-7 mb-3">
               {item.subtitle.map((sub, index) => (
                 <li key={index}>
                   <h3 className="font-semibold mb-1">{sub}</h3>
@@ -61,7 +61,7 @@ export default function Bedroom() {
 
       <h2 className="text-main h4 mb-1 md:mb-2 lg:mb-4">{needs.title}</h2>
       <p className="mb-1.5">{needs.text}</p>
-      <ol className="flex flex-col gap-1.5 list-decimal marker:font-semibold pl-4 md:pl-8 mb-3 md:mb-[18px] lg:mb-7">
+      <ol className="flex flex-col gap-1.5 list-decimal marker:font-semibold pl-6 md:pl-7 mb-3 md:mb-[18px] lg:mb-7">
         {needs.items.map((item, index) => (
           <li key={index}>
             <h3 className="font-semibold mb-1">{item.title}</h3>
