@@ -1,5 +1,5 @@
-import { HOUSE_SERVICES } from "@/global/house-cleaning";
-import BasicBreadcrumbs from "./UI/Breadcrumbs";
+import { HOUSE_SERVICES } from "@/content/cleaning-service/house-cleaning";
+import BasicBreadcrumbs from "../UI/Breadcrumbs";
 import Link from "next/link";
 
 export default function HouseServices() {
@@ -10,10 +10,7 @@ export default function HouseServices() {
         {title}
       </h1>
       <div className=" mb-2 md:mb-5 lg:mb-0">
-        <BasicBreadcrumbs
-          pageHref="house-cleaning-services"
-          roomName="House Cleaning"
-        />
+        <BasicBreadcrumbs pageHref="house-cleaning-services" roomName="House Cleaning" />
       </div>
       <div>
         <ul className="flex flex-col gap-5 lg:gap-8 mb-5 lg:mb-8">
@@ -72,9 +69,7 @@ export default function HouseServices() {
           </Link>
           <Link href="/move-in-out-services" className=" text-main">
             {" "}
-            <span className=" text-main underline">
-              move-in/move out cleaning
-            </span>{" "}
+            <span className=" text-main underline">move-in/move out cleaning</span>{" "}
           </Link>
           {benefits.text7_2}
         </p>
@@ -82,9 +77,7 @@ export default function HouseServices() {
         <p>{benefits.text8}</p>
         <h3 className=" font-bold md:my-1 ">{benefits.subtitle9}</h3>
         <p className=" mb-5 lg:mb-8">{benefits.text9}</p>
-        <h2 className=" text-xl md:text-3xl text-main ">
-          {outOfService.title}
-        </h2>
+        <h2 className=" text-xl md:text-3xl text-main ">{outOfService.title}</h2>
         <p className="md:my-1">{outOfService.paragraph}</p>
         <ul className=" list-disc pl-5 mb-1">
           {outOfService.list.map((p, index) => (

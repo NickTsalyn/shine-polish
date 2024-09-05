@@ -1,62 +1,19 @@
 "use client";
 import { Swiper, SwiperSlide } from "swiper/react";
 import localFont from "next/font/local";
-const kaufmann = localFont({ src: "../../public/fonts/kaufmann-bt.ttf" });
+const kaufmann = localFont({ src: "../../../public/fonts/kaufmann-bt.ttf" });
 
 import React from "react";
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
 
-// import "./SwiperStyles.css";
-
-// import required modules
 import { FreeMode } from "swiper/modules";
-
-const reviews = [
-  {
-    review:
-      "Very pleased with the quality of service provided by the cleaning company. Our home is sparkling clean, and the staff was very professional and attentive to detail.",
-    author: "Olivia N.",
-  },
-  {
-    review:
-      "The first impression of working with this company was impressive. They were punctual, quick, and efficient. Our house has never looked so clean! ",
-    author: "Monika S.",
-  },
-  {
-    review:
-      "Big thanks to the cleaning company for their exceptional work. They not only cleaned our home but did so with such attention to detail that we were impressed.",
-    author: "Abdula N.",
-  },
-  {
-    review:
-      "Ми завжди можемо розраховувати на професіоналізм та якість послуг від компанії 'Чисто та охайно'. Вони зробили наш будинок надзвичайно чистим та охайним.",
-    author: "Ірина Степанова",
-  },
-  {
-    review:
-      "Компанія 'Чисто та охайно' вразила нас своїм підходом та результатом. Я вдячний їм за їхню роботу та рекомендую їх всім своїм друзям.",
-    author: "Андрій Мельник",
-  },
-  {
-    review:
-      "За кілька років співпраці з компанією 'Чисто та охайно' ми ніколи не були розчаровані. Вони завжди надають відмінні послуги.",
-    author: "Олена Кравченко",
-  },
-  {
-    review:
-      "Команда 'Чисто та охайно' - це справжні професіонали своєї справи. Їхній рівень обслуговування завжди вище наших очікувань.",
-    author: "Сергій Попов",
-  },
-];
+import { reviews } from "@/content/reviews";
 
 export const Reviews: React.FC = () => {
   return (
-    <section 
-    // id="reviews" 
-    className="mx-auto md:mb-[20px] lg:mb-[60px] xl:mb-[100px]">
+    <section className="mx-auto md:mb-[20px] lg:mb-[60px] xl:mb-[100px]">
       <div className="container mx-auto">
         <h2
           className={`h2 text-center mb-[23px] text-main sm:text-[28px] md:text-[48px] lg:text-[64px] xl:text-[64px] sm:leading-34 md:leading-58 lg:leading-76 xl:leading-76 `}

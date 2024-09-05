@@ -1,71 +1,11 @@
 import Image from "next/image";
 
-export const BathroomImage = () => {
-  return (
-    <>
-      <Image
-        src="/images/bathroom@2x.jpg"
-        alt="photo of living room"
-        width={1556}
-        height={100}
-        sizes="(max-width: 375px) 278px, (max-width: 768px) 716px, (max-width: 1440px) 1076px"
-        className="rounted-xl"
-      />
-    </>
-  );
-};
-
-export const BedroomImage = () => {
-  return (
-    <>
-      <Image
-        src="/images/bedroom/bedroom@2x.webp"
-        alt="photo of bedroom"
-        width={1556}
-        height={100}
-        sizes="(max-width: 375px) 278px, (max-width: 768px) 716px, (max-width: 1440px) 1076px"
-        className="rounted-xl"
-
-        // sizes="100vw"
-        // style={{
-        //  width: '100%',
-        //  height: 'auto',
-        // }}
-      />
-    </>
-  );
-};
-
-export const DiningroomImage = () => {
-  return (
-    <>
-      <Image
-        src="/images/diningroom@2x.jpg"
-        alt="photo of dining room"
-        width={1556}
-        height={100}
-        sizes="(max-width: 375px) 278px, (max-width: 768px) 716px, (max-width: 1440px) 1076px"
-        className="rounted-xl"
-
-        // sizes="100vw"
-        // style={{
-        //  width: '100%',
-        //  height: 'auto',
-        // }}
-        // fill
-        // sizes="100vw"
-      />
-    </>
-  );
-};
-
 export const BackgroundImg = () => {
   return (
     <Image
       src="/images/last_section_photomin.jpg"
       alt="photo of happy family in the clean house"
       sizes="(max-width: 480px) 480px, (max-width: 768px) 768px, 1440px, 1920px"
-      // fill
       width={1440}
       height={738}
     />
@@ -96,13 +36,7 @@ export const FooterLogo = () => {
 export const FooterImg = () => {
   return (
     <div className="relative -z-10">
-      <Image
-        src="/images/atlantaSkylineSecondarySmall.png"
-        height={400}
-        width={1920}
-        // fill
-        alt="Footer Image"
-      ></Image>
+      <Image src="/images/atlantaSkylineSecondarySmall.png" height={400} width={1920} alt="Footer Image"></Image>
     </div>
   );
 };
@@ -143,30 +77,16 @@ export const TimeIcon = () => {
     </>
   );
 };
-// export const DatePikerCustomIcon = () => {
-//   return (
-//     <>
-//       <Image
-//         src="/images/date-picker.svg"
-//         alt="date picker icon"
-//         width={24}
-//         height={24}
-//
-//       />
-//     </>
-//   );
-// };
+
 export const ChecklistImg = () => {
   return (
-    // <div className="z-[-1] relative  w-full h-full ">
     <Image
       className=" object-cover inset-0 "
       src="/images/checklist_icon.png"
       alt="Tell about us"
       objectFit="cover"
       layout="fill"
-    ></Image>
-    // </div>
+    />
   );
 };
 

@@ -11,8 +11,8 @@ import { Controller } from "react-hook-form";
 import { Options, StepProps } from "@/types/interfaces";
 import { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { getOptions } from "@/api";
 import Loading from "@/app/loading";
+import { getOptions } from "@/helpers/api";
 
 const Step1 = ({ control, setStepCompleted }: StepProps) => {
   const { form, handleSelectChange, handleRadioChange } = useFormStorage();

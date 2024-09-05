@@ -1,6 +1,6 @@
 "use client";
 
-import LivingRoomServices from "@/components/RoomProcesses/LivingRoom";
+import LivingRoomServices from "@/components/CleaningProcesses/LivingRoom";
 
 export interface PageProps {}
 

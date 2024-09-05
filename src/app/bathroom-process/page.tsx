@@ -1,6 +1,6 @@
 "use client";
 
-import Bathroom from "@/components/RoomProcesses/Bathroom";
+import Bathroom from "@/components/CleaningProcesses/Bathroom";
 
 export interface PageProps {}
 

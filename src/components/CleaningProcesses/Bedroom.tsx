@@ -1,4 +1,4 @@
-import { BEDROOM_PROCESS } from "@/global/cleaning-process/bedroom";
+import { BEDROOM_PROCESS } from "@/content/cleaning-process/bedroom";
 import BasicBreadcrumbs from "../UI/Breadcrumbs";
 import { SynchronizedImage } from "./SynchronizedImage";
 

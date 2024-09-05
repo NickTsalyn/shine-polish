@@ -21,7 +21,7 @@ export const SERVICES_LINKS = [
   { href: "/appartment-services", text: "Apartment Cleaning" },
   { href: "/deep-cleaning", text: "Deep Cleaning" },
   { href: "/move-in-out-services", text: "Move-In/Move-Out Cleaning" },
-  { href: "/", text: "Airbnb Cleaning" },
+  // { href: "/", text: "Airbnb Cleaning" },
 ];
 
 export const FOOTER_MOBILE_LINKS = [

@@ -15,7 +15,7 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import CustomButton from "../UI/Button";
 import NavMobile from "../Navigation/NavMobile";
-import { MOBILE_LINKS } from "@/global/navigation";
+import { MOBILE_LINKS } from "@/data/navigation-links";
 
 const StyledMenuIcon = styled(MenuIcon)(() => ({
   color: "#006778",
@@ -70,12 +70,7 @@ export default function MobileMenu() {
 
   return (
     <div className="flex lg:hidden ">
-      <IconButton
-        edge="start"
-        color="inherit"
-        aria-label="menu"
-        onClick={toggleDrawer}
-      >
+      <IconButton edge="start" color="inherit" aria-label="menu" onClick={toggleDrawer}>
         <StyledMenuIcon />
       </IconButton>
       <Drawer
@@ -93,18 +88,9 @@ export default function MobileMenu() {
       >
         <DrawerContent>
           <div className="flex flex-row md:flex-row-reverse justify-between items-start mb-4 md:mb-8">
-            <div
-              className="flex w-[108px] h-[97px] md:w-[136px] md:h-[122px]"
-              onClick={toggleDrawer}
-            >
+            <div className="flex w-[108px] h-[97px] md:w-[136px] md:h-[122px]" onClick={toggleDrawer}>
               <Link href={"/"} className="w-full h-full relative">
-                <Image
-                  src="/icons/logo/logo_shine.svg"
-                  alt="Logo"
-                  layout="fill"
-                  objectFit="contain"
-                  priority
-                />
+                <Image src="/icons/logo/logo_shine.svg" alt="Logo" layout="fill" objectFit="contain" priority />
               </Link>
             </div>
             <IconButton onClick={toggleDrawer}>
@@ -118,10 +104,7 @@ export default function MobileMenu() {
             </StyledItem>
             <StyledItem onClick={toggleDrawer}>
               <CustomButton style="burger-book-now" type="button">
-                <Link
-                  href="/booking"
-                  className=" text-[20px] md:text-[24px] font-bold text-accent text-center"
-                >
+                <Link href="/booking" className=" text-[20px] md:text-[24px] font-bold text-accent text-center">
                   Book Now
                 </Link>
               </CustomButton>
@@ -141,9 +124,7 @@ export default function MobileMenu() {
           </List>
 
           <div className="flex flex-col items-center gap-1 md:gap-2 mt-auto">
-            <p className="text-[24px] xl:text-[32px] font-light leading-normal text-main">
-              Follow us
-            </p>
+            <p className="text-[24px] xl:text-[32px] font-light leading-normal text-main">Follow us</p>
             <ul className="flex gap-[10px] md:gap-[18px]">
               {socialIcons.map((socialIcon, index) => (
                 <li key={index} onClick={toggleDrawer}>

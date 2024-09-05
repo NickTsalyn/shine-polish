@@ -3,14 +3,14 @@ import Input from "../UI/Input";
 import Textarea from "../UI/Textarea";
 
 import useFormStorage from "@/hooks/formStorage";
-import { BannerImg, DiscontImg } from "../../global/images";
+import { BannerImg, DiscontImg } from "../../helpers/images";
 import { useEffect } from "react";
 import { StepProps } from "@/types/interfaces";
 import { IMaskInput } from "react-imask";
 const TipsNumberMask = "$ 0000";
 const Step5: React.FC<StepProps> = ({ setStepCompleted }: StepProps) => {
   const { form, handleInputChange, handleCustomChange } = useFormStorage();
-  
+
   useEffect(() => {
     setStepCompleted(5);
   }, [setStepCompleted]);

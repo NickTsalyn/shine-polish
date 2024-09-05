@@ -10,8 +10,8 @@ import RadioButton from "../UI/RadioButton";
 import CheckBox from "../UI/Сheckbox";
 import { Options, StepProps } from "@/types/interfaces";
 import { useQuery } from "@tanstack/react-query";
-import { getOptions } from "@/api";
 import Loading from "@/app/loading";
+import { getOptions } from "@/helpers/api";
 
 const Step2 = ({ control, setStepCompleted }: StepProps) => {
   const { form, handleRadioChange, handleCheckboxChange, setForm } = useFormStorage();
@@ -182,7 +182,7 @@ const Step2 = ({ control, setStepCompleted }: StepProps) => {
                             width={80}
                             height={100}
                             priority={true}
-                            className="justify-start items-start md:h-[76px] w-full mb-2 md:absolute md:inset-x-0 md:top-2"                           
+                            className="justify-start items-start md:h-[76px] w-full mb-2 md:absolute md:inset-x-0 md:top-2"
                           ></Image>
                         </div>
                         <div className="w-full items-end  ">

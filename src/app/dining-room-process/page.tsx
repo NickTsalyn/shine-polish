@@ -1,6 +1,6 @@
 "use client";
 
-import DiningRoomServices from "@/components/RoomProcesses/DiningRoom";
+import DiningRoomServices from "@/components/CleaningProcesses/DiningRoom";
 
 export interface PageProps {}
 
