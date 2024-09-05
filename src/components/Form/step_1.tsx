@@ -88,7 +88,7 @@ const Step1: React.FC<StepProps> = ({control, setStepCompleted}) => {
      </div>
     </div>
 
-    <div className="hidden md:block md:min-w-[400px] md:max-w-[800px] md:h-[330px] lg:w-[576px] lg:h-[600px] xl:w-full xl:h-[800px] relative">
+    <div className="hidden md:block md:min-w-[400px] md:max-w-[800px] md:h-[330px] lg:w-[576px] lg:h-[480px] xl:w-full xl:h-[800px] relative">
      <Image
       src={img_stub}
       alt="map"
