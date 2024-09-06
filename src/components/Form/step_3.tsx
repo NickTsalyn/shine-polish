@@ -45,7 +45,7 @@ const Step3: React.FC<StepProps> = ({control, setStepCompleted}) => {
     </p>
     <div className="flex flex-col md:flex-row md:flex-wrap lg:flex-nowrap gap-4 lg:gap-6 mb-5 md:mb-6 lg:mb-[60px] ">
      {/* Name */}
-     <div className="w-full md:w-[calc(50%-12px)] lg:w-2/4 relative">
+     <div className="w-full md:w-[calc(50%-12px)] lg:w-2/4 relative mb-[12px]">
       <Controller
        name="name"
        control={control}
@@ -74,7 +74,7 @@ const Step3: React.FC<StepProps> = ({control, setStepCompleted}) => {
       />
      </div>
      {/* Surname */}
-     <div className="w-full md:w-[calc(50%-12px)] lg:w-2/4 md:h-[48px] relative">
+     <div className="w-full md:w-[calc(50%-12px)] lg:w-2/4 md:h-[48px] relative mb-[12px]">
       <Controller
        name="surname"
        control={control}
@@ -103,7 +103,7 @@ const Step3: React.FC<StepProps> = ({control, setStepCompleted}) => {
       />
      </div>
      {/* Email */}
-     <div className="w-full md:w-[calc(50%-12px)] lg:w-2/5 md:h-[48px] relative">
+     <div className="w-full md:w-[calc(50%-12px)] lg:w-2/5 md:h-[48px] relative mb-[12px]">
       <Controller
        name="email"
        control={control}
@@ -123,7 +123,7 @@ const Step3: React.FC<StepProps> = ({control, setStepCompleted}) => {
           }}
          />
          {error && (
-          <p className="text-accent-light text-xs lg:text-base  absolute left-2 bottom-[-6px] lg:bottom-[-24px]">
+          <p className="text-accent-light text-xs lg:text-base  absolute left-2 bottom-[-16px] lg:bottom-[-24px]">
            {error.message}
           </p>
          )}
@@ -132,7 +132,7 @@ const Step3: React.FC<StepProps> = ({control, setStepCompleted}) => {
       />
      </div>
      {/* Phone */}
-     <div className="w-full md:w-[calc(50%-12px)] lg:w-2/5 md:h-[48px] relative">
+     <div className="w-full md:w-[calc(50%-12px)] lg:w-2/5 md:h-[48px] relative mb-[12px]">
       <Controller
        name="phone"
        control={control}
@@ -141,7 +141,7 @@ const Step3: React.FC<StepProps> = ({control, setStepCompleted}) => {
         <>
          <IMaskInput
           {...field}
-          className="block mx-full mb-[10px] w-full hx-full h-full py-[8px] lg:py-[12px] px-[8px] lg:px-[16px] bg-transparent text-text border-solid border-2 focus:border-[3px] border-secondary rounded-[12px] focus:shadow-input-shadow outline-none xl:placeholder:text-[16px] placeholder:text-secondary-placeholder placeholder:opacity-50"
+          className="block mx-full w-full hx-full h-full py-[8px] lg:py-[12px] px-[8px] lg:px-[16px] bg-transparent text-text border-solid border-2 focus:border-[3px] border-secondary rounded-[12px] focus:shadow-input-shadow outline-none xl:placeholder:text-[16px] placeholder:text-secondary-placeholder placeholder:opacity-50"
           mask={ContactNumberMask}
           placeholder="(000) 000-0000"
           value={form.phone}
@@ -152,7 +152,7 @@ const Step3: React.FC<StepProps> = ({control, setStepCompleted}) => {
           }}
          />
          {error && (
-          <p className="text-accent-light text-xs lg:text-base  absolute left-2 bottom-[-6px] lg:bottom-[-24px]">
+          <p className="text-accent-light text-xs lg:text-base  absolute left-2 bottom-[-16px] lg:bottom-[-24px]">
            {error.message}
           </p>
          )}
@@ -168,7 +168,7 @@ const Step3: React.FC<StepProps> = ({control, setStepCompleted}) => {
     <div className="flex flex-col  lg:w-full  mb-10 lg:mb-[60px] ">
      <h2 className="mb-6 md:mb-7 lg:mb-5 text-2xl md:text-4xl font-medium md:font-normal">Additional information</h2>
      <div className=" flex flex-col lg:flex-row lg:flex-nowrap gap-4  md:gap-6  mb-10">
-      <div className="w-full lg:w-4/12  relative">
+      <div className="w-full lg:w-4/12  relative mb-[12px]">
        <Controller
         name="homeAccess"
         control={control}
