@@ -19,9 +19,11 @@ export const initialForm = {
   selectedDate: dayjs().format("MM/DD/YYYY"),
   endDate: dayjs().format("MM/DD/YYYY"),
   time: dayjs().format("h:mm A"),
+  endTime: dayjs().format("h:mm A"),
   address: {},
   question: "",
   discountCode: "",
   tips: "",
   totalPrice: 0,
 };
+ 

@@ -1,10 +1,23 @@
-import React from "react";
-import {Controller} from "react-hook-form";
+import React, {useEffect} from "react";
+import {Controller, useFormContext, useWatch} from "react-hook-form";
 import Textarea from "./UI/Textarea";
 import useFormStorage from "@/hooks/formStorage";
+import {validateField} from "@/helpers/validation";
 
-const SpecialInstruction: React.FC<{control: any}> = ({control}) => {
+interface InstructionProps {
+ control: any;
+ onChange: (name: string, value: any) => void;
+ form: any;
+}
+
+const SpecialInstruction: React.FC<InstructionProps> = ({control, onChange}) => {
  const {form, handleCustomChange} = useFormStorage();
+ const {setError, clearErrors, trigger} = useFormContext();
+ const watchedForm = useWatch({control});
+ const handleFieldChange = (name: string, value: string) => {
+  validateField(name, value, setError, clearErrors);
+  handleCustomChange(name, value);
+ };
 
  return (
   <div className="flex flex-col lg:w-full">
@@ -20,9 +33,11 @@ const SpecialInstruction: React.FC<{control: any}> = ({control}) => {
        {...field}
        placeholder="Special Instructions"
        value={form.specialInstructions}
+       name="specialInstructions"
        onChange={(e) => {
-        field.onChange(e.target.value);
-        handleCustomChange("specialInstructions", e.target.value);
+        const {value} = e.target;
+        field.onChange(value);
+        handleFieldChange("specialInstructions", value);
        }}
       />
      )}

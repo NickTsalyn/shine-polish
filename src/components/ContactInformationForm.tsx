@@ -1,13 +1,18 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Input from "./UI/Input";
 import {Controller, useFormContext, useWatch} from "react-hook-form";
 import useFormStorage from "@/hooks/formStorage";
 import {validateField} from "@/helpers/validation";
 import {IMaskInput} from "react-imask";
 
+interface ContactProps {
+ control: any;
+ onChange: (name: string, value: string) => void;
+ form: any;
+}
 const ContactNumberMask = "(000) 000-0000";
 
-const ContactInformation: React.FC<{control: any}> = ({control}) => {
+const ContactInformation: React.FC<ContactProps> = ({control, onChange}) => {
  const {form, handleCustomChange} = useFormStorage();
 
  const {setError, clearErrors, trigger} = useFormContext();
@@ -17,6 +22,8 @@ const ContactInformation: React.FC<{control: any}> = ({control}) => {
   validateField(name, value, setError, clearErrors);
   handleCustomChange(name, value);
  };
+
+
 
  return (
   <div className="mb-10 xl:mb-20">

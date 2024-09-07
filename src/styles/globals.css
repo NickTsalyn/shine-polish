@@ -27,7 +27,7 @@ select:-webkit-autofill:focus {
   transition: background-color 5000s ease-in-out 0s;
   color: white;
 }
-/*  */
+
 /* Change Pickers styles */
 .css-15zj7fn-MuiPickersLayout-root {
   border-radius: 12px;
@@ -35,7 +35,9 @@ select:-webkit-autofill:focus {
   background-color: #fff;
 
 }
-
+.css-pgrtqo-MuiList-root-MuiDigitalClock-list {
+  background-color: #fff;
+}
 .MuiPickersDay-today {
   background-color: #E6BA95 !important;
   color: white !important;
@@ -112,3 +114,16 @@ margin-bottom: 0;
 }
 
 
+/* Scroll-bar */
+
+/* .css-webkit-scrollbar-track {
+  background-color: #DE005D,
+}
+.css-webkit-scrollbar-thumb {
+  background-color: #E6BA95;
+  border-radius: 12px;
+}
+.css-webkit-scrollbar-thumb:hover {
+  background-color: #E6BA95;
+  border-radius: 12px;
+} */

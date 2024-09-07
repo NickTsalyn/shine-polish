@@ -36,10 +36,10 @@ const SectionJustAsk: React.FC = () => {
    className="mb-[60px] md:mb-20 lg:mb-[120px] xl:mb-40"
   >
    <div className="container relative flex flex-col lg:flex-row mx-auto lg:gap-12 xl:gap-10 items-center justify-center lg:items-start lg:justify-normal lg:max-w-[1156px] xl:max-w-[1516px]">
-    <div className="mb-3">
+    <div className="mb-3 w-full">
      <h3 className="h3 text-main text-center lg:text-left mb-10 xl:mb-[60px]">Not sure? Just ask!</h3>
      <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="mb-5 lg:mb-10 w-auto md:w-[512px] h-[36px] md:h-[52px] lg:w-[600px] lg:h-[52px] xl:w-[890px] xl:h-[60px] xl:placeholder:text-[16px]">
+      <div className="mb-5 lg:mb-10 w-full  h-[36px] md:h-[52px] lg:w-[600px] lg:h-[52px] xl:w-[890px] xl:h-[60px] xl:placeholder:text-[16px]">
        <Input
         {...register("email", {
          required: "Email is required",
