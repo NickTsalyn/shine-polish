@@ -1,6 +1,5 @@
 "use client";
-
-import React from "react";
+import React, { useEffect } from "react";
 import BasicSelect from "../components/UI/Select";
 import { Controller } from "react-hook-form";
 import { homeAccess, aboutUs } from "@/data/booking-form/stepsData";
@@ -8,7 +7,14 @@ import useFormStorage from "@/hooks/formStorage";
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
 
-const AdditionalInformation: React.FC<{ control: any }> = ({ control }) => {
+interface AdditionalProps {
+  control: any;
+  onChange: (name: string, value: any) => void;
+  form: any;
+  onChangeCheckBox: () => void;
+}
+
+const AdditionalInformation: React.FC<AdditionalProps> = ({ control, onChange }) => {
   const { form, handleCustomChange, handleSelectChange } = useFormStorage();
 
   const handleCheckBoxChange = () => {

@@ -55,11 +55,12 @@ const Step1 = ({ control, setStepCompleted }: StepProps) => {
   }
 
   return (
-    <div className="py-4 md:py-6 lg:py-9 lg:h-[80vh]  flex flex-col gap-6 lg:gap-x-10 lg:gap-y-0  lg:flex-row  xl:gap-x-16 lg:justify-between ">
-      <div className="md:flex md:flex-row lg:flex-col md:justify-between md:gap-6 lg:gap-[32px] xl:gap-[30px] lg:row-span-2  lg:w-1/2 ">
+    <div className="py-4 md:py-6 lg:py-9 lg:h-[80vh]  flex flex-col gap-6 lg:gap-x-10 lg:gap-y-0  lg:flex-row  xl:gap-x-32 lg:justify-between ">
+      {/* maincontainer - first div */}
+      <div className="md:flex md:flex-row lg:flex-col md:justify-between lg:justify-start md:gap-6 lg:gap-[32px] xl:gap-[30px] lg:row-span-2  lg:w-1/2 ">
         <div className="flex flex-col gap-4 md:gap-6 ">
           <h2 className=" text-2xl md:text-4xl font-medium">Choose area</h2>
-          <div className="w-full lg:w-[576px] xl:w-[800px]">
+          <div className="w-full lg:w-[576px] xl:w-full">
             <Controller
               name="area"
               control={control}
@@ -88,7 +89,7 @@ const Step1 = ({ control, setStepCompleted }: StepProps) => {
           </div>
         </div>
 
-        <div className="hidden md:block md:min-w-[400px] md:max-w-[800px] md:h-[330px] lg:w-[576px] lg:h-[600px] xl:w-[800px] xl:h-[800px] relative">
+        <div className="hidden md:block md:min-w-[400px] md:max-w-[800px] md:h-[330px] lg:w-[576px] lg:h-[480px] xl:w-full xl:h-[800px] relative">
           <Image
             src={img_stub}
             alt="map"

@@ -2,9 +2,9 @@ import * as React from "react";
 import { DigitalClock, LocalizationProvider } from "@mui/x-date-pickers";
 import dayjs, { Dayjs } from "dayjs";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { TimeIcon } from "@/helpers/images";
 import useFormStorage from "@/hooks/formStorage";
 import { useEffect } from "react";
+import { TimeIcon } from "@/helpers/images";
 
 interface CustomTimePickerProps {
   value: Dayjs | string | number | any | null;
@@ -58,6 +58,7 @@ export default function TimePickerComponent({ onChange, value }: CustomTimePicke
               minTime={dayjs("2022-04-17T08:00")}
               maxTime={dayjs("2022-04-17T16:30")}
               timeStep={30}
+              // shouldDisableTime={shouldDisableTime}
             />
           </div>
         )}
