@@ -20,7 +20,7 @@ interface BeforeAfterProps {
   data: Slide[];
 }
 
-export default function BeforeAfter({ children, data }: BeforeAfterProps) {
+export default function BeforeAfter({ data }: BeforeAfterProps) {
   return (
     <section className="mb-[60px] md:mb-[80px] lg:mb-[120px] xl:mb-[160px]">
       <div className="container mx-auto">

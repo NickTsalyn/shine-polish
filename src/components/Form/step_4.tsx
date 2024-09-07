@@ -9,7 +9,7 @@ import DateTimeCleaning from "../DateTimeCleaning";
 import AddressForm from "../AddressForm";
 import { StepProps } from "@/types/interfaces";
 
-const Step4 = ({ setStepCompleted }: StepProps) => {  
+const Step4 = ({ setStepCompleted }: StepProps) => {
   const { form, handleCustomChange } = useFormStorage();
   const handleDateChange = (date: Dayjs | null): void => {
     handleCustomChange("selectedDate", date ? date.format("MM/DD/YYYY") : null);

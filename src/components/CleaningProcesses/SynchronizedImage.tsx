@@ -36,7 +36,7 @@ export const SynchronizedImage = ({ src, roomType }: Props) => {
   const roomIcons = getIconPosition(roomType);
 
   return (
-    <div className="relative rounded-xl bg-slate-100 z-[-1]">
+    <div className="relative rounded-xl bg-slate-100 ">
       {!imageLoaded && (
         <div className="flex items-center justify-center w-full h-full absolute top-0 left-0 py-[28%]">
           <Loading />

@@ -14,13 +14,11 @@ const rooms = [
   { id: 2, name: "bathrooms" },
 ];
 
-type Props = {};
-
 type RoomCount = {
   [key: number]: number;
 };
 
-const SectionEstimate = (props: Props) => {
+const SectionEstimate = () => {
   const [total, setTotal] = useState(0);
   const router = useRouter();
 

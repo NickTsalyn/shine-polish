@@ -50,7 +50,6 @@ const BookingStep = ({ params }: BookingStepProps) => {
     if (!completedSteps.includes(step)) {
       setCompletedSteps((prev) => [...prev, step]);
     }
-    console.log(completedSteps);
   };
 
   const handlePrevious = () => {

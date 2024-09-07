@@ -1,11 +1,10 @@
 "use client";
 
-import { FriendsIcon } from "@/helpers/images";
 import { SubmitHandler, useForm } from "react-hook-form";
 import Input from "../UI/Input";
 import Textarea from "../UI/Textarea";
 import Button from "../UI/Button";
-
+import { FriendsIcon } from "@/helpers/images";
 interface FormValues {
   email: string;
   question: string;
