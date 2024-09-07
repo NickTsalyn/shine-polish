@@ -6,6 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Options } from "@/types/interfaces";
 import Loading from "@/app/loading";
 import { getOptions } from "@/api";
+import { MapComponent } from "./Map";
 
 type Props = {};
 
@@ -51,6 +52,7 @@ const ServiceAreas = (props: Props) => {
        alt="phone with map"
        width={122}
       />
+     
 
             <ul className="list-disc sm:grid md:grid-cols-2 md:gap-9 lg:grid-cols-1 lg:gap-0 xl:grid-cols-1 xl:gap-0 list-text text-text ">
               {/* Перша колонка */}
@@ -69,13 +71,7 @@ const ServiceAreas = (props: Props) => {
             </ul>
           </div>
         </div>
-
-    <Image
-     src={img_stub}
-     className="md:w-[726px] lg:w-[626px] lg:h-[500px] xl:w-[926px] xl:h-[540px]"
-     alt="map"
-     width={376}
-    />
+     <MapComponent/>
    </div>
   </section>
  );

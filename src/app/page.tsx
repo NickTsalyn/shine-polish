@@ -13,10 +13,12 @@ import LastSectionHome from "@/components/LastSectionHome";
 import dataBackground from "@/data/background-data.json";
 import dataHeroBackground from "@/data/background-hero.json";
 import Arrow from "@/components/Arrow";
+import { MapProvider } from "@/components/MapProvider";
 
 export default function Home() {
  return (
   <>
+  <MapProvider>
    <Arrow />
    <Hero data={dataHeroBackground} />
    <SectionEstimate />
@@ -26,6 +28,7 @@ export default function Home() {
    <SectionJustAsk />
    <WorkWithUs />
    <LastSectionHome data={dataBackground} />
+   </MapProvider>
   </>
  );
 }
