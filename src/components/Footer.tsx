@@ -4,7 +4,7 @@ import Link from "next/link";
 
 import FooterNavMobile from "./Navigation/FooterLinks";
 import { FOOTER_MOBILE_LINKS, SOCIAL_MEDIA_LINKS } from "@/data/navigation-links";
-import { FooterLogo } from "@/helpers/images";
+import { FooterLogo } from "@/global/images";
 import SocialMedia from "./Navigation/SocialMediaLinks";
 import { FOOTER_NAV } from "../data/navigation-links";
 import FooterMainNav from "./Navigation/FooterNav";

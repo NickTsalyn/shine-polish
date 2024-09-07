@@ -5,7 +5,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs, { Dayjs } from "dayjs";
 import { DateView, StaticDatePicker } from "@mui/x-date-pickers";
 import useFormStorage from "@/hooks/formStorage";
-import { DateIcon } from "@/helpers/images";
+import { DateIcon } from "@/global/images";
 interface CustomDatePickerProps {
   value: Dayjs | string | number | any | null;
   onChange: (date: Dayjs | null) => void;

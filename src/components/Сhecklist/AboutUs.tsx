@@ -1,4 +1,4 @@
-import { ChecklistImg } from "@/helpers/images";
+import { ChecklistImg } from "@/global/images";
 export const AboutUs = () => {
   return (
     <div className="flex-col w-full h-full relative">

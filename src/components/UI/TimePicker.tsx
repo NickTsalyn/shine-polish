@@ -4,7 +4,7 @@ import dayjs, { Dayjs } from "dayjs";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import useFormStorage from "@/hooks/formStorage";
 import { useEffect } from "react";
-import { TimeIcon } from "@/helpers/images";
+import { TimeIcon } from "@/global/images";
 
 interface CustomTimePickerProps {
   value: Dayjs | string | number | any | null;
