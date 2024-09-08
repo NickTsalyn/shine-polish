@@ -1,6 +1,6 @@
 "use client";
 
-import MoveServices from "@/components/MoveInOutService";
+import MoveServices from "@/components/CleaningServicess/MoveInOutService";
 
 export interface PageProps {}
 

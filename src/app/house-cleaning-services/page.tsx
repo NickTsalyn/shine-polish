@@ -1,6 +1,6 @@
 "use client";
 
-import HouseServices from "@/components/HouseCleaningServices";
+import HouseServices from "@/components/CleaningServicess/HouseCleaningServices";
 
 export interface PageProps {}
 

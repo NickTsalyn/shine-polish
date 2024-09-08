@@ -1,6 +1,6 @@
 "use client";
 
-import AppartmenrServices from "@/components/AppartmentService";
+import AppartmenrServices from "@/components/CleaningServicess/AppartmentService";
 
 export interface PageProps {}
 

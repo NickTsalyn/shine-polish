@@ -33,36 +33,35 @@ select:-webkit-autofill:focus {
   border-radius: 12px;
   box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.35);
   background-color: #fff;
-
 }
 .css-pgrtqo-MuiList-root-MuiDigitalClock-list {
   background-color: #fff;
 }
 .MuiPickersDay-today {
-  background-color: #E6BA95 !important;
+  background-color: #e6ba95 !important;
   color: white !important;
-  border: #E6BA95 !important;
+  border: #e6ba95 !important;
 }
 
 .MuiPickersDay-root:hover {
-  background-color: #DE005D;
+  background-color: #de005d;
   color: white;
 }
 
-.MuiPickersDay  {
-  background-color: #DE005D;
+.MuiPickersDay {
+  background-color: #de005d;
   color: white;
 }
-  
+
 .MuiTypography-h4 {
-     color: #DE005D;
-   }
+  color: #de005d;
+}
 
 .css-1wy8uaa-MuiButtonBase-root-MuiPickersDay-root.Mui-selected {
-    color: #fff;
-    background-color: #DE005D !important;
-    font-weight: 500;
-}   
+  color: #fff;
+  background-color: #de005d !important;
+  font-weight: 500;
+}
 
 .css-foipgg-MuiDigitalClock-root {
   border-radius: 12px;
@@ -71,13 +70,13 @@ select:-webkit-autofill:focus {
 }
 
 .MuiMenuItem-root {
-   border-radius: 12px;
+  border-radius: 12px;
 }
 
-.MuiMenuItem-root:hover{
-    background-color: #DE005D !important;
-     color: #fff;
-     }
+.MuiMenuItem-root:hover {
+  background-color: #de005d !important;
+  color: #fff;
+}
 
 /* .MuiDigitalClock-selected {
     background-color: #DE005D !important; 
@@ -85,13 +84,13 @@ select:-webkit-autofill:focus {
     } */
 
 .css-1kvln7l-MuiButtonBase-root-MuiMenuItem-root-MuiDigitalClock-item.Mui-selected {
-      background-color: #DE005D !important;
-      color: #fff;
-    }
-    .css-tlbplz-MuiButtonBase-root-MuiMenuItem-root.Mui-selected {
-      background-color: #DE005D;
-      color: #fff;
-     }
+  background-color: #de005d !important;
+  color: #fff;
+}
+.css-tlbplz-MuiButtonBase-root-MuiMenuItem-root.Mui-selected {
+  background-color: #de005d;
+  color: #fff;
+}
 .error {
   color: red;
   font-size: 12px;
@@ -110,9 +109,8 @@ select:-webkit-autofill:focus {
   -ms-flex-direction: row;
   flex-direction: row;
   padding-top: 16px;
-margin-bottom: 0;
+  margin-bottom: 0;
 }
-
 
 /* Scroll-bar */
 
