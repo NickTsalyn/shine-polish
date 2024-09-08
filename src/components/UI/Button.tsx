@@ -96,7 +96,7 @@ export default function Button(props: PropsButtton) {
       break;
     case "work-with-us":
       styles =
-        " px-8 md:px-12 lg:px-[150px] xl:px-[424px] py-1 md:py-9 xl:py-14 rounded-xl bg-main ";
+        "w-[80%] px-4  lg:px-20 xl:px-14 py-4  rounded-xl bg-white border-main border-[1px] hover:shadow-button-shadow hover:border-transparent hover:bg-[#F6AD70] focus:shadow-button-shadow focus:bg-secondary transiton-all duration-300";
       break;
     case "close-button":
       styles = " w-3 h-3 md:w-4 md:h-4 rounded-full bg-transparent ";

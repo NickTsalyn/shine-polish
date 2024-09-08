@@ -1,6 +1,10 @@
 "use client";
-import { fetchClientBookings, getBookingOptions } from "@/helpers/api";
-import { useQuery } from "@tanstack/react-query";
+import {
+  fetchClientBookings,
+  getBookingOptions,
+  repeatBooking,
+} from "@/helpers/api";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import React, { useEffect, useState } from "react";
 import PhoneIphoneIcon from "@mui/icons-material/PhoneIphone";
 import LetterAvatar from "@/components/UI/LetterAvatar";
@@ -14,6 +18,7 @@ import axios from "axios";
 
 import dayjs, { Dayjs } from "dayjs";
 import Button from "@/components/UI/Button";
+import { useRouter } from "next/navigation";
 
 interface ClientBookingsProps {
   ownerId: string;
@@ -21,6 +26,7 @@ interface ClientBookingsProps {
 
 export default function ClientBookings({ ownerId }: ClientBookingsProps) {
   const [clientBooking, setClientBooking] = useState<FormValues | null>(null);
+  const router = useRouter();
 
   const { data, isError, isPending, isSuccess, error } = useQuery({
     queryKey: ["client-bookings", ownerId],
@@ -30,14 +36,6 @@ export default function ClientBookings({ ownerId }: ClientBookingsProps) {
     error;
     // ^? const error: AxiosError
   }
-
-  const options = useQuery({
-    queryKey: ["bookings-options"],
-    queryFn: getBookingOptions,
-  });
-  console.log(options.data);
-  console.dir(data);
-
   const bookings = data;
   useEffect(() => {
     if (data) {
@@ -45,12 +43,35 @@ export default function ClientBookings({ ownerId }: ClientBookingsProps) {
     }
   }, [data]);
 
+  const options = useQuery({
+    queryKey: ["bookings-options"],
+    queryFn: getBookingOptions,
+  });
+
+  const mutation = useMutation({
+    mutationFn: (newBooking: FormValues) => repeatBooking(newBooking),
+    onSuccess: (data) => {
+      setClientBooking(data);
+      bookings.push(data);
+       },
+    onError: (error: any) => {
+      // An error happened!
+      console.log(`Була помилка`, error);
+    },
+  });
+
+  const onRepeatBooking = async (clientBooking: any) => {
+    const { _id, createdAt, updatedAt, ...newBooking } = clientBooking;
+    console.log("Sent body", newBooking);
+    const res = mutation.mutate(newBooking);
+    console.log(res);
+  };
+
   const handleChooseBooking = (
     event: React.MouseEvent<HTMLButtonElement>
   ): any => {
     const currentTarget = event.currentTarget as HTMLButtonElement;
     const index = Number(currentTarget.value);
-    console.log(index);
     const selectedBooking = bookings.find(
       (booking: FormValues, idx: number): any => {
         if (index === idx) {
@@ -77,7 +98,7 @@ export default function ClientBookings({ ownerId }: ClientBookingsProps) {
 
   if (isError) {
     // console.log(query.error.message);
-    console.log(axios.isAxiosError(error));
+    // console.log(axios.isAxiosError(error));
     // if (error.response.status === 401) {
     //   return <p>You are not authorized</p>;
     // }
@@ -92,9 +113,6 @@ export default function ClientBookings({ ownerId }: ClientBookingsProps) {
   }
   if (isSuccess) {
   }
-
-  console.log(clientBooking?.time);
-  console.log(options.data.extrasOptions);
   const {
     name,
     surname,
@@ -148,18 +166,22 @@ export default function ClientBookings({ ownerId }: ClientBookingsProps) {
               {bookings.map((booking: any, index: number) => (
                 <li
                   className={
-                    booking.createdAt === clientBooking.createdAt
+                    booking.selectedDate === clientBooking.selectedDate
                       ? "flex flex-col items-center text-[20px] text-accent"
-                      : "flex flex-col items-center text-[20px] opacity-20"
+                      : "flex flex-col items-center text-[20px]  opacity-20"
                   }
                   key={index}
                 >
                   <button
+                    className=" focus:outline-0"
+                    autoFocus={
+                      booking.selectedDate === clientBooking.selectedDate
+                    }
                     type="button"
                     value={index}
                     onClick={(event) => handleChooseBooking(event)}
                   >
-                    {booking.createdAt
+                    {booking.selectedDate
                       .slice(0, 10)
                       .split("-")
                       .reverse()
@@ -204,7 +226,7 @@ export default function ClientBookings({ ownerId }: ClientBookingsProps) {
           </p>
         </div>
         {/* Your last bookings*/}
-        <div className="w-[320px] md:w-full px-5 md:px-0 mb-10 col-span-2 md:col-span-3 lg:col-start-4 lg:row-start-1 lg:col-end-5 lg:row-end-3">
+        <div className="w-[320px] md:w-full px-5 md:px-0 mb-10 lg:md:self-start col-span-2 md:col-span-3 lg:col-start-4 lg:row-start-1 lg:col-end-5 lg:row-end-3">
           <h3 className="text-[32px] lg:text-[40px] xl:text-[42px] text-accent mb-6">
             Your last bookings:
           </h3>
@@ -269,12 +291,21 @@ export default function ClientBookings({ ownerId }: ClientBookingsProps) {
           />
         </div>
         <div className="col-span-2 lg:col-start-4 lg:col-end-5 lg:row-start-3 lg:row-end-5 md:justify-self-end lg:self-center flex flex-col gap-y-8 w-[320px] md:w-auto px-5 md:px-0">
-          <Button type="submit" style="repeat-last-booking">
+          <Button
+            type="submit"
+            style="repeat-last-booking"
+            onClick={() => onRepeatBooking(clientBooking)}
+            // disabled={clientBooking.selectedDate === Dayjs.toString}
+          >
             <span className="text-[#ffcfa7] text-[20px] md:text-[24px] lg:text-[36px]">
-              Repeat last booking
+              Repeat booking
             </span>
           </Button>
-          <Button type="submit" style="create-new-booking">
+          <Button
+            type="submit"
+            style="create-new-booking"
+            onClick={() => router.push(`/booking/step_1`)}
+          >
             <span className="text-accent text-[20px] md:text-[24px] lg:text-[36px]">
               Create new booking
             </span>

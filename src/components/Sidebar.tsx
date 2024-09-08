@@ -13,6 +13,7 @@ import Button from "./UI/Button";
 import { SIDEBAR_LINKS } from "@/global/navigation";
 import { signout } from "@/helpers/api";
 import {useRouter} from "next/navigation";
+import { UserInfo } from "@/types/interfaces";
 
 const UserIcon = styled(AccountCircleIcon)(() => ({
   color: "#fff",
@@ -35,10 +36,9 @@ const socialIcons = [
 ];
 
 export default function Sidebar() {
-  const [auth, setAuth] = useState<object | null>(null);
+  const [auth, setAuth] = useState<UserInfo | null>(null);
   const router = useRouter();
   const user = localStorage.getItem("user");
-  console.log(user);
 
   useEffect(() => {
     if (user) {
@@ -46,7 +46,6 @@ export default function Sidebar() {
       setAuth(objUser.user);
     }
   }, [user]);
-  console.log(auth);
 
   const handleSignOut = () =>{
     signout

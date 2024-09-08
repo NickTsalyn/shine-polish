@@ -1,3 +1,4 @@
+import { FormValues } from "@/types/interfaces";
 import axios from "axios";
 
 const setAuthHeader = (token: string) => {
@@ -61,6 +62,17 @@ export const getBookingOptions = async () => {
     const objUser = JSON.parse(user);
     setAuthHeader(objUser.accessToken);
     const res = await axios.get(`${BASE_URL}/bookings/options`);
+    return res.data;
+  }
+};
+export const repeatBooking = async (newBooking:FormValues) => {
+  const user: any = localStorage.getItem("user");
+  if (user === null) {
+    alert("Please sign in")
+  } else {
+    const objUser = JSON.parse(user);
+    setAuthHeader(objUser.accessToken);
+    const res = await axios.post(`${BASE_URL}/bookings`, newBooking);
     return res.data;
   }
 };
