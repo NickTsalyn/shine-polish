@@ -3,10 +3,10 @@
 import Link from "next/link";
 
 import FooterNavMobile from "./Navigation/FooterLinks";
-import { FOOTER_MOBILE_LINKS, SOCIAL_MEDIA_LINKS } from "@/global/navigation";
+import { FOOTER_MOBILE_LINKS, SOCIAL_MEDIA_LINKS } from "@/data/navigation-links";
 import { FooterLogo } from "@/global/images";
 import SocialMedia from "./Navigation/SocialMediaLinks";
-import { FOOTER_NAV } from "../global/navigation";
+import { FOOTER_NAV } from "../data/navigation-links";
 import FooterMainNav from "./Navigation/FooterNav";
 
 export default function Footer() {
@@ -22,15 +22,10 @@ export default function Footer() {
           <FooterNavMobile links={FOOTER_MOBILE_LINKS} />
         </div>
         <div className="">
-          <span className="mb-3 md:mb-4 text-3 md:text-4 lg:text-[20px] text-white font-[300]">
-            Follow us
-          </span>
+          <span className="mb-3 md:mb-4 text-3 md:text-4 lg:text-[20px] text-white font-[300]">Follow us</span>
           <SocialMedia links={SOCIAL_MEDIA_LINKS} />
 
-          <Link
-            href="+14708003249"
-            className="text-white text-[14px] lg:text-[20px] font-light"
-          >
+          <Link href="+14708003249" className="text-white text-[14px] lg:text-[20px] font-light">
             Tel: 470-800-32-49
           </Link>
         </div>

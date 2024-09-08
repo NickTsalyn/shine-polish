@@ -2,26 +2,17 @@ import * as React from "react";
 import { DigitalClock, LocalizationProvider } from "@mui/x-date-pickers";
 import dayjs, { Dayjs } from "dayjs";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { TimeIcon } from "@/global/images";
 import useFormStorage from "@/hooks/formStorage";
 import { useEffect } from "react";
+import { TimeIcon } from "@/global/images";
 
 interface CustomTimePickerProps {
   value: Dayjs | string | number | any | null;
   onChange: (time: Dayjs | null) => void;
 }
 
-export default function TimePickerComponent({
-  onChange,
-  value,
-}: CustomTimePickerProps) {
-  const { form, handleCustomChange } = useFormStorage(
-    // {
-    //   selectedDate: dayjs().format("MM/DD/YYYY"),
-    //   time: dayjs().format("h:mm A"),
-    // },
-    // "form"
-  );
+export default function TimePickerComponent({ onChange, value }: CustomTimePickerProps) {
+  const { form, handleCustomChange } = useFormStorage();
   const [isTimeCalendarOpen, setIsTimeCalendarOpen] = React.useState(false);
 
   const handleTimeChange = (time: Dayjs | null) => {
@@ -39,9 +30,7 @@ export default function TimePickerComponent({
     const handleClick = (event: MouseEvent) => {
       if (
         isTimeCalendarOpen &&
-        !(event.target as Element).closest(
-          `[class*="absolute"][class*="right-0"][class*="bottom-22px"]`
-        )
+        !(event.target as Element).closest(`[class*="absolute"][class*="right-0"][class*="bottom-22px"]`)
       ) {
         setIsTimeCalendarOpen(false);
       }
@@ -56,11 +45,7 @@ export default function TimePickerComponent({
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <div className="w-[100px] relative">
-        <button
-          type="button"
-          onClick={handleTimeButtonClick}
-          className="flex flex-col items-center"
-        >
+        <button type="button" onClick={handleTimeButtonClick} className="flex flex-col items-center">
           <TimeIcon />
           <span className="text-secondary">Choose Time</span>
         </button>

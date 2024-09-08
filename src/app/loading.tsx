@@ -1,11 +1,23 @@
 "use client";
-    
+
 import { Box, CircularProgress } from "@mui/material";
 
-export default function Loading() {
+interface Props {
+  height?: string;
+}
+
+export default function Loading({ height }: Props) {
   return (
-    <Box sx={{ display: "flex", justifyContent: "center", height: "100vh", alignItems: "center",  color: "#006778" }}>
-      <CircularProgress className="text-main"/>
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        height: height || "100vh",
+        alignItems: "center",
+        color: "#006778",
+      }}
+    >
+      <CircularProgress className="text-main" />
     </Box>
   );
 }

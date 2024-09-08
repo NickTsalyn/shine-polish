@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { FC, useState } from "react";
 import CleaningOptions from "../Menu/CleaningOptions";
-import { PROCESSES_LINKS, SERVICES_LINKS } from "@/global/navigation";
+import { PROCESSES_LINKS, SERVICES_LINKS } from "@/data/navigation-links";
 
 interface NavLink {
   href: string;
@@ -30,26 +30,15 @@ const NavLinks: FC<NavLinksProps> = ({ links, handleClose }) => {
             {link.text}
           </Link>
           {selectedItem === index && (
-            <span
-              className="absolute top-0 right-0 bottom-0 w-[2px]  bg-white rounded"
-              style={{ content: "" }}
-            />
+            <span className="absolute top-0 right-0 bottom-0 w-[2px]  bg-white rounded" style={{ content: "" }} />
           )}
         </li>
       ))}
       <li>
-        <CleaningOptions
-          color="#fff"
-          buttonText="Cleaning Process"
-          links={PROCESSES_LINKS}
-        />
+        <CleaningOptions color="#fff" buttonText="Cleaning Process" links={PROCESSES_LINKS} />
       </li>
       <li>
-        <CleaningOptions
-          color="#fff"
-          buttonText="Cleaning Services"
-          links={SERVICES_LINKS}
-        />
+        <CleaningOptions color="#fff" buttonText="Cleaning Services" links={SERVICES_LINKS} />
       </li>
     </ul>
   );

@@ -1,6 +1,6 @@
 "use client";
 
-import DeepCleaning from "@/components/DeepCleaning";
+import DeepCleaning from "@/components/CleaningServicess/DeepCleaning";
 
 export interface PageProps {}
 

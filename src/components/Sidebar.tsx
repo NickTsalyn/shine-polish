@@ -10,7 +10,7 @@ import { styled } from "@mui/material/styles";
 
 import NavLinks from "./Navigation/NavLinks";
 import Button from "./UI/Button";
-import { SIDEBAR_LINKS } from "@/global/navigation";
+import { SIDEBAR_LINKS } from "@/data/navigation-links";
 import { signout } from "@/helpers/api";
 import {useRouter} from "next/navigation";
 import { UserInfo } from "@/types/interfaces";
@@ -58,13 +58,7 @@ export default function Sidebar() {
     <aside className="  hidden lg:flex flex-col content-around fixed inset-y-0 left-0 p-5 xl:p-[26px] w-[200px] h-full xl:w-[244px] bg-main z-30">
       <div className="flex w-[128px] h-[115px] xl:w-[156px] xl:h-[140px] mx-auto mb-6 xl:mb-9 ">
         <Link href={"/"} className="w-full h-full relative">
-          <Image
-            src="/icons/logo/logo_dark_bg.svg"
-            alt="Logo"
-            layout="fill"
-            objectFit="contain"
-            priority
-          />
+          <Image src="/icons/logo/logo_dark_bg.svg" alt="Logo" layout="fill" objectFit="contain" priority />
         </Link>
       </div>
 
@@ -112,19 +106,12 @@ export default function Sidebar() {
               <Link href="tel:+4708003249">tel: 470-800-32-49</Link>
 
               <div className="absolute top-[-18px] left-0 z-10">
-                <Image
-                  width={30}
-                  height={24}
-                  src="/images/woman_with_a_phone.png"
-                  alt="woman with a phone"
-                />
+                <Image width={30} height={24} src="/images/woman_with_a_phone.png" alt="woman with a phone" />
               </div>
             </div>
           </li>
         </ul>
-        <p className="mb-2 xl:mb-3 text-[28px] xl:text-[36px] font-light text-white">
-          Follow us
-        </p>
+        <p className="mb-2 xl:mb-3 text-[28px] xl:text-[36px] font-light text-white">Follow us</p>
         <ul className="flex  gap-5 ">
           {socialIcons.map((socialIcon, index) => (
             <li key={index}>

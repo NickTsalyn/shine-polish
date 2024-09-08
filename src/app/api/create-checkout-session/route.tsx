@@ -40,6 +40,7 @@ export async function POST(req: NextRequest) {
         },
       ],
       mode: "payment",
+      automatic_tax: { enabled: true },//  автоматичне визначення податку в залежності від адреси
       success_url: `${origin}/success`,
       cancel_url: `${origin}/booking/step_6`,
     });

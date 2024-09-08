@@ -1,22 +1,19 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import LogoutIcon from "@mui/icons-material/Logout";
-import { addBooking } from "@/api";
 import { useMutation } from "@tanstack/react-query";
 import { FormValues } from "@/types/interfaces";
 import { useRouter } from "next/navigation";
 import useFormStorage from "@/hooks/formStorage";
+import { addBooking } from "@/helpers/api";
 
 const BgnImg = () => {
   return (
     <div className="absolute inset-0 z-[-1]">
       <picture>
-        <source
-          srcSet="/images/success_img_tabl-desk.webp"
-          media="(min-width: 768px)"
-        />
+        <source srcSet="/images/success_img_tabl-desk.webp" media="(min-width: 768px)" />
         <Image
           src="/images/success_img_mob.webp"
           alt="photo success"
@@ -32,14 +29,12 @@ const BgnImg = () => {
 
 const Success = () => {
   const router = useRouter();
-  const { form, setForm } = useFormStorage();
+  const { form } = useFormStorage();
   const [timeLeft, setTimeLeft] = useState(5);
-  console.log(form);
 
   const mutation = useMutation({
     mutationFn: (booking: FormValues) => addBooking(booking),
-    onSuccess: (data) => {
-      console.log(data);
+    onSuccess: () => {
       localStorage.clear();
     },
     onError: (error: any) => {
@@ -50,7 +45,7 @@ const Success = () => {
   useEffect(() => {
     if (form) mutation.mutate(form as FormValues);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [form]);
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -71,7 +66,7 @@ const Success = () => {
       router.push("/");
     }
   }, [timeLeft, router]);
-return (
+  return (
     <div className="relative h-[calc(100vh-84px)] md:h-[calc(100vh-96px)] lg:h-screen  flex flex-col justify-between ">
       <BgnImg />
       <div className="flex-grow flex flex-col justify-end w-full">

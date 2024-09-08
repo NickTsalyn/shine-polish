@@ -6,7 +6,7 @@ import { FC } from "react";
 import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
-import { SOCIAL_MEDIA_LINKS } from "@/global/navigation";
+import { SOCIAL_MEDIA_LINKS } from "@/data/navigation-links";
 
 interface SocialMediaLink {
   href: string;

@@ -20,8 +20,8 @@ interface HandlerReturn {
 
  handleSelectChange: (name: string, value: string | number) => void;
  setForm: (form: Form) => void;
- completedSteps: number[];
- setStepCompleted: (step: number) => void;
+//  completedSteps: number[];
+//  setStepCompleted: (step: number) => void;
 }
 
 const useFormStorage = (): HandlerReturn => {
@@ -34,7 +34,7 @@ const useFormStorage = (): HandlerReturn => {
   }
  });
 
- const [completedSteps, setCompletedSteps] = useState<number[]>([]);
+//  const [completedSteps, setCompletedSteps] = useState<number[]>([]);
 
  useEffect(() => {
   localStorage.setItem("form", JSON.stringify(form));
@@ -85,17 +85,18 @@ const useFormStorage = (): HandlerReturn => {
   setForm((prevForm: Form) => ({...prevForm, phone: value}));
  };
 
- const setStepCompleted = (step: number) => {
-  if (!completedSteps.includes(step)) {
-   const newCompletedSteps = [...completedSteps, step];
-   setCompletedSteps(newCompletedSteps);
-   localStorage.setItem("completedSteps", JSON.stringify(newCompletedSteps));
-  }
- };
+//  const setStepCompleted = (step: number) => {
+//   if (!completedSteps.includes(step)) {
+//    const newCompletedSteps = [...completedSteps, step];
+//    setCompletedSteps(newCompletedSteps);
+//    localStorage.setItem("completedSteps", JSON.stringify(newCompletedSteps));
+//   }
+//  };
+
 
  return {
   form,
-  completedSteps,
+  // completedSteps,
   setForm,
   handleInputChange,
   handleRadioChange,
@@ -103,7 +104,7 @@ const useFormStorage = (): HandlerReturn => {
   handleCustomChange,
   handlePhoneChange,
   handleSelectChange,
-  setStepCompleted,
+  // setStepCompleted,
  };
 };
 export default useFormStorage;

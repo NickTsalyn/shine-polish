@@ -1,31 +1,29 @@
-import localFont from "next/font/local";
-
-import Hero from "@/components/hero";
-import SectionEstimate from "@/components/SectionEstimate";
-import BeforeAfter from "@/components/BeforeAfter";
+import Hero from "@/components/Home/Hero";
+import SectionEstimate from "@/components/Home/SectionEstimate";
+import BeforeAfter from "@/components/Home/BeforeAfter";
 import dataSlider from "@/data/slider-data.json";
-import {Reviews} from "@/components/Reviews";
-import ServiceAreas from "@/components/ServiceAreas";
-import SectionJustAsk from "@/components/JustAskSection";
+import { Reviews } from "@/components/Home/Reviews";
+import ServiceAreas from "@/components/Home/ServiceAreas";
+import SectionJustAsk from "@/components/Home/JustAskSection";
 import React from "react";
-import WorkWithUs from "@/components/WorkWithUs";
-import LastSectionHome from "@/components/LastSectionHome";
+import WorkWithUs from "@/components/Home/WorkWithUs";
+import LastSectionHome from "@/components/Home/LastSectionHome";
 import dataBackground from "@/data/background-data.json";
 import dataHeroBackground from "@/data/background-hero.json";
-import Arrow from "@/components/Arrow";
+import Arrow from "@/components/Home/Arrow";
 
 export default function Home() {
- return (
-  <>
-   <Arrow />
-   <Hero data={dataHeroBackground} />
-   <SectionEstimate />
-   <BeforeAfter data={dataSlider} />
-   <Reviews />
-   <ServiceAreas />
-   <SectionJustAsk />
-   <WorkWithUs />
-   <LastSectionHome data={dataBackground} />
-  </>
- );
+  return (
+    <>
+      <Arrow />
+      <Hero data={dataHeroBackground} />
+      <SectionEstimate />
+      <BeforeAfter data={dataSlider} />
+      <Reviews />
+      <ServiceAreas />
+      <SectionJustAsk />
+      <WorkWithUs />
+      <LastSectionHome data={dataBackground} />
+    </>
+  );
 }
