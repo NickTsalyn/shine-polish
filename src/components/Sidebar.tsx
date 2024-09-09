@@ -38,14 +38,15 @@ const socialIcons = [
 export default function Sidebar() {
   const [auth, setAuth] = useState<UserInfo | null>(null);
   const router = useRouter();
-  const user = localStorage.getItem("user");
+  // const user = localStorage.getItem("user");
 
   useEffect(() => {
+    const user = localStorage.getItem("user");
     if (user) {
       const objUser = JSON.parse(user);
       setAuth(objUser.user);
     }
-  }, [user]);
+  }, []);
 
   const handleSignOut = () =>{
     signout

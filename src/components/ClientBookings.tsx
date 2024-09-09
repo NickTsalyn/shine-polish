@@ -38,10 +38,10 @@ export default function ClientBookings({ ownerId }: ClientBookingsProps) {
   }
   const bookings = data;
   useEffect(() => {
-    if (data) {
-      setClientBooking(data[data.length - 1]);
+    if (bookings) {
+      setClientBooking(bookings[bookings.length - 1]);
     }
-  }, [data]);
+  }, [bookings]);
 
   const options = useQuery({
     queryKey: ["bookings-options"],
