@@ -187,3 +187,33 @@
     @apply leading-[1.2];
   }
 }
+/* h3 */
+.h3-bookings {
+  @apply text-[28px];
+  @apply font-normal;
+  @apply leading-normal;
+}
+
+@screen md {
+  .h3-bookings {
+    @apply text-[40px];
+    @apply font-normal;
+    @apply leading-normal;
+  }
+}
+
+@screen lg {
+  .h3-bookings {
+    @apply text-[32px];
+    @apply font-normal;
+    @apply leading-normal;
+  }
+}
+
+@screen xl {
+  .h3-bookings {
+    @apply text-[48px];
+    @apply font-normal;
+    @apply leading-normal;
+  }
+}

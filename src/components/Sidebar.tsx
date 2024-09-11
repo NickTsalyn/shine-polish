@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import Image from "next/legacy/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
 import InstagramIcon from "@mui/icons-material/Instagram";
@@ -11,6 +11,9 @@ import { styled } from "@mui/material/styles";
 import NavLinks from "./Navigation/NavLinks";
 import Button from "./UI/Button";
 import { SIDEBAR_LINKS } from "@/data/navigation-links";
+import { signout } from "@/helpers/api";
+import {useRouter} from "next/navigation";
+import { UserInfo } from "@/types/interfaces";
 
 const UserIcon = styled(AccountCircleIcon)(() => ({
   color: "#fff",
@@ -33,7 +36,24 @@ const socialIcons = [
 ];
 
 export default function Sidebar() {
-  const [auth, setAuth] = useState(false);
+  const [auth, setAuth] = useState<UserInfo | null>(null);
+  const router = useRouter();
+  // const user = localStorage.getItem("user");
+
+  useEffect(() => {
+    const user = localStorage.getItem("user");
+    if (user) {
+      const objUser = JSON.parse(user);
+      setAuth(objUser.user);
+    }
+  }, []);
+
+  const handleSignOut = () =>{
+    signout
+    localStorage.removeItem("user")
+    setAuth(null);
+    router.push("/");
+  }
 
   return (
     <aside className="  hidden lg:flex flex-col content-around fixed inset-y-0 left-0 p-5 xl:p-[26px] w-[200px] h-full xl:w-[244px] bg-main z-30">
@@ -44,10 +64,12 @@ export default function Sidebar() {
       </div>
 
       {auth && (
-        <div className="flex items-center gap-5 xl:gap-6 mb-6">
-          <UserIcon />
-          <p className=" body font-light text-white">Hello, Fiona</p>
-        </div>
+        <Link href={`/client-bookings/${auth.id}`}>
+          <div className="flex items-center gap-5 xl:gap-6 mb-6">
+            <UserIcon />
+            <p className=" body font-light text-white">{auth.username}</p>
+          </div>
+        </Link>
       )}
 
       <div className="mb-5 ">
@@ -59,7 +81,10 @@ export default function Sidebar() {
           <li>
             <Button style="sidebar-auth-in" type="button">
               {auth ? (
-                <span onClick={() => setAuth(false)} className="body text-secondary">
+                <span
+                  onClick={handleSignOut}
+                  className="body text-secondary"
+                >
                   Sign Out
                 </span>
               ) : (

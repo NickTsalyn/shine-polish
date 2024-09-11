@@ -15,7 +15,7 @@ interface Services {
 
 type Paragraph = {
   p: string;
-}
+};
 
 export interface RoomService {
   title: string;
@@ -46,14 +46,22 @@ export interface FormValues {
   time: string;
   endTime: string;
   address: Record<string, never>;
-  question: string,
-  discountCode: string,
-  tips: string,
-  totalPrice: number
+  question: string;
+  discountCode: string;
+  tips: string;
+  totalPrice: number;
 }
 
 export interface Form {
-  [key: string]: string | number | boolean | string[] | Dayjs | null | any | object;
+  [key: string]:
+    | string
+    | number
+    | boolean
+    | string[]
+    | Dayjs
+    | null
+    | any
+    | object;
 }
 
 export interface StepProps {
@@ -64,4 +72,10 @@ export interface StepProps {
 export interface Options {
   name: string;
   value: number | string;
+}
+export interface UserInfo {
+  id: string;
+  email: string;
+  username: string;
+  roles: ["USER" | "ADMIN"];
 }
