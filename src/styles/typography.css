@@ -45,14 +45,14 @@
 }
 @screen lg {
   .h2 {
-    @apply text-[84px];
+    @apply text-[72px];
     @apply font-medium;
     @apply leading-[1.2];
   }
 }
 @screen xl {
   .h2 {
-    @apply text-[104px];
+    @apply text-[96px];
     @apply font-medium;
     @apply leading-[1.2];
   }
