@@ -19,6 +19,7 @@ import axios from "axios";
 import dayjs, { Dayjs } from "dayjs";
 import Button from "@/components/UI/Button";
 import { useRouter } from "next/navigation";
+import Loading from "@/app/loading";
 
 interface ClientBookingsProps {
   ownerId: string;
@@ -106,7 +107,7 @@ export default function ClientBookings({ ownerId }: ClientBookingsProps) {
   }
 
   if (isPending) {
-    return <span>Loading...</span>;
+    return <Loading/>
   }
   if (isSuccess && !bookings.length) {
     return <p>You do not have any bookings yet</p>;

@@ -79,3 +79,7 @@ export interface UserInfo {
   username: string;
   roles: ["USER" | "ADMIN"];
 }
+export interface AuthData {
+  accessToken: string;
+  user: UserInfo;
+}

@@ -18,6 +18,7 @@ import {
 import Link from "next/link";
 import { signin } from "@/helpers/api";
 import { useMutation } from "@tanstack/react-query";
+import { useAuth } from "@/components/AuthContext";
 
 interface SignInInput {
   email: string;
@@ -33,11 +34,14 @@ export default function SignInForm() {
     formState: { errors },
   } = useForm<SignInInput>();
 
+  const { signInContext} = useAuth();
+
   const mutation = useMutation({
     mutationFn: (credentials: SignInInput) => signin(credentials),
     onSuccess: (data) => {
       localStorage.setItem("user", JSON.stringify(data.data));
       router.push(`/client-bookings/${data.data.user.id}`);
+      signInContext(data.data)
     },
     onError: (error: any) => {
       // An error happened!
