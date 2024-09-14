@@ -97,9 +97,13 @@ export default function Sidebar() {
                   Sign Out
                 </span>
               ) : (
+                <div>
                 <Link href="/sign-in-form" className="body text-secondary">
-                  Sign In <span className="text-white">or </span>Sign Up
+                  Sign In <span className="text-white">or </span>
                 </Link>
+                <Link href="/sign-up" className="body text-secondary">
+                  Sign Up 
+                </Link></div>
               )}
             </Button>
           </li>
