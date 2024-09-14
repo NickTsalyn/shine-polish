@@ -79,7 +79,7 @@ const Step2 = ({ control, setStepCompleted }: StepProps) => {
 
   return (
     <div className="py-4 md:py-6 lg:py-9 lg:min-h-[600px] xl:min-h-[1000px]">
-      <div className="max-w-[278px] md:max-w-[682px] lg:max-w-[1180px] xl:max-w-[1572px]  mb-5 xl:mb-[35px] m-auto">
+      <div className="max-w-[278px] md:max-w-[682px] lg:max-w-[1180px] xl:max-w-[1576px]  mb-5 xl:mb-[35px] m-auto">
         <h2 className="text-2xl md:text-4xl font-medium mb-5">Select Extras</h2>
         <p className="text-bookingSubText font-normal mb-5 leading-[14.4px] text-[12px] md:text-[18px] md:leading-[32px] lg:leading-[28.8px] ">
           Add extras to customize your cleaning service.
@@ -95,13 +95,13 @@ const Step2 = ({ control, setStepCompleted }: StepProps) => {
         </p>
       </div>
       <div className="flex gap-[16px] flex-col max-w-[278px] md:max-w-[682px] lg:max-w-[1160px] xl:max-w-[1572px] m-auto">
-        <ul className="flex flex-wrap gap-5 md:gap-6 lg:gap-5 lg:w-[1160px] xl:w-[1572px] justify-center md:justify-around lg:justify-start md:flex-nowrap lg:flex-wrap ">
+        <ul className="flex flex-wrap gap-5   lg:w-[1160px] xl:w-[1576px] justify-center md:justify-around lg:justify-start md:flex-nowrap lg:flex-wrap ">
           {services.map(({ value, label }) => {
             if (value === "Visit property for estimate") {
               return (
                 <li
                   key={"Visit property for estimate"}
-                  className="justify-center items-center w-[278px] md:w-[693px] lg:w-[360px] xl:w-[500px] xl:min-h-[140px] hidden lg:flex"
+                  className="justify-center items-center w-[278px] md:w-[693px] lg:w-[372px] xl:w-[509px] xl:min-h-[140px] hidden lg:flex"
                 >
                   <Controller
                     name="service"
@@ -125,7 +125,7 @@ const Step2 = ({ control, setStepCompleted }: StepProps) => {
               return (
                 <li
                   key={value}
-                  className="flex justify-center items-center w-[128px] md:w-[150px] lg:w-[180px] xl:w-[246px] xl:min-h-[140px]"
+                  className="flex justify-center items-center w-[128px] md:w-[150px] lg:w-[176px] xl:w-[246px] md:min-h-[140px]"
                 >
                   <Controller
                     name="service"
@@ -151,10 +151,10 @@ const Step2 = ({ control, setStepCompleted }: StepProps) => {
             }
           })}
         </ul>
-        <ul className="flex flex-wrap gap-5 md:gap-6 lg:gap-4 lg:w-[1160px] xl:w-[1572px] justify-center md:justify-around lg:justify-start ">
+        <ul className="flex flex-wrap gap-5  lg:w-[1160px] xl:w-[1576px] justify-center md:justify-around lg:justify-start ">
           {combinedExtrasOptions.map(({ value, label, path }) => {
             return (
-              <li key={value} className="flex w-[128px] md:w-[150px] lg:w-[180px] xl:w-[246px] md:h-[140px] ">
+              <li key={value} className="flex w-[128px] md:w-[150px] lg:w-[176px] xl:w-[246px] md:h-[140px] ">
                 <Controller
                   name="extras"
                   control={control}
@@ -163,7 +163,7 @@ const Step2 = ({ control, setStepCompleted }: StepProps) => {
                       {...field}
                       disabled={disable}
                       value={value}
-                      style=" py-1 px-2 lg:py-2 md:h-[140px] md:w-[150px] lg:w-[180px] relative flex xl:w-[246px] "
+                      style=" py-1 px-2 lg:py-2 md:h-[140px] md:w-[150px] lg:w-[176px] relative flex xl:w-[246px] "
                       isActive={(form.extras as string[]).includes(value)}
                       onClick={() => {
                         const newValue = (field.value || []).includes(value)
