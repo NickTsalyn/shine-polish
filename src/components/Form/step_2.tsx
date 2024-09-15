@@ -14,7 +14,8 @@ import Loading from "@/app/loading";
 import { getOptions } from "@/helpers/api";
 
 const Step2 = ({ control, setStepCompleted }: StepProps) => {
-  const { form, handleRadioChange, handleCheckboxChange, setForm } = useFormStorage();
+  const { form, handleRadioChange, handleCheckboxChange, setForm } =
+    useFormStorage();
   const [disable, setDisable] = useState(false);
 
   const { data, error, isLoading } = useQuery<{
@@ -35,7 +36,9 @@ const Step2 = ({ control, setStepCompleted }: StepProps) => {
 
   const combinedExtrasOptions =
     data?.extrasOptions.map((backendExtra) => {
-      const frontEndExtra = ExtrasOptions.find((extra) => extra.value == backendExtra.name);
+      const frontEndExtra = ExtrasOptions.find(
+        (extra) => extra.value == backendExtra.name
+      );
       return {
         ...backendExtra,
         value: backendExtra.name,
@@ -51,15 +54,25 @@ const Step2 = ({ control, setStepCompleted }: StepProps) => {
     } else if (
       form.service === "Deep Cleaning" ||
       form.service === "Move In/Move Out" ||
-      form.service === "Post Constraction" ||
-      form.service === "Visit property for estimate"
+      form.service === "Post Constraction"
     ) {
       setDisable(true);
       const updatedForm = { ...form, extras: [] };
       setForm(updatedForm);
       localStorage.setItem("form", JSON.stringify(updatedForm));
+    } else if (form.service === "Visit property for estimate") {
+      setDisable(true);
+      const updatedForm = {
+        ...form,
+        extras: [],
+        bedroom: 1,
+        bathroom: 1,
+        frequency: 'One-time service',
+      };
+      setForm(updatedForm);
+      localStorage.setItem("form", JSON.stringify(updatedForm));
     }
-  }, [form, setForm]);
+  }, [form.service]);
 
   useEffect(() => {
     handleDisable();
@@ -83,15 +96,18 @@ const Step2 = ({ control, setStepCompleted }: StepProps) => {
         <h2 className="text-2xl md:text-4xl font-medium mb-5">Select Extras</h2>
         <p className="text-bookingSubText font-normal mb-5 leading-[14.4px] text-[12px] md:text-[18px] md:leading-[32px] lg:leading-[28.8px] ">
           Add extras to customize your cleaning service.
-          <br className="hidden md:block lg:hidden" /> Remember <span className=" font-bold">deep cleaning </span>
-          is recommended for all first time cleans to prepare your home for routine services.
+          <br className="hidden md:block lg:hidden" /> Remember{" "}
+          <span className=" font-bold">deep cleaning </span>
+          is recommended for all first time cleans to prepare your home for
+          routine services.
         </p>
         <p className="text-bookingSubText font-bold mb-5 leading-[14.4px] text-[12px] md:text-[18px] md:leading-[32px] lg:leading-[28.8px] ">
-          **Beware: deep cleaning price may be variable depending on house condition.**
+          **Beware: deep cleaning price may be variable depending on house
+          condition.**
         </p>
         <p className="text-bookingSubText font-normal  leading-[14.4px] text-[12px] md:text-[18px] md:leading-[32px] lg:leading-[28.8px] mb-10 ">
-          <span className=" font-bold">Move In/Move Out</span> requires a vacant home with water and electricity for a
-          proper cleaning.
+          <span className=" font-bold">Move In/Move Out</span> requires a vacant
+          home with water and electricity for a proper cleaning.
         </p>
       </div>
       <div className="flex gap-[16px] flex-col max-w-[278px] md:max-w-[682px] lg:max-w-[1160px] xl:max-w-[1572px] m-auto">
@@ -112,10 +128,19 @@ const Step2 = ({ control, setStepCompleted }: StepProps) => {
                         {...field}
                         value={"Visit property for estimate"}
                         style=" py-2 px-2 md:py-2 md:px-2 lg:py-2 h-full w-full text-accent md:text-accent md:text-[20px]  md:leading-[28.8px]"
-                        isActive={"Visit property for estimate" === form.service}
-                        onClick={() => handleRadioChange("services", "Visit property for estimate")}
+                        isActive={
+                          "Visit property for estimate" === form.service
+                        }
+                        onClick={() =>
+                          handleRadioChange(
+                            "service",
+                            "Visit property for estimate"
+                          )
+                        }
                       >
-                        <span className="inline-block lg:text-[20px]">{"Visit property for estimate"}</span>
+                        <span className="inline-block lg:text-[20px]">
+                          {"Visit property for estimate"}
+                        </span>
                       </RadioButton>
                     )}
                   />
@@ -142,7 +167,9 @@ const Step2 = ({ control, setStepCompleted }: StepProps) => {
                           handleRadioChange("service", value);
                         }}
                       >
-                        <span className="inline-block lg:text-[20px]">{label}</span>
+                        <span className="inline-block lg:text-[20px]">
+                          {label}
+                        </span>
                       </RadioButton>
                     )}
                   />
@@ -154,7 +181,10 @@ const Step2 = ({ control, setStepCompleted }: StepProps) => {
         <ul className="flex flex-wrap gap-5  lg:w-[1160px] xl:w-[1576px] justify-center md:justify-around lg:justify-start ">
           {combinedExtrasOptions.map(({ value, label, path }) => {
             return (
-              <li key={value} className="flex w-[128px] md:w-[150px] lg:w-[176px] xl:w-[246px] md:h-[140px] ">
+              <li
+                key={value}
+                className="flex w-[128px] md:w-[150px] lg:w-[176px] xl:w-[246px] md:h-[140px] "
+              >
                 <Controller
                   name="extras"
                   control={control}
@@ -211,9 +241,13 @@ const Step2 = ({ control, setStepCompleted }: StepProps) => {
                   value={"Visit property for estimate"}
                   style=" py-[10px] px-[20px] md:py-[22px] md:px-[10px] lg:py-[20px] h-full w-full text-accent md:text-accent md:text-[24px]  md:leading-[28.8px]"
                   isActive={"Visit property for estimate" === form.service}
-                  onClick={() => handleRadioChange("services", "Visit property for estimate")}
+                  onClick={() =>
+                    handleRadioChange("service", "Visit property for estimate")
+                  }
                 >
-                  <span className="inline-block lg:text-2xl">{"Visit property for estimate"}</span>
+                  <span className="inline-block lg:text-2xl">
+                    {"Visit property for estimate"}
+                  </span>
                 </RadioButton>
               )}
             />
