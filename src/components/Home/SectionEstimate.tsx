@@ -56,7 +56,10 @@ const SectionEstimate = () => {
  }, [roomType]);
 
  return (
-  <section className=" mb-[60px] md:mb-20 lg:mb-[120px] xl:mb-40 animate-jump-in animate-once animate-duration-[3000ms] animate-ease-in-out">
+  <section
+   data-aos="zoom-in-up"
+   className="mb-[60px] md:mb-20 lg:mb-[120px] xl:mb-40 animate-jump-in animate-once animate-duration-[3000ms] animate-ease-in-out"
+  >
    <div className=" container mx-auto my-0">
     <h2 className=" text-[30px] font-medium leading-[1.33] text-main text-center md:text-5xl mb-4 md:mb-11">
      Estimate Calculation

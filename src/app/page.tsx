@@ -1,3 +1,4 @@
+"use client";
 import Hero from "@/components/Home/Hero";
 import SectionEstimate from "@/components/Home/SectionEstimate";
 import BeforeAfter from "@/components/Home/BeforeAfter";
@@ -12,16 +13,16 @@ import dataBackground from "@/data/background-data.json";
 import dataHeroBackground from "@/data/background-hero.json";
 import Arrow from "@/components/Home/Arrow";
 import ArrowMobile from "@/components/Home/ArrrowMobile";
-// import AOS from "aos";
-// import "aos/dist/aos.css";
-// import {useEffect} from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import {useEffect} from "react";
 
 export default function Home() {
- //  useEffect(() => {
- //   AOS.init({
- //    duration: 800, // Тривалість анімації
- //   });
- //  }, []);
+ useEffect(() => {
+  AOS.init({
+   duration: 3000, // Тривалість анімації
+  });
+ }, []);
  return (
   <>
    <ArrowMobile />

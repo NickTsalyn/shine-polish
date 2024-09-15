@@ -23,7 +23,10 @@ interface BeforeAfterProps {
 export default function BeforeAfter({data}: BeforeAfterProps) {
  return (
   <section className="mb-[60px] md:mb-[80px] lg:mb-[120px] xl:mb-[160px] ">
-   <div className="container mx-auto animate-fade animate-once animate-duration-[3000ms] animate-ease-in-out">
+   <div
+    data-aos="zoom-in"
+    className="container mx-auto animate-fade animate-once animate-duration-[3000ms] animate-ease-in-out"
+   >
     <div className="mx-auto w-[335px] md:w-[712px] lg:w-[1156px] xl:w-[1516px]">
      <div className="hidden md:flex justify-around">
       <h2 className="block h2 text-main text-center mb-[9px] md:mb-[18px] lg:mb-[30px] xl:mb-[36px]">Before</h2>

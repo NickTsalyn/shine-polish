@@ -31,8 +31,14 @@ const SectionJustAsk: React.FC = () => {
 
  return (
   <section className="mb-[60px] md:mb-20 lg:mb-[120px] xl:mb-40">
-   <div className="container relative flex flex-col lg:flex-row mx-auto lg:gap-12 xl:gap-10 items-center justify-center lg:items-start lg:justify-normal lg:max-w-[1156px] xl:max-w-[1516px] animate-fade-right animate-once animate-duration-[3000ms] animate-ease-in-out">
-    <div className="mb-3">
+   <div
+    data-aos="fade-right"
+    className="container relative flex flex-col lg:flex-row mx-auto lg:gap-12 xl:gap-10 items-center justify-center lg:items-start lg:justify-normal lg:max-w-[1156px] xl:max-w-[1516px] animate-fade-right animate-once animate-duration-[3000ms] animate-ease-in-out"
+   >
+    <div
+     data-aos="fade-up-right"
+     className="mb-3"
+    >
      <h3 className="h3 text-main text-center lg:text-left mb-10 xl:mb-[60px]">Not sure? Just ask!</h3>
      <form onSubmit={handleSubmit(onSubmit)}>
       <div className="mb-5 lg:mb-10 w-auto md:w-[512px] h-[36px] md:h-[52px] lg:w-[600px] lg:h-[52px] xl:w-[890px] xl:h-[60px] xl:placeholder:text-[16px]">
@@ -83,7 +89,10 @@ const SectionJustAsk: React.FC = () => {
       </div>
      </form>
     </div>
-    <div className="flex justify-self-center relative lg:absolute top-0 lg:right-0 w-[335px] h-[268px] md:w-[529px] md:h-[501px] lg:w-[700px] lg:h-[511px] xl:w-[906px] xl:h-[667px]">
+    <div
+     data-aos="fade-left"
+     className="flex justify-self-center relative lg:absolute top-0 lg:right-0 w-[335px] h-[268px] md:w-[529px] md:h-[501px] lg:w-[700px] lg:h-[511px] xl:w-[906px] xl:h-[667px]"
+    >
      <FriendsIcon />
     </div>
    </div>
