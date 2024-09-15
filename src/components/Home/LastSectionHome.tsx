@@ -56,13 +56,15 @@ export default function LastSectionHome({children, data}: LastSectionBgProps) {
     </div>
     <div className="z-1 absolute top-0 left-0 right-0 h-[258px] md:h-[592px] lg:h-screen lg:min-w-[1240px] xl:h-[1040px] xl:min-w-[1680px]  bg-background-img-grad"></div>
     <div className=" container pb-5 px-5 pt-5 lg:pr-[40px] xl:pr-[80px] md:pt-8 lg:pt-16 xl:pt-18 md:py-10 lg:pl-[40px] xl:pl-[80px] absolute top-1 inset-0 flex flex-col justify-between z-10 lg:h-[90vh] xl:h-[90vh]">
-     <h2 className="text-white h2 text-center drop-shadow-md top-0">
+     <h2 className="text-white h2 text-center drop-shadow-md top-0 animate-fade-right animate-once animate-duration-[3000ms] animate-ease-in-out">
       Enjoy the time spent with your <br />
       loved ones...
      </h2>
 
      <div className="flex  items-center z-10 justify-between lg:pr-[40px] xl:pr-[80px] lg:pl-[40px] xl:pl-[80px]">
-      <span className="h2 xl:text-6xl  text-white">...in a clean house</span>
+      <span className="h2 xl:text-6xl  text-white animate-fade-right animate-once animate-duration-[3000ms] animate-ease-in-out">
+       ...in a clean house
+      </span>
 
       <Button
        style="home-book-now"
