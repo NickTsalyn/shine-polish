@@ -20,15 +20,15 @@ const Step5: React.FC<StepProps> = ({setStepCompleted}: StepProps) => {
  };
 
  return (
-  <div className=" py-4 md:py-6 lg:py-9 lg:h-[80vh] flex flex-col gap-14 lg:gap-10 justify-between items-between">
+  <div className=" py-4 md:py-6 lg:py-9 lg:h-[80vh] flex flex-col gap-14 md:gap-20 lg:gap-10 xl:gap-20 justify-between items-between">
    <div className=" flex flex-col gap-6 w-full lg:flex-row">
-    <div className="flex flex-col gap-4lg:w-1/3">
+    <div className="flex flex-col gap-4 lg:w-1/3">
      <h2 className=" text-2xl md:text-4xl font-medium lg:mb-5">Have you any question?</h2>
      <p className=" body text-subtext ">
       If you have a question about our company, ask it in the next field. We’ll answer to you on email{" "}
      </p>
     </div>
-    <div className="h-48 xl:h-[280px] lg:w-2/3">
+    <div className="h-48 xl:h-[200px] lg:w-2/3">
      <Textarea
       name="question"
       value={form.question as string}
@@ -41,12 +41,12 @@ const Step5: React.FC<StepProps> = ({setStepCompleted}: StepProps) => {
     </div>
    </div>
 
-   <div className="w-full flex flex-col lg:flex-row flex-nowrap gap-14 justify-between">
-    <form className=" flex flex-col justify-center lg:w-1/2 gap-6 mb-5 lg:mb-0 ">
+   <div className="w-full flex flex-col lg:flex-row flex-nowrap gap-14 lg:gap-28 xl:gap-40 justify-between">
+    <form className=" flex flex-col justify-between lg:w-1/2 xl:w-[40%] gap-6 mb-5 lg:mb-0 ">
      <h2 className="text-2xl md:text-4xl font-medium lg:mb-5">Discount code</h2>
 
-     <div className="flex flex-col md:flex-row gap-10 w-full ">
-      <div className="w-full md:w-3/5  h-[48px] xl:h-[56px]">
+     <div className="flex flex-col justify-end lg:flex-row  lg:justify-between gap-4 w-full ">
+      <div className="w-full lg:w-4/6  h-[48px] xl:h-[56px]">
        <Input
         name="discountCode"
         value={form.discountCode as string}
@@ -59,7 +59,7 @@ const Step5: React.FC<StepProps> = ({setStepCompleted}: StepProps) => {
         }}
        />
       </div>
-      <div className="flex justify-center w-[40px] md:w-1/5  md:h-[48px] ">
+      <div className="flex justify-end w-full lg:w-[160px] md:h-[48px] ">
        <Button
         type="submit"
         style="apply-btn-light"
@@ -70,12 +70,12 @@ const Step5: React.FC<StepProps> = ({setStepCompleted}: StepProps) => {
      </div>
     </form>
 
-    <div className="flex flex-col justify-end items-stretch  gap-5 md:w-[480px]lg:w-1/2 ">
-     <p className=" body md:text-2xl  xl:text-4xl text-accent lg:hidden">
+    <div className="flex flex-col justify-end items-stretch  gap-4 md:w-[480px] lg:w-1/2 xl:w-[50%] ">
+     <p className="  text-[24px] md:text-2xl  xl:text-4xl text-accent hidden md:block lg:hidden">
       Tips are not expected but always appreciated <br />
       by our cleaners
      </p>
-     <p className=" body md:text-2xl  xl:text-4xl text-accent hidden lg:block">
+     <p className="  text-[24px] md:text-2xl  xl:text-4xl text-accent md:hidden lg:block">
       Tips are not expected but always appreciated by our cleaners
      </p>
      <div className=" h-[48px] xl:h-[56px]">
@@ -97,11 +97,11 @@ const Step5: React.FC<StepProps> = ({setStepCompleted}: StepProps) => {
     </div>
    </div>
 
-   <div className="flex flex-row-reverse content-center  md:flex-col lg:mx-auto lg:flex-row xl:flex-col gap-10">
-    <h2 className="text-center self-center text-rose-900 text-4xl mb-5 lg:hidden xl:flex animate-wiggle-more animate-twice animate-duration-[3000ms]">
+   <div className="flex content-center flex-col lg:mx-auto lg:flex-row  gap-10">
+    <h2 className="text-center self-center text-accent-light text-2xl md:text-4xl mb-5 lg:hidden xl:flex animate-wiggle-more animate-infinite animate-duration-[3000ms] animate-ease-in-out">
      Tell about us your friends and get discount!
     </h2>
-    <h2 className="text-center self-center text-rose-900 text-4xl mb-5 hidden lg:block xl:hidden animate-wiggle-more animate-twice animate-duration-[3000ms]">
+    <h2 className="text-center self-center text-accent-light text-2xl mb-5 hidden md:text-4xl lg:block xl:hidden animate-wiggle-more animate-infinite animate-duration-[3000ms] animate-ease-in-out">
      Tell about us your friends <br /> and get discount!
     </h2>
     <div className=" flex justify-center lg:w-[500px] xl:w-[700px] h-auto">

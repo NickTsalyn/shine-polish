@@ -68,7 +68,7 @@ export default function Button(props: PropsButtton) {
    break;
   case "apply-btn-light":
    styles =
-    " rounded-xl border-none border-secondary   bg-secondary  py-1 px-[54px] hover:bg-sand focus:bg-accent hover:shadow-btn-shadow    hover:text-secondary  focus:shadow-btn-shadow  ";
+    " w-[140px] lg:w-[160px] xl:h-[56px] rounded-xl border-none border-secondary   bg-secondary  py-1 px-1 hover:bg-sand focus:bg-accent hover:shadow-btn-shadow    hover:text-secondary  focus:shadow-btn-shadow  ";
    break;
   case "apply-btn-light-one":
    styles =
@@ -83,7 +83,7 @@ export default function Button(props: PropsButtton) {
     " w-[140px] lg:w-[160px] xl:w-[196px] h-9 lg:h-10 border rounded-xl border-secondary bg-main mb-5 flex justify-center items-center";
    break;
   case "send":
-   styles = "w-[148px] h-[36px] md:w-[162px] md:h-[48px] lg:w-[220px] rounded-xl bg-secondary hover:bg-[#F6AD70]";
+   styles = "w-[148px] h-[36px] md:w-[162px] md:h-[48px] lg:w-[220px]  rounded-xl bg-secondary hover:bg-[#F6AD70]";
    break;
   case "deep-cleaning":
    styles =
