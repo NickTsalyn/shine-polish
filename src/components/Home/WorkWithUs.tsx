@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Button from "../UI/Button";
 import BasicModal from "../UI/Modal";
 import WorkWithUsForm from "../WorkWithUsForm";
+import { useTranslations } from "next-intl";
 
 type Props = {
   open?: boolean;
@@ -11,6 +12,7 @@ type Props = {
 };
 
 const WorkWithUs = (props: Props) => {
+  const t = useTranslations('Home Page');
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
@@ -26,7 +28,7 @@ const WorkWithUs = (props: Props) => {
       <div className=" flex justify-center ">
         <Button style="work-with-us" type="button" onClick={handleOpen}>
           <span className=" text-xl md:text-5xl lg:text-[64px] text-main hover:text-accent transition-all duration-300">
-            Do you want to work with us?
+            {t('work-with-us')}
           </span>
         </Button>
         <BasicModal open={open} onClose={handleClose}>

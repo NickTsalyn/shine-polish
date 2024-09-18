@@ -5,12 +5,14 @@ import Input from "../UI/Input";
 import Textarea from "../UI/Textarea";
 import Button from "../UI/Button";
 import { FriendsIcon } from "@/global/images";
+import { useTranslations } from "next-intl";
 interface FormValues {
   email: string;
   question: string;
 }
 
 const SectionJustAsk: React.FC = () => {
+  const t = useTranslations('Home Page');
   const {
     register,
     formState: { errors },
@@ -33,7 +35,7 @@ const SectionJustAsk: React.FC = () => {
     <section className="mb-[60px] md:mb-20 lg:mb-[120px] xl:mb-40">
       <div className="container relative flex flex-col lg:flex-row mx-auto lg:gap-12 xl:gap-10 items-center justify-center lg:items-start lg:justify-normal lg:max-w-[1156px] xl:max-w-[1516px]">
         <div className="mb-3">
-          <h3 className="h3 text-main text-center lg:text-left mb-10 xl:mb-[60px]">Not sure? Just ask!</h3>
+          <h3 className="h3 text-main text-center lg:text-left mb-10 xl:mb-[60px]">{t('just-ask')}</h3>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="mb-5 lg:mb-10 w-auto md:w-[512px] h-[36px] md:h-[52px] lg:w-[600px] lg:h-[52px] xl:w-[890px] xl:h-[60px] xl:placeholder:text-[16px]">
               <Input
@@ -69,7 +71,7 @@ const SectionJustAsk: React.FC = () => {
             </div>
             <div className="flex justify-end lg:justify-start">
               <Button style="send" type="submit">
-                <span className="text-white text-5 md:text-6 lg:text-[32px] font-bold hover:text-accent">Send</span>
+                <span className="text-white text-5 md:text-6 lg:text-[32px] font-bold hover:text-accent">{t('send')}</span>
               </Button>
             </div>
           </form>

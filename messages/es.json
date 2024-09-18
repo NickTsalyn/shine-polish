@@ -1,0 +1,113 @@
+{
+	"Home Page": {
+		"main-title": "Dedica tiempo a tus seres queridos, no a limpiar",
+		"book-now": "Reservar ahora",
+		"checklists": "Listas de verificación",
+		"contact": "Contáctenos",
+		"home": "Hogar",
+		"process": "Proceso de limpieza",
+		"service": "Servicios de limpieza",
+		"signin": "Iniciar sesión",
+		"signup": "Inscribirse",
+		"estimate": "Cálculo de estimación",
+		"rooms": {
+			"bedrooms": "habitaciones",
+			"bathrooms": "banos"
+		},
+		"previous": "Estimación anterior",
+		"full": "Estimación completa",
+		"before": "Antes",
+		"after": "Despues",
+		"reviews": "Comentarios",
+		"areas": "Areas de servicio",
+		"just-ask": "No te preocupe, solo preguntas!",
+		"send": "Enviar",
+		"work-with-us": "¿Quieres trabajar con nosotros?",
+		"last-title-one": "Disfruta el tiempo que has dedicado a tus seres queridos...",
+		"last-title-one-add": " Sus seres queridos...",
+		"last-title-two": "...en una casa limpia"
+	},
+	"APPARTMENT_SERVICES": {
+    "title": "Servicio de Limpieza de Apartamentos",
+    "paragraphs": [
+      "Entre el trabajo, cuidar de tu familia y gestionar el hogar, la vida es agitada. Con un horario tan ajetreado, ¿cómo encuentras tiempo para limpiar? ¿Para limpiar los pisos o desinfectar los baños?",
+      "Tu casa debería sentirse como un santuario del mundo exterior. Un apartamento limpio te puede dar espacio para respirar y relajarte al final de una larga semana. Pero limpiarlo todos los días puede ser abrumador… si no pides ayuda.",
+      "Aquí en Modern Maids, sabemos lo valioso que es llegar a casa a un espacio limpio, libre de suciedad y polvo. Entendemos que vivir en una gran ciudad como Dallas, Austin, Houston, San Antonio, Las Vegas o Atlanta puede ser caótico a veces, y que tu apartamento es donde te refugias de todo. Para asegurarnos de que obtengas la paz que anhelas, nuestro equipo va más allá con nuestras limpiezas de apartamentos.",
+      "Pasamos horas haciéndolo bien para asegurarnos de que cada habitación de tu espacio (desde ese rincón detrás del inodoro del baño hasta el estante sobre el fregadero) esté impecable.",
+      "A través de una lista de verificación de limpieza detallada y un enfoque en la satisfacción del cliente, nuestra empresa de limpieza de apartamentos ayudará a que tu espacio se sienta más como en casa."
+    ],
+    "benefits": {
+      "title": "Por Qué Elegirnos Para Limpiar Tu Apartamento",
+      "paragraphs": [
+        "Podrías contratar a la primera empresa de limpieza que encuentres en línea, pero los limpiadores de apartamentos deben ser personas en las que confíes. Los limpiadores estarán en tu hogar, desempolvando tu oficina y refrescando cada habitación (todo lo cual puede suceder en las horas en que no estés en casa).",
+        "Elegir el servicio de limpieza de apartamentos adecuado es crucial para asegurarte de que tu apartamento sea bien cuidado antes, durante y después de cada trabajo de limpieza.",
+        "Reserva limpiezas según tu horario. Si prefieres que nuestro servicio de limpieza venga cuando no estés en casa, simplemente notifica a la oficina de arrendamiento o al conserje el día en que vayamos y los limpiadores se registrarán en la oficina para obtener tu llave (en uniforme y con una identificación).",
+        "Con servicios de limpieza en Dallas, Austin, Houston y San Antonio – conocemos Texas, y estamos orgullosos de ser tu servicio local de limpieza de apartamentos.",
+        "Facilitamos la solicitud de un servicio de limpieza o de limpiadores de apartamentos, con opciones para reservar en línea o mediante una llamada telefónica rápida.",
+        "Nunca damos por sentado tu confianza. Todos los limpiadores de apartamentos de Modern Maids son profesionales experimentados, con verificación de antecedentes y referencias, amables con los clientes y son limpiadores que recomendaríamos para limpiar nuestro propio hogar.",
+        "Priorizamos la comunicación con cada cliente. Puedes llamarnos o contactarnos en cualquier momento con preguntas, inquietudes o para obtener una cotización personalizada para cualquier proyecto de limpieza.",
+        "Elegimos productos de limpieza ecológicos que son mejores para el medio ambiente y para tu apartamento. En resumen: tratamos el hogar de nuestros clientes como si fuera el nuestro y nunca comprometemos la calidad."
+      ]
+    },
+    "services": {
+      "title": "¿Qué Incluyen los Servicios de Limpieza de Apartamentos?",
+      "paragraphs": [
+        "Al igual que en nuestra limpieza de casas, nuestros servicios de limpieza de apartamentos se centran en todas las habitaciones principales de tu apartamento. Nuestras empleadas domésticas trabajan metódicamente en la cocina, el baño, los dormitorios y las áreas de estar, limpiando cada área a fondo antes de pasar a la siguiente habitación. Esta atención al detalle asegura que obtengas un hogar limpio con cada trabajo de limpieza de apartamentos (no solo la primera vez).",
+        "A través de nuestras listas de verificación de limpieza, puedes ver un desglose detallado de todo lo que recibirás con nuestros servicios profesionales de limpieza de apartamentos."
+      ],
+      "kitchenServices": [
+        "Limpieza de superficies de electrodomésticos (refrigerador, horno y lavavajillas)",
+        "Cargar el lavavajillas o lavar los platos a mano (dentro de lo razonable)",
+        "Limpieza del interior y exterior de tu microondas",
+        "Limpiar y desinfectar encimeras y todas las superficies duras",
+        "Limpiar y pulir fregaderos y grifos",
+        "Desempolvado general",
+        "Barrer, aspirar y fregar suelos",
+        "Vaciar la basura",
+        "Baños"
+      ],
+      "bathroomServices": [
+        "Limpiar y desinfectar bañeras y duchas",
+        "Limpiar puertas de ducha y sus rieles",
+        "Limpiar y desinfectar toalleros",
+        "Desempolvar las lámparas",
+        "Limpiar espejos",
+        "Limpiar y desinfectar encimeras, fregadero y grifos",
+        "Limpiar y desinfectar inodoros",
+        "Desempolvado general",
+        "Vaciar la basura",
+        "Barrer, aspirar y fregar el suelo"
+      ],
+      "bedroomServices": [
+        "Desempolvar alféizares y persianas",
+        "Limpiar puertas correderas de cristal",
+        "Desempolvar a mano todas las superficies horizontales (mesas, estantes, tocadores, etc.)",
+        "Desempolvar marcos de fotos y otros objetos de estantería",
+        "Hacer las camas y organizar las almohadas (cambiar la ropa de cama si está disponible)",
+        "Limpiar espejos",
+        "Retirar la basura",
+        "Aspirar suelos y escaleras",
+        "Fregar suelos y escaleras"
+      ]
+    },
+    "deepCleaning": {
+      "title": "SERVICIOS DE LIMPIEZA TRADICIONAL VS. LIMPIEZA PROFUNDA",
+      "paragraphs": [
+        "Para muchos clientes, los servicios tradicionales de limpieza del hogar son suficientes para mantener un apartamento libre de la suciedad, polvo y mugre de la vida cotidiana. Para otros, necesitan un servicio de limpieza profunda para que sus dormitorios y baños estén a su altura. Es en esos momentos cuando es necesario limpiar el hogar de una manera más exhaustiva con una limpieza profunda. Durante una limpieza profunda, podemos dedicar horas extra para limpiar tu apartamento de arriba a abajo."
+      ],
+      "reasons": [
+        "No se ha limpiado en al menos 45 días",
+        "Te estás mudando o saliendo de tu apartamento",
+        "Hubo un evento que hizo que tu apartamento se sintiera más sucio de lo normal (una renovación o incluso haber organizado una fiesta)",
+        "Simplemente deseas un poco más de brillo con tu servicio regular de limpieza del hogar"
+      ]
+    },
+    "aboutUs": {
+      "title": "Shine and Polish ES TU SERVICIO DE LIMPIEZA DE VECINDARIO",
+      "paragraphs": [
+        "Esto es más que un trabajo para nosotros, nuestro equipo de profesionales vive en la comunidad. Esta es nuestra comunidad, donde viven nuestros amigos y familiares. Nuestro negocio se basa en la satisfacción de nuestros clientes y en cómo beneficiamos a nuestra ciudad, por lo que nos tomamos en serio la limpieza de hogares y apartamentos. Puedes confiar en nosotros para proporcionar un servicio de limpieza profesional cada vez.",
+        "A través de limpiezas rutinarias o una limpieza profunda única, nuestros servicios de limpieza de apartamentos te devolverán la comodidad de tu hogar."
+      ]
+    }
+  }
+}

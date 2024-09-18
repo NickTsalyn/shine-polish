@@ -14,6 +14,7 @@ import { SIDEBAR_LINKS } from "@/data/navigation-links";
 import { signout } from "@/helpers/api";
 import {useRouter} from "next/navigation";
 import { UserInfo } from "@/types/interfaces";
+import { useTranslations } from "next-intl";
 
 const UserIcon = styled(AccountCircleIcon)(() => ({
   color: "#fff",
@@ -36,6 +37,7 @@ const socialIcons = [
 ];
 
 export default function Sidebar() {
+  const t = useTranslations('Home Page');
   const [auth, setAuth] = useState<UserInfo | null>(null);
   const router = useRouter();
   // const user = localStorage.getItem("user");
@@ -89,7 +91,7 @@ export default function Sidebar() {
                 </span>
               ) : (
                 <Link href="/sign-in-form" className="body text-secondary">
-                  Sign In <span className="text-white">or </span>Sign Up
+                  {t('signin')} <span className="text-white">or </span> {t('signup')}
                 </Link>
               )}
             </Button>
@@ -98,7 +100,7 @@ export default function Sidebar() {
           <li>
             <Button style="sidebar-book-now" type="button">
               <Link href="/booking" className="body font-bold text-secondary">
-                Book Now
+                {t('book-now')}
               </Link>
             </Button>
           </li>

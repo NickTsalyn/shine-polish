@@ -7,6 +7,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-fade";
+import { useTranslations } from "next-intl";
 
 interface Slide {
   id: number;
@@ -21,16 +22,17 @@ interface BeforeAfterProps {
 }
 
 export default function BeforeAfter({ data }: BeforeAfterProps) {
+  const t = useTranslations('Home Page');
   return (
     <section className="mb-[60px] md:mb-[80px] lg:mb-[120px] xl:mb-[160px]">
       <div className="container mx-auto">
         <div className="mx-auto w-[335px] md:w-[712px] lg:w-[1156px] xl:w-[1516px]">
           <div className="hidden md:flex justify-around">
             <h2 className="block h2 text-main text-center mb-[9px] md:mb-[18px] lg:mb-[30px] xl:mb-[36px]">
-              Before
+              {t('before')}
             </h2>
             <h2 className="block h2 text-main text-center mb-[9px] md:mb-[18px] lg:mb-[30px] xl:mb-[36px]">
-              After
+            {t('after')}
             </h2>
           </div>
 

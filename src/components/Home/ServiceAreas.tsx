@@ -6,8 +6,10 @@ import { useQuery } from "@tanstack/react-query";
 import { Options } from "@/types/interfaces";
 import Loading from "@/app/loading";
 import { getOptions } from "@/helpers/api";
+import { useTranslations } from "next-intl";
 
 const ServiceAreas = () => {
+  const t = useTranslations('Home Page');
   const { data, error, isLoading } = useQuery<{
     areaOptions: Options[];
   }>({
@@ -34,7 +36,7 @@ const ServiceAreas = () => {
     <section className="mb-[60px] md:mb-20 lg:mb-[120px] xl:mb-40">
       <div className="container mx-auto my-0 flex flex-col lg:flex-row lg:gap-12 xl:gap-10 items-center justify-center">
         <div className=" mb-10 md:mb-14 lg:mb-0">
-          <h2 className="h3 text-main text-center mb-8 md:mb-12 lg:mb-8">Service Areas</h2>
+          <h2 className="h3 text-main text-center mb-8 md:mb-12 lg:mb-8">{t('areas')}</h2>
 
           <div className="flex gap-16 md:gap-20 xl:gap-24 items-center justify-center">
             <Image src={img_phone} className="lg:w-[200px] xl:w-[232px]" alt="phone with map" width={122} />

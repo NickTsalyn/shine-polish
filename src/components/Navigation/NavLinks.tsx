@@ -4,6 +4,7 @@ import Link from "next/link";
 import { FC, useState } from "react";
 import CleaningOptions from "../Menu/CleaningOptions";
 import { PROCESSES_LINKS, SERVICES_LINKS } from "@/data/navigation-links";
+import { useTranslations } from "next-intl";
 
 interface NavLink {
   href: string;
@@ -16,6 +17,7 @@ interface NavLinksProps {
 }
 
 const NavLinks: FC<NavLinksProps> = ({ links, handleClose }) => {
+  const t = useTranslations('Home Page');
   const [selectedItem, setSelectedItem] = useState<number | null>(null);
 
   const handleClick = (index: number | null) => {
@@ -35,10 +37,10 @@ const NavLinks: FC<NavLinksProps> = ({ links, handleClose }) => {
         </li>
       ))}
       <li>
-        <CleaningOptions color="#fff" buttonText="Cleaning Process" links={PROCESSES_LINKS} />
+        <CleaningOptions color="#fff" buttonText={t('process')} links={PROCESSES_LINKS} />
       </li>
       <li>
-        <CleaningOptions color="#fff" buttonText="Cleaning Services" links={SERVICES_LINKS} />
+        <CleaningOptions color="#fff" buttonText={t('service')} links={SERVICES_LINKS} />
       </li>
     </ul>
   );
