@@ -33,7 +33,7 @@ const SectionJustAsk: React.FC = () => {
   <section className="mb-[60px] md:mb-20 lg:mb-[120px] xl:mb-40">
    <div
     data-aos="fade-right"
-    className="container relative flex flex-col lg:flex-row mx-auto lg:gap-12 xl:gap-10 items-center justify-center lg:items-start lg:justify-normal lg:max-w-[1156px] xl:max-w-[1516px] animate-fade-right animate-once animate-duration-[3000ms] animate-ease-in-out"
+    className="container relative flex flex-col lg:flex-row mx-auto lg:gap-12 xl:gap-10 items-center justify-center lg:items-start lg:justify-normal lg:max-w-[1156px] xl:max-w-[1516px] animate-fade-right animate-once animate-duration-[3000ms] animate-ease-in-out overflow-hidden"
    >
     <div
      data-aos="fade-up-right"

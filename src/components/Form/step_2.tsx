@@ -65,7 +65,7 @@ const Step2 = ({control, setStepCompleted}: StepProps) => {
  }, [handleDisable]);
 
  return (
-  <div className="py-4 md:py-6 lg:py-9 lg:min-h-[600px] xl:min-h-[1000px]">
+  <div className="py-4 md:py-6 lg:py-9 lg:min-h-[80hv] ">
    <div className="max-w-[278px] md:max-w-[682px] lg:max-w-[1180px] xl:max-w-[1576px]  mb-5 xl:mb-[35px] m-auto">
     <h2 className="text-2xl md:text-4xl font-medium mb-5">Select Extras</h2>
     <p className="text-bookingSubText font-normal mb-5 leading-[14.4px] text-[12px] md:text-[18px] md:leading-[32px] lg:leading-[28.8px] ">

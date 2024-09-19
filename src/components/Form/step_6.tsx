@@ -84,7 +84,7 @@ const Step6 = ({ setStepCompleted }: StepProps) => {
   }, [setStepCompleted]);
 
   return (
-    <div className="p-4 md:p-6 lg:p-9 xl:py-12 flex flex-col gap-5 lg:h-[80vh] justify-between">
+    <div className="p-4 md:p-6 lg:p-9 xl:py-12 flex flex-col gap-5 lg:min-h-[80vh] justify-between">
       <div>
         <h2 className=" text-black text-3xl text-center mb-2 lg:mb-5 xl:mb-12 xl:text-[48px]  ">BOOKING SUMMARY</h2>
         <p className="text-bookingSubText text-base lg:text-[24px] xl:text-[32px] ">
