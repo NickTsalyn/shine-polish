@@ -41,8 +41,6 @@ export default function Sidebar() {
   const router = useRouter();
 
   const { isSignedIn, userData, signOutContext } = useAuth();
-  console.log(isSignedIn);
-  console.log(userData);
 
   useEffect(() => {
     setAuth(userData?.user)

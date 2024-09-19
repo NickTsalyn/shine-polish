@@ -64,7 +64,7 @@ export default function SignInForm() {
   return (
     <div className="flex flex-col mb-[40px] lg:h-screen">
       <div className="m-auto relative w-[320px] md:w-[712px] lg:w-[960px] h-auto md:h-[500px] lg:h-[575px] rounded-xl md:rounded-[50px] md:flex shadow-main-shadow">
-        <div className="absolute top-0 right-0 z-10 md:top-4 md:right-4">
+        <div className="absolute top-4 right-4 z-10 md:top-8 md:right-8">
           <Button
             style="close-button"
             type="button"
@@ -77,7 +77,7 @@ export default function SignInForm() {
             </Link>
           </Button>
         </div>
-        <div className="pt-4 md:pt-[76px] lg:pt-[80px] pl-8 pr-8 flex flex-col md:items-center md:w-[356px] lg:w-[480px] md:h-[500px] rounded-b-xl">
+        <div className="pt-4 md:pt-[76px] lg:pt-[80px] pl-8 pr-8 flex flex-col items-center md:items-center md:w-[356px] lg:w-[480px] md:h-[500px] rounded-b-xl">
           <h2 className="text-main text-[40px] lg:text-[48] text-center mb-4 md:mb-5 lg:mb-6 lg:font-normal">
             Sign in
           </h2>
