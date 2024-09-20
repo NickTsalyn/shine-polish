@@ -104,7 +104,7 @@ const Step5: React.FC<StepProps> = ({setStepCompleted}: StepProps) => {
     <h2 className="text-center self-center text-accent-light text-2xl mb-5 hidden md:text-4xl lg:block xl:hidden animate-wiggle-more animate-infinite animate-duration-[3000ms] animate-ease-in-out">
      Tell about us your friends <br /> and get discount!
     </h2>
-    <div className=" flex justify-center lg:w-[460px] xl:w-[700px] h-auto">
+    <div className=" flex justify-center lg:w-[400px] xl:w-[700px] h-auto">
      <BannerImg />
     </div>
    </div>

@@ -37,7 +37,7 @@ const Step3: React.FC<StepProps> = ({control, setStepCompleted}) => {
  }, [isStepCompleted, setStepCompleted]);
 
  return (
-  <div className="py-4 md:py-6 lg:py-9 lg:max-h-[80vh] lg:justify-between">
+  <div className="py-4 md:py-6 lg:py-9 lg:min-h-[80vh] lg:justify-between">
    <div className="mb-10 lg:mb-0">
     <h2 className="mb-4 md:mb-5 lg:mb-[26px] text-2xl md:text-4xl font-medium md:font-normal">Contact information</h2>
     <p className="text-subtext md:text-2xl mb-6 md:mb-8 lg:mb-5">
@@ -163,7 +163,7 @@ const Step3: React.FC<StepProps> = ({control, setStepCompleted}) => {
 
     <div className="flex flex-col  lg:w-full  mb-10 lg:mb-[60px] ">
      <h2 className="mb-6 md:mb-7 lg:mb-5 text-2xl md:text-4xl font-medium md:font-normal">Additional information</h2>
-     <div className=" flex flex-col lg:flex-row lg:flex-nowrap gap-4  md:gap-6  mb-10">
+     <div className=" flex flex-col lg:flex-row lg:flex-nowrap gap-4  md:gap-6  mb-10 lg:mb-6">
       <div className="w-full lg:w-4/12  relative mb-[12px]">
        <Controller
         name="homeAccess"
