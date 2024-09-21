@@ -62,7 +62,7 @@ const SectionJustAsk: React.FC = () => {
         </p>
        )}
       </div>
-      <div className="w-auto lg:w-[400px] xl:w-[630px] h-[102px] md:h-[180px] lg:h-[240px] xl:h-[324px] mb-5 lg:mb-10">
+      <div className="w-auto lg:w-[400px] xl:w-[630px] h-[102px] md:h-[180px] lg:h-[240px] xl:h-[324px] mb-5 lg:mb-10 ">
        <Textarea
         {...register("question", {required: "Question is required"})}
         placeholder="Your question"
