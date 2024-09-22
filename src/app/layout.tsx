@@ -10,6 +10,7 @@ import QueryProvider from "@/app/_tansctackprovider";
 import { Suspense } from "react";
 import Loading from "./loading";
 import { usePathname } from "next/navigation";
+import AuthProvider from "@/components/AuthContext";
 
 const lato = Lato({
   subsets: ["latin"],
@@ -42,19 +43,23 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={lato.className}>
-        <QueryProvider>
-          <FormProvider>
-            <div className="relative h-full">
-              <Header />
-              <Sidebar />
-              <Suspense fallback={<Loading />}>
-                <main className="lg:ml-[200px] xl:ml-[244px]">{children}</main>
-              </Suspense>
-              <Footer />
-              {!hideFooter && <FooterDesctop />}
-            </div>
-          </FormProvider>
-        </QueryProvider>
+        <AuthProvider>
+          <QueryProvider>
+            <FormProvider>
+              <div className="relative h-full">
+                <Header />
+                <Sidebar />
+                <Suspense fallback={<Loading />}>
+                  <main className="lg:ml-[200px] xl:ml-[244px]">
+                    {children}
+                  </main>
+                </Suspense>
+                <Footer />
+                {!hideFooter && <FooterDesctop />}
+              </div>
+            </FormProvider>
+          </QueryProvider>
+        </AuthProvider>
       </body>
     </html>
   );

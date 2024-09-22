@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
 import Image from "next/legacy/image";
-import { useEffect, useState } from "react";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
 import InstagramIcon from "@mui/icons-material/Instagram";
@@ -12,8 +11,8 @@ import NavLinks from "./Navigation/NavLinks";
 import Button from "./UI/Button";
 import { SIDEBAR_LINKS } from "@/data/navigation-links";
 import { signout } from "@/helpers/api";
-import {useRouter} from "next/navigation";
-import { UserInfo } from "@/types/interfaces";
+import { useRouter } from "next/navigation";
+import { useAuth } from "@/components/AuthContext";
 
 const UserIcon = styled(AccountCircleIcon)(() => ({
   color: "#fff",
@@ -36,38 +35,38 @@ const socialIcons = [
 ];
 
 export default function Sidebar() {
-  const [auth, setAuth] = useState<UserInfo | null>(null);
   const router = useRouter();
-  // const user = localStorage.getItem("user");
 
-  useEffect(() => {
-    const user = localStorage.getItem("user");
-    if (user) {
-      const objUser = JSON.parse(user);
-      setAuth(objUser.user);
-    }
-  }, []);
+  const { userData, signOutContext } = useAuth();
 
-  const handleSignOut = () =>{
-    signout
-    localStorage.removeItem("user")
-    setAuth(null);
+  const handleSignOut = () => {
+    signout;
+    localStorage.removeItem("user");
+    signOutContext();
     router.push("/");
-  }
+  };
 
   return (
     <aside className="  hidden lg:flex flex-col content-around fixed inset-y-0 left-0 p-5 xl:p-[26px] w-[200px] h-full xl:w-[244px] bg-main z-30">
       <div className="flex w-[128px] h-[115px] xl:w-[156px] xl:h-[140px] mx-auto mb-6 xl:mb-9 ">
         <Link href={"/"} className="w-full h-full relative">
-          <Image src="/icons/logo/logo_dark_bg.svg" alt="Logo" layout="fill" objectFit="contain" priority />
+          <Image
+            src="/icons/logo/logo_dark_bg.svg"
+            alt="Logo"
+            layout="fill"
+            objectFit="contain"
+            priority
+          />
         </Link>
       </div>
 
-      {auth && (
-        <Link href={`/client-bookings/${auth.id}`}>
+      {userData && (
+        <Link href={`/client-bookings/${userData.user.id}`}>
           <div className="flex items-center gap-5 xl:gap-6 mb-6">
             <UserIcon />
-            <p className=" body font-light text-white">{auth.username}</p>
+            <p className=" body font-light text-white">
+              {userData.user.username}
+            </p>
           </div>
         </Link>
       )}
@@ -80,17 +79,19 @@ export default function Sidebar() {
         <ul className="mb-5 flex flex-col align-center gap-5 xl:gap-6">
           <li>
             <Button style="sidebar-auth-in" type="button">
-              {auth ? (
-                <span
-                  onClick={handleSignOut}
-                  className="body text-secondary"
-                >
+              {userData ? (
+                <span onClick={handleSignOut} className="body text-secondary">
                   Sign Out
                 </span>
               ) : (
-                <Link href="/sign-in-form" className="body text-secondary">
-                  Sign In <span className="text-white">or </span>Sign Up
-                </Link>
+                <div>
+                  <Link href="/sign-in-form" className="body text-secondary">
+                    Sign In <span className="text-white">or </span>
+                  </Link>
+                  <Link href="/sign-up" className="body text-secondary">
+                    Sign Up
+                  </Link>
+                </div>
               )}
             </Button>
           </li>
@@ -107,12 +108,19 @@ export default function Sidebar() {
               <Link href="tel:+4708003249">tel: 470-800-32-49</Link>
 
               <div className="absolute top-[-18px] left-0 z-10">
-                <Image width={30} height={24} src="/images/woman_with_a_phone.png" alt="woman with a phone" />
+                <Image
+                  width={30}
+                  height={24}
+                  src="/images/woman_with_a_phone.png"
+                  alt="woman with a phone"
+                />
               </div>
             </div>
           </li>
         </ul>
-        <p className="mb-2 xl:mb-3 text-[28px] xl:text-[36px] font-light text-white">Follow us</p>
+        <p className="mb-2 xl:mb-3 text-[28px] xl:text-[36px] font-light text-white">
+          Follow us
+        </p>
         <ul className="flex  gap-5 ">
           {socialIcons.map((socialIcon, index) => (
             <li key={index}>

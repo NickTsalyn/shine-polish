@@ -94,7 +94,7 @@ export default function Button(props: PropsButtton) {
     "w-[80%] px-4  lg:px-20 xl:px-14 py-4  rounded-xl bg-white border-main border-[1px] hover:shadow-button-shadow hover:border-transparent hover:bg-[#F6AD70] focus:shadow-button-shadow focus:bg-secondary transiton-all duration-300";
    break;
   case "close-button":
-   styles = " w-3 h-3 md:w-4 md:h-4 rounded-full bg-transparent ";
+   styles = "size-6 rounded-full bg-transparent ";
    break;
   case "transparent-button":
    styles = "w-[52px] h-[52px] ld:w-[64px] lg:h-[64px] rounded-full bg-transparent border-none ";
