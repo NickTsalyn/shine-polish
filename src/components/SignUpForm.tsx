@@ -16,6 +16,7 @@ import { signup } from "@/helpers/api";
 import { useMutation } from "@tanstack/react-query";
 import Spinner from "@/components/UI/Spinner";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@/components/AuthContext";
 
 interface SignUpProps {
   username: string;
@@ -25,6 +26,7 @@ interface SignUpProps {
 
 export default function SignUpForm() {
   const router = useRouter();
+  const { signInContext } = useAuth();
   const {
     register,
     handleSubmit,
@@ -34,9 +36,9 @@ export default function SignUpForm() {
   const mutation = useMutation({
     mutationFn: (credentials: SignUpProps) => signup(credentials),
     onSuccess: (data) => {
-      console.log("I'm first!", data);
       localStorage.setItem("user", JSON.stringify(data.data));
-      router.push("/");
+      router.push(`/`);
+      signInContext(data.data);
     },
     onError: (error: any) => {
       // An error happened!
@@ -44,9 +46,7 @@ export default function SignUpForm() {
     },
   });
   const onSubmit = async (data: SignUpProps) => {
-    console.log("Sent body", data);
     const res = mutation.mutate(data);
-    console.log(res);
   };
 
   // if (mutation.isError) {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState, createContext, useContext } from "react";
 import { AuthData } from "@/types/interfaces";
 
@@ -24,6 +24,14 @@ export const useAuth = () => {
 export default function AuthProvider({ children }: AuthProps) {
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [userData, setUserData] = useState<AuthData | null>(null);
+
+  useEffect(() => {
+    const user = localStorage.getItem("user");
+    if (user) {
+      const objUser = JSON.parse(user);
+      setUserData(objUser);
+    }
+  }, []);
 
   const signInContext = (data: AuthData) => {
     setIsSignedIn(true);

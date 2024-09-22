@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
 import Image from "next/legacy/image";
-import { useEffect, useState } from "react";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
 import InstagramIcon from "@mui/icons-material/Instagram";
@@ -13,7 +12,6 @@ import Button from "./UI/Button";
 import { SIDEBAR_LINKS } from "@/data/navigation-links";
 import { signout } from "@/helpers/api";
 import { useRouter } from "next/navigation";
-import { UserInfo } from "@/types/interfaces";
 import { useAuth } from "@/components/AuthContext";
 
 const UserIcon = styled(AccountCircleIcon)(() => ({
@@ -37,24 +35,13 @@ const socialIcons = [
 ];
 
 export default function Sidebar() {
-  const [auth, setAuth] = useState<UserInfo | undefined>(undefined);
   const router = useRouter();
 
-  const { isSignedIn, userData, signOutContext } = useAuth();
-
-  useEffect(() => {
-    setAuth(userData?.user)
-    const user = localStorage.getItem("user");
-    if (user) {
-      const objUser = JSON.parse(user);
-      setAuth(objUser.user);
-    }
-  }, [userData]);
+  const { userData, signOutContext } = useAuth();
 
   const handleSignOut = () => {
     signout;
     localStorage.removeItem("user");
-    setAuth(undefined);
     signOutContext();
     router.push("/");
   };
@@ -73,11 +60,13 @@ export default function Sidebar() {
         </Link>
       </div>
 
-      {auth && (
-        <Link href={`/client-bookings/${auth.id}`}>
+      {userData && (
+        <Link href={`/client-bookings/${userData.user.id}`}>
           <div className="flex items-center gap-5 xl:gap-6 mb-6">
             <UserIcon />
-            <p className=" body font-light text-white">{auth.username}</p>
+            <p className=" body font-light text-white">
+              {userData.user.username}
+            </p>
           </div>
         </Link>
       )}
@@ -90,18 +79,19 @@ export default function Sidebar() {
         <ul className="mb-5 flex flex-col align-center gap-5 xl:gap-6">
           <li>
             <Button style="sidebar-auth-in" type="button">
-              {auth ? (
+              {userData ? (
                 <span onClick={handleSignOut} className="body text-secondary">
                   Sign Out
                 </span>
               ) : (
                 <div>
-                <Link href="/sign-in-form" className="body text-secondary">
-                  Sign In <span className="text-white">or </span>
-                </Link>
-                <Link href="/sign-up" className="body text-secondary">
-                  Sign Up 
-                </Link></div>
+                  <Link href="/sign-in-form" className="body text-secondary">
+                    Sign In <span className="text-white">or </span>
+                  </Link>
+                  <Link href="/sign-up" className="body text-secondary">
+                    Sign Up
+                  </Link>
+                </div>
               )}
             </Button>
           </li>
