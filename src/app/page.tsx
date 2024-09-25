@@ -15,14 +15,29 @@ import Arrow from "@/components/Home/Arrow";
 import ArrowMobile from "@/components/Home/ArrrowMobile";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 
 export default function Home() {
+ const [hasScrolled, setHasScrolled] = useState(false);
+
+ // eslint-disable-next-line react-hooks/exhaustive-deps
+ const handleScroll = () => {
+  if (!hasScrolled) {
+   AOS.init({
+    duration: 3000,
+    once: true,
+   });
+   setHasScrolled(true);
+  }
+ };
  useEffect(() => {
-  AOS.init({
-   duration: 3000, // Тривалість анімації
-  });
- }, []);
+  window.addEventListener("scroll", handleScroll);
+
+  return () => {
+   window.removeEventListener("scroll", handleScroll);
+  };
+ }, [hasScrolled, handleScroll]);
+
  return (
   <>
    <ArrowMobile />

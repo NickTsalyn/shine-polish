@@ -65,7 +65,7 @@ const Step2 = ({control, setStepCompleted}: StepProps) => {
  }, [handleDisable]);
 
  return (
-  <div className="py-4 md:py-6 lg:py-9 lg:min-h-[80vh] ">
+  <div className="py-4 md:py-6 lg:py-9 lg:min-h-[70vh] ">
    <div className="max-w-[278px] md:max-w-[682px] lg:max-w-[1180px] xl:max-w-[1576px]  mb-5 xl:mb-[35px] m-auto">
     <h2 className="text-2xl md:text-4xl font-medium mb-5">Select Extras</h2>
     <p className="text-bookingSubText font-normal mb-5 leading-[14.4px] text-[12px] md:text-[18px] md:leading-[32px] lg:leading-[28.8px] ">
@@ -82,13 +82,13 @@ const Step2 = ({control, setStepCompleted}: StepProps) => {
     </p>
    </div>
    <div className="flex gap-[16px] flex-col max-w-[278px] md:max-w-[682px] lg:max-w-[1160px] xl:max-w-[1572px] m-auto">
-    <ul className="flex flex-wrap gap-5   lg:w-[1160px] xl:w-[1576px] justify-center md:justify-around lg:justify-start md:flex-nowrap lg:flex-wrap ">
+    <ul className="flex flex-wrap gap-5  lg:h-[72px] lg:w-[1160px] xl:w-[1576px] justify-center md:justify-around lg:justify-start md:flex-nowrap lg:flex-wrap ">
      {services.map(({value, label}) => {
       if (value === "Visit property for estimate") {
        return (
         <li
          key={"Visit property for estimate"}
-         className="justify-center items-center w-[278px] md:w-[693px] lg:w-[372px] xl:w-[509px] xl:min-h-[140px] hidden lg:flex"
+         className="justify-center items-center w-[278px] md:w-[693px] lg:h-[72px] lg:w-[372px] xl:w-[509px] xl:min-h-[140px] hidden lg:flex"
         >
          <Controller
           name="service"
@@ -98,7 +98,7 @@ const Step2 = ({control, setStepCompleted}: StepProps) => {
            <RadioButton
             {...field}
             value={"Visit property for estimate"}
-            style=" py-2 px-2 md:py-2 md:px-2 lg:py-2 h-full w-full text-accent md:text-accent md:text-[20px]  md:leading-[28.8px]"
+            style=" py-2 px-2 md:py-2 md:px-2 lg:py-2  h-full lg:h-[72px] xl:h-full w-full text-accent md:text-accent md:text-[20px]  md:leading-[28.8px]"
             isActive={"Visit property for estimate" === form.service}
             onClick={() => handleCustomChange("service", "Visit property for estimate")}
            >
@@ -112,7 +112,7 @@ const Step2 = ({control, setStepCompleted}: StepProps) => {
        return (
         <li
          key={value}
-         className="flex justify-center items-center w-[128px] md:w-[150px] lg:w-[176px] xl:w-[246px] md:min-h-[140px]"
+         className="flex justify-center items-start lg:h-[72px] w-[128px] md:w-[150px] lg:w-[176px] xl:w-[246px] md:min-h-[140px]"
         >
          <Controller
           name="service"
@@ -122,7 +122,7 @@ const Step2 = ({control, setStepCompleted}: StepProps) => {
            <RadioButton
             {...field}
             value={value}
-            style=" py-2 px-2 md:py-2 md:px-2 lg:py-2 h-full w-full md:text-[18px] text-main  md:leading-[28.8px]"
+            style=" py-2 px-2 md:py-2 md:px-2 lg:py-2 h-full lg:h-[72px] xl:full w-full md:text-[18px] text-main  md:leading-[28.8px]"
             isActive={value === form.service}
             onClick={() => {
              field.onChange(value);

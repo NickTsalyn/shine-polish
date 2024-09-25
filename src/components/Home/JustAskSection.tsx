@@ -84,7 +84,9 @@ const SectionJustAsk: React.FC = () => {
         style="send"
         type="submit"
        >
-        <span className="text-white text-5 md:text-6 lg:text-[32px] font-bold hover:text-accent">Send</span>
+        <span className="group hoevr:text-white focus:text-white text-accent text-5 md:text-6 lg:text-[32px] font-bold transition-all duration-300">
+         Send
+        </span>
        </Button>
       </div>
      </form>

@@ -55,7 +55,7 @@ const Step1 = ({control, setStepCompleted}: StepProps) => {
  }
 
  return (
-  <div className="py-4 md:py-6 lg:py-9 lg:min-h-[80vh]  flex flex-col gap-6 lg:gap-x-10 lg:gap-y-0  lg:flex-row  xl:gap-x-32 lg:justify-between ">
+  <div className="py-4 md:py-6 lg:py-9 lg:min-h-[70vh]  flex flex-col gap-6 lg:gap-x-10 lg:gap-y-0  lg:flex-row  xl:gap-x-32 lg:justify-between ">
    <div className="md:flex md:flex-row lg:flex-col md:justify-between lg:justify-start md:gap-6 lg:gap-[32px] xl:gap-[30px] lg:row-span-2  lg:w-1/2 ">
     <div className="flex flex-col gap-4 md:gap-6 ">
      <h2 className=" text-2xl md:text-4xl font-medium">Choose area</h2>

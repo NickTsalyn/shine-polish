@@ -96,12 +96,8 @@ const SectionEstimate = () => {
        ))}
       </ul>
       <div className="flex flex-row justify-between items-center gap-5">
-       <p className=" text-sand font-bold text-2xl md:font-normal md:text-[32px] lg:font-normal lg:text-5xl">
-        Previous estimate:
-       </p>
-       <span className="font-bold text-2xl text-main md:font-normal md:text-[40px] lg:font-normal lg:text-5xl">
-        {total.toFixed(2)} $
-       </span>
+       <p className=" text-sand font-bold text-xl md:font-normal md:text-4xl ">Previous estimate:</p>
+       <span className="font-bold text-2xl text-main md:font-normal md:text-4xl ">{total.toFixed(2)} $</span>
       </div>
      </div>
      <div className="">
@@ -109,7 +105,7 @@ const SectionEstimate = () => {
        onClick={() => router.push("/booking")}
        className=" relative pl-8  md:pl-5 lg:pl-[52px] w-[333px] h-[216px] rounded-xl bg-sand/25 flex items-center md:w-[226px] md:h-[243px] lg:w-[484px] lg:h-[338px]"
       >
-       <span className="font-bold text-[44px] text-center text-accent md:text-[32px] lg:text-[64px] w-[220px] md:w-[138px] lg:w-[276px]">
+       <span className="font-bold text-[44px] text-center lg:leading-[64px] text-accent md:text-4xl lg:text-[48px] w-[220px] md:w-[138px] lg:w-[276px]">
         Full estimate
        </span>
        <div className="md:w-[180px] md:h-[300px] lg:w-[186px] lg:h-[400px] ">

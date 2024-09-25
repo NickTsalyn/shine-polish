@@ -37,7 +37,7 @@ const Step3: React.FC<StepProps> = ({control, setStepCompleted}) => {
  }, [isStepCompleted, setStepCompleted]);
 
  return (
-  <div className="py-4 md:py-6 lg:py-9 lg:min-h-[80vh] lg:justify-between">
+  <div className="py-4 md:py-6 lg:py-9 lg:min-h-[70vh] lg:justify-between">
    <div className="mb-10 lg:mb-0">
     <h2 className="mb-4 md:mb-5 lg:mb-[26px] text-2xl md:text-4xl font-medium md:font-normal">Contact information</h2>
     <p className="text-subtext md:text-2xl mb-6 md:mb-8 lg:mb-5">
@@ -140,7 +140,7 @@ const Step3: React.FC<StepProps> = ({control, setStepCompleted}) => {
         <>
          <IMaskInput
           {...field}
-          className="block mx-full w-full hx-full h-full py-[8px] lg:py-[12px] px-[8px] lg:px-[16px] bg-transparent text-text border-solid border-2 focus:border-[3px] border-secondary rounded-[12px] focus:shadow-input-shadow outline-none xl:placeholder:text-[16px] placeholder:text-secondary-placeholder placeholder:opacity-50"
+          className="block mx-full w-full hx-full h-full py-[8px] lg:py-[12px] px-[8px] lg:px-[16px] bg-transparent text-text border-solid border-2  border-secondary rounded-[12px]  outline-none xl:placeholder:text-[16px] placeholder:text-secondary-placeholder placeholder:opacity-50 hover:border-[3px] hover:shadow-input-shadow focus:border-[3px] focus:shadow-input-shadow transition-all duration-300"
           mask={ContactNumberMask}
           placeholder="(000) 000-0000"
           value={form.phone}
@@ -164,6 +164,7 @@ const Step3: React.FC<StepProps> = ({control, setStepCompleted}) => {
     <div className="flex flex-col  lg:w-full  mb-10 lg:mb-[60px] ">
      <h2 className="mb-6 md:mb-7 lg:mb-5 text-2xl md:text-4xl font-medium md:font-normal">Additional information</h2>
      <div className=" flex flex-col lg:flex-row lg:flex-nowrap gap-4  md:gap-6  mb-10 lg:mb-6">
+      {/* <div className="w-full lg:flex-row lg:flex-nowrap justify-between"> */}
       <div className="w-full lg:w-4/12  relative mb-[12px]">
        <Controller
         name="homeAccess"
@@ -210,21 +211,22 @@ const Step3: React.FC<StepProps> = ({control, setStepCompleted}) => {
         )}
        />
       </div>
-     </div>
+      {/* </div> */}
 
-     <div className="flex lg:h-[40px] gap-2 md:gap-5 lg:w-5/12  ">
-      <button
-       type="button"
-       className="flex items-center justify-center p-0 w-4 md:w-6 h-4 md:h-6 rounded"
-       onClick={handleCheckBoxChange}
-      >
-       {form.remindersChecked ? (
-        <CheckBoxIcon className="w-full h-full fill-main" />
-       ) : (
-        <CheckBoxOutlineBlankIcon className="w-full h-full fill-main" />
-       )}
-      </button>
-      <p className="text-secondary text-xs md:text-xl">Send me reminders about my booking via email</p>
+      <div className="flex lg:h-[40px] gap-2 md:gap-5 lg:w-3/12  ">
+       <button
+        type="button"
+        className="flex items-center justify-center p-0 w-4 md:w-6 h-4 md:h-6 rounded"
+        onClick={handleCheckBoxChange}
+       >
+        {form.remindersChecked ? (
+         <CheckBoxIcon className="w-full h-full fill-main" />
+        ) : (
+         <CheckBoxOutlineBlankIcon className="w-full h-full fill-main" />
+        )}
+       </button>
+       <p className="text-secondary text-xs md:text-xl">Send me reminders about my booking via email</p>
+      </div>
      </div>
     </div>
 

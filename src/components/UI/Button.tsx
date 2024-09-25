@@ -32,14 +32,16 @@ export default function Button(props: PropsButtton) {
 
  switch (props.style) {
   case "burger-book-now":
-   styles = "py-1.5 md:py-1 bg-white border border-solid border-accent rounded-xl w-full";
+   styles =
+    "py-1.5 md:py-1 bg-white border border-solid border-accent rounded-xl w-full hover:border-3px hover:border-accent/50 hover:text-white hover:bg-accent/80 transition-colors duration-300 hover:opacity-90";
    break;
   case "burger-contact-us":
-   styles = "py-1 border border-solid border-secondary rounded-xl w-full";
+   styles =
+    "py-1 border border-solid border-secondary rounded-xl w-full hover:border-3px hover:border-accent/50 hover:text-white hover:bg-accent/80 transition-colors duration-300 hover:opacity-90";
    break;
   case "home-book-now":
    styles =
-    "py-1 md:py-2 lg:py-2 xl:py-4  px-4 md:px-[54px] lg:px-12 xl:px-[70px]  border border-solid border-secondary rounded-[10px] backdrop-blur-[10px]   ";
+    "py-1 md:py-2 lg:py-2 xl:py-4  px-4 md:px-[54px] lg:px-12 xl:px-[70px]  border border-solid border-secondary rounded-[10px] backdrop-blur-[10px] hover:border-3px hover:border-accent/50 hover:text-white hover:bg-accent/80 transition-colors duration-300 hover:opacity-90 ";
    break;
   case "footer-book-now":
    styles =
@@ -47,51 +49,55 @@ export default function Button(props: PropsButtton) {
    break;
   case "home-contact-us":
    styles =
-    "py-1 md:py-2 lg:py-2 xl:py-4  px-3 md:px-12 lg:px-10 xl:px-[60px]  border border-solid border-secondary rounded-[10px] backdrop-blur-[10px]   ";
+    "py-1 md:py-2 lg:py-2 xl:py-4  px-3 md:px-12 lg:px-10 xl:px-[60px]  border border-solid border-secondary rounded-[10px] backdrop-blur-[10px] hover:border-3px hover:border-accent/50 hover:text-white hover:bg-accent/80 transition-colors duration-300 hover:opacity-90  ";
    break;
   case "sidebar-book-now":
-   styles = " px-8 xl:px-12 py-1 xl:py-[6px] w-full border rounded-[10px] border-secondary bg-main ";
+   styles =
+    " px-8 xl:px-12 py-1 xl:py-[6px] w-full border rounded-[10px] border-secondary bg-main hover:border-3px hover:border-accent/50 hover:text-white hover:bg-accent/50 transition-colors duration-300 hover:opacity-90";
    break;
   case "sidebar-auth-in":
-   styles = " border border-solid border-sand rounded-[10px]  py-1 xl:py-[6px] bg-main w-full";
+   styles =
+    " border border-solid border-sand rounded-[10px]  py-1 xl:py-[6px] bg-main w-full hover:border-3px hover:border-accent/50 hover:text-white hover:bg-accent/50 transition-colors duration-300 hover:opacity-90";
    break;
   case "sidebar-log-out":
-   styles = " px-10 xl:px-14 py-1 xl:py-[6px] w-full border rounded-[10px] border-sand bg-main ";
+   styles =
+    " px-10 xl:px-14 py-1 xl:py-[6px] w-full border rounded-[10px] border-sand bg-main hover:border-3px hover:border-accent/50 hover:text-white hover:bg-accent/50 transition-colors duration-300 hover:opacity-90 ";
    break;
   case "auth-sign-up-border":
    styles =
-    " w-[128px] h-[40px] lg:w-[200px] lg:h-[60px] flex justify-center items-center py-2 lg:py-4 px-6 lg:px-14 border border-blue rounded-xl bg-main";
+    " w-[128px] h-[40px] lg:w-[200px] lg:h-[60px] flex justify-center items-center py-2 lg:py-4 px-6 lg:px-14 border border-blue rounded-xl bg-main transition-colors duration-300 hover:bg-accent hover:shadow-btn-shadow hover:text-secondary";
    break;
   case "auth-sign":
    styles =
-    "w-[128px] h-[36px] lg:w-[164px] lg:h-[40px] bg-auth-button-bgn rounded-xl flex justify-center items-center";
+    "w-[128px] h-[36px] lg:w-[164px] lg:h-[40px] bg-auth-button-bgn rounded-xl flex justify-center items-center transition-colors duration-300 hover:bg-accent";
    break;
   case "apply-btn-light":
    styles =
-    " w-[140px] lg:w-[160px] xl:h-[56px] rounded-xl border-none border-secondary   bg-secondary  py-1 px-1 hover:bg-sand focus:bg-accent hover:shadow-btn-shadow    hover:text-secondary  focus:shadow-btn-shadow  ";
+    "group w-[140px] lg:w-[160px] xl:h-[56px] rounded-xl border-none border-secondary   bg-secondary  py-1 px-1 hover:bg-accent-light focus:bg-accent-light hover:shadow-btn-shadow    hover:text-secondary  focus:shadow-btn-shadow transition-colors duration-300 ";
    break;
   case "apply-btn-light-one":
    styles =
-    " rounded-xl border-2 border-secondary  focus:border-accent hover:border-accent text-xl text-accent hover:text-white focus:text-white   bg-secondary  py-1 lg:py-4 px-8 hover:shadow-apply-send-button-shadow  focus:shadow-apply-send-button-shadow hover:bg-accent focus:bg-accent  ";
+    " rounded-xl border-2 border-secondary  focus:border-accent hover:border-accent text-xl text-accent hover:text-white focus:text-white   bg-secondary  py-1 lg:py-4 px-8 hover:shadow-apply-send-button-shadow  focus:shadow-apply-send-button-shadow hover:bg-accent focus:bg-accent transition-colors duration-300 ";
    break;
   case "apply-btn-blue":
    styles =
-    " rounded-xl border-2 border-main  bg-main hover:border-2 hover:border-tertial  hover:bg-tertial/50 focus:bg-tertial/50 hover:shadow-apply-blue-button-shadow focus:shadow-apply-button-shadow  py-1 px-[74px]  ";
+    " rounded-xl border-2 border-main  bg-main hover:border-2 hover:border-tertial  hover:bg-tertial/50 focus:bg-tertial/50 hover:shadow-apply-blue-button-shadow focus:shadow-apply-button-shadow  py-1 px-[74px] transition-colors duration-300 ";
    break;
   case "footer-book-now":
    styles =
-    " w-[140px] lg:w-[160px] xl:w-[196px] h-9 lg:h-10 border rounded-xl border-secondary bg-main mb-5 flex justify-center items-center";
+    " w-[140px] lg:w-[160px] xl:w-[196px] h-9 lg:h-10 border rounded-xl border-secondary bg-main mb-5 flex justify-center items-center hover:border-3px hover:border-accent/50 hover:text-white hover:bg-accent/50 transition-colors duration-300 hover:opacity-90";
    break;
   case "send":
-   styles = "w-[148px] h-[36px] md:w-[162px] md:h-[48px] lg:w-[220px]  rounded-xl bg-secondary hover:bg-[#F6AD70]";
+   styles =
+    "group w-[148px] h-[36px] md:w-[162px] md:h-[48px] lg:w-[220px]  rounded-xl bg-secondary hover:bg-accent-light transition-colors duration-300";
    break;
   case "deep-cleaning":
    styles =
-    " px-5 py-3 border-2 rounded-xl border-tertial hover:border-main/30 focus:border-main/30 hover:bg-tertial focus:bg-tertial shadow-button-shadow hover:shadow-button-hover-shadow disabled:border-tertial/30 ";
+    " px-5 py-3 border-2 rounded-xl border-tertial hover:border-main/30 focus:border-main/30 hover:bg-tertial focus:bg-tertial shadow-button-shadow hover:shadow-button-hover-shadow disabled:border-tertial/30  transition-colors duration-300";
    break;
   case "work-with-us":
    styles =
-    "w-[80%] px-4  lg:px-20 xl:px-14 py-4  rounded-xl bg-white border-main border-[1px] hover:shadow-button-shadow hover:border-transparent hover:bg-[#F6AD70] focus:shadow-button-shadow focus:bg-secondary transiton-all duration-300";
+    "group w-[80%] px-4  lg:px-20 xl:px-14 py-4  rounded-xl bg-white border-main border-[1px] hover:shadow-button-shadow hover:border-transparent hover:bg-accent-light focus:shadow-button-shadow focus:bg-accent-light focus:border-none transiton-all duration-300 hover:text-white focus:text-white hover::children:text-white focus::children:text-white";
    break;
   case "close-button":
    styles = " w-3 h-3 md:w-4 md:h-4 rounded-full bg-transparent ";

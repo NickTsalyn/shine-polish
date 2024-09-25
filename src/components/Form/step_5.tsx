@@ -20,7 +20,7 @@ const Step5: React.FC<StepProps> = ({setStepCompleted}: StepProps) => {
  };
 
  return (
-  <div className=" py-4 md:py-6 lg:py-9 lg:max-h-[80vh] flex flex-col gap-14 md:gap-20 lg:gap-10 xl:gap-20 justify-between items-between">
+  <div className=" py-4 md:py-6 lg:py-9 lg:max-h-[70vh] flex flex-col gap-14 md:gap-20 lg:gap-10 xl:gap-20 justify-between items-between">
    <div className=" flex flex-col gap-6 w-full lg:flex-row">
     <div className="flex flex-col gap-4 lg:w-1/3">
      <h2 className=" text-2xl md:text-4xl font-medium lg:mb-5">Have you any question?</h2>
@@ -64,7 +64,9 @@ const Step5: React.FC<StepProps> = ({setStepCompleted}: StepProps) => {
         type="submit"
         style="apply-btn-light"
        >
-        <span className=" text-accent text-base leading-8">Accept</span>
+        <span className="group text-accent uppercase font-medium text-3  lg:text-[16px] hover:text-white focus:text-white transition-all duration-300">
+         Accept
+        </span>
        </Button>
       </div>
      </div>
@@ -104,7 +106,7 @@ const Step5: React.FC<StepProps> = ({setStepCompleted}: StepProps) => {
     <h2 className="text-center self-center text-accent-light text-2xl mb-5 hidden md:text-4xl lg:block xl:hidden animate-wiggle-more animate-infinite animate-duration-[3000ms] animate-ease-in-out">
      Tell about us your friends <br /> and get discount!
     </h2>
-    <div className=" flex justify-center lg:w-[400px] xl:w-[700px] h-auto">
+    <div className=" flex justify-center lg:w-[280px] xl:w-[400px] h-auto">
      <BannerImg />
     </div>
    </div>

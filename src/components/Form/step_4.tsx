@@ -29,7 +29,7 @@ const Step4 = ({ setStepCompleted }: StepProps) => {
   }, [isStepCompleted, setStepCompleted]);
 
   return (
-    <div className="py-4 md:py-6 lg:py-9 lg:min-h-[80vh]  lg:justify-between">
+    <div className="py-4 md:py-6 lg:py-9 lg:min-h-[70vh]  lg:justify-between">
       <div className="flex flex-col mb-[72px] lg:mb-[92px] ">
         <h1 className="h1 md:text-[36px] mb-[32px]">Where would you like us to clean?</h1>
         <AddressForm onChange={handleCustomChange} />
