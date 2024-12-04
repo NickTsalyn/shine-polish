@@ -18,7 +18,7 @@ const FooterMainNav: FC<FooterNavLinkProps> = ({links}) => {
    {links.map((link, index) => (
     <li
      key={index}
-     className="mb-2 text-3 md:text-4 lg:text-3 text-white lg:text-secondary font-light"
+     className="mb-2 text-[12px] md:text-[16px]  lg:text-[16px] text-white lg:text-secondary font-light"
     >
      <Link href={link.href}>{link.text}</Link>
     </li>

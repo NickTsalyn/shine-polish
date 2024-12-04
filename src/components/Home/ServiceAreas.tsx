@@ -34,7 +34,7 @@ const ServiceAreas = () => {
   <section
    data-aos="fade-up"
    data-aos-anchor-placement="center-bottom"
-   className="mb-[60px] md:mb-20 lg:mb-[120px] xl:mb-40 "
+   className="mb-[60px] md:mb-20 lg:mb-[120px] xl:mb-40 overflow-hidden"
   >
    <div className="container mx-auto my-0 flex flex-col lg:flex-row lg:gap-12 xl:gap-10 items-center justify-center">
     <div className=" mb-10 md:mb-14 lg:mb-0">

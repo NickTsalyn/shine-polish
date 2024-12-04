@@ -14,7 +14,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
   return (
    <textarea
     ref={ref}
-    className="w-full h-full outline-none body p-2 md:p-3 lg:p-4 gap-2 border-2 border-solid border-secondary rounded-xl bg-white resize-none text-text placeholder:text-secondary-placeholder placeholder:opacity-50"
+    className="w-full h-full outline-none body p-2 md:p-3 lg:p-4 gap-2 border-2 border-solid border-secondary rounded-xl bg-white resize-none text-text placeholder:text-secondary-placeholder placeholder:opacity-50 hover:shadow-input-shadow focus:border-[3px] focus:shadow-input-shadow"
     name={name}
     placeholder={placeholder}
     required={required}

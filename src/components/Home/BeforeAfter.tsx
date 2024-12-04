@@ -25,7 +25,7 @@ export default function BeforeAfter({data}: BeforeAfterProps) {
   <section className="mb-[60px] md:mb-[80px] lg:mb-[120px] xl:mb-[160px] ">
    <div
     data-aos="zoom-in"
-    className="container mx-auto animate-fade animate-once animate-duration-[3000ms] animate-ease-in-out"
+    className="container mx-auto animate-fade animate-once animate-duration-[3000ms] animate-ease-in-out overflow-hidden"
    >
     <div className="mx-auto w-[335px] md:w-[712px] lg:w-[1156px] xl:w-[1516px]">
      <div className="hidden md:flex justify-around">

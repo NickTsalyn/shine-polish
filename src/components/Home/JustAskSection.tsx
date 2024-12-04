@@ -33,7 +33,7 @@ const SectionJustAsk: React.FC = () => {
   <section className="mb-[60px] md:mb-20 lg:mb-[120px] xl:mb-40">
    <div
     data-aos="fade-right"
-    className="container relative flex flex-col lg:flex-row mx-auto lg:gap-12 xl:gap-10 items-center justify-center lg:items-start lg:justify-normal lg:max-w-[1156px] xl:max-w-[1516px] animate-fade-right animate-once animate-duration-[3000ms] animate-ease-in-out"
+    className="container relative flex flex-col lg:flex-row mx-auto lg:gap-12 xl:gap-10 items-center justify-center lg:items-start lg:justify-normal lg:max-w-[1156px] xl:max-w-[1516px] animate-fade-right animate-once animate-duration-[3000ms] animate-ease-in-out overflow-hidden"
    >
     <div
      data-aos="fade-up-right"
@@ -84,7 +84,9 @@ const SectionJustAsk: React.FC = () => {
         style="send"
         type="submit"
        >
-        <span className="text-white text-5 md:text-6 lg:text-[32px] font-bold hover:text-accent">Send</span>
+        <span className="group hoevr:text-white focus:text-white text-accent text-5 md:text-6 lg:text-[32px] font-bold transition-all duration-300">
+         Send
+        </span>
        </Button>
       </div>
      </form>
